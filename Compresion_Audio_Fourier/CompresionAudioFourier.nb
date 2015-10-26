@@ -1,0 +1,412 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14262,        403]
+NotebookOptionsPosition[     13063,        356]
+NotebookOutlinePosition[     13405,        371]
+CellTagsIndexPosition[     13362,        368]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Algoritmo simple de compresi\[OAcute]n de audio", "Title",
+ CellChangeTimes->{{3.6548277026485815`*^9, 3.654827708317961*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Autor: Carlos Manuel Rodr\[IAcute]guez Mart\[IAcute]nez", "Subsection",
+ CellChangeTimes->{{3.654833200307118*^9, 3.6548332061978083`*^9}}],
+
+Cell["\<\
+En este notebook se muestra un ejemplo simple de algoritmo de compresi\
+\[OAcute]n que funciona tomando muestras de un archivo de audio, y elimando \
+las frecuencias m\[AAcute]s altas de la transformada de Fourier de las \
+muestras.\
+\>", "Text",
+ CellChangeTimes->{{3.6548332111509886`*^9, 3.6548332775425396`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Conversi\[OAcute]n de audio a binario sin comprimir", "Chapter",
+ CellChangeTimes->{{3.6548277204880996`*^9, 3.6548277293935685`*^9}}],
+
+Cell["\<\
+Primero se crea un archivo que contiene los datos del audio sin comprimir en \
+binario.\
+\>", "Text",
+ CellChangeTimes->{{3.654833284087062*^9, 3.654833308332285*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"path", " ", "=", " ", 
+   RowBox[{"NotebookDirectory", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"audio", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"path", " ", "<>", " ", "\"\<audio.aiff\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"samplerate", " ", "=", " ", 
+   RowBox[{"audio", "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ",", "2"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{"path", "<>", "\"\<uncompressed.wdx\>\""}], ",", " ", 
+    RowBox[{"audio", "[", 
+     RowBox[{"[", 
+      RowBox[{"1", ",", "1", ",", "1"}], "]"}], "]"}]}], "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.6548277371279607`*^9, 3.6548277934817123`*^9}, {
+  3.6548278403317013`*^9, 3.654827841050537*^9}, {3.6548278783567414`*^9, 
+  3.654827882508754*^9}, {3.6548307451687365`*^9, 3.6548307490749483`*^9}, {
+  3.654831608144831*^9, 3.6548316096741023`*^9}, {3.6548318424867945`*^9, 
+  3.654831844595287*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Reproducir audio sin comprimir", "Chapter",
+ CellChangeTimes->{{3.654827895878893*^9, 3.6548279083094945`*^9}}],
+
+Cell["\<\
+Podemos reproducir el audio sin comprimir para asegurarnos de que su calidad \
+es \[OAcute]ptima.\
+\>", "Text",
+ CellChangeTimes->{{3.654833322568127*^9, 3.6548333498856297`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"audio", " ", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"path", "<>", "\"\<uncompressed.wdx\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlay", "[", 
+  RowBox[{"audio", ",", 
+   RowBox[{"SampleRate", "\[Rule]", "samplerate"}], ",", 
+   RowBox[{"SampleDepth", "\[Rule]", "32"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.654827916572779*^9, 3.654827941625272*^9}, {
+  3.654827973012998*^9, 3.6548280189035435`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Algoritmo de compresi\[OAcute]n de audio", "Chapter",
+ CellChangeTimes->{{3.6548280537064953`*^9, 3.6548280687703023`*^9}}],
+
+Cell["\<\
+Primero se importa el audio sin comprimir, se decide cu\[AAcute]l va a ser el \
+tama\[NTilde]o de la muestra y qu\[EAcute] rango de frecuencias se va a \
+eliminar. Posteriormente se toma la transformada de Fourier de las muestras, \
+y se eliminan las frecuencias no deseadas. Por \[UAcute]timo se exporta la \
+lista plana de los valores de la transformada de Fourier.\
+\>", "Text",
+ CellChangeTimes->{{3.654833360307618*^9, 3.6548334590333204`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"audio", " ", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"path", "<>", "\"\<uncompressed.wdx\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"samplesize", " ", "=", " ", "samplerate"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"compressioncut", " ", "=", " ", "30000"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"samples", " ", "=", " ", 
+   RowBox[{"Partition", "[", 
+    RowBox[{"audio", ",", " ", "samplesize"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fouriersamples", " ", "=", " ", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"FourierDCT", "[", "i", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "samples"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fouriersamples", " ", "=", " ", 
+   RowBox[{"fouriersamples", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", 
+      RowBox[{"1", ";;", 
+       RowBox[{"(", 
+        RowBox[{"samplesize", "-", "compressioncut"}], ")"}]}]}], "]"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"compressedaudio", " ", "=", " ", 
+   RowBox[{"Flatten", "[", "fouriersamples", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{"path", "<>", "\"\<compressed.wdx\>\""}], ",", " ", 
+    "compressedaudio"}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<La tasa de compresi\[OAcute]n es: \>\"", " ", "<>", " ", 
+    RowBox[{"ToString", "[", 
+     RowBox[{"N", "[", 
+      RowBox[{
+       RowBox[{"Length", "[", "compressedaudio", "]"}], "/", 
+       RowBox[{"Length", "[", "audio", "]"}]}], "]"}], "]"}]}], "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.654828098880808*^9, 3.6548281780511255`*^9}, 
+   3.654828314947237*^9, {3.6548283558736277`*^9, 3.654828356342327*^9}, {
+   3.6548284840779667`*^9, 3.6548285138801146`*^9}, 3.6548308477394733`*^9, {
+   3.654830950616112*^9, 3.654830973189759*^9}, {3.654831042431306*^9, 
+   3.6548310659955473`*^9}, {3.6548311252980194`*^9, 
+   3.6548311286827908`*^9}, {3.6548311897001686`*^9, 
+   3.6548312434580393`*^9}, {3.654831275101672*^9, 3.6548313995959897`*^9}, {
+   3.6548314531553645`*^9, 3.6548315762690105`*^9}, {3.654831715830087*^9, 
+   3.654831716267536*^9}}],
+
+Cell[BoxData["\<\"La tasa de compresi\[OAcute]n es: 0.282163\"\>"], "Print",
+ CellChangeTimes->{{3.654831572406074*^9, 3.654831579923202*^9}, 
+   3.6548316725666647`*^9, 3.6548317341935377`*^9, 3.654831857623659*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Reconstrucci\[OAcute]n de audio comprimido", "Chapter",
+ CellChangeTimes->{{3.6548285567067814`*^9, 3.6548285611005845`*^9}}],
+
+Cell["\<\
+Para reconstruir el audio se rellenan los valores de la transformada de \
+Fourier que hab\[IAcute]an sido eliminados, se vuelve a tomar la trasnformada \
+de Fourier para regresar a la representaci\[OAcute]n de la onda original.\
+\>", "Text",
+ CellChangeTimes->{{3.6548334689481907`*^9, 3.654833521078586*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"audio", " ", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"path", "<>", "\"\<compressed.wdx\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"compressedsamples", " ", "=", " ", 
+   RowBox[{"Partition", "[", 
+    RowBox[{"audio", ",", " ", 
+     RowBox[{"samplesize", "-", "compressioncut"}]}], " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"samples", " ", "=", " ", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"FourierDCT", "[", 
+      RowBox[{"Join", "[", 
+       RowBox[{"i", ",", 
+        RowBox[{"ConstantArray", "[", 
+         RowBox[{"0", ",", "compressioncut"}], "]"}]}], "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "fouriersamples"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"restoredaudio", " ", "=", " ", 
+   RowBox[{"Flatten", "[", "samples", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlay", "[", 
+  RowBox[{"restoredaudio", ",", " ", 
+   RowBox[{"SampleRate", "\[Rule]", "samplerate"}]}], "]"}]}], "Input",
+ CellChangeTimes->{
+  3.6548285717727137`*^9, {3.6548286049769936`*^9, 3.65482868976586*^9}, {
+   3.6548287497692738`*^9, 3.654828784606052*^9}, {3.6548306326489267`*^9, 
+   3.6548306516068916`*^9}, {3.6548309115499315`*^9, 
+   3.6548309189590807`*^9}, {3.654831424914525*^9, 3.654831444576688*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Visualizaci\[OAcute]n de espectro", "Chapter",
+ CellChangeTimes->{{3.654831832271535*^9, 3.6548318367523584`*^9}, {
+  3.654832276471655*^9, 3.6548322771904125`*^9}}],
+
+Cell["\<\
+Visualizando el espectro de frecuencias se puede conocer la p\[EAcute]rdida \
+que ha sufrido el archivo de audio.\
+\>", "Text",
+ CellChangeTimes->{{3.654833547880526*^9, 3.6548335876968927`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"compressedaudio", " ", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"path", "<>", "\"\<compressed.wdx\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"compressedsamples", " ", "=", " ", 
+   RowBox[{"Partition", "[", 
+    RowBox[{"audio", ",", " ", 
+     RowBox[{"samplesize", "-", "compressioncut"}]}], " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"compressedsamples", " ", "=", " ", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"FourierDCT", "[", 
+      RowBox[{"Join", "[", 
+       RowBox[{"i", ",", 
+        RowBox[{"ConstantArray", "[", 
+         RowBox[{"0", ",", "compressioncut"}], "]"}]}], "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "fouriersamples"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"audio", " ", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"path", "<>", "\"\<uncompressed.wdx\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"samples", " ", "=", " ", 
+   RowBox[{"Partition", "[", 
+    RowBox[{"audio", ",", " ", "samplesize"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetOptions", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"Plot", ",", "ListPlot", ",", "ListLinePlot"}], "}"}], ",", 
+    RowBox[{"BaseStyle", "\[Rule]", 
+     RowBox[{"FontSize", "\[Rule]", "14"}]}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Periodogram", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"samples", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], ",", 
+     RowBox[{"compressedsamples", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", 
+   RowBox[{"SampleRate", "\[Rule]", "samplerate"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "True"}], ",", " ", 
+   RowBox[{"GridLines", "\[Rule]", "Automatic"}], ",", " ", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Frecuencia (Hz)\>\"", ",", " ", "\"\<Intensidad\>\""}], 
+     "}"}]}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Spectrogram", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", "samples", "]"}], ",", 
+   RowBox[{"ColorFunction", "\[Rule]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Blend", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"White", ",", "Orange", ",", "Red", ",", "Black"}], "}"}], 
+        ",", "#"}], "]"}], "&"}], ")"}]}], ",", 
+   RowBox[{"SampleRate", "\[Rule]", "samplerate"}], ",", " ", 
+   RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", " ", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", " ", "\"\<Frecuencia (Hz)\>\""}], "}"}]}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"FontSize", "\[Rule]", "14"}], "}"}]}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Spectrogram", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", "compressedsamples", "]"}], ",", 
+   RowBox[{"ColorFunction", "\[Rule]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Blend", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"White", ",", "Orange", ",", "Red", ",", "Black"}], "}"}], 
+        ",", "#"}], "]"}], "&"}], ")"}]}], ",", 
+   RowBox[{"SampleRate", "\[Rule]", "samplerate"}], ",", " ", 
+   RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", " ", "\"\<Frecuencia (Hz)\>\""}], "}"}]}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"FontSize", "\[Rule]", "14"}], "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.654831928372411*^9, 3.6548319798798833`*^9}, {
+  3.654832013566247*^9, 3.654832037746725*^9}, {3.654832137410497*^9, 
+  3.654832148921076*^9}, {3.654832192864552*^9, 3.6548322448982162`*^9}, {
+  3.6548322970968266`*^9, 3.6548323909714637`*^9}, {3.6548324268133087`*^9, 
+  3.6548324630347137`*^9}, {3.6548325274374065`*^9, 3.654832623262909*^9}, {
+  3.654832657290965*^9, 3.6548327133612776`*^9}, {3.654832755526*^9, 
+  3.6548327720889616`*^9}, {3.6548328155857315`*^9, 3.654832847710847*^9}, {
+  3.6548329069957423`*^9, 3.654832926850634*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{775, 657},
+WindowMargins->{{160, Automatic}, {Automatic, 43}},
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 132, 1, 166, "Title"],
+Cell[CellGroupData[{
+Cell[737, 27, 145, 1, 49, "Subsection"],
+Cell[885, 30, 326, 6, 68, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1248, 41, 140, 1, 72, "Chapter"],
+Cell[1391, 44, 177, 4, 30, "Text"],
+Cell[1571, 50, 1051, 26, 144, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2659, 81, 117, 1, 72, "Chapter"],
+Cell[2779, 84, 189, 4, 30, "Text"],
+Cell[2971, 90, 472, 11, 86, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3480, 106, 129, 1, 72, "Chapter"],
+Cell[3612, 109, 459, 7, 87, "Text"],
+Cell[CellGroupData[{
+Cell[4096, 120, 2334, 60, 354, "Input"],
+Cell[6433, 182, 216, 2, 23, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6698, 190, 131, 1, 72, "Chapter"],
+Cell[6832, 193, 319, 5, 68, "Text"],
+Cell[7154, 200, 1378, 34, 220, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8569, 239, 171, 2, 72, "Chapter"],
+Cell[8743, 243, 205, 4, 49, "Text"],
+Cell[8951, 249, 4084, 103, 696, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
