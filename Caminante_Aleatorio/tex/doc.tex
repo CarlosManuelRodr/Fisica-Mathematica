@@ -201,4 +201,26 @@ Esto se puede visualizar mejor utilizando un mapa de colores y coloreando cada v
 \end{figure}
 En esta figura el eje vertical representa la iteración del juego, y el eje horizontal representa los $x_n$. Este resultado tiene cierta similitud con un autómata celular, y muestra cómo es que se distribuyen los jugadores haciendo que el segundo máximo esté alejado del cero.
 
+En la figura \ref{fig:Winners} se muestra el porcentaje de ganadores respecto al número de iteraciones.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.6]{img/Fig8}
+\caption{Porcentaje de jugadores que ganan.}
+\label{fig:Winners}
+\end{figure}
+
+El porcentaje de ganadores respecto al número de iteraciones se ajusta a un modelo de la forma
+\[
+	\% = a + \frac{b}{x+c},
+\]
+donde $x$ es el número de iteraciones. Al realizar un ajuste de este tipo se obtiene el resultado que se muestra en la figura \ref{fig:ajuste}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.6]{img/Fig9}
+\caption{Ajuste de modelo.}
+\label{fig:ajuste}
+\end{figure}
+
 \end{document}
