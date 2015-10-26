@@ -9,6 +9,9 @@ Soluciones a problemas de física hechas en Mathematica. Se incluyen notebooks d
 * Péndulo doble
 * Evolución temporal de paquete gaussiano
 * Inducción de señal en bobina de guitarra eléctrica
+* Algoritmo simple de compresión de audio
+* Cálculo de dimensión fractal
+* Tiempo de retorno cuántico
 
 En algunos notebooks también se incluye documentación acerca de cómo se resuelven los problemas.
 

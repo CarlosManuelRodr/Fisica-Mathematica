@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     14256,        369]
-NotebookOptionsPosition[     13863,        352]
-NotebookOutlinePosition[     14283,        368]
-CellTagsIndexPosition[     14240,        365]
+NotebookDataLength[     22076,        567]
+NotebookOptionsPosition[     21566,        546]
+NotebookOutlinePosition[     21986,        562]
+CellTagsIndexPosition[     21943,        559]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -348,6 +348,200 @@ Cell[BoxData[
    3.604162402019734*^9}, {3.60416244781254*^9, 3.604162484297224*^9}, {
    3.6041625527316837`*^9, 3.604162560440811*^9}, {3.6537517219599023`*^9, 
    3.6537517702061896`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Fractal de doble p\[EAcute]ndulo", "Chapter",
+ CellChangeTimes->{{3.654848079425501*^9, 3.65484808479065*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"DPFrac", "[", 
+   RowBox[{"\[Theta]1i_", ",", "\[Theta]2i_", ",", "tmax_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"m1", "=", "10.0"}], ",", 
+      RowBox[{"m2", "=", "10"}], ",", 
+      RowBox[{"l", "=", "20.0"}], ",", 
+      RowBox[{"g", "=", "9.81"}], ",", " ", "sol", ",", "max"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"sol", " ", "=", " ", 
+      RowBox[{"NDSolveValue", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"\[Theta]1", "''"}], "[", "t", "]"}], "\[Equal]", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"-", "g"}], "*", 
+               RowBox[{"(", " ", 
+                RowBox[{
+                 RowBox[{"2", "*", "m1"}], "+", "m2"}], " ", ")"}], "*", 
+               RowBox[{"Sin", "[", 
+                RowBox[{"\[Theta]1", "[", "t", "]"}], "]"}]}], "-", 
+              RowBox[{"m2", "*", "g", "*", 
+               RowBox[{"Sin", "[", 
+                RowBox[{
+                 RowBox[{"\[Theta]1", "[", "t", "]"}], "-", 
+                 RowBox[{"2", "*", 
+                  RowBox[{"\[Theta]2", "[", "t", "]"}]}]}], "]"}]}], "-", 
+              RowBox[{"2", "*", 
+               RowBox[{"Sin", "[", 
+                RowBox[{
+                 RowBox[{"\[Theta]1", "[", "t", "]"}], "-", 
+                 RowBox[{"\[Theta]2", "[", "t", "]"}]}], "]"}], "*", "m2", 
+               "*", 
+               RowBox[{"(", " ", 
+                RowBox[{
+                 RowBox[{"l", "*", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"\[Theta]2", "'"}], "[", "t", "]"}], "^", "2"}], 
+                   " ", ")"}]}], "+", 
+                 RowBox[{
+                  RowBox[{"(", " ", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"\[Theta]1", "'"}], "[", "t", "]"}], "^", "2"}], 
+                   " ", ")"}], "*", 
+                  RowBox[{"Cos", "[", 
+                   RowBox[{
+                    RowBox[{"\[Theta]1", "[", "t", "]"}], "-", 
+                    RowBox[{"\[Theta]2", "[", "t", "]"}]}], "]"}]}]}], " ", 
+                ")"}]}]}], ")"}], "/", 
+            RowBox[{"(", 
+             RowBox[{"l", "*", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"2", "*", "m1"}], "+", "m2", "-", 
+                RowBox[{"m2", "*", 
+                 RowBox[{"Cos", "[", 
+                  RowBox[{"2", "*", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"\[Theta]1", "[", "t", "]"}], "-", 
+                    RowBox[{"\[Theta]2", "[", "t", "]"}]}], ")"}]}], 
+                  "]"}]}]}], ")"}]}], ")"}]}]}], ",", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"\[Theta]2", "''"}], "[", "t", "]"}], "==", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"2", "*", 
+              RowBox[{"Sin", "[", 
+               RowBox[{
+                RowBox[{"\[Theta]1", "[", "t", "]"}], "-", 
+                RowBox[{"\[Theta]2", "[", "t", "]"}]}], "]"}], "*", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"g", "*", 
+                 RowBox[{"(", 
+                  RowBox[{"m1", "+", "m2"}], ")"}], "*", 
+                 RowBox[{"Cos", "[", 
+                  RowBox[{"\[Theta]1", "[", "t", "]"}], "]"}]}], "+", 
+                RowBox[{"l", "*", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"\[Theta]2", "'"}], "[", "t", "]"}], "^", "2"}], 
+                    ")"}], "*", "m2", "*", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{
+                    RowBox[{"\[Theta]1", "[", "t", "]"}], "-", 
+                    RowBox[{"\[Theta]2", "[", "t", "]"}]}], "]"}]}], "+", 
+                   RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"\[Theta]1", "'"}], "[", "t", "]"}], "^", "2"}], 
+                    ")"}], "*", 
+                    RowBox[{"(", 
+                    RowBox[{"m1", "+", "m2"}], ")"}]}]}], ")"}]}]}], ")"}]}], 
+             ")"}], "/", 
+            RowBox[{"(", 
+             RowBox[{"l", "*", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"2", "*", "m1"}], "+", "m2", "-", 
+                RowBox[{"m2", "*", 
+                 RowBox[{"Cos", "[", 
+                  RowBox[{"2", "*", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"\[Theta]1", "[", "t", "]"}], "-", 
+                    RowBox[{"\[Theta]2", "[", "t", "]"}]}], ")"}]}], 
+                  "]"}]}]}], ")"}]}], ")"}]}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"\[Theta]1", "[", "0", "]"}], " ", "\[Equal]", " ", 
+           "\[Theta]1i"}], ",", " ", 
+          RowBox[{
+           RowBox[{"\[Theta]2", "[", "0", "]"}], " ", "\[Equal]", " ", 
+           "\[Theta]2i"}], ",", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"\[Theta]2", "'"}], "[", "0", "]"}], " ", "\[Equal]", " ",
+            "0"}], ",", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"\[Theta]1", "'"}], "[", "0", "]"}], " ", "\[Equal]", " ",
+            "0"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\[Theta]1", ",", "\[Theta]2"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "0", ",", "tmax"}], "}"}]}], "\[IndentingNewLine]",
+        "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"max", " ", "=", " ", 
+      RowBox[{"FindMaximum", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"sol", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "[", "t", "]"}], ",", 
+          RowBox[{
+          "0", " ", "\[LessEqual]", " ", "t", " ", "\[LessEqual]", " ", 
+           "tmax"}]}], "}"}], ",", "t"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"max", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], " ", "\[GreaterEqual]", "  ", 
+         "\[Pi]"}], ",", " ", 
+        RowBox[{"t", " ", "/.", " ", 
+         RowBox[{"max", " ", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+        RowBox[{"-", "1"}]}], "]"}], "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "[", "\[Theta]1i", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "[", "\[Theta]2i", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"DensityPlot", "[", 
+  RowBox[{
+   RowBox[{"DPFrac", "[", 
+    RowBox[{"\[Theta]1i", ",", "\[Theta]2i", ",", "500"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Theta]1i", ",", 
+     RowBox[{"-", "\[Pi]"}], ",", "\[Pi]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Theta]2i", ",", 
+     RowBox[{"-", "\[Pi]"}], ",", "\[Pi]"}], "}"}], ",", 
+   RowBox[{"ColorFunction", "\[Rule]", "\"\<SunsetColors\>\""}], ",", 
+   RowBox[{"PlotPoints", "->", "50"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.654848099966012*^9, 3.6548481002222104`*^9}, {
+  3.654848183404766*^9, 3.654848189508712*^9}, {3.6548482407088957`*^9, 
+  3.6548483214553485`*^9}, {3.65484861554679*^9, 3.654848621830587*^9}, {
+  3.654849598939779*^9, 3.6548496184432755`*^9}}]
 }, Open  ]]
 },
 WindowSize->{772, 745},
@@ -370,6 +564,10 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[579, 22, 147, 1, 72, "Chapter"],
 Cell[729, 25, 13118, 324, 1458, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13884, 354, 116, 1, 72, "Chapter"],
+Cell[14003, 357, 7547, 186, 758, "Input"]
 }, Open  ]]
 }
 ]
