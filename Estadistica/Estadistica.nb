@@ -1,0 +1,1363 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     53476,       1354]
+NotebookOptionsPosition[     51585,       1285]
+NotebookOutlinePosition[     51920,       1300]
+CellTagsIndexPosition[     51877,       1297]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Estad\[IAcute]stica", "Title",
+ CellChangeTimes->{{3.659743947436492*^9, 3.6597439490761414`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Teorema del l\[IAcute]mite central", "Chapter",
+ CellChangeTimes->{{3.659743956404214*^9, 3.659743963300149*^9}}],
+
+Cell["\<\
+La media aritm\[EAcute]tica de la suma de un gran n\[UAcute]mero de variables \
+aleatorias independientes se distribuye aproximadamente en una distribuci\
+\[OAcute]n normal sin importar sus distribuciones individuales.\
+\>", "Text",
+ CellChangeTimes->{{3.6597452077435226`*^9, 3.6597453019426394`*^9}, {
+  3.659745371030609*^9, 3.659745392254105*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Fuente", ":", " ", "http", ":"}], "//", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"www", ".", "demonstrations", ".", "wolfram", ".", "com"}], "/",
+       "TheCentralLimitTheorem"}], "/"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"Manipulate", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"SeedRandom", "[", "seed", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Show", "[", 
+      RowBox[{
+       RowBox[{"Histogram", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Mean", "[", 
+            RowBox[{"RandomReal", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"0", ",", "100"}], "}"}], ",", "n"}], "]"}], "]"}], 
+           ",", 
+           RowBox[{"{", "200", "}"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"35", ",", "65", ",", "1"}], "}"}]}], "]"}], ",", 
+       RowBox[{"Plot", "[", 
+        RowBox[{
+         RowBox[{"200", "*", 
+          RowBox[{"PDF", "[", 
+           RowBox[{
+            RowBox[{"NormalDistribution", "[", 
+             RowBox[{"50", ",", 
+              RowBox[{"Sqrt", "[", 
+               RowBox[{"9999", "/", 
+                RowBox[{"(", 
+                 RowBox[{"12", " ", "n"}], ")"}]}], "]"}]}], "]"}], ",", 
+            "x"}], "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "35", ",", "65"}], "}"}]}], "]"}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"500", ",", "300"}], "}"}]}]}], "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"n", ",", "20", ",", "\"\<Tama\[NTilde]o de la muestra\>\""}], 
+       "}"}], ",", "10", ",", "200", ",", "1", ",", 
+      RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"seed", ",", "1", ",", "\"\<Semilla\>\""}], "}"}], ",", "1", 
+      ",", "100000", ",", "1"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.659744107106924*^9, 3.6597441151286173`*^9}, {
+  3.659745164384131*^9, 3.659745171136795*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`n$$ = 200, $CellContext`seed$$ = 1, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`n$$], 20, "Tama\[NTilde]o de la muestra"}, 10, 200, 
+      1}, {{
+       Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
+    Typeset`size$$ = {500., {147., 153.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True, $CellContext`n$328$$ = 
+    0, $CellContext`seed$333$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`n$$ = 20, $CellContext`seed$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`n$$, $CellContext`n$328$$, 0], 
+        Hold[$CellContext`seed$$, $CellContext`seed$333$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (SeedRandom[$CellContext`seed$$]; Show[
+         Histogram[
+          Table[
+           Mean[
+            RandomReal[{0, 100}, $CellContext`n$$]], {200}], {35, 65, 1}], 
+         Plot[200 PDF[
+            NormalDistribution[50, 
+             Sqrt[
+             9999/(12 $CellContext`n$$)]], $CellContext`x], {$CellContext`x, 
+           35, 65}], ImageSize -> {500, 300}]), 
+      "Specifications" :> {{{$CellContext`n$$, 20, 
+          "Tama\[NTilde]o de la muestra"}, 10, 200, 1, Appearance -> 
+         "Labeled"}, {{$CellContext`seed$$, 1, "Semilla"}, 1, 100000, 1}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{547., {204., 211.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.65974396881043*^9, {3.6597441157725887`*^9, 3.65974414225548*^9}, 
+   3.659744191794466*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Distribuci\[OAcute]n ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Chi]", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "Chapter",
+ CellChangeTimes->{{3.6597440115558147`*^9, 3.659744030977928*^9}}],
+
+Cell[TextData[{
+ "La distribuci\[OAcute]n ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Chi]", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " con k grados de libertad es la distribuci\[OAcute]n de la suma de los \
+cuadrados de k variables normales independientes Y = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      SubsuperscriptBox["Z", "1", "2"], "+", 
+      SubsuperscriptBox["Z", "2", "2"], "+"}], " ", "..."}], " ", "+", " ", 
+    SubsuperscriptBox["Z", "k", "2"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", donde cada Z es independiente y est\[AAcute] normalmente distribuido con \
+media cero y varianza uno."
+}], "Text",
+ CellChangeTimes->{{3.6597440462592163`*^9, 3.659744052227128*^9}, {
+  3.65974545150949*^9, 3.65974569655541*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SeedRandom", "[", "seed", "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"data", "=", " ", 
+     RowBox[{
+      RowBox[{"RandomVariate", "[", 
+       RowBox[{
+        RowBox[{"NormalDistribution", "[", 
+         RowBox[{"0", ",", "1"}], "]"}], ",", 
+        RowBox[{"10", "^", "4"}]}], "]"}], "^", "2"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"data", " ", "+=", " ", 
+        RowBox[{
+         RowBox[{"RandomVariate", "[", 
+          RowBox[{
+           RowBox[{"NormalDistribution", "[", 
+            RowBox[{"0", ",", "1"}], "]"}], ",", 
+           RowBox[{"10", "^", "4"}]}], "]"}], "^", "2"}]}], ";"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"k", "-", "1"}], "}"}]}], "\[IndentingNewLine]", "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Histogram", "[", 
+       RowBox[{"data", ",", "20", ",", "\"\<ProbabilityDensity\>\""}], "]"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"Evaluate", "[", 
+         RowBox[{"PDF", "[", 
+          RowBox[{
+           RowBox[{"ChiSquareDistribution", "[", "k", "]"}], ",", "x"}], 
+          "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "0", ",", "100"}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "]"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"k", ",", "2"}], "}"}], ",", "1", ",", "50", ",", "1", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"seed", ",", "1", ",", "\"\<Semilla\>\""}], "}"}], ",", "1", 
+     ",", "100000", ",", "1"}], "}"}], ",", " ", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "seed"}], "}"}]}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6597457032901297`*^9, 3.65974578623345*^9}, {
+   3.6597458188670464`*^9, 3.659745818942905*^9}, 3.6597458905860777`*^9, {
+   3.6597460108977118`*^9, 3.659746037786457*^9}, {3.659746068246563*^9, 
+   3.659746070004388*^9}, {3.659746186273988*^9, 3.659746206421652*^9}, {
+   3.6597462973136377`*^9, 3.6597463391251297`*^9}, {3.659746431907557*^9, 
+   3.65974648350765*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`k$$ = 14, $CellContext`seed$$ = 1, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`k$$], 2}, 1, 50, 1}, {{
+       Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
+    Typeset`size$$ = {360., {109., 114.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`k$23641$$ = 0, $CellContext`seed$23642$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`k$$ = 2, $CellContext`seed$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`k$$, $CellContext`k$23641$$, 0], 
+        Hold[$CellContext`seed$$, $CellContext`seed$23642$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (
+       SeedRandom[$CellContext`seed$$]; $CellContext`data = RandomVariate[
+           NormalDistribution[0, 1], 10^4]^2; 
+       Do[AddTo[$CellContext`data, RandomVariate[
+             NormalDistribution[0, 1], 10^4]^2]; 
+         Null, {$CellContext`k$$ - 1}]; Show[
+         Histogram[$CellContext`data, 20, "ProbabilityDensity"], 
+         Plot[
+          Evaluate[
+           PDF[
+            
+            ChiSquareDistribution[$CellContext`k$$], $CellContext`x]], \
+{$CellContext`x, 0, 100}, PlotRange -> Full]]), 
+      "Specifications" :> {{{$CellContext`k$$, 2}, 1, 50, 1, Appearance -> 
+         "Labeled"}, {{$CellContext`seed$$, 1, "Semilla"}, 1, 100000, 1}}, 
+      "Options" :> {
+       TrackedSymbols :> {$CellContext`k$$, $CellContext`seed$$}}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{407., {166., 173.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.659745787547969*^9, 3.659745820379237*^9, 3.6597458534929256`*^9, 
+   3.659745891431037*^9, 3.659745979773761*^9, 3.659746038969048*^9, 
+   3.659746070770734*^9, 3.659746208850156*^9, {3.659746304244399*^9, 
+   3.659746339599015*^9}, {3.659746433648941*^9, 3.6597464838456783`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Ejemplo", "Subchapter",
+ CellChangeTimes->{{3.659754381758094*^9, 3.659754382510151*^9}}],
+
+Cell[TextData[{
+ "El coficiente intelectual es aproximadamente normalmente distribuido con \
+\[Mu]=100, y \[Sigma] = 16. En un grupo de 10 individuos seleccionados \
+aleatoriamente, \[DownQuestion]cu\[AAcute]l es la probabilidad de que la \
+desviaci\[OAcute]n est\[AAcute]ndar observada \[OpenCurlyQuote]s\
+\[CloseCurlyQuote] sea menor a 8.8?\n\nEn una muestra con n grados de \
+libertad la distribuci\[OAcute]n de su varianza est\[AAcute] relacionada con \
+la distribuci\[OAcute]n ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Chi]", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". En concreto (n-1) ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    SuperscriptBox["S", "2"], 
+    SuperscriptBox["\[Sigma]", "2"]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " sigue la distribuci\[OAcute]n ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Chi]", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". Sea f(x) la funci\[OAcute]n de densidad de la distribuci\[OAcute]n ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Chi]", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", con esto se puede obtener la probabilidad de que la desviaci\[OAcute]n \
+est\[AAcute]ndar sea menor a 8.8 integrando con los l\[IAcute]mites ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "i"], " ", "=", " ", "0"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "f"], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"n", "-", "1"}], ")"}], " ", 
+     FractionBox["8.8", 
+      SuperscriptBox["\[Sigma]", "2"]]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", de manera que ",
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["\[Integral]", 
+    SubscriptBox["x", "i"], 
+    SubscriptBox["x", "f"]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "f(x) dx = 0.0257108. A continuaci\[OAcute]n se har\[AAcute] la prueba \
+generando la distribuci\[OAcute]n (n-1) ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    SuperscriptBox["S", "2"], 
+    SuperscriptBox["\[Sigma]", "2"]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " y comparando con la distribuci\[OAcute]n ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Chi]", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.659754386781773*^9, 3.659754477437516*^9}, 
+   3.6597558747408733`*^9, {3.659759393282675*^9, 3.6597597621104794`*^9}, {
+   3.659759797756734*^9, 3.65975983541247*^9}, {3.659764628790496*^9, 
+   3.659764629806123*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SeedRandom", "[", "seed", "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"\[Mu]", " ", "=", "100"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"\[Sigma]", " ", "=", " ", "16"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"n", " ", "=", " ", "10"}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"Tama\[NTilde]o", " ", "de", " ", "la", " ", "muestra"}], " ", 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"dist", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"sample", " ", "=", " ", 
+        RowBox[{"RandomVariate", "[", 
+         RowBox[{
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{"\[Mu]", ",", "\[Sigma]"}], "]"}], ",", "n"}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"s", " ", "=", " ", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"n", "-", "1"}], ")"}], " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StandardDeviation", "[", "sample", "]"}], "^", "2"}], " ",
+           "/", " ", 
+          RowBox[{"\[Sigma]", "^", "2"}]}]}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"dist", ",", "s"}], "]"}], ";"}], ",", "\[IndentingNewLine]", 
+      
+      RowBox[{"{", "k", "}"}]}], "\[IndentingNewLine]", "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Histogram", "[", 
+       RowBox[{"dist", ",", "20", ",", "\"\<ProbabilityDensity\>\""}], "]"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"Evaluate", "[", 
+         RowBox[{"PDF", "[", 
+          RowBox[{
+           RowBox[{"ChiSquareDistribution", "[", 
+            RowBox[{"n", "-", "1"}], "]"}], ",", "x"}], "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "0", ",", "100"}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1500"}], "}"}], ",", "1", ",", "4450"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"seed", ",", "1", ",", "\"\<Semilla\>\""}], "}"}], ",", "1", 
+     ",", "100000", ",", "1"}], "}"}], ",", " ", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "seed"}], "}"}]}]}], "\[IndentingNewLine]", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<La probabilidad es: \>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"100", "*", 
+  RowBox[{"Integrate", "[", 
+   RowBox[{
+    RowBox[{"PDF", "[", 
+     RowBox[{
+      RowBox[{"ChiSquareDistribution", "[", 
+       RowBox[{"n", "-", "1"}], "]"}], ",", "x"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "0", ",", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"n", "-", "1"}], ")"}], 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"8.8", "/", "\[Sigma]"}], ")"}], "2"]}]}], "}"}]}], 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.659756056925173*^9, 3.659756095733081*^9}, {
+   3.659756150278919*^9, 3.6597561990053463`*^9}, 3.659756286333618*^9, {
+   3.659756561981876*^9, 3.659756569832717*^9}, {3.659756658771833*^9, 
+   3.65975672078934*^9}, {3.659756965670829*^9, 3.6597570894774237`*^9}, {
+   3.6597571977406797`*^9, 3.659757270723831*^9}, {3.659757424473382*^9, 
+   3.659757432513318*^9}, {3.6597575562492237`*^9, 3.659757565054904*^9}, {
+   3.659758020361333*^9, 3.659758042749837*^9}, {3.659758121352955*^9, 
+   3.659758156794545*^9}, 3.659758217125443*^9, {3.6597584851246567`*^9, 
+   3.659758497795232*^9}, {3.659758757210237*^9, 3.659758817411199*^9}, {
+   3.659758898958153*^9, 3.659758941979823*^9}, 3.6597597551048098`*^9, {
+   3.659759844244917*^9, 3.659759899294869*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`k$$ = 1500, $CellContext`seed$$ = 1, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`k$$], 1500}, 1, 4450}, {{
+       Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
+    Typeset`size$$ = {360., {109., 114.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`k$144278$$ = 0, $CellContext`seed$144279$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`k$$ = 1500, $CellContext`seed$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`k$$, $CellContext`k$144278$$, 0], 
+        Hold[$CellContext`seed$$, $CellContext`seed$144279$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (
+       SeedRandom[$CellContext`seed$$]; $CellContext`\[Mu] = 
+        100; $CellContext`\[Sigma] = 16; $CellContext`n = 
+        10; $CellContext`dist = {}; Do[$CellContext`sample = RandomVariate[
+            
+            NormalDistribution[$CellContext`\[Mu], $CellContext`\[Sigma]], \
+$CellContext`n]; $CellContext`s = ($CellContext`n - 1) (
+            StandardDeviation[$CellContext`sample]^2/$CellContext`\[Sigma]^2); 
+         AppendTo[$CellContext`dist, $CellContext`s]; 
+         Null, {$CellContext`k$$}]; Show[
+         Histogram[$CellContext`dist, 20, "ProbabilityDensity"], 
+         Plot[
+          Evaluate[
+           PDF[
+            
+            ChiSquareDistribution[$CellContext`n - 
+             1], $CellContext`x]], {$CellContext`x, 0, 100}, PlotRange -> 
+          Full]]), 
+      "Specifications" :> {{{$CellContext`k$$, 1500}, 1, 
+         4450}, {{$CellContext`seed$$, 1, "Semilla"}, 1, 100000, 1}}, 
+      "Options" :> {
+       TrackedSymbols :> {$CellContext`k$$, $CellContext`seed$$}}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{407., {166., 173.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.659759900525927*^9}],
+
+Cell[BoxData["\<\"La probabilidad es: \"\>"], "Print",
+ CellChangeTimes->{3.659759900528019*^9}],
+
+Cell[BoxData["2.571078877956049`"], "Output",
+ CellChangeTimes->{3.659759900900054*^9}]
+}, Open  ]],
+
+Cell["\<\
+Una manera alternativa de obtener este resultado es generando una distribuci\
+\[OAcute]n de desviaciones est\[AAcute]ndar a trav\[EAcute]s de k muestras e \
+integrar sobre la distribuci\[OAcute]n del histograma.\
+\>", "Text",
+ CellChangeTimes->{{3.6597599279855957`*^9, 3.659760007649577*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SeedRandom", "[", "seed", "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"\[Mu]", " ", "=", "100"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"\[Sigma]", " ", "=", " ", "16"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"n", " ", "=", " ", "10"}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"Tama\[NTilde]o", " ", "de", " ", "la", " ", "muestra"}], " ", 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"dist", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"sample", " ", "=", " ", 
+        RowBox[{"RandomVariate", "[", 
+         RowBox[{
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{"\[Mu]", ",", "\[Sigma]"}], "]"}], ",", "n"}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"s", " ", "=", "  ", 
+        RowBox[{"StandardDeviation", "[", "sample", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"dist", ",", "s"}], "]"}], ";"}], ",", "\[IndentingNewLine]", 
+      
+      RowBox[{"{", "k", "}"}]}], "\[IndentingNewLine]", "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Histogram", "[", 
+       RowBox[{"dist", ",", "20", ",", "\"\<ProbabilityDensity\>\"", ",", " ", 
+        RowBox[{"PlotLabel", "\[Rule]", 
+         RowBox[{"\"\<P = \>\"", " ", "<>", " ", 
+          RowBox[{"ToString", "[", 
+           RowBox[{"100", "*", 
+            RowBox[{"Integrate", "[", 
+             RowBox[{
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"HistogramDistribution", "[", "dist", "]"}], ",", 
+                "x"}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"x", ",", "0", ",", "8.8"}], "}"}]}], "]"}]}], "]"}], "<>",
+           " ", "\"\< %\>\""}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"Evaluate", "[", 
+         RowBox[{"PDF", "[", 
+          RowBox[{
+           RowBox[{"HistogramDistribution", "[", "dist", "]"}], ",", "x"}], 
+          "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "0", ",", "8.8"}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+        RowBox[{"Filling", "\[Rule]", "Axis"}], ",", " ", 
+        RowBox[{"FillingStyle", "\[Rule]", "Blue"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1500"}], "}"}], ",", "1", ",", "4450"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"seed", ",", "1", ",", "\"\<Semilla\>\""}], "}"}], ",", "1", 
+     ",", "100000", ",", "1"}], "}"}], ",", " ", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "seed"}], "}"}]}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6597587211622562`*^9, 3.6597587272169*^9}, {
+  3.6597589580353823`*^9, 3.659759072856398*^9}, {3.6597591133526*^9, 
+  3.6597592187197*^9}, {3.6597592996827106`*^9, 3.659759350342332*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`k$$ = 4450., $CellContext`seed$$ = 1, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`k$$], 1500}, 1, 4450}, {{
+       Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
+    Typeset`size$$ = {360., {119., 123.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`k$135899$$ = 0, $CellContext`seed$135900$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`k$$ = 1500, $CellContext`seed$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`k$$, $CellContext`k$135899$$, 0], 
+        Hold[$CellContext`seed$$, $CellContext`seed$135900$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (
+       SeedRandom[$CellContext`seed$$]; $CellContext`\[Mu] = 
+        100; $CellContext`\[Sigma] = 16; $CellContext`n = 
+        10; $CellContext`dist = {}; Do[$CellContext`sample = RandomVariate[
+            
+            NormalDistribution[$CellContext`\[Mu], $CellContext`\[Sigma]], \
+$CellContext`n]; $CellContext`s = StandardDeviation[$CellContext`sample]; 
+         AppendTo[$CellContext`dist, $CellContext`s]; 
+         Null, {$CellContext`k$$}]; Show[
+         Histogram[$CellContext`dist, 20, "ProbabilityDensity", PlotLabel -> 
+          StringJoin["P = ", 
+            ToString[100 Integrate[
+               PDF[
+                
+                HistogramDistribution[$CellContext`dist], $CellContext`x], \
+{$CellContext`x, 0, 8.8}]], " %"]], 
+         Plot[
+          Evaluate[
+           PDF[
+            
+            HistogramDistribution[$CellContext`dist], $CellContext`x]], \
+{$CellContext`x, 0, 8.8}, PlotRange -> Full, Filling -> Axis, FillingStyle -> 
+          Blue]]), 
+      "Specifications" :> {{{$CellContext`k$$, 1500}, 1, 
+         4450}, {{$CellContext`seed$$, 1, "Semilla"}, 1, 100000, 1}}, 
+      "Options" :> {
+       TrackedSymbols :> {$CellContext`k$$, $CellContext`seed$$}}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{407., {175., 182.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.659758727918633*^9, {3.6597589833261642`*^9, 3.659759039484565*^9}, 
+   3.6597590735013638`*^9, {3.65975911484556*^9, 3.659759185987767*^9}, 
+   3.659759218911718*^9, {3.6597593237326202`*^9, 3.659759351117372*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Distribuci\[OAcute]n t-Student", "Chapter",
+ CellChangeTimes->{{3.659744229249057*^9, 3.65974423806493*^9}}],
+
+Cell[TextData[{
+ "La distribuci\[OAcute]n t de Student se usa para estimar par\[AAcute]metros \
+cuando el tama\[NTilde]o de la muestra es muy peque\[NTilde]a. Esta \
+distribuci\[OAcute]n se define como\n\nT = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["Z", 
+     SqrtBox[
+      RowBox[{"Y", "/", "k"}]]], ".", " "}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " Entonces cada medici\[OAcute]n est\[AAcute] dada por t = ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     OverscriptBox["x", "_"], "-", " ", "\[Mu]"}], 
+    RowBox[{"s", "/", 
+     SqrtBox["n"]}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", donde s = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["1", 
+     RowBox[{"n", "-", "1"}]], 
+    RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"i", "=", "1"}], "N"], 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["x", "i"], "-", " ", 
+        OverscriptBox["x", "_"]}], ")"}], "2"]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". La distribuci\[OAcute]n t-Student se puede interpretar como la distribuci\
+\[OAcute]n de la localizaci",
+ "\[OAcute]n de la media verdadera.",
+ "\nEn esta prueba se observa c\[OAcute]mo la muestra generada a partir de la \
+definici\[OAcute]n T = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["Z", 
+     SqrtBox[
+      RowBox[{"Y", "/", "k"}]]], " ", "se", " ", "ajusta", " ", "a", " ", 
+    "la", " ", "distribuci\[OAcute]n", " ", "de", " ", 
+    RowBox[{"Student", "."}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "Text",
+ CellChangeTimes->{{3.6597448217785597`*^9, 3.659744910133794*^9}, {
+  3.659744952980201*^9, 3.6597450908687267`*^9}, {3.6597465421667223`*^9, 
+  3.6597465422806473`*^9}, {3.659746759647574*^9, 3.6597468142608337`*^9}, {
+  3.659746867204965*^9, 3.6597469440988083`*^9}, {3.659754616667951*^9, 
+  3.659754663963316*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SeedRandom", "[", "seed", "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"data", "=", 
+     RowBox[{
+      RowBox[{"RandomVariate", "[", 
+       RowBox[{
+        RowBox[{"NormalDistribution", "[", 
+         RowBox[{"0", ",", "1"}], "]"}], ",", 
+        RowBox[{"10", "^", "4"}]}], "]"}], "/", 
+      SqrtBox[
+       RowBox[{
+        RowBox[{"RandomVariate", "[", 
+         RowBox[{
+          RowBox[{"ChiSquareDistribution", "[", "k", "]"}], ",", 
+          RowBox[{"10", "^", "4"}]}], "]"}], "/", "k"}]]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Histogram", "[", 
+       RowBox[{"data", ",", "20", ",", "\"\<ProbabilityDensity\>\""}], "]"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"PDF", "[", 
+         RowBox[{
+          RowBox[{"StudentTDistribution", "[", "k", "]"}], ",", "x"}], "]"}], 
+        ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", 
+          RowBox[{"-", "9"}], ",", "9"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Thick"}], ",", " ", 
+        RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}]}], "]"}]}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"k", ",", "2"}], "}"}], ",", "1", ",", "50"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"seed", ",", "1", ",", "\"\<Semilla\>\""}], "}"}], ",", "1", 
+     ",", "100000", ",", "1"}], "}"}], ",", " ", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "seed"}], "}"}]}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.659746504153346*^9, 3.659746576543665*^9}, {
+  3.659746716602058*^9, 3.659746723037984*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`k$$ = 27.5, $CellContext`seed$$ = 1, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`k$$], 2}, 1, 50}, {{
+       Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
+    Typeset`size$$ = {360., {111., 116.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`k$34250$$ = 0, $CellContext`seed$34251$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`k$$ = 2, $CellContext`seed$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`k$$, $CellContext`k$34250$$, 0], 
+        Hold[$CellContext`seed$$, $CellContext`seed$34251$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (
+       SeedRandom[$CellContext`seed$$]; $CellContext`data = RandomVariate[
+           NormalDistribution[0, 1], 10^4]/(RandomVariate[
+            ChiSquareDistribution[$CellContext`k$$], 10^4]/$CellContext`k$$)^
+         Rational[1, 2]; Show[
+         Histogram[$CellContext`data, 20, "ProbabilityDensity"], 
+         Plot[
+          PDF[
+           
+           StudentTDistribution[$CellContext`k$$], $CellContext`x], \
+{$CellContext`x, -9, 9}, PlotStyle -> Thick, PlotRange -> Full]]), 
+      "Specifications" :> {{{$CellContext`k$$, 2}, 1, 
+         50}, {{$CellContext`seed$$, 1, "Semilla"}, 1, 100000, 1}}, 
+      "Options" :> {
+       TrackedSymbols :> {$CellContext`k$$, $CellContext`seed$$}}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{407., {168., 175.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.659744241193492*^9, {3.6597465498635*^9, 3.6597465772966146`*^9}, 
+   3.6597467274604*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Otra prueba es generar valores a partir de t = ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     OverscriptBox["x", "_"], "-", " ", "\[Mu]"}], 
+    RowBox[{"s", "/", 
+     SqrtBox["n"]}]], TraditionalForm]]],
+ ", donde ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["x", "_"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " se genera a partir de una distribuci\[OAcute]n normal, y \[Mu] y \[Sigma] \
+se generan aleatoriamente."
+}], "Text",
+ CellChangeTimes->{{3.659746830382753*^9, 3.659746854533389*^9}, {
+  3.659746979308612*^9, 3.659747089282164*^9}, {3.659750380534552*^9, 
+  3.659750380790678*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SeedRandom", "[", "seed", "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"\[Mu]", " ", "=", " ", 
+     RowBox[{"RandomInteger", "[", "100", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"\[Sigma]", " ", "=", " ", 
+     RowBox[{"RandomInteger", "[", "100", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"n", " ", "=", " ", 
+     RowBox[{"10", "^", "4"}]}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"Tama\[NTilde]o", " ", "de", " ", "la", " ", "muestra"}], " ", 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"tDist", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"sample", " ", "=", " ", 
+        RowBox[{"RandomVariate", "[", 
+         RowBox[{
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{"\[Mu]", ",", "\[Sigma]"}], "]"}], ",", "n"}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"s", " ", "=", " ", 
+        RowBox[{"StandardDeviation", "[", "sample", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"t", " ", "=", " ", 
+        FractionBox[
+         RowBox[{
+          RowBox[{"Mean", "[", "sample", "]"}], "-", "\[Mu]"}], 
+         RowBox[{"s", "/", 
+          SqrtBox["n"]}]]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"tDist", ",", "t"}], "]"}], ";"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", "k", "}"}]}], "\[IndentingNewLine]", "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Histogram", "[", 
+       RowBox[{"tDist", ",", "20", ",", "\"\<ProbabilityDensity\>\""}], "]"}],
+       ",", "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"PDF", "[", 
+         RowBox[{
+          RowBox[{"StudentTDistribution", "[", "k", "]"}], ",", "x"}], "]"}], 
+        ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", 
+          RowBox[{"-", "100"}], ",", "100"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Thick"}], ",", " ", 
+        RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"k", ",", "50"}], "}"}], ",", "1", ",", "450"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"seed", ",", "1", ",", "\"\<Semilla\>\""}], "}"}], ",", "1", 
+     ",", "100000", ",", "1"}], "}"}], ",", " ", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "seed"}], "}"}]}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.659744390743135*^9, 3.65974439385037*^9}, {
+  3.659744425152936*^9, 3.659744464201728*^9}, {3.659744499793083*^9, 
+  3.6597447920389967`*^9}, {3.659750392682111*^9, 3.659750427098495*^9}, {
+  3.659750469966889*^9, 3.659750485616325*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`k$$ = 446., $CellContext`seed$$ = 1, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`k$$], 50}, 1, 450}, {{
+       Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
+    Typeset`size$$ = {360., {111., 116.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`k$42615$$ = 0, $CellContext`seed$42616$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`k$$ = 50, $CellContext`seed$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`k$$, $CellContext`k$42615$$, 0], 
+        Hold[$CellContext`seed$$, $CellContext`seed$42616$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (
+       SeedRandom[$CellContext`seed$$]; $CellContext`\[Mu] = 
+        RandomInteger[100]; $CellContext`\[Sigma] = 
+        RandomInteger[100]; $CellContext`n = 10^4; $CellContext`tDist = {}; 
+       Do[$CellContext`sample = RandomVariate[
+            
+            NormalDistribution[$CellContext`\[Mu], $CellContext`\[Sigma]], \
+$CellContext`n]; $CellContext`s = 
+          StandardDeviation[$CellContext`sample]; $CellContext`t = (
+            Mean[$CellContext`sample] - \
+$CellContext`\[Mu])/($CellContext`s/$CellContext`n^Rational[1, 2]); 
+         AppendTo[$CellContext`tDist, $CellContext`t]; 
+         Null, {$CellContext`k$$}]; Show[
+         Histogram[$CellContext`tDist, 20, "ProbabilityDensity"], 
+         Plot[
+          PDF[
+           
+           StudentTDistribution[$CellContext`k$$], $CellContext`x], \
+{$CellContext`x, -100, 100}, PlotStyle -> Thick, PlotRange -> Full]]), 
+      "Specifications" :> {{{$CellContext`k$$, 50}, 1, 
+         450}, {{$CellContext`seed$$, 1, "Semilla"}, 1, 100000, 1}}, 
+      "Options" :> {
+       TrackedSymbols :> {$CellContext`k$$, $CellContext`seed$$}}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{407., {168., 175.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.659744724594781*^9, 3.659744792717551*^9}, 
+   3.65975043044137*^9, {3.65975047022545*^9, 3.659750486040841*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Ejemplo", "Subchapter",
+ CellChangeTimes->{{3.659760394901276*^9, 3.659760395805369*^9}}],
+
+Cell[TextData[{
+ "Si se realizan 4 observaciones de una distribuci\[OAcute]n normal, \
+\[DownQuestion]cu\[AAcute]l es la probabilidad de que la diferencia entre la \
+media observada ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["x", "_"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " y la media verdadera \[Mu] sea menor a cinco veces la desviaci\[OAcute]n \
+est\[AAcute]ndar observada s?\n\nLa distribuci\[OAcute]n t-Student nos da una \
+medida de cu\[AAcute]nto se aleja la media de la medici\[OAcute]n de la media \
+real respecto a la varianza de la medici\[OAcute]n ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     OverscriptBox["x", "_"], "-", " ", "\[Mu]"}], 
+    RowBox[{"s", "/", 
+     SqrtBox["n"]}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". Lo que se busca entonces es ver cu\[AAcute]l es el porcentaje de valores \
+de la distribuci\[OAcute]n t-Student que est\[AAcute] entre -5 y 5. Esto se \
+puede hacer integrando la funci\[OAcute]n de densidad de la distribuci\
+\[OAcute]n f(x), de manera que ",
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["\[Integral]", 
+    RowBox[{"-", "5"}], "5"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "f(x) dx = 0.99251.\n\nA continuaci\[OAcute]n se compara el c\[AAcute]lculo \
+anal\[IAcute]tico con una aproximaci\[OAcute]n num",
+ "\[EAcute]rica."
+}], "Text",
+ CellChangeTimes->{{3.659760401332752*^9, 3.6597604930445232`*^9}, {
+  3.6597644832939568`*^9, 3.6597646187740173`*^9}, {3.659764649990364*^9, 
+  3.659764703764206*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"SeedRandom", "[", "seed", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"\[Mu]", " ", "=", "0"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"\[Sigma]", " ", "=", " ", "1"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"n", " ", "=", " ", "4"}], ";", " ", 
+     RowBox[{"(*", " ", 
+      RowBox[{"Tama\[NTilde]o", " ", "de", " ", "la", " ", "muestra"}], " ", 
+      "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"dist", " ", "=", " ", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Do", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"sample", " ", "=", " ", 
+         RowBox[{"RandomVariate", "[", 
+          RowBox[{
+           RowBox[{"NormalDistribution", "[", 
+            RowBox[{"\[Mu]", ",", "\[Sigma]"}], "]"}], ",", "n"}], "]"}]}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"s", " ", "=", " ", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Mean", "[", "sample", "]"}], "-", "\[Mu]"}], ")"}], "/", 
+          
+          RowBox[{"(", 
+           RowBox[{"5", " ", 
+            RowBox[{"StandardDeviation", "[", "sample", "]"}]}], ")"}]}]}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"dist", ",", "s"}], "]"}], ";"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", "k", "}"}]}], "\[IndentingNewLine]", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Show", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Histogram", "[", 
+        RowBox[{
+        "dist", ",", "50", ",", "\"\<ProbabilityDensity\>\"", ",", " ", 
+         RowBox[{"PlotLabel", "\[Rule]", 
+          RowBox[{"\"\<P = \>\"", " ", "<>", " ", 
+           RowBox[{"ToString", "[", 
+            RowBox[{"100", "*", 
+             RowBox[{"Integrate", "[", 
+              RowBox[{
+               RowBox[{"PDF", "[", 
+                RowBox[{
+                 RowBox[{"HistogramDistribution", "[", "dist", "]"}], ",", 
+                 "x"}], "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"x", ",", 
+                 RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "]"}]}], "]"}], " ",
+            "<>", " ", "\"\< %\>\""}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+       
+       RowBox[{"Plot", "[", 
+        RowBox[{
+         RowBox[{"Evaluate", "[", 
+          RowBox[{"PDF", "[", 
+           RowBox[{
+            RowBox[{"HistogramDistribution", "[", 
+             RowBox[{"dist", ",", "50"}], "]"}], ",", "x"}], "]"}], "]"}], 
+         ",", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", 
+           RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+         RowBox[{"Filling", "\[Rule]", "Axis"}], ",", " ", 
+         RowBox[{"FillingStyle", "\[Rule]", "Blue"}]}], "]"}]}], 
+      "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"k", ",", "1500"}], "}"}], ",", "1", ",", "4450"}], "}"}], ",",
+     "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"seed", ",", "1", ",", "\"\<Semilla\>\""}], "}"}], ",", "1", 
+      ",", "100000", ",", "1"}], "}"}], ",", " ", 
+    RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "seed"}], "}"}]}]}], "\[IndentingNewLine]", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "Print", "[", "\"\<El c\[AAcute]lculo anal\[IAcute]tico arroja: \>\"", 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"N", "[", 
+  RowBox[{"100", 
+   RowBox[{"Integrate", "[", 
+    RowBox[{
+     RowBox[{"PDF", "[", 
+      RowBox[{
+       RowBox[{"StudentTDistribution", "[", "4", "]"}], ",", "x"}], "]"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "5"}], ",", "5"}], "}"}]}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.659764172122361*^9, 3.6597641748329687`*^9}, {
+  3.6597642827250433`*^9, 3.6597643938015738`*^9}, {3.659764640274197*^9, 
+  3.65976465848177*^9}, {3.659764728885809*^9, 3.659764740356143*^9}, {
+  3.659764803447044*^9, 3.659764811998877*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`k$$ = 3220., $CellContext`seed$$ = 1, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`k$$], 1500}, 1, 4450}, {{
+       Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
+    Typeset`size$$ = {360., {120., 125.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`k$259759$$ = 0, $CellContext`seed$259760$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`k$$ = 1500, $CellContext`seed$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`k$$, $CellContext`k$259759$$, 0], 
+        Hold[$CellContext`seed$$, $CellContext`seed$259760$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (
+       SeedRandom[$CellContext`seed$$]; $CellContext`\[Mu] = 
+        0; $CellContext`\[Sigma] = 1; $CellContext`n = 
+        4; $CellContext`dist = {}; Do[$CellContext`sample = RandomVariate[
+            
+            NormalDistribution[$CellContext`\[Mu], $CellContext`\[Sigma]], \
+$CellContext`n]; $CellContext`s = (
+            Mean[$CellContext`sample] - $CellContext`\[Mu])/(5 
+           StandardDeviation[$CellContext`sample]); 
+         AppendTo[$CellContext`dist, $CellContext`s]; 
+         Null, {$CellContext`k$$}]; Show[
+         Histogram[$CellContext`dist, 50, "ProbabilityDensity", PlotLabel -> 
+          StringJoin["P = ", 
+            ToString[100 Integrate[
+               PDF[
+                
+                HistogramDistribution[$CellContext`dist], $CellContext`x], \
+{$CellContext`x, -1, 1}]], " %"]], 
+         Plot[
+          Evaluate[
+           PDF[
+            
+            HistogramDistribution[$CellContext`dist, 
+             50], $CellContext`x]], {$CellContext`x, -1, 1}, PlotRange -> 
+          Full, Filling -> Axis, FillingStyle -> Blue]]), 
+      "Specifications" :> {{{$CellContext`k$$, 1500}, 1, 
+         4450}, {{$CellContext`seed$$, 1, "Semilla"}, 1, 100000, 1}}, 
+      "Options" :> {
+       TrackedSymbols :> {$CellContext`k$$, $CellContext`seed$$}}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{407., {177., 184.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.6597641756881638`*^9, 3.659764303522715*^9, {3.659764335156608*^9, 
+   3.659764394392025*^9}, {3.659764641027841*^9, 3.659764658856262*^9}, 
+   3.659764741153528*^9, {3.659764805371169*^9, 3.659764812367115*^9}}],
+
+Cell[BoxData["\<\"El c\[AAcute]lculo anal\[IAcute]tico arroja: \"\>"], "Print",
+ CellChangeTimes->{
+  3.659764303685239*^9, {3.6597643353388653`*^9, 3.659764394559474*^9}, {
+   3.6597646412040367`*^9, 3.659764659031926*^9}, 3.659764741351372*^9, {
+   3.659764805551585*^9, 3.659764812553239*^9}}],
+
+Cell[BoxData["99.25095661187254`"], "Output",
+ CellChangeTimes->{
+  3.6597641756881638`*^9, 3.659764303522715*^9, {3.659764335156608*^9, 
+   3.659764394392025*^9}, {3.659764641027841*^9, 3.659764658856262*^9}, 
+   3.659764741153528*^9, {3.659764805371169*^9, 3.659764812709962*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1920, 1016},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.1 for Linux x86 (64-bit) (March 23, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 104, 1, 102, "Title"],
+Cell[CellGroupData[{
+Cell[709, 27, 119, 1, 73, "Chapter"],
+Cell[831, 30, 361, 6, 59, "Text"],
+Cell[CellGroupData[{
+Cell[1217, 40, 2140, 58, 186, "Input"],
+Cell[3360, 100, 2397, 51, 432, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5806, 157, 236, 7, 73, "Chapter"],
+Cell[6045, 166, 803, 21, 85, "Text"],
+Cell[CellGroupData[{
+Cell[6873, 191, 2557, 63, 386, "Input"],
+Cell[9433, 256, 2724, 56, 356, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12194, 317, 95, 1, 69, "Subchapter"],
+Cell[12292, 320, 2592, 72, 292, "Text"],
+Cell[CellGroupData[{
+Cell[14909, 396, 4039, 96, 588, "Input"],
+Cell[18951, 494, 2725, 57, 356, "Output"],
+Cell[21679, 553, 96, 1, 25, "Print"],
+Cell[21778, 556, 87, 1, 33, "Output"]
+}, Open  ]],
+Cell[21880, 560, 303, 5, 35, "Text"],
+Cell[CellGroupData[{
+Cell[22208, 569, 3302, 77, 511, "Input"],
+Cell[25513, 648, 3117, 65, 374, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28691, 720, 114, 1, 73, "Chapter"],
+Cell[28808, 723, 1925, 54, 139, "Text"],
+Cell[CellGroupData[{
+Cell[30758, 781, 1903, 51, 264, "Input"],
+Cell[32664, 834, 2472, 52, 360, "Output"]
+}, Open  ]],
+Cell[35151, 889, 642, 19, 56, "Text"],
+Cell[CellGroupData[{
+Cell[35818, 912, 3071, 73, 601, "Input"],
+Cell[38892, 987, 2902, 59, 360, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41831, 1051, 95, 1, 69, "Subchapter"],
+Cell[41929, 1054, 1529, 35, 180, "Text"],
+Cell[CellGroupData[{
+Cell[43483, 1093, 4261, 105, 586, "Input"],
+Cell[47747, 1200, 3202, 67, 378, "Output"],
+Cell[50952, 1269, 296, 4, 25, "Print"],
+Cell[51251, 1275, 282, 4, 66, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
