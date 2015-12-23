@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     53476,       1354]
-NotebookOptionsPosition[     51585,       1285]
-NotebookOutlinePosition[     51920,       1300]
-CellTagsIndexPosition[     51877,       1297]
+NotebookDataLength[     74194,       1944]
+NotebookOptionsPosition[     71284,       1841]
+NotebookOutlinePosition[     71622,       1856]
+CellTagsIndexPosition[     71579,       1853]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -22,6 +22,47 @@ Notebook[{
 Cell[CellGroupData[{
 Cell["Estad\[IAcute]stica", "Title",
  CellChangeTimes->{{3.659743947436492*^9, 3.6597439490761414`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Distribuci\[OAcute]n binomial", "Chapter",
+ CellChangeTimes->{{3.6598131346821833`*^9, 3.65981313981805*^9}}],
+
+Cell[TextData[{
+ "Es una distribuci\[OAcute]n de probabilidad discreta que describe la \
+probabilidad de un n\[UAcute]mero sucesivo de eventos en un experimento donde \
+el resultado es binario (\[EAcute]xito o fracaso), donde la probabilidad de \
+\[EAcute]xito est\[AAcute] dada por ",
+ StyleBox["p",
+  FontSlant->"Italic"],
+ ". Su funci\[OAcute]n de probabilidad es\n\nf(k, n, p) = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", GridBox[{
+       {"n"},
+       {"k"}
+      }], ")"}], " ", 
+    SuperscriptBox["p", "k"], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"1", "-", "p"}], ")"}], 
+     RowBox[{"n", "-", "k"}]]}], TraditionalForm]]],
+ ",\ndonde ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ " es el n\[UAcute]mero de intentos, y ",
+ StyleBox["k",
+  FontSlant->"Italic"],
+ " es el n\[UAcute]mero de \[EAcute]xitos."
+}], "Text",
+ CellChangeTimes->{{3.659813177377872*^9, 3.659813369189106*^9}, {
+  3.6598134923787317`*^9, 3.6598134940824623`*^9}, {3.659813819444306*^9, 
+  3.659813820180007*^9}}]
+}, Open  ]],
+
+Cell["Distribuci\[OAcute]n de Poisson", "Chapter",
+ CellChangeTimes->{{3.659813142234355*^9, 3.6598131460502653`*^9}}],
 
 Cell[CellGroupData[{
 
@@ -155,12 +196,527 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
+Cell["Distribuci\[OAcute]n normal", "Chapter",
+ CellChangeTimes->{{3.659804112151538*^9, 3.659804115855562*^9}}],
+
+Cell[TextData[{
+ "La importancia de esta distribuci\[OAcute]n radica en que permite modelar \
+numerosos fen\[OAcute]menos naturales, sociales y psicol\[OAcute]gicos. \
+Mientras que los mecanismos que subyacen a gran parte de este tipo de fen\
+\[OAcute]menos son desconocidos, por la enorme cantidad de variables \
+incontrolables que en ellos intervienen, el uso del modelo normal puede \
+justificarse asumiendo que cada observaci\[OAcute]n se obtiene como la suma \
+de unas pocas causas independientes (Fuente: Wikipedia). ",
+ "Su funci\[OAcute]n de densidad de probabilidad es\nf(x) = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["1", 
+     RowBox[{"\[Sigma]", " ", 
+      SqrtBox[
+       RowBox[{"2", " ", "\[Pi]"}]]}]], 
+    SuperscriptBox["e", 
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{" ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"x", "-", "\[Mu]"}], ")"}], "2"]}], 
+       RowBox[{"2", " ", 
+        SuperscriptBox["\[Sigma]", "2"]}]]}]]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.659804135929565*^9, 3.659804243356538*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Ejemplo", "Subchapter",
+ CellChangeTimes->{{3.6598042674517612`*^9, 3.6598042739316607`*^9}}],
+
+Cell["\<\
+El coeficiente intelectual se distribuye aproximadamente de forma normal con \
+media 100 y desviaci\[OAcute]n est\[AAcute]ndar 16. \
+\[DownQuestion]Cu\[AAcute]l es la probabilidad de que un individuo tenga un \
+IQ a) menor a 90, b) mayor a 130 y c) entre 95 y 105?\
+\>", "ItemNumbered",
+ CellChangeTimes->{{3.6598043341806793`*^9, 3.659804419423835*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"\[Mu]", " ", "=", " ", "100"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Sigma]", " ", "=", " ", "16"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<a) \>\"", " ", "<>", 
+   RowBox[{"ToString", "[", 
+    RowBox[{"100", "*", 
+     RowBox[{"N", "[", 
+      RowBox[{
+       SubsuperscriptBox["\[Integral]", 
+        RowBox[{"-", "\[Infinity]"}], "90"], 
+       RowBox[{
+        RowBox[{"PDF", "[", 
+         RowBox[{
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{"\[Mu]", ",", "\[Sigma]"}], "]"}], ",", "x"}], "]"}], 
+        RowBox[{"\[DifferentialD]", "x"}]}]}], "]"}]}], "]"}], " ", "<>", 
+   " ", "\"\< %\>\""}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<b) \>\"", " ", "<>", 
+   RowBox[{"ToString", "[", 
+    RowBox[{"100", "*", 
+     RowBox[{"N", "[", 
+      RowBox[{
+       SubsuperscriptBox["\[Integral]", "130", "\[Infinity]"], 
+       RowBox[{
+        RowBox[{"PDF", "[", 
+         RowBox[{
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{"\[Mu]", ",", "\[Sigma]"}], "]"}], ",", "x"}], "]"}], 
+        RowBox[{"\[DifferentialD]", "x"}]}]}], "]"}]}], "]"}], " ", "<>", 
+   " ", "\"\< %\>\""}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<c) \>\"", " ", "<>", 
+   RowBox[{"ToString", "[", 
+    RowBox[{"100", "*", 
+     RowBox[{"N", "[", 
+      RowBox[{
+       SubsuperscriptBox["\[Integral]", "95", "105"], 
+       RowBox[{
+        RowBox[{"PDF", "[", 
+         RowBox[{
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{"\[Mu]", ",", "\[Sigma]"}], "]"}], ",", "x"}], "]"}], 
+        RowBox[{"\[DifferentialD]", "x"}]}]}], "]"}]}], "]"}], " ", "<>", 
+   " ", "\"\< %\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6598044647443943`*^9, 3.659804630425523*^9}, {
+  3.659810948925696*^9, 3.659810949273324*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"a) 26.5986 %\"\>"], "Print",
+ CellChangeTimes->{3.6598045783248777`*^9, 3.659804631249*^9, 
+  3.659811677753585*^9}],
+
+Cell[BoxData["\<\"b) 3.03964 %\"\>"], "Print",
+ CellChangeTimes->{3.6598045783248777`*^9, 3.659804631249*^9, 
+  3.659811678006481*^9}],
+
+Cell[BoxData["\<\"c) 24.5339 %\"\>"], "Print",
+ CellChangeTimes->{3.6598045783248777`*^9, 3.659804631249*^9, 
+  3.65981167806079*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[TextData[{
+ "a) \[DownQuestion]Cu\[AAcute]l es la probabilidad que la media del IQ de un \
+grupo de 12 personas escogido aleatoriamente est\[EAcute] entre 95 y 105? b) \
+\[DownQuestion]Qu\[EAcute] tan grande debe ser la muestra para tener una \
+probabilidad de 95 % de que la media del IQ est\[EAcute] entre estos l\
+\[IAcute]mites?\[LineSeparator]\[LineSeparator]Supongamos que se hace una \
+serie de ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ " observaciones, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "1"], ",", " ", 
+    SubscriptBox["x", "2"], ",", "...", ",", 
+    SubscriptBox["x", "n"], " "}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", sobre una variable aleatoria y se calcula su media ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["x", "_"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", se se realiza otra serie de ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ " onservaciones  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"x", "'"}], "1"], ",", " ", 
+    SubscriptBox[
+     RowBox[{"x", "'"}], "2"], ",", "...", ",", 
+    SubscriptBox[
+     RowBox[{"x", "'"}], "n"], " "}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " y se calcula su media ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    OverscriptBox["x", "_"], "'"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", si se sigue el procedimiendo sucesivamente se obtendr\[AAcute] una \
+distribuci\[OAcute]n de las medias. A esta distribuci\[OAcute]n se le conoce \
+como distribuci\[OAcute]n de muestreo. Para averiguar c\[OAcute]mo son los \
+valores de expectaci\[OAcute]n de esta distribuci\[OAcute]n se hace\
+\[LineSeparator]\[LineSeparator]E(n ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["x", "_"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ") = E(",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       SubscriptBox["x", "1"], "+", " ", 
+       SubscriptBox["x", "2"], "+"}], "..."}], "+", 
+     SubscriptBox["x", "n"]}], " ", ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"E", "(", 
+        SubscriptBox["x", "1"], ")"}], " ", "+", " ", 
+       RowBox[{"E", "(", 
+        SubscriptBox["x", "2"], ")"}], " ", "+"}], " ", "..."}], " ", "+", 
+     " ", 
+     RowBox[{"E", "(", 
+      SubscriptBox["x", "n"], ")"}]}], "  ", "=", " ", 
+    RowBox[{"n", " ", "\[Mu]"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ",\[LineSeparator]V(n ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["x", "_"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ") = V(",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       SubscriptBox["x", "1"], "+", " ", 
+       SubscriptBox["x", "2"], "+"}], "..."}], "+", 
+     SubscriptBox["x", "n"]}], " ", ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"V", "(", 
+        SubscriptBox["x", "1"], ")"}], " ", "+", " ", 
+       RowBox[{"V", "(", 
+        SubscriptBox["x", "2"], ")"}], " ", "+"}], " ", "..."}], " ", "+", 
+     " ", 
+     RowBox[{"V", "(", 
+      SubscriptBox["x", "n"], ")"}]}], "  ", "=", " ", 
+    RowBox[{"n", " ", 
+     SuperscriptBox["\[Sigma]", "2"]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\[LineSeparator]\[LineSeparator]Con esto se puede calcular E y V sobre ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["x", "_"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\[LineSeparator]\[LineSeparator]",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"E", "(", 
+     OverscriptBox["x", "_"], ")"}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"E", "(", 
+      FractionBox[
+       RowBox[{"n", " ", 
+        OverscriptBox["x", "_"]}], "n"], ")"}], " ", "=", " ", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"E", "(", 
+        RowBox[{"n", " ", 
+         OverscriptBox["x", "_"]}], ")"}], "n"], " ", "=", " ", "\[Mu]"}]}]}],
+    TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ",\[LineSeparator]",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"V", "(", 
+     OverscriptBox["x", "_"], ")"}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"V", "(", 
+      FractionBox[
+       RowBox[{"n", " ", 
+        OverscriptBox["x", "_"]}], "n"], ")"}], " ", "=", " ", 
+     FractionBox[
+      RowBox[{"V", "(", 
+       RowBox[{"n", " ", 
+        OverscriptBox["x", "_"]}], ")"}], 
+      SuperscriptBox["n", "2"]]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " = ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    SuperscriptBox["\[Sigma]", "2"], "n"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\[LineSeparator]\[LineSeparator]La distribuci\[OAcute]n de la muestra es \
+una distribuci\[OAcute]n normal con media \[Mu] y varianza ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["\[Sigma]", "2"], "/", "n"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". Entonces"
+}], "ItemNumbered",
+ CellChangeTimes->{{3.659804757549094*^9, 3.659804831460546*^9}, {
+  3.659806331115366*^9, 3.659806461097678*^9}, {3.659810004176283*^9, 
+  3.659810093223071*^9}, {3.659810136558654*^9, 3.659810233693747*^9}, {
+  3.659810302805313*^9, 3.659810468253111*^9}, {3.659810853703383*^9, 
+  3.659810921167304*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"\[Mu]", " ", "=", " ", "100"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Sigma]", " ", "=", " ", "16"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n", " ", "=", " ", "12"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<a) \>\"", " ", "<>", 
+   RowBox[{"ToString", "[", 
+    RowBox[{"100", "*", 
+     RowBox[{"N", "[", 
+      RowBox[{
+       SubsuperscriptBox["\[Integral]", "95", "105"], 
+       RowBox[{
+        RowBox[{"PDF", "[", 
+         RowBox[{
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{"\[Mu]", ",", 
+            SqrtBox[
+             RowBox[{
+              SuperscriptBox["\[Sigma]", "2"], "/", "n"}]]}], "]"}], ",", 
+          "x"}], "]"}], 
+        RowBox[{"\[DifferentialD]", "x"}]}]}], "]"}]}], "]"}], " ", "<>", 
+   " ", "\"\< %\>\""}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "n", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Off", "[", 
+   RowBox[{"Solve", "::", "ifun"}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<b) n = \>\"", " ", "<>", 
+   RowBox[{"ToString", "[", 
+    RowBox[{"Ceiling", "[", 
+     RowBox[{"n", " ", "/.", " ", 
+      RowBox[{
+       RowBox[{"Solve", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           SubsuperscriptBox["\[Integral]", "95", "105"], 
+           RowBox[{
+            RowBox[{"PDF", "[", 
+             RowBox[{
+              RowBox[{"NormalDistribution", "[", 
+               RowBox[{"\[Mu]", ",", 
+                SqrtBox[
+                 RowBox[{
+                  SuperscriptBox["\[Sigma]", "2"], "/", "n"}]]}], "]"}], ",", 
+              "x"}], "]"}], 
+            RowBox[{"\[DifferentialD]", "x"}]}]}], " ", "\[Equal]", " ", 
+          "0.95"}], ",", "n"}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.659810931679366*^9, 3.659811015065813*^9}, {
+  3.659811343205214*^9, 3.659811389663789*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"a) 72.0984 %\"\>"], "Print",
+ CellChangeTimes->{
+  3.659811009085906*^9, {3.6598113807012157`*^9, 3.6598113902010098`*^9}}],
+
+Cell[BoxData["\<\"b) n = 40\"\>"], "Print",
+ CellChangeTimes->{
+  3.659811009085906*^9, {3.6598113807012157`*^9, 3.659811390307682*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+Se puede obtener una aproximaci\[OAcute]n num\[EAcute]rica a esta soluci\
+\[OAcute]n generando la distribuci\[OAcute]n de las medias e integrando de 95 \
+a 105.\
+\>", "Text",
+ CellChangeTimes->{{3.659811521144682*^9, 3.659811568648456*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SeedRandom", "[", "seed", "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"\[Mu]", " ", "=", "100"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"\[Sigma]", " ", "=", " ", "16"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"n", " ", "=", " ", "12"}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"Tama\[NTilde]o", " ", "de", " ", "la", " ", "muestra"}], " ", 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"dist", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"sample", " ", "=", " ", 
+        RowBox[{"RandomVariate", "[", 
+         RowBox[{
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{"\[Mu]", ",", "\[Sigma]"}], "]"}], ",", "n"}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"m", " ", "=", " ", 
+        RowBox[{"Mean", "[", "sample", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"dist", ",", "m"}], "]"}], ";"}], ",", "\[IndentingNewLine]", 
+      
+      RowBox[{"{", "k", "}"}]}], "\[IndentingNewLine]", "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Histogram", "[", 
+       RowBox[{"dist", ",", "20", ",", "\"\<ProbabilityDensity\>\"", ",", 
+        RowBox[{"PlotLabel", "\[Rule]", 
+         RowBox[{"\"\<P = \>\"", " ", "<>", " ", 
+          RowBox[{"ToString", "[", 
+           RowBox[{"100", "*", 
+            RowBox[{"Integrate", "[", 
+             RowBox[{
+              RowBox[{"PDF", "[", 
+               RowBox[{
+                RowBox[{"HistogramDistribution", "[", "dist", "]"}], ",", 
+                "x"}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"x", ",", "95", ",", "105"}], "}"}]}], "]"}]}], "]"}], 
+          "<>", " ", "\"\< %\>\""}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"Evaluate", "[", 
+         RowBox[{"PDF", "[", 
+          RowBox[{
+           RowBox[{"NormalDistribution", "[", 
+            RowBox[{"\[Mu]", ",", 
+             SqrtBox[
+              RowBox[{
+               SuperscriptBox["\[Sigma]", "2"], "/", "n"}]]}], "]"}], ",", 
+           "x"}], "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "0", ",", "200"}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"k", ",", "100"}], "}"}], ",", "1", ",", "2450"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"seed", ",", "1", ",", "\"\<Semilla\>\""}], "}"}], ",", "1", 
+     ",", "100000", ",", "1"}], "}"}], ",", " ", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "seed"}], "}"}]}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.659805426603415*^9, 3.6598054560409403`*^9}, {
+   3.659805989913848*^9, 3.659806146809259*^9}, {3.6598114587647247`*^9, 
+   3.659811470852103*^9}, 3.659811506464566*^9}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`k$$ = 2450., $CellContext`seed$$ = 1, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`k$$], 100}, 1, 2450}, {{
+       Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
+    Typeset`size$$ = {360., {118., 123.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`k$19174$$ = 0, $CellContext`seed$19175$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`k$$ = 100, $CellContext`seed$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`k$$, $CellContext`k$19174$$, 0], 
+        Hold[$CellContext`seed$$, $CellContext`seed$19175$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (
+       SeedRandom[$CellContext`seed$$]; $CellContext`\[Mu] = 
+        100; $CellContext`\[Sigma] = 16; $CellContext`n = 
+        12; $CellContext`dist = {}; Do[$CellContext`sample = RandomVariate[
+            
+            NormalDistribution[$CellContext`\[Mu], $CellContext`\[Sigma]], \
+$CellContext`n]; $CellContext`m = Mean[$CellContext`sample]; 
+         AppendTo[$CellContext`dist, $CellContext`m]; 
+         Null, {$CellContext`k$$}]; Show[
+         Histogram[$CellContext`dist, 20, "ProbabilityDensity", PlotLabel -> 
+          StringJoin["P = ", 
+            ToString[100 Integrate[
+               PDF[
+                
+                HistogramDistribution[$CellContext`dist], $CellContext`x], \
+{$CellContext`x, 95, 105}]], " %"]], 
+         Plot[
+          Evaluate[
+           PDF[
+            
+            NormalDistribution[$CellContext`\[Mu], \
+($CellContext`\[Sigma]^2/$CellContext`n)^
+             Rational[1, 2]], $CellContext`x]], {$CellContext`x, 0, 200}, 
+          PlotRange -> Full]]), 
+      "Specifications" :> {{{$CellContext`k$$, 100}, 1, 
+         2450}, {{$CellContext`seed$$, 1, "Semilla"}, 1, 100000, 1}}, 
+      "Options" :> {
+       TrackedSymbols :> {$CellContext`k$$, $CellContext`seed$$}}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{407., {175., 182.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.659811507155467*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[TextData[{
  "Distribuci\[OAcute]n ",
  Cell[BoxData[
   FormBox[
-   SuperscriptBox["\[Chi]", "2"], TraditionalForm]],
-  FormatType->"TraditionalForm"]
+   SuperscriptBox["\[Chi]", "2"], TraditionalForm]]]
 }], "Chapter",
  CellChangeTimes->{{3.6597440115558147`*^9, 3.659744030977928*^9}}],
 
@@ -1283,8 +1839,8 @@ Cell[BoxData["99.25095661187254`"], "Output",
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1920, 1016},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowSize->{1440, 752},
+WindowMargins->{{181, Automatic}, {111, Automatic}},
 FrontEndVersion->"10.1 for Linux x86 (64-bit) (March 23, 2015)",
 StyleDefinitions->"Default.nb"
 ]
@@ -1302,56 +1858,90 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 104, 1, 102, "Title"],
 Cell[CellGroupData[{
-Cell[709, 27, 119, 1, 73, "Chapter"],
-Cell[831, 30, 361, 6, 59, "Text"],
+Cell[709, 27, 115, 1, 73, "Chapter"],
+Cell[827, 30, 1025, 30, 146, "Text"]
+}, Open  ]],
+Cell[1867, 63, 118, 1, 73, "Chapter"],
 Cell[CellGroupData[{
-Cell[1217, 40, 2140, 58, 186, "Input"],
-Cell[3360, 100, 2397, 51, 432, "Output"]
+Cell[2010, 68, 119, 1, 62, "Chapter"],
+Cell[2132, 71, 361, 6, 59, "Text"],
+Cell[CellGroupData[{
+Cell[2518, 81, 2140, 58, 111, "Input"],
+Cell[4661, 141, 2397, 51, 432, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5806, 157, 236, 7, 73, "Chapter"],
-Cell[6045, 166, 803, 21, 85, "Text"],
+Cell[7107, 198, 112, 1, 73, "Chapter"],
+Cell[7222, 201, 1132, 28, 138, "Text"],
 Cell[CellGroupData[{
-Cell[6873, 191, 2557, 63, 386, "Input"],
-Cell[9433, 256, 2724, 56, 356, "Output"]
+Cell[8379, 233, 99, 1, 69, "Subchapter"],
+Cell[8481, 236, 364, 6, 57, "ItemNumbered"],
+Cell[CellGroupData[{
+Cell[8870, 246, 1895, 49, 188, "Input"],
+Cell[CellGroupData[{
+Cell[10790, 299, 134, 2, 25, "Print"],
+Cell[10927, 303, 134, 2, 25, "Print"],
+Cell[11064, 307, 133, 2, 25, "Print"]
+}, Open  ]]
 }, Open  ]],
+Cell[11224, 313, 5396, 170, 415, "ItemNumbered"],
 Cell[CellGroupData[{
-Cell[12194, 317, 95, 1, 69, "Subchapter"],
-Cell[12292, 320, 2592, 72, 292, "Text"],
+Cell[16645, 487, 2019, 54, 243, "Input"],
 Cell[CellGroupData[{
-Cell[14909, 396, 4039, 96, 588, "Input"],
-Cell[18951, 494, 2725, 57, 356, "Output"],
-Cell[21679, 553, 96, 1, 25, "Print"],
-Cell[21778, 556, 87, 1, 33, "Output"]
+Cell[18689, 545, 141, 2, 25, "Print"],
+Cell[18833, 549, 136, 2, 25, "Print"]
+}, Open  ]]
 }, Open  ]],
-Cell[21880, 560, 303, 5, 35, "Text"],
+Cell[18996, 555, 250, 5, 35, "Text"],
 Cell[CellGroupData[{
-Cell[22208, 569, 3302, 77, 511, "Input"],
-Cell[25513, 648, 3117, 65, 374, "Output"]
+Cell[19271, 564, 3273, 78, 587, "Input"],
+Cell[22547, 644, 2930, 63, 374, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[28691, 720, 114, 1, 73, "Chapter"],
-Cell[28808, 723, 1925, 54, 139, "Text"],
+Cell[25538, 714, 203, 6, 73, "Chapter"],
+Cell[25744, 722, 803, 21, 61, "Text"],
 Cell[CellGroupData[{
-Cell[30758, 781, 1903, 51, 264, "Input"],
-Cell[32664, 834, 2472, 52, 360, "Output"]
-}, Open  ]],
-Cell[35151, 889, 642, 19, 56, "Text"],
-Cell[CellGroupData[{
-Cell[35818, 912, 3071, 73, 601, "Input"],
-Cell[38892, 987, 2902, 59, 360, "Output"]
+Cell[26572, 747, 2557, 63, 361, "Input"],
+Cell[29132, 812, 2724, 56, 356, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[41831, 1051, 95, 1, 69, "Subchapter"],
-Cell[41929, 1054, 1529, 35, 180, "Text"],
+Cell[31893, 873, 95, 1, 69, "Subchapter"],
+Cell[31991, 876, 2592, 72, 196, "Text"],
 Cell[CellGroupData[{
-Cell[43483, 1093, 4261, 105, 586, "Input"],
-Cell[47747, 1200, 3202, 67, 378, "Output"],
-Cell[50952, 1269, 296, 4, 25, "Print"],
-Cell[51251, 1275, 282, 4, 66, "Output"]
+Cell[34608, 952, 4039, 96, 563, "Input"],
+Cell[38650, 1050, 2725, 57, 356, "Output"],
+Cell[41378, 1109, 96, 1, 25, "Print"],
+Cell[41477, 1112, 87, 1, 33, "Output"]
+}, Open  ]],
+Cell[41579, 1116, 303, 5, 35, "Text"],
+Cell[CellGroupData[{
+Cell[41907, 1125, 3302, 77, 536, "Input"],
+Cell[45212, 1204, 3117, 65, 374, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48390, 1276, 114, 1, 73, "Chapter"],
+Cell[48507, 1279, 1925, 54, 163, "Text"],
+Cell[CellGroupData[{
+Cell[50457, 1337, 1903, 51, 264, "Input"],
+Cell[52363, 1390, 2472, 52, 360, "Output"]
+}, Open  ]],
+Cell[54850, 1445, 642, 19, 56, "Text"],
+Cell[CellGroupData[{
+Cell[55517, 1468, 3071, 73, 601, "Input"],
+Cell[58591, 1543, 2902, 59, 360, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[61530, 1607, 95, 1, 69, "Subchapter"],
+Cell[61628, 1610, 1529, 35, 228, "Text"],
+Cell[CellGroupData[{
+Cell[63182, 1649, 4261, 105, 611, "Input"],
+Cell[67446, 1756, 3202, 67, 378, "Output"],
+Cell[70651, 1825, 296, 4, 25, "Print"],
+Cell[70950, 1831, 282, 4, 33, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
