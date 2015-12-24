@@ -10,18 +10,40 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     22076,        567]
-NotebookOptionsPosition[     21566,        546]
-NotebookOutlinePosition[     21986,        562]
-CellTagsIndexPosition[     21943,        559]
+NotebookDataLength[     24260,        624]
+NotebookOptionsPosition[     23608,        598]
+NotebookOutlinePosition[     24022,        614]
+CellTagsIndexPosition[     23979,        611]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
+Cell["Doble p\[EAcute]ndulo", "Title",
+ CellChangeTimes->{{3.659894179161564*^9, 3.659894181889133*^9}}],
+
+Cell[CellGroupData[{
+
 Cell["Soluci\[OAcute]n  num\[EAcute]rica del doble p\[EAcute]ndulo", "Chapter",
  CellChangeTimes->{{3.6537517987232647`*^9, 3.653751829348202*^9}}],
+
+Cell[TextData[{
+ "El ",
+ StyleBox["doble p\[EAcute]ndulo",
+  FontSlant->"Italic"],
+ " es un ejemplo de sistema mec\[AAcute]nico que pone en evidencia la \
+complejidad que pueden generar este tipo de sistemas de construcci\[OAcute]n \
+simple. Este sistema en su forma m\[AAcute]s simple est\[AAcute] formado por \
+dos masas colgando de cuerdas de masa despreciable y sin fricci\[OAcute]n, \
+donde las masas est\[AAcute]n sujetas a la acci\[OAcute]n de la gravedad. Se \
+desea describir el movimiento de ambas masas.\n\nNo es posible obtener la \
+soluci\[OAcute]n en t\[EAcute]rminos de funciones elementales para este par \
+de ecuaciones diferenciales, lo que pone en evidencia la naturaleza ca\
+\[OAcute]tica del sistema. A la hora de resolver este tipo de sistemas se \
+suelen utilizar m\[EAcute]todos num\[EAcute]ricos."
+}], "Text",
+ CellChangeTimes->{{3.6598941365949802`*^9, 3.659894169914246*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -154,6 +176,7 @@ Cell[BoxData[
                     RowBox[{"\[Theta]1", "[", "t", "]"}], "-", 
                     RowBox[{"\[Theta]2", "[", "t", "]"}]}], ")"}]}], 
                    "]"}]}]}], ")"}]}], ")"}]}]}], ",", "\[IndentingNewLine]", 
+           
            RowBox[{
             RowBox[{"\[Theta]1", "[", "0", "]"}], " ", "\[Equal]", " ", "1"}],
             ",", " ", 
@@ -176,6 +199,7 @@ Cell[BoxData[
         "]"}]}]}], "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]",
     "\[IndentingNewLine]", 
    RowBox[{"(*", " ", "Gr\[AAcute]ficas", " ", "*)"}], "\[IndentingNewLine]", 
+   
    RowBox[{
     RowBox[{"SetOptions", "[", 
      RowBox[{
@@ -354,6 +378,33 @@ Cell[CellGroupData[{
 
 Cell["Fractal de doble p\[EAcute]ndulo", "Chapter",
  CellChangeTimes->{{3.654848079425501*^9, 3.65484808479065*^9}}],
+
+Cell[TextData[{
+ "La naturaleza ca\[OAcute]tica del doble p\[EAcute]ndulo se puede poner en \
+evidencia creando un mapeo dependiente de las condiciones iniciales en el \
+cual se graf\[IAcute]ca si al empezar con unas condiciones iniciales ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Theta]", 
+    RowBox[{"1", "i"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " y ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Theta]", 
+    RowBox[{"2", "i"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " se cumple determinado evento. Este evento puede ser por ejemplo que el \
+segundo p\[EAcute]ndulo de una vuelta, es decir que ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Theta]", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " llegue a tener un valor de \[Pi]. El mapeo resultante tiene una estructura \
+fractal."
+}], "Text",
+ CellChangeTimes->{{3.659894189217389*^9, 3.6598942879700937`*^9}, {
+  3.659894352394225*^9, 3.65989439747495*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -543,11 +594,12 @@ Cell[BoxData[{
   3.6548483214553485`*^9}, {3.65484861554679*^9, 3.654848621830587*^9}, {
   3.654849598939779*^9, 3.6548496184432755`*^9}}]
 }, Open  ]]
+}, Open  ]]
 },
 WindowSize->{772, 745},
-WindowMargins->{{97, Automatic}, {-16, Automatic}},
+WindowMargins->{{Automatic, 534}, {Automatic, 32}},
 PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
-FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+FrontEndVersion->"10.1 for Linux x86 (64-bit) (March 23, 2015)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -562,12 +614,17 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[579, 22, 147, 1, 72, "Chapter"],
-Cell[729, 25, 13118, 324, 1458, "Input"]
+Cell[579, 22, 104, 1, 102, "Title"],
+Cell[CellGroupData[{
+Cell[708, 27, 147, 1, 73, "Chapter"],
+Cell[858, 30, 902, 15, 227, "Text"],
+Cell[1763, 47, 13134, 326, 1260, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13884, 354, 116, 1, 72, "Chapter"],
-Cell[14003, 357, 7547, 186, 758, "Input"]
+Cell[14934, 378, 116, 1, 73, "Chapter"],
+Cell[15053, 381, 977, 25, 131, "Text"],
+Cell[16033, 408, 7547, 186, 636, "Input"]
+}, Open  ]]
 }, Open  ]]
 }
 ]

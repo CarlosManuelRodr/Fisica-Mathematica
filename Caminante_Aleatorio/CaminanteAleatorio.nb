@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14704,        377]
-NotebookOptionsPosition[     14282,        357]
-NotebookOutlinePosition[     14619,        372]
-CellTagsIndexPosition[     14576,        369]
+NotebookDataLength[     15454,        398]
+NotebookOptionsPosition[     14995,        377]
+NotebookOutlinePosition[     15332,        392]
+CellTagsIndexPosition[     15289,        389]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -22,6 +22,25 @@ Notebook[{
 Cell[CellGroupData[{
 Cell["Simulaci\[OAcute]n del juego de la moneda", "Chapter",
  CellChangeTimes->{{3.653757240096376*^9, 3.6537572482151566`*^9}}],
+
+Cell[TextData[{
+ "El juego consiste en que un n\[UAcute]mero ",
+ StyleBox["N",
+  FontSlant->"Italic"],
+ " de jugadores tira una moneda ",
+ StyleBox["M",
+  FontSlant->"Italic"],
+ " veces. Los jugadores comienzan con una cantidad inicial de monedas ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["m", "0"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". Se escoge una cara de la moneda como la ganadora, y otra cara como la \
+perdedora. Si al tirar la moneda el jugador obtiene la cara ganadora, gana \
+una moneda. Si obtiene la cara perdedora, pierda una moneda. El juego termina \
+cuando el jugador se queda sin dinero."
+}], "Text",
+ CellChangeTimes->{{3.659850563548791*^9, 3.659850578591146*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -32,6 +51,7 @@ Cell[BoxData[
      RowBox[{"{", 
       RowBox[{
        RowBox[{"-", "1"}], ",", "1"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   
    RowBox[{
     RowBox[{"mlist", " ", "=", " ", 
      RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
@@ -373,11 +393,12 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 128, 1, 73, "Chapter"],
-Cell[711, 25, 4006, 95, 561, "Input"]
+Cell[711, 25, 706, 17, 83, "Text"],
+Cell[1420, 44, 4010, 96, 561, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4754, 125, 117, 1, 73, "Chapter"],
-Cell[4874, 128, 9392, 226, 1090, "Input"]
+Cell[5467, 145, 117, 1, 73, "Chapter"],
+Cell[5587, 148, 9392, 226, 1090, "Input"]
 }, Open  ]]
 }
 ]
