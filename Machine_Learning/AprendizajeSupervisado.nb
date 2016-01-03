@@ -1,0 +1,1489 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     55815,       1480]
+NotebookOptionsPosition[     54421,       1427]
+NotebookOutlinePosition[     54757,       1442]
+CellTagsIndexPosition[     54714,       1439]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Aprendizaje supervisado", "Title",
+ CellChangeTimes->{{3.6607761843213663`*^9, 3.660776188257346*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+   RowBox[{"Fuente", ":", " ", "http", ":"}], "//", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"cs229", ".", "stanford", ".", "edu"}], "/", "notes"}], "/", 
+     "cs229"}], "-", 
+    RowBox[{"notes1", ".", "pdf"}]}]}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.660776434585762*^9, 3.660776438208107*^9}}],
+
+Cell[TextData[{
+ "El aprendizaje supervisado consiste en un modelo en el cual a partir de un \
+conjunto de datos ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["x", 
+    RowBox[{"(", "i", ")"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["y", 
+    RowBox[{"(", "i", ")"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", donde ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["x", 
+    RowBox[{"(", "i", ")"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " son los datos de entrada y ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["y", 
+    RowBox[{"(", "i", ")"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " son los datos de salida, se aprenda la regla que genera este conjunto de \
+datos. Al par (",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["x", 
+    RowBox[{"(", "i", ")"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["y", 
+    RowBox[{"(", "i", ")"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ") se le conoce como ejemplo de entrenamiento, y a {(",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["x", 
+    RowBox[{"(", "i", ")"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["y", 
+    RowBox[{"(", "i", ")"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "); i=1, \[Ellipsis] , m} se le conoce como conjunto de entrenamiento."
+}], "Text",
+ CellChangeTimes->{{3.6607762046090107`*^9, 3.660776428159348*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Regresi\[OAcute]n lineal", "Chapter",
+ CellChangeTimes->{{3.660776197057262*^9, 3.6607761998170147`*^9}}],
+
+Cell[TextData[{
+ "El caso m\[AAcute]s simple de aprendizaje autom\[AAcute]tico consiste en \
+realizar una regresi\[OAcute]n lineal en la que se realiza un aprendizaje \
+ajustando los par\[AAcute]metros de una hip\[OAcute]tesis (o modelo) ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["h", "\[Theta]"], "(", "x", ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " donde \[Theta] es el vector de par\[AAcute]metros y ",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ " es un vector que contiene una muestra del conjunto de entrenamiento. La \
+hip\[OAcute]tesis puede tomar la forma\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["h", "\[Theta]"], "(", "x", ")"}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[Theta]", "0"], 
+      SubscriptBox["x", "0"]}], "+", 
+     RowBox[{
+      SubscriptBox["\[Theta]", "1"], 
+      SubscriptBox["x", "1"]}], " ", "+", " ", "\[Ellipsis]", " ", "+", 
+     RowBox[{
+      SubscriptBox["\[Theta]", "N"], " ", 
+      SubscriptBox["x", "N"]}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nPara simplificar la notaci\[OAcute]n se introduce la \
+convenci\[OAcute]n ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "0"], " ", "=", " ", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". Con esto la hip\[OAcute]tesis toma la forma\nh(x) = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubsuperscriptBox["\[Sum]", 
+      RowBox[{"i", "=", "0"}], "n"], " ", 
+     RowBox[{
+      SubscriptBox["\[Theta]", "i"], 
+      SubscriptBox["x", "i"]}]}], " ", "=", " ", 
+    RowBox[{
+     SuperscriptBox["\[Theta]", "T"], "x"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nCon esta hip\[OAcute]tesis se est\[AAcute] suponiendo que la relaci\
+\[OAcute]n entre las variables de entrada y las de salida es\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["y", 
+     RowBox[{"(", "i", ")"}]], " ", "=", " ", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[Theta]", "T"], 
+      SuperscriptBox["x", 
+       RowBox[{"(", "i", ")"}]]}], " ", "+", " ", 
+     SuperscriptBox["\[Epsilon]", 
+      RowBox[{"(", "i", ")"}]]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ",\n\ndonde ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Epsilon]", 
+    RowBox[{"(", "i", ")"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " es un t\[EAcute]rmino de error que captura los efectos que el modelo no \
+toma en cuenta. Se asumir\[AAcute] que el error est\[AAcute] normalmente \
+distribuido con media cero y desviaci\[OAcute]n est\[AAcute]ndar uno. De \
+manera que\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"p", "(", 
+     SuperscriptBox["\[Epsilon]", 
+      RowBox[{"(", "i", ")"}]], ")"}], " ", "=", " ", 
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{
+       SqrtBox[
+        RowBox[{"2", " ", "\[Pi]"}]], "\[Sigma]"}]], 
+     SuperscriptBox["e", 
+      RowBox[{"-", 
+       FractionBox[
+        SuperscriptBox[
+         RowBox[{"(", 
+          SuperscriptBox["\[Epsilon]", 
+           RowBox[{"(", "i", ")"}]], ")"}], "2"], 
+        RowBox[{"2", 
+         SuperscriptBox["\[Sigma]", "2"]}]]}]]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ",\n\nlo cual es equivalente a\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"p", "(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["y", 
+        RowBox[{"(", "i", ")"}]], " ", "|", " ", 
+       SuperscriptBox["x", 
+        RowBox[{"(", "i", ")"}]]}], ";", " ", "\[Theta]"}], ")"}], " ", "=", 
+    " ", 
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{
+       SqrtBox[
+        RowBox[{"2", " ", "\[Pi]"}]], "\[Sigma]"}]], 
+     SuperscriptBox["e", 
+      RowBox[{"-", 
+       FractionBox[
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["y", 
+            RowBox[{"(", "i", ")"}]], "  ", "-", " ", 
+           RowBox[{
+            SuperscriptBox["\[Theta]", "T"], 
+            SuperscriptBox["x", 
+             RowBox[{"(", "i", ")"}]]}]}], ")"}], "2"], 
+        RowBox[{"2", 
+         SuperscriptBox["\[Sigma]", "2"]}]]}]]}]}], TraditionalForm]]],
+ ".\n\nCon esto la funci\[OAcute]n de verosimilitud de realizar la observaci\
+\[OAcute]n ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["y", 
+    RowBox[{"(", "i", ")"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " dado el conjunto de datos ",
+ StyleBox["X,",
+  FontSlant->"Italic"],
+ " con los par\[AAcute]metros \[Theta] es\nL(\[Theta]) = L(\[Theta]; X, ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["y", "\[RightVector]"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ") = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"p", "("}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       OverscriptBox["y", "\[RightVector]"], "|", "X"}], ";", " ", 
+      "\[Theta]"}], ")"}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{
+      UnderoverscriptBox["\[Product]", 
+       RowBox[{"i", "=", "1"}], "m"], " ", 
+      RowBox[{"p", "(", 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["y", 
+          RowBox[{"(", "i", ")"}]], "|", " ", 
+         SuperscriptBox["x", 
+          RowBox[{"(", "i", ")"}]]}], ";", " ", "\[Theta]"}], ")"}]}], " ", 
+     "=", 
+     RowBox[{
+      UnderoverscriptBox["\[Product]", 
+       RowBox[{"i", "=", "1"}], "m"], 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{
+         SqrtBox[
+          RowBox[{"2", " ", "\[Pi]"}]], "\[Sigma]"}]], 
+       SuperscriptBox["e", 
+        RowBox[{"-", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{
+             SuperscriptBox["y", 
+              RowBox[{"(", "i", ")"}]], "  ", "-", " ", 
+             RowBox[{
+              SuperscriptBox["\[Theta]", "T"], 
+              SuperscriptBox["x", 
+               RowBox[{"(", "i", ")"}]]}]}], ")"}], "2"], 
+          RowBox[{"2", 
+           SuperscriptBox["\[Sigma]", "2"]}]]}]], " "}]}]}]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nUna buena hip\[OAcute]tesis nos debe asegurar que la verosimilitud sea \
+m\[AAcute]xima sobre el conjunto de entrenamiento, de manera que el problema \
+de encontrar una buena hip\[OAcute]tesis se reduce a maximizar L(\[Theta]). \
+Para simplificar el desarrollo se maximizar\[AAcute] el logaritmo de la funci\
+\[OAcute]n de verosimilitud, esto es l(\[Theta]) = log L(\[Theta]), entonces\n\
+\n l(\[Theta]) = log L(\[Theta]) = log ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     UnderoverscriptBox["\[Product]", 
+      RowBox[{"i", "=", "1"}], "m"], " ", 
+     RowBox[{
+      FractionBox["1", 
+       RowBox[{
+        SqrtBox[
+         RowBox[{"2", " ", "\[Pi]"}]], "\[Sigma]"}]], 
+      SuperscriptBox["e", 
+       RowBox[{"-", 
+        FractionBox[
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["y", 
+             RowBox[{"(", "i", ")"}]], "  ", "-", " ", 
+            RowBox[{
+             SuperscriptBox["\[Theta]", "T"], 
+             SuperscriptBox["x", 
+              RowBox[{"(", "i", ")"}]]}]}], ")"}], "2"], 
+         RowBox[{"2", 
+          SuperscriptBox["\[Sigma]", "2"]}]]}]]}]}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}], "m"], 
+      RowBox[{"log", " ", 
+       FractionBox["1", 
+        RowBox[{
+         SqrtBox[
+          RowBox[{"2", " ", "\[Pi]"}]], "\[Sigma]"}]], 
+       SuperscriptBox["e", 
+        RowBox[{"-", 
+         FractionBox[
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{
+             SuperscriptBox["y", 
+              RowBox[{"(", "i", ")"}]], "  ", "-", " ", 
+             RowBox[{
+              SuperscriptBox["\[Theta]", "T"], 
+              SuperscriptBox["x", 
+               RowBox[{"(", "i", ")"}]]}]}], ")"}], "2"], 
+          RowBox[{"2", 
+           SuperscriptBox["\[Sigma]", "2"]}]]}]]}]}], " ", "=", " ", 
+     RowBox[{
+      RowBox[{"m", " ", "log", " ", 
+       FractionBox["1", 
+        RowBox[{
+         SqrtBox[
+          RowBox[{"2", " ", "\[Pi]"}]], "\[Sigma]"}]]}], "-", 
+      RowBox[{
+       FractionBox["1", 
+        SuperscriptBox["\[Sigma]", "2"]], " ", 
+       FractionBox["1", "2"], " ", 
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"i", "=", "1"}], "m"], 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["y", 
+            RowBox[{"(", "i", ")"}]], "  ", "-", " ", 
+           RowBox[{
+            SuperscriptBox["\[Theta]", "T"], 
+            SuperscriptBox["x", 
+             RowBox[{"(", "i", ")"}]]}]}], ")"}], "2"]}]}]}]}]}], 
+   TraditionalForm]]],
+ ".\n \n Esto indica que maximizar l(\[Theta]) es equivalente a minimizar el \
+t\[EAcute]rmino ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"i", "=", "1"}], "m"], 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["y", 
+         RowBox[{"(", "i", ")"}]], "  ", "-", " ", 
+        RowBox[{
+         SuperscriptBox["\[Theta]", "T"], 
+         SuperscriptBox["x", 
+          RowBox[{"(", "i", ")"}]]}]}], ")"}], "2"]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " el cual se llamar\[AAcute] funci\[OAcute]n de costo,\n\n J(\[Theta]) = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}], "m"], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         SuperscriptBox["y", 
+          RowBox[{"(", "i", ")"}]], "  ", "-", " ", 
+         RowBox[{
+          SuperscriptBox["\[Theta]", "T"], 
+          SuperscriptBox["x", 
+           RowBox[{"(", "i", ")"}]]}]}], ")"}], "2"]}]}], " ", "=", " ", 
+    RowBox[{
+     FractionBox["1", "2"], " ", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}], "m"], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          SubscriptBox["h", "\[Theta]"], "(", 
+          SuperscriptBox["x", 
+           RowBox[{"(", "i", ")"}]], ")"}], " ", "-", " ", 
+         SuperscriptBox["y", 
+          RowBox[{"(", "i", ")"}]]}], ")"}], "2"]}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n \n La funci\[OAcute]n de costo mide qu\[EAcute] tan cerca est\[AAcute] \
+la hip\[OAcute]tesis de sus ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["y", 
+    RowBox[{"(", "i", ")"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " correspondientes. A partir de esto hay varios enfoques para lograr \
+minimizar el costo.\n "
+}], "Text",
+ CellChangeTimes->{{3.660775567503941*^9, 3.660775715326985*^9}, {
+  3.660775803582199*^9, 3.660775821517886*^9}, {3.660775860365518*^9, 
+  3.6607759629244347`*^9}, {3.660776129762847*^9, 3.6607761760424213`*^9}, {
+  3.660776635100039*^9, 3.660776993267438*^9}, {3.6607772251585693`*^9, 
+  3.660777244302165*^9}, {3.660777284604765*^9, 3.660777521073205*^9}, {
+  3.6607777433018923`*^9, 3.660777846308589*^9}, {3.6607779000434504`*^9, 
+  3.6607780989842854`*^9}, {3.6607786251289577`*^9, 3.660778710643931*^9}, {
+  3.66077874226908*^9, 3.660778742287755*^9}, {3.660778777777899*^9, 
+  3.660778949060375*^9}, {3.6607806447676573`*^9, 3.660780657111877*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Algoritmo LMS", "Subchapter",
+ CellChangeTimes->{{3.6607806274776278`*^9, 3.6607806305177107`*^9}}],
+
+Cell[TextData[{
+ "El algoritmo LMS (Least Mean Square) es un algoritmo de b\[UAcute]squeda \
+que comienza con una suposici\[OAcute]n inicial de los valores de \[Theta] y \
+realiza correcciones iterativamente hasta converger al valor de \[Theta] que \
+minimiza J(\[Theta]). El cambio de los \[Theta] est\[AAcute] dado por el m\
+\[EAcute]todo del gradiente, de manera que\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", "j"], " ", "=", " ", 
+    RowBox[{
+     SubscriptBox["\[Theta]", "j"], " ", "-", 
+     RowBox[{"\[Alpha]", " ", 
+      RowBox[{
+       FractionBox["\[PartialD]", 
+        RowBox[{"\[PartialD]", " ", 
+         SubscriptBox["\[Theta]", "j"]}]], 
+       RowBox[{"J", "(", "\[Theta]", ")"}]}]}]}]}], TraditionalForm]]],
+ ".\nEsta actualizaci\[OAcute]n se realiza simult\[AAcute]neamente sobre \
+todos los ",
+ StyleBox["j",
+  FontSlant->"Italic"],
+ ". A \[Alpha] se le denomina raz\[OAcute]n de aprendizaje. Al desarrollar el \
+t\[EAcute]rmino de la derivada queda\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["\[PartialD]", 
+     RowBox[{"\[PartialD]", " ", 
+      SubscriptBox["\[Theta]", "j"]}]], 
+    RowBox[{"J", "(", "\[Theta]", ")"}]}], TraditionalForm]]],
+ "= ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      FractionBox["\[PartialD]", 
+       RowBox[{"\[PartialD]", " ", 
+        SubscriptBox["\[Theta]", "j"]}]], " ", 
+      FractionBox["1", "2"]}], 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         SubscriptBox["h", "\[Theta]"], "(", "x", ")"}], "-", "y"}], ")"}], 
+      "2"]}], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         SubscriptBox["h", "\[Theta]"], "(", "x", ")"}], "-", "y"}], ")"}], 
+      " ", 
+      RowBox[{
+       FractionBox["\[PartialD]", 
+        RowBox[{"\[PartialD]", " ", 
+         SubscriptBox["\[Theta]", "j"]}]], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          SubscriptBox["h", "\[Theta]"], "(", "x", ")"}], "-", "y"}], 
+        ")"}]}]}], " ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          SubscriptBox["h", "\[Theta]"], "(", "x", ")"}], "-", "y"}], ")"}], 
+       " ", 
+       RowBox[{
+        FractionBox["\[PartialD]", 
+         RowBox[{"\[PartialD]", " ", 
+          SubscriptBox["\[Theta]", "j"]}]], " ", 
+        RowBox[{"(", " ", 
+         RowBox[{
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"i", "=", "1"}], "m"], 
+           RowBox[{
+            SubscriptBox["\[Theta]", "i"], 
+            SubscriptBox["x", "i"]}]}], " ", "-", " ", "y"}], ")"}]}]}], " ", 
+      "=", "  ", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          SubscriptBox["h", "\[Theta]"], "(", "x", ")"}], "-", "y"}], ")"}], 
+       " ", 
+       SubscriptBox["x", "j"]}]}]}]}], TraditionalForm]]],
+ ".\n\nEntonces el cambio que se realiza sobre los ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Theta]", "j"], TraditionalForm]]],
+ " para un ejemplo de entrenamiento es\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", "j"], " ", "=", " ", 
+    RowBox[{
+     SubscriptBox["\[Theta]", "j"], " ", "+", 
+     RowBox[{"\[Alpha]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["y", 
+         RowBox[{"(", "i", ")"}]], "-", 
+        RowBox[{
+         SubscriptBox["h", "\[Theta]"], "(", 
+         SuperscriptBox["x", 
+          RowBox[{"(", "i", ")"}]], ")"}]}], ")"}], " ", 
+      SubsuperscriptBox["x", "j", 
+       RowBox[{"(", "i", ")"}]]}]}]}], TraditionalForm]]],
+ ",\ny el algoritmo consiste en\n\nRepetir hasta que se converge[\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", "j"], " ", "=", " ", 
+    RowBox[{
+     SubscriptBox["\[Theta]", "j"], " ", "+", 
+     RowBox[{"\[Alpha]", " ", 
+      RowBox[{
+       UnderoverscriptBox["\[Sum]", 
+        RowBox[{"i", "=", "1"}], "m"], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          SuperscriptBox["y", 
+           RowBox[{"(", "i", ")"}]], "-", 
+          RowBox[{
+           SubscriptBox["h", "\[Theta]"], "(", 
+           SuperscriptBox["x", 
+            RowBox[{"(", "i", ")"}]], ")"}]}], ")"}], " ", 
+        SubsuperscriptBox["x", "j", 
+         RowBox[{"(", "i", ")"}]]}]}]}]}]}], TraditionalForm]]],
+ ";  para cada j\n]"
+}], "Text",
+ CellChangeTimes->{{3.6607806647248363`*^9, 3.660780705244137*^9}, {
+  3.660780754091423*^9, 3.6607808212985897`*^9}, {3.660780906873067*^9, 
+  3.660781080142539*^9}, {3.660781152125195*^9, 3.660781352993832*^9}, {
+  3.6607814088966007`*^9, 3.660781540606988*^9}, {3.660786720596448*^9, 
+  3.660786801420959*^9}, {3.660788421157373*^9, 3.660788429525056*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Ejemplo", "Subsection",
+ CellChangeTimes->{{3.6607815799415293`*^9, 3.660781583397278*^9}}],
+
+Cell[TextData[{
+ "Se genera un conjunto de datos a partir del modelo ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", "0"], " ", "=", " ", "4"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", "1"], " ", "=", " ", "10"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " agreg\[AAcute]ndole a cada muestra un ruido dado por una distribuci\
+\[OAcute]n normal. El conjunto de datos de entrada se agrupa en la matriz X, \
+y con esto se aplica el algoritmo LMS."
+}], "Text",
+ CellChangeTimes->{{3.660781589493037*^9, 3.660781591749185*^9}, {
+  3.660784489033807*^9, 3.660784562624505*^9}, {3.660784607479577*^9, 
+  3.660784647711238*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"model", "[", "x_", "]"}], ":=", " ", 
+   RowBox[{
+    RowBox[{"10", " ", "x"}], " ", "+", " ", "4"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"noise", " ", ":=", " ", 
+   RowBox[{"RandomVariate", "[", 
+    RowBox[{"NormalDistribution", "[", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{
+        RowBox[{"model", "[", "x", "]"}], "+", "noise"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "1", ",", "0.05"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"model", "[", "x", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"Epilog", "\[Rule]", 
+    RowBox[{"Point", "[", "data", "]"}]}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", 
+    RowBox[{"{", "\"\<Modelo\>\"", "}"}]}], ",", " ", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<x\>\"", ",", "\"\<y\>\""}], "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.660781611946084*^9, 3.6607816777781897`*^9}, {
+  3.660781737611432*^9, 3.660781801237947*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{GraphicsBox[{{{}, {}, {
+       Directive[
+        Opacity[1.], 
+        RGBColor[0.9, 0.36, 0.054], 
+        CapForm["Butt"], 
+        AbsoluteThickness[1.6]], 
+       LineBox[CompressedData["
+1:eJwVjnk01AkcwB2bSo5JmQwjjEHm12HH0NaW77fNiiTrSivkSOXVVrvUpu3l
+CVNyzaxSNPZh0HYsQltUjMw2FMkxeEyuGDl/OQY7T6z94/M+/33exyzkrGeY
+moqKitsy/3t/2Kcm0bCPQ6xBibaKCgWHCg+F9NA4kBgwpMlUpyB1jTSllOYI
+abn0Vc4aFNy6Y31+Fs0b8jZfU+NpUXDne9vi32nHQIz+cyY0Coru1tgl0yJh
+RbhGH7ApGBuTePEGLQ6ul/uVRR+j4LFIkpZAuwlJfupHlmopuOqmS87nyTzg
+V2XUy3PX4tP37H37NhbBwflUfsAZPTwcK+usSSwDbiQ7s81uHZ59HLHlzkw5
+lK8zlGzXWY9TvLZaVdUqKOAG79vUsR5rq19XNe56BSn0iVGVUn0Mj3LR/nFM
+DJMKy9auBCpWr2YvPfpJAlrCKl0nzw1YIBQvGlq8AWZE1tk7hAEi9WWuV2E9
+zFC7GJdmDXCLRPbsNasRHBbFtMCXNGxFr4n7E+8hbtUMh3XLEE9rnmqW2jRD
+nPyqMD7QCN92+L7USWmB6KFD9nXf0NHL6XDfwEArzBDtWrq6xmifneibzWwD
+huNT+4E2Y+xdTGs9Gd0OB6JlcTlFG3HQpVFIremAbSnBlhNRJlic0RPVZNYJ
+K3v1L/BZpph/XT3B+lIXlBk2KTenm6Ii1G/k+HMZ7IJd1jylKa5x5Ho+3tAN
+joq68BMnzPAyZVCrz78HrG6t9NZoMEOtSkKl3a0Xag8ZBRXYMHD3BfcvNcpe
+kN/3uFIhYKAgL0loLuiDfvl2p3RVcwz04TSsdu2HI0/QVH7GHJ9Iw9IqZ/uB
+n29C395pjjvqi9Xk6R8hL7qw2t2BiabfH1ekOQ4AZ/RolOwBE+04dvwy+QDk
+YHWnDcUCe6aS64Txg1D/dD6AG2GBY7Ye8TS2HCJFntPuPRZoObplRLVFDvMl
+/uy+vZYoZp5vPhczBEr7hFh5sSWmtkpDPZmfoDMv7Eop1QpJLxFfTfwJLnAM
+7sZcssISH/29O34ehlSf8boauRUKG2Kz+vVGgBv0S26D6yack/j/pvdqBJQL
+tGTX8k3Yy69SUM6MwubntzPeMK1xtulb2lWdMdgZ+o/72gRrPHeTIYp6MQav
+BfoG9Qpr3NDAoAwEjsNWkf6Ng0dY6CV9tEBfHAfvFWPGzZUsnDqac1r2YALm
+ugZq6lgEVgUVxescIOFXQfK6hFQCKxpPu3YfJKFVlUnu5xP4twNrbaEHCewT
+FW+00gh8RM8XuPmSMPb1UAwvncDMjszSpBASgiT4+XYWged/4PZpRpHgMjVd
+X/CQQAIDdq8sIMHI2Y8rlhBoWWSo3v4nCRf/+hzMrSOQsbGjtuAhCVK9a7ud
+3xJosODp7fSYhNQPpTNv3xGo8cz5VPwLEr6K0A5tkRLYt42Tod5CwniWCPo/
+Eij7YzKwRUrCfnVfo7xBAju0i5jCDhLunRyfDRsi8N2odfF33SQE2xoWDo8Q
++OKeiSRmmIS22gj65CSBz6gfkjzGSLDdqjlfMk1gaXympxlJAi8tuyVSQeCD
+UP1u0cxyP7Dhxvw8gfnNzULe3HK/JvR4hZLA7D288CDl8p+1cs/lBQIFxW7b
+bL6QEJLCM3ZYJPC2yRrF0hIJldOW/y4tEfgfTcZOgQ==
+        "]]}}}, {
+    DisplayFunction -> Identity, AspectRatio -> 
+     NCache[GoldenRatio^(-1), 0.6180339887498948], Axes -> {False, False}, 
+     AxesLabel -> {None, None}, AxesOrigin -> {0, 3.5}, DisplayFunction :> 
+     Identity, Epilog -> PointBox[CompressedData["
+1:eJxTTMoPSmViYGAQBWIQDQNd3BY3LS6IO8yaCQIr7dcfmfc5fLUElL/Tvpm9
+mH2SqKSDiTEIHLYPMlnvuvCFMFT+pD1b5Jq56XdFHSCmXbB/FbBewHiuElT9
+ZXuFO168r3crOKSngcA1+7g/JedPOChA9d+0j8zP3uGnp+hw9gwI3LGXsbiu
+a6upCDXvgf2JholtaVtg6h/a2yxf0FKbqAY1/7H9A257nj3VqlD9T+zn/mXm
+4AhWgdr3zF5W+UbpuXINqHkv7PdJz6tY66EKNe+lfU5f++WaZVpQ817b683m
+Zr5uoA417439H9FHjCrs2lDz3tlLFpe/qdHTgZr3wX79CrNdE/7pOAAA3FeJ
+3w==
+       "]], Frame -> {{True, True}, {True, True}}, FrameLabel -> {{
+        FormBox["\"y\"", TraditionalForm], None}, {
+        FormBox["\"x\"", TraditionalForm], None}}, FrameStyle -> Automatic, 
+     FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, 
+     GridLines -> {{0}, {0}}, GridLinesStyle -> Directive[
+       GrayLevel[0.5, 0.4]], LabelStyle -> {FontFamily -> "Times"}, 
+     Method -> {
+      "DefaultBoundaryStyle" -> Automatic, "DefaultMeshStyle" -> 
+       AbsolutePointSize[6], "ScalingFunctions" -> None}, 
+     PlotRange -> {{0, 1}, {4.0000002040816325`, 13.999999795918367`}}, 
+     PlotRangeClipping -> True, PlotRangePadding -> {{
+        Scaled[0.02], 
+        Scaled[0.02]}, {
+        Scaled[0.05], 
+        Scaled[0.05]}}, Ticks -> {Automatic, Automatic}}],FormBox[
+    FormBox[
+     TemplateBox[{"\"Modelo\""}, "LineLegend", DisplayFunction -> (FormBox[
+        StyleBox[
+         StyleBox[
+          PaneBox[
+           TagBox[
+            GridBox[{{
+               TagBox[
+                GridBox[{{
+                   GraphicsBox[{{
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.5], 
+                    Opacity[1.], 
+                    RGBColor[0.9, 0.36, 0.054], 
+                    CapForm["Butt"], 
+                    AbsoluteThickness[1.6]], {
+                    LineBox[{{0, 10}, {20, 10}}]}}, {
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.5], 
+                    Opacity[1.], 
+                    RGBColor[0.9, 0.36, 0.054], 
+                    CapForm["Butt"], 
+                    AbsoluteThickness[1.6]], {}}}, AspectRatio -> Full, 
+                    ImageSize -> {20, 10}, PlotRangePadding -> None, 
+                    ImagePadding -> Automatic, 
+                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #}}, 
+                 GridBoxAlignment -> {
+                  "Columns" -> {Center, Left}, "Rows" -> {{Baseline}}}, 
+                 AutoDelete -> False, 
+                 GridBoxDividers -> {
+                  "Columns" -> {{False}}, "Rows" -> {{False}}}, 
+                 GridBoxItemSize -> {"Columns" -> {{All}}, "Rows" -> {{All}}},
+                  GridBoxSpacings -> {
+                  "Columns" -> {{0.5}}, "Rows" -> {{0.8}}}], "Grid"]}}, 
+             GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+             AutoDelete -> False, 
+             GridBoxItemSize -> {
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+             GridBoxSpacings -> {"Columns" -> {{1}}, "Rows" -> {{0}}}], 
+            "Grid"], Alignment -> Left, AppearanceElements -> None, 
+           ImageMargins -> {{5, 5}, {5, 5}}, ImageSizeAction -> 
+           "ResizeToFit"], LineIndent -> 0, StripOnInput -> False], {
+         FontFamily -> "Times", FontFamily -> "Arial"}, Background -> 
+         Automatic, StripOnInput -> False], TraditionalForm]& ), 
+      InterpretationFunction :> (RowBox[{"LineLegend", "[", 
+         RowBox[{
+           RowBox[{"{", 
+             RowBox[{"Directive", "[", 
+               RowBox[{
+                 RowBox[{"Opacity", "[", "1.`", "]"}], ",", 
+                 InterpretationBox[
+                  ButtonBox[
+                   TooltipBox[
+                    GraphicsBox[{{
+                    GrayLevel[0], 
+                    RectangleBox[{0, 0}]}, {
+                    GrayLevel[0], 
+                    RectangleBox[{1, -1}]}, {
+                    RGBColor[0.9, 0.36, 0.054], 
+                    RectangleBox[{0, -1}, {2, 1}]}}, AspectRatio -> 1, Frame -> 
+                    True, FrameStyle -> 
+                    RGBColor[0.6000000000000001, 0.24, 0.036000000000000004`],
+                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification]}]], 
+                    "RGBColor[0.9, 0.36, 0.054]"], Appearance -> None, 
+                   BaseStyle -> {}, BaselinePosition -> Baseline, 
+                   DefaultBaseStyle -> {}, ButtonFunction :> 
+                   With[{Typeset`box$ = EvaluationBox[]}, 
+                    If[
+                    Not[
+                    AbsoluteCurrentValue["Deployed"]], 
+                    SelectionMove[Typeset`box$, All, Expression]; 
+                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+                    FrontEnd`Private`$ColorSelectorInitialColor = 
+                    RGBColor[0.9, 0.36, 0.054]; 
+                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+                    MathLink`CallFrontEnd[
+                    FrontEnd`AttachCell[Typeset`box$, 
+                    FrontEndResource["RGBColorValueSelector"], {
+                    0, {Left, Bottom}}, {Left, Top}, 
+                    "ClosingActions" -> {
+                    "SelectionDeparture", "ParentChanged", 
+                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
+                   Automatic, Method -> "Preemptive"], 
+                  RGBColor[0.9, 0.36, 0.054], Editable -> False, Selectable -> 
+                  False], ",", 
+                 RowBox[{"CapForm", "[", "\"Butt\"", "]"}], ",", 
+                 RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}]}], "]"}], 
+             "}"}], ",", 
+           RowBox[{"{", #, "}"}], ",", 
+           RowBox[{"LegendMarkers", "\[Rule]", "None"}], ",", 
+           RowBox[{"LabelStyle", "\[Rule]", 
+             RowBox[{"{", 
+               RowBox[{"FontFamily", "\[Rule]", "\"Times\""}], "}"}]}], ",", 
+           RowBox[{"LegendLayout", "\[Rule]", "\"Column\""}]}], "]"}]& ), 
+      Editable -> True], TraditionalForm], TraditionalForm]},
+  "Legended",
+  DisplayFunction->(GridBox[{{
+      TagBox[
+       ItemBox[
+        PaneBox[
+         TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+         BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+       "SkipImageSizeLevel"], 
+      ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+    GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+    AutoDelete -> False, GridBoxItemSize -> Automatic, 
+    BaselinePosition -> {1, 1}]& ),
+  Editable->True,
+  InterpretationFunction->(RowBox[{"Legended", "[", 
+     RowBox[{#, ",", 
+       RowBox[{"Placed", "[", 
+         RowBox[{#2, ",", "After"}], "]"}]}], "]"}]& )]], "Output",
+ CellChangeTimes->{{3.6607816719726467`*^9, 3.660781678199411*^9}, {
+   3.660781740895217*^9, 3.6607818020169163`*^9}, 3.6607870565189257`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Se aplicar\[AAcute] el algoritmo LMS sobre este conjunto de datos, y se \
+monitorear\[AAcute] la funci\[OAcute]n de costo por cada iteraci\[OAcute]n.\
+\>", "Text",
+ CellChangeTimes->{{3.660785351766755*^9, 3.660785376246793*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"X", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"d", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"d", ",", "data"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"y", " ", "=", " ", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"d", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"d", ",", "data"}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "\[Theta]1", ",", "\[Theta]2", ",", "\[Alpha]", ",", "\[CapitalTheta]"}], 
+    "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\[Theta]1", " ", "=", " ", 
+     RowBox[{"RandomReal", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"\[Theta]2", " ", "=", " ", 
+     RowBox[{"RandomReal", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"\[Alpha]", " ", "=", " ", "0.001"}], ";", "\[IndentingNewLine]", 
+    
+    RowBox[{
+     RowBox[{"\[CapitalTheta]", "[", 
+      RowBox[{"\[Theta]1c_", ",", "\[Theta]2c_"}], "]"}], " ", ":=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", "\[Theta]1", "}"}], ",", 
+       RowBox[{"{", "\[Theta]2", "}"}]}], "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"hipotesis", "[", 
+      RowBox[{"X_", ",", "\[CapitalTheta]_"}], "]"}], " ", ":=", " ", 
+     RowBox[{
+      RowBox[{"Flatten", "[", 
+       RowBox[{
+        RowBox[{"Transpose", "[", "\[CapitalTheta]", "]"}], ".", "X"}], "]"}],
+       "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Cost", "[", 
+      RowBox[{"X_", ",", "y_", ",", "\[Theta]_"}], "]"}], " ", ":=", " ", 
+     RowBox[{
+      FractionBox["1", "2"], 
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"hipotesis", "[", 
+            RowBox[{
+             RowBox[{"X", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], ",", "\[Theta]"}], "]"}], " ", 
+           "-", " ", 
+           RowBox[{"y", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], ")"}], "2"], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"Length", "[", "y", "]"}]}], "}"}]}], "]"}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"costs", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"\[Theta]1", "  ", "+=", " ", 
+        RowBox[{"\[Alpha]", " ", 
+         RowBox[{"Sum", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"y", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], " ", "-", " ", 
+            RowBox[{
+             RowBox[{"hipotesis", "[", 
+              RowBox[{
+               RowBox[{"X", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], ",", 
+               RowBox[{"\[CapitalTheta]", "[", 
+                RowBox[{"\[Theta]1", ",", "\[Theta]2"}], "]"}]}], "]"}], " ", 
+             
+             RowBox[{
+              RowBox[{"X", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "y", "]"}]}], "}"}]}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"\[Theta]2", "  ", "+=", " ", 
+        RowBox[{"\[Alpha]", " ", 
+         RowBox[{"Sum", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"y", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], " ", "-", " ", 
+            RowBox[{
+             RowBox[{"hipotesis", "[", 
+              RowBox[{
+               RowBox[{"X", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], ",", 
+               RowBox[{"\[CapitalTheta]", "[", 
+                RowBox[{"\[Theta]1", ",", "\[Theta]2"}], "]"}]}], "]"}], 
+             RowBox[{
+              RowBox[{"X", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", "y", "]"}]}], "}"}]}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"costs", ",", 
+         RowBox[{"Cost", "[", 
+          RowBox[{"X", ",", "y", ",", 
+           RowBox[{"\[CapitalTheta]", "[", 
+            RowBox[{"\[Theta]1", ",", "\[Theta]2"}], "]"}]}], "]"}]}], "]"}], 
+       ";"}], "\[IndentingNewLine]", ",", 
+      RowBox[{"{", "150", "}"}]}], "\[IndentingNewLine]", "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<El modelo que se encontr\[OAcute] es: (\!\(\*GridBox[{
+{\[Theta]0},
+{\[Theta]1}
+}]\)) = \>\"", ",", " ", 
+      RowBox[{"MatrixForm", "[", 
+       RowBox[{"\[CapitalTheta]", "[", 
+        RowBox[{"\[Theta]1", ",", "\[Theta]2"}], "]"}], "]"}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{"costs", ",", 
+       RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", " ", 
+       RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
+       RowBox[{"FrameLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Iteraci\[OAcute]n\>\"", ",", "\"\<Costo\>\""}], "}"}]}],
+        ",", " ", 
+       RowBox[{
+       "PlotLabel", "\[Rule]", "\"\<Costo respecto a iteraciones\>\""}]}], 
+      "]"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{{3.660781870467266*^9, 3.660781986573132*^9}, {
+   3.660784594116521*^9, 3.660784594548161*^9}, {3.660784767402856*^9, 
+   3.660784781263218*^9}, {3.660784868022509*^9, 3.660784907383466*^9}, {
+   3.660784950041164*^9, 3.660784968945292*^9}, {3.660784999649125*^9, 
+   3.660785199545735*^9}, 3.6607869288633547`*^9, {3.660787071535198*^9, 
+   3.660787090309615*^9}, {3.6607888943209343`*^9, 3.660788894428999*^9}, {
+   3.660788973781643*^9, 3.660788979150742*^9}, {3.660789038119928*^9, 
+   3.660789041343548*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El modelo que se encontr\[OAcute] es: (\\!\\(\\*GridBox[{\\n  \
+{\[Theta]0},\\n  {\[Theta]1}\\n }]\\)) = \"\>", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"3.4534505561347384`"},
+       {"14.888473997196378`"}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]]}],
+  SequenceForm[
+  "El modelo que se encontr\[OAcute] es: (\!\(\*GridBox[{\n  {\[Theta]0},\n  \
+{\[Theta]1}\n }]\)) = ", 
+   MatrixForm[{{3.4534505561347384`}, {14.888473997196378`}}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.660785058877761*^9, 3.660785087541363*^9}, {
+   3.660785125474622*^9, 3.660785148288311*^9}, {3.660785182258581*^9, 
+   3.660785200134555*^9}, {3.6607870627612133`*^9, 3.660787091123561*^9}, 
+   3.660788894915717*^9, {3.6607889756267967`*^9, 3.660788979638077*^9}, {
+   3.660789038565312*^9, 3.66078904193004*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.9, 0.36, 0.054], PointSize[0.009166666666666668], 
+     AbsoluteThickness[1.6], CapForm["Butt"], PointBox[CompressedData["
+1:eJw11QlQk3cexvEsLVraMtqi6IpHxHKUQ1CUU+Ah3MFwhIQ7IUmxtuhWUU4P
+jAIeeJSjIrIs0tKOYVjEqrhVdOelso1aUaui1VXAgsWloLEUu921uO74hJkM
+8+GbX17yvv/3/87XrZGvsBCJRDUvXv///fLHFCztGwr0q9oD/gFZqn05/jfL
+6dcw8Zdov1yvXfRUZNn2vrrDsIOehsqumCmOS7bTM2H6wFNj21NKz8ZbRyrv
+uJeX0GIcs0hPkcu30fZYqB78rtBtK/0Ozs3ur/h8hp52xO0A97uXHIppZ7ic
+OLP4K/9NtAvCd+69qV69gXbD2OShLa6nCumF2NKb0t4wr4D2hEVoWpOsIY9e
+BJ/c8lfue+XSi1G8SHh7Wt862gs9P4n3H2/IoZfAt3fbUH3OWnop2qSX/Te0
+fkR7Q/d5l1Jct5r2QcvRL7xwOJv2RY+srvq16x/Qfji2Ni23024l7Q/lyK6O
+i1tW0AEwjMc8rvv9PXoZHlnP/MPfq3V0ILz6h5xvQEsHIeDa/SsVr2joYOz2
+yrRZ366igVDffB9pefpL6wGF3m1BXkkqewju677q6G9IZg/B4W+N1gfuKNkl
+iJ0ZffbsEgW7BO3XPiz/pEXOHooHHq3D6wMT2EPRXGabfeC7OPYwRIk9hdAU
+GXsYdqiKP7N/M4Y9HP+8kVZYORzFHo6RcbsFNk8i2CNgf6b237I54ewRMJS4
+37b6Uyh7JHQbLmcu7A1hj0TpEaNL50dgj0J+8emC835B7FEYKZx3z9AdwB6N
+ps5jk67u92OPhnpO5eZZH/uwS1Fwoce76uRSdimchGl2q62WsMegs7umzbJs
+MXsMfPfu6/vBcRH7coTddTEm3/ZgX45hVevuJIM7uwz6WqNF7UlXdhnGT5Tm
+e7xY5y97LNzR6pS91Zk9FssiOude8nZij4ND2RfO1nMc2ePwav+xZ9MXObDH
+I6zg6a7f17zz0ojHj7p9H066tYDvj4d2umtu/Xu0EI+G57cK5Ta0KAEPfCNt
++gfsOZ+AEOPYoXnXaX0CJp8tXf5mHy0kYI/RJBEszfNyVNk8HV0XTkMOr6a9
+yoJ68/HlaM6yqfK34v8nyLH94KhCUk6LElGau6/MdS6/DxKREnf6ieEcrU/E
+g9I3pm4r4vcXEjHj/unrlUHm86NAdqdQ8Y+3eP6geLFe1jy2+9l8PhW48v7x
+R02973JegVxvz1823jSffyWkrZv/dfV7Xh8ocWHK1RX3Bt04r8TPz7QDD3/j
+9RRe9A0TzyNm8HqLkrBZYpXlOteT80no6rxjGXKC1idh972P1Q0yrhchCX8t
+neRmMWxeP8kIqTxv8NjF9YVkjJX8EvnIxYvzyRjpHs21ukILyTDtaEyKzzOv
+zxSE+TvV7J/D9YsUXP61ybnNaF7PKZi2Rzw7f70351PQfyNm5Tdi8/pPRVH9
+SEfxFRqpaM0aTNdv8eV8Kr6pbjAd8eT9I6TCJvVilukHWpSGiuxgwa3Gn/Np
+WLfmsWWslPefPg0RO402eE4LaTj00/ulphPLOJ8O6+cVVbGrAjmfjk3HJRNS
+e/P9nA7BWzF26zYtpKMjovLJw8pgzmfA0P3HdD8H7gfIQOF/ldXtW2l9Bg52
+JDZk9dJCBpS9h4okAdxPRCqc/ttndTG1NFQ42CX9cdO4eb9RoSxhafN1uYTz
+Kvi8G1shO0qL1JjX1vfpQ2vuV1DjqaO1T9MqWq9GefCX4xsv0IIaY1F/vpjj
+FMb5TEy95DBYUkYjE61b57d+OUDrM1E7OuX8f0K4PwqZSFrQ/HpmIy3SYKLA
+UNQ7QYs1iBffDStScX+FBjdM6895nKE1GpS07F5rYRfJz9dgW8Ho0JMiulGD
+rDirgYnvaUGDCvVcbxdf7t/9GgTlVHfnHqBFWrh/vbGl7ykt1iLzQPiDVUnR
+PL4WLZKKT2edpDVaHA50sh2dLuXxtfjER7x9MI9u1CLvjVmwuEkLWsiO1tVH
+evN50q+FIqH8WXuN+fmiw7c9F4yxv9JiHbp8BlbZpCzn8XVYMf9amuUpWqPD
+cMaAleMs8/NKh9dPNZvyN9KNOpy1nbzzt7u0oMPXK6Oi24Ji8T9LxpeR
+      "]]}, {}}, {}},
+  
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{False, False},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{True, True}, {True, True}},
+  FrameLabel->{{
+     FormBox["\"Costo\"", TraditionalForm], None}, {
+     FormBox["\"Iteraci\[OAcute]n\"", TraditionalForm], None}},
+  FrameStyle->Automatic,
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{{0}, {0}},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{FontFamily -> "Times"},
+  Method->{},
+  PlotLabel->FormBox["\"Costo respecto a iteraciones\"", TraditionalForm],
+  PlotRange->{{0, 150.}, {0, 914.2779501070993}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Print",
+ CellChangeTimes->{{3.660785058877761*^9, 3.660785087541363*^9}, {
+   3.660785125474622*^9, 3.660785148288311*^9}, {3.660785182258581*^9, 
+   3.660785200134555*^9}, {3.6607870627612133`*^9, 3.660787091123561*^9}, 
+   3.660788894915717*^9, {3.6607889756267967`*^9, 3.660788979638077*^9}, {
+   3.660789038565312*^9, 3.6607890419732656`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+Este algoritmo no converge del todo bien y seg\[UAcute]n se observa en la gr\
+\[AAcute]fica del costo respecto a iteraci\[OAcute]n se aleja del resultado \
+correcto a partir de un n\[UAcute]mero cr\[IAcute]tico de iteraciones. El \
+problema con el algoritmo radica en que por cada iteraci\[OAcute]n tiene que \
+recorrer todo el conjunto de entrenamiento, de manera que cada cambio de \
+\[Theta] es una operaci\[OAcute]n costosa.\
+\>", "Text",
+ CellChangeTimes->{{3.660785399214254*^9, 3.660785441774173*^9}, {
+  3.660785473125697*^9, 3.6607855423167477`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Algoritmo SGD", "Subchapter",
+ CellChangeTimes->{{3.660785560940379*^9, 3.660785564108201*^9}}],
+
+Cell[TextData[{
+ "El algoritmo SGD (Stochastic gradient descent) consiste en actualizar los \
+valores de \[Theta] con cada ejemplo de entrenamiento.  Con esta variaci\
+\[OAcute]n el algoritmo es\n\nLoop[\n\tPara i=1 hasta m [\n\t\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", "j"], " ", "=", " ", 
+    RowBox[{
+     SubscriptBox["\[Theta]", "j"], " ", "+", 
+     RowBox[{"\[Alpha]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["y", 
+         RowBox[{"(", "i", ")"}]], "-", 
+        RowBox[{
+         SubscriptBox["h", "\[Theta]"], "(", 
+         SuperscriptBox["x", 
+          RowBox[{"(", "i", ")"}]], ")"}]}], ")"}], " ", 
+      SubsuperscriptBox["x", "j", 
+       RowBox[{"(", "i", ")"}]]}]}]}], TraditionalForm]]],
+ "  (para cada j)\n\t]\n]\n\nA continuaci",
+ "\[OAcute]n se muestra un ejemplo del algoritmo."
+}], "Text",
+ CellChangeTimes->{{3.660786462183114*^9, 3.6607864860388603`*^9}, {
+  3.660786631388709*^9, 3.660786646396061*^9}, {3.660786818217751*^9, 
+  3.660786920704095*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"X", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"d", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"d", ",", "data"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"y", " ", "=", " ", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"d", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"d", ",", "data"}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Module", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "\[Theta]1", ",", "\[Theta]2", ",", "\[Alpha]", ",", "\[CapitalTheta]"}], 
+    "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\[Theta]1", " ", "=", " ", 
+     RowBox[{"RandomReal", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"\[Theta]2", " ", "=", " ", 
+     RowBox[{"RandomReal", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"\[Alpha]", " ", "=", " ", "0.01"}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"\[CapitalTheta]", "[", 
+      RowBox[{"\[Theta]1c_", ",", "\[Theta]2c_"}], "]"}], " ", ":=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", "\[Theta]1", "}"}], ",", 
+       RowBox[{"{", "\[Theta]2", "}"}]}], "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"hipotesis", "[", 
+      RowBox[{"X_", ",", "\[CapitalTheta]_"}], "]"}], " ", ":=", " ", 
+     RowBox[{
+      RowBox[{"Flatten", "[", 
+       RowBox[{
+        RowBox[{"Transpose", "[", "\[CapitalTheta]", "]"}], ".", "X"}], "]"}],
+       "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Cost", "[", 
+      RowBox[{"X_", ",", "y_", ",", "\[Theta]_"}], "]"}], " ", ":=", " ", 
+     RowBox[{
+      FractionBox["1", "2"], 
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"hipotesis", "[", 
+            RowBox[{
+             RowBox[{"X", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], ",", "\[Theta]"}], "]"}], " ", 
+           "-", " ", 
+           RowBox[{"y", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], ")"}], "2"], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"Length", "[", "y", "]"}]}], "}"}]}], "]"}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"costs", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Do", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"\[Theta]1", "  ", "+=", " ", 
+           RowBox[{"\[Alpha]", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"y", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], " ", "-", " ", 
+              RowBox[{"hipotesis", "[", 
+               RowBox[{
+                RowBox[{"X", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], ",", 
+                RowBox[{"\[CapitalTheta]", "[", 
+                 RowBox[{"\[Theta]1", ",", "\[Theta]2"}], "]"}]}], "]"}]}], 
+             ")"}], " ", 
+            RowBox[{
+             RowBox[{"X", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"\[Theta]2", "  ", "+=", " ", 
+           RowBox[{"\[Alpha]", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"y", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], " ", "-", " ", 
+              RowBox[{"hipotesis", "[", 
+               RowBox[{
+                RowBox[{"X", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], ",", 
+                RowBox[{"\[CapitalTheta]", "[", 
+                 RowBox[{"\[Theta]1", ",", "\[Theta]2"}], "]"}]}], "]"}]}], 
+             ")"}], " ", 
+            RowBox[{
+             RowBox[{"X", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}]}], ";"}], "\[IndentingNewLine]",
+          ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "y", "]"}]}], "}"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"costs", ",", 
+         RowBox[{"Cost", "[", 
+          RowBox[{"X", ",", "y", ",", 
+           RowBox[{"\[CapitalTheta]", "[", 
+            RowBox[{"\[Theta]1", ",", "\[Theta]2"}], "]"}]}], "]"}]}], "]"}], 
+       ";"}], "\[IndentingNewLine]", ",", 
+      RowBox[{"{", "150", "}"}]}], "\[IndentingNewLine]", "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<El modelo que se encontr\[OAcute] es: (\!\(\*GridBox[{
+{\[Theta]0},
+{\[Theta]1}
+}]\)) = \>\"", ",", " ", 
+      RowBox[{"MatrixForm", "[", 
+       RowBox[{"\[CapitalTheta]", "[", 
+        RowBox[{"\[Theta]1", ",", "\[Theta]2"}], "]"}], "]"}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{"costs", ",", 
+       RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", " ", 
+       RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
+       RowBox[{"FrameLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Iteraci\[OAcute]n\>\"", ",", "\"\<Costo\>\""}], "}"}]}],
+        ",", " ", 
+       RowBox[{
+       "PlotLabel", "\[Rule]", "\"\<Costo respecto a iteraciones\>\""}]}], 
+      "]"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{{3.660786925576215*^9, 3.6607869754881887`*^9}, {
+   3.6607870478836813`*^9, 3.660787052516408*^9}, {3.6607870944663477`*^9, 
+   3.660787104062146*^9}, 3.660788470994522*^9, {3.660788688123809*^9, 
+   3.660788698691043*^9}, {3.660788900443256*^9, 3.660788942334662*^9}, {
+   3.6607889838198233`*^9, 3.6607890531852427`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El modelo que se encontr\[OAcute] es: (\\!\\(\\*GridBox[{\\n  \
+{\[Theta]0},\\n  {\[Theta]1}\\n }]\\)) = \"\>", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"5.439172885034345`"},
+       {"8.441142054090449`"}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]]}],
+  SequenceForm[
+  "El modelo que se encontr\[OAcute] es: (\!\(\*GridBox[{\n  {\[Theta]0},\n  \
+{\[Theta]1}\n }]\)) = ", 
+   MatrixForm[{{5.439172885034345}, {8.441142054090449}}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.6607869800444193`*^9, 3.6607871049857187`*^9, {3.660788693205426*^9, 
+   3.660788699225555*^9}, {3.6607889017579107`*^9, 3.6607889427853737`*^9}, {
+   3.660788984366878*^9, 3.660789053625505*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.9, 0.36, 0.054], PointSize[0.009166666666666668], 
+     AbsoluteThickness[1.6], CapForm["Butt"], PointBox[CompressedData["
+1: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
+      "]]}, {}}, {}},
+  
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{False, False},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{True, True}, {True, True}},
+  FrameLabel->{{
+     FormBox["\"Costo\"", TraditionalForm], None}, {
+     FormBox["\"Iteraci\[OAcute]n\"", TraditionalForm], None}},
+  FrameStyle->Automatic,
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{{0}, {0}},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{FontFamily -> "Times"},
+  Method->{},
+  PlotLabel->FormBox["\"Costo respecto a iteraciones\"", TraditionalForm],
+  PlotRange->{{0, 150.}, {0, 536.6652669171671}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Print",
+ CellChangeTimes->{
+  3.6607869800444193`*^9, 3.6607871049857187`*^9, {3.660788693205426*^9, 
+   3.660788699225555*^9}, {3.6607889017579107`*^9, 3.6607889427853737`*^9}, {
+   3.660788984366878*^9, 3.660789053658939*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{991, 768},
+WindowMargins->{{Automatic, 522}, {Automatic, 26}},
+FrontEndVersion->"10.1 for Linux x86 (64-bit) (March 23, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 108, 1, 102, "Title"],
+Cell[691, 25, 364, 10, 35, "Input"],
+Cell[1058, 37, 1552, 53, 83, "Text"],
+Cell[CellGroupData[{
+Cell[2635, 94, 111, 1, 73, "Chapter"],
+Cell[2749, 97, 11382, 338, 1011, "Text"],
+Cell[CellGroupData[{
+Cell[14156, 439, 105, 1, 69, "Subchapter"],
+Cell[14264, 442, 4752, 140, 437, "Text"],
+Cell[CellGroupData[{
+Cell[19041, 586, 97, 1, 49, "Subsection"],
+Cell[19141, 589, 742, 19, 59, "Text"],
+Cell[CellGroupData[{
+Cell[19908, 612, 1333, 37, 136, "Input"],
+Cell[21244, 651, 9374, 187, 252, "Output"]
+}, Open  ]],
+Cell[30633, 841, 239, 4, 35, "Text"],
+Cell[CellGroupData[{
+Cell[30897, 849, 6202, 159, 645, "Input"],
+Cell[CellGroupData[{
+Cell[37124, 1012, 1357, 30, 39, "Print"],
+Cell[38484, 1044, 3534, 70, 256, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[42045, 1118, 569, 9, 107, "Text"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42663, 1133, 101, 1, 69, "Subchapter"],
+Cell[42767, 1136, 1037, 26, 256, "Text"],
+Cell[CellGroupData[{
+Cell[43829, 1166, 5972, 152, 720, "Input"],
+Cell[CellGroupData[{
+Cell[49826, 1322, 1235, 29, 39, "Print"],
+Cell[51064, 1353, 3293, 67, 256, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
