@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     55815,       1480]
-NotebookOptionsPosition[     54421,       1427]
-NotebookOutlinePosition[     54757,       1442]
-CellTagsIndexPosition[     54714,       1439]
+NotebookDataLength[     58141,       1555]
+NotebookOptionsPosition[     56623,       1498]
+NotebookOutlinePosition[     56965,       1513]
+CellTagsIndexPosition[     56922,       1510]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -784,11 +784,11 @@ Zr5uoA417439H9FHjCrs2lDz3tlLFpe/qdHTgZr3wX79CrNdE/7pOAAA3FeJ
                     RGBColor[0.6000000000000001, 0.24, 0.036000000000000004`],
                      FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[0.9, 0.36, 0.054]"], Appearance -> None, 
-                   BaseStyle -> {}, BaselinePosition -> Baseline, 
-                   DefaultBaseStyle -> {}, ButtonFunction :> 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[0.9, 0.36, 0.054]"], 
+                   Appearance -> None, BaseStyle -> {}, BaselinePosition -> 
+                   Baseline, DefaultBaseStyle -> {}, ButtonFunction :> 
                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
@@ -1421,13 +1421,84 @@ gjq3pmHxbbJGBW3uwVcpneQiFSSlXy5d10E2qiDf7eF/ss0e/wKJZ5AT
    3.660788984366878*^9, 3.660789053658939*^9}}]
 }, Open  ]]
 }, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Soluci\[OAcute]n anal\[IAcute]tica", "Subchapter",
+ CellChangeTimes->{{3.6609480507169695`*^9, 3.6609480540353923`*^9}}],
+
+Cell[TextData[{
+ "Para obtener la soluci\[OAcute]n anal\[IAcute]tica basta con construir la \
+matriz de los costos y obtener la soluci\[OAcute]n de \[Theta] para cuando el \
+costo es m\[IAcute]nimo. Es decir\n\nJ(\[Theta]) = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["1", "2"], 
+    RowBox[{"(", 
+     RowBox[{"X", " ", "\[Theta]", " "}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "- ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    RowBox[{
+     OverscriptBox["y", "\[RightVector]"], ")"}], "T"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " (X \[Theta] - ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["y", "\[RightVector]"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "),\n\ny pidiendo que\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Del]", "\[Theta]"], 
+     RowBox[{"J", "(", "\[Theta]", ")"}]}], " ", "=", " ", "0"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", \n\nentonces se obtiene\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Del]", "\[Theta]"], 
+     RowBox[{"J", "(", "\[Theta]", ")"}]}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["X", "T"], " ", "X", " ", "\[Theta]"}], " ", "-", " ", 
+      RowBox[{
+       SuperscriptBox["X", "T"], " ", 
+       OverscriptBox["y", "\[RightVector]"]}]}], "  ", "=", " ", "0"}]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ",\n\ncuya soluci\[OAcute]n para \[Theta] es\n\n\[Theta] = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["X", "T"], " ", "X"}], ")"}], 
+     RowBox[{"-", "1"}]], " ", 
+    SuperscriptBox["X", "T"], " ", 
+    OverscriptBox["y", "\[RightVector]"], " "}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nEsto es el m\[EAcute]todo de m\[IAcute]nimos cuadrados."
+}], "Text",
+ CellChangeTimes->{{3.660948057072271*^9, 3.660948224340725*^9}, {
+  3.6609482701715827`*^9, 3.6609484498208485`*^9}}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{991, 768},
 WindowMargins->{{Automatic, 522}, {Automatic, 26}},
-FrontEndVersion->"10.1 for Linux x86 (64-bit) (March 23, 2015)",
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -1442,43 +1513,47 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 108, 1, 102, "Title"],
-Cell[691, 25, 364, 10, 35, "Input"],
-Cell[1058, 37, 1552, 53, 83, "Text"],
+Cell[580, 22, 108, 1, 101, "Title"],
+Cell[691, 25, 364, 10, 31, "Input"],
+Cell[1058, 37, 1552, 53, 77, "Text"],
 Cell[CellGroupData[{
-Cell[2635, 94, 111, 1, 73, "Chapter"],
-Cell[2749, 97, 11382, 338, 1011, "Text"],
+Cell[2635, 94, 111, 1, 72, "Chapter"],
+Cell[2749, 97, 11382, 338, 829, "Text"],
 Cell[CellGroupData[{
-Cell[14156, 439, 105, 1, 69, "Subchapter"],
-Cell[14264, 442, 4752, 140, 437, "Text"],
+Cell[14156, 439, 105, 1, 67, "Subchapter"],
+Cell[14264, 442, 4752, 140, 370, "Text"],
 Cell[CellGroupData[{
 Cell[19041, 586, 97, 1, 49, "Subsection"],
-Cell[19141, 589, 742, 19, 59, "Text"],
+Cell[19141, 589, 742, 19, 49, "Text"],
 Cell[CellGroupData[{
-Cell[19908, 612, 1333, 37, 136, "Input"],
-Cell[21244, 651, 9374, 187, 252, "Output"]
+Cell[19908, 612, 1333, 37, 182, "Input"],
+Cell[21244, 651, 9376, 187, 254, "Output"]
 }, Open  ]],
-Cell[30633, 841, 239, 4, 35, "Text"],
+Cell[30635, 841, 239, 4, 30, "Text"],
 Cell[CellGroupData[{
-Cell[30897, 849, 6202, 159, 645, "Input"],
+Cell[30899, 849, 6202, 159, 728, "Input"],
 Cell[CellGroupData[{
-Cell[37124, 1012, 1357, 30, 39, "Print"],
-Cell[38484, 1044, 3534, 70, 256, "Print"]
-}, Open  ]]
-}, Open  ]],
-Cell[42045, 1118, 569, 9, 107, "Text"]
+Cell[37126, 1012, 1357, 30, 35, "Print"],
+Cell[38486, 1044, 3534, 70, 257, "Print"]
 }, Open  ]]
 }, Open  ]],
+Cell[42047, 1118, 569, 9, 68, "Text"]
+}, Open  ]]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[42663, 1133, 101, 1, 69, "Subchapter"],
-Cell[42767, 1136, 1037, 26, 256, "Text"],
+Cell[42665, 1133, 101, 1, 67, "Subchapter"],
+Cell[42769, 1136, 1037, 26, 209, "Text"],
 Cell[CellGroupData[{
-Cell[43829, 1166, 5972, 152, 720, "Input"],
+Cell[43831, 1166, 5972, 152, 788, "Input"],
 Cell[CellGroupData[{
-Cell[49826, 1322, 1235, 29, 39, "Print"],
-Cell[51064, 1353, 3293, 67, 256, "Print"]
+Cell[49828, 1322, 1235, 29, 35, "Print"],
+Cell[51066, 1353, 3293, 67, 257, "Print"]
 }, Open  ]]
 }, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[54420, 1427, 126, 1, 67, "Subchapter"],
+Cell[54549, 1430, 2034, 63, 374, "Text"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]

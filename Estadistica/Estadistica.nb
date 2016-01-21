@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     74194,       1944]
-NotebookOptionsPosition[     71284,       1841]
-NotebookOutlinePosition[     71622,       1856]
-CellTagsIndexPosition[     71579,       1853]
+NotebookDataLength[     74826,       1957]
+NotebookOptionsPosition[     71911,       1854]
+NotebookOutlinePosition[     72253,       1869]
+CellTagsIndexPosition[     72210,       1866]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -33,9 +33,10 @@ Cell[TextData[{
 probabilidad de un n\[UAcute]mero sucesivo de eventos en un experimento donde \
 el resultado es binario (\[EAcute]xito o fracaso), donde la probabilidad de \
 \[EAcute]xito est\[AAcute] dada por ",
- StyleBox["p",
+ StyleBox["p, ",
   FontSlant->"Italic"],
- ". Su funci\[OAcute]n de probabilidad es\n\nf(k, n, p) = ",
+ "y la probabilidad de fracaso es q = 1-p. Su funci\[OAcute]n de probabilidad \
+es\n\nf(k, n, p) = ",
  Cell[BoxData[
   FormBox[
    RowBox[{
@@ -54,11 +55,22 @@ el resultado es binario (\[EAcute]xito o fracaso), donde la probabilidad de \
  " es el n\[UAcute]mero de intentos, y ",
  StyleBox["k",
   FontSlant->"Italic"],
- " es el n\[UAcute]mero de \[EAcute]xitos."
+ " es el n\[UAcute]mero de \[EAcute]xitos.\nEl valor esperado es\n\nE(X) = \
+nP,\n\ny la varianza\n\nV(X) = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"E", "(", 
+     SuperscriptBox["X", "2"], ")"}], " ", "=", " ", "nPQ"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
 }], "Text",
  CellChangeTimes->{{3.659813177377872*^9, 3.659813369189106*^9}, {
   3.6598134923787317`*^9, 3.6598134940824623`*^9}, {3.659813819444306*^9, 
-  3.659813820180007*^9}}]
+  3.659813820180007*^9}, {3.662239758767228*^9, 3.6622397856048403`*^9}, {
+  3.662240066900734*^9, 3.6622401248822002`*^9}, {3.6622403688379025`*^9, 
+  3.6622404087160616`*^9}}]
 }, Open  ]],
 
 Cell["Distribuci\[OAcute]n de Poisson", "Chapter",
@@ -149,7 +161,7 @@ Cell[BoxData[
        Hold[$CellContext`n$$], 20, "Tama\[NTilde]o de la muestra"}, 10, 200, 
       1}, {{
        Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
-    Typeset`size$$ = {500., {147., 153.}}, Typeset`update$$ = 0, 
+    Typeset`size$$ = {500., {148., 152.}}, Typeset`update$$ = 0, 
     Typeset`initDone$$, Typeset`skipInitDone$$ = True, $CellContext`n$328$$ = 
     0, $CellContext`seed$333$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
@@ -177,7 +189,7 @@ Cell[BoxData[
           "Tama\[NTilde]o de la muestra"}, 10, 200, 1, Appearance -> 
          "Labeled"}, {{$CellContext`seed$$, 1, "Semilla"}, 1, 100000, 1}}, 
       "Options" :> {}, "DefaultOptions" :> {}],
-     ImageSizeCache->{547., {204., 211.}},
+     ImageSizeCache->{551., {207., 214.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -651,7 +663,7 @@ Cell[BoxData[
     1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
        Hold[$CellContext`k$$], 100}, 1, 2450}, {{
        Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
-    Typeset`size$$ = {360., {118., 123.}}, Typeset`update$$ = 0, 
+    Typeset`size$$ = {360., {116., 119.}}, Typeset`update$$ = 0, 
     Typeset`initDone$$, Typeset`skipInitDone$$ = 
     True, $CellContext`k$19174$$ = 0, $CellContext`seed$19175$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
@@ -694,7 +706,7 @@ $CellContext`n]; $CellContext`m = Mean[$CellContext`sample];
       "Options" :> {
        TrackedSymbols :> {$CellContext`k$$, $CellContext`seed$$}}, 
       "DefaultOptions" :> {}],
-     ImageSizeCache->{407., {175., 182.}},
+     ImageSizeCache->{411., {175., 182.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -724,8 +736,7 @@ Cell[TextData[{
  "La distribuci\[OAcute]n ",
  Cell[BoxData[
   FormBox[
-   SuperscriptBox["\[Chi]", "2"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   SuperscriptBox["\[Chi]", "2"], TraditionalForm]]],
  " con k grados de libertad es la distribuci\[OAcute]n de la suma de los \
 cuadrados de k variables normales independientes Y = ",
  Cell[BoxData[
@@ -735,13 +746,28 @@ cuadrados de k variables normales independientes Y = ",
      RowBox[{
       SubsuperscriptBox["Z", "1", "2"], "+", 
       SubsuperscriptBox["Z", "2", "2"], "+"}], " ", "..."}], " ", "+", " ", 
-    SubsuperscriptBox["Z", "k", "2"]}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+    SubsuperscriptBox["Z", "k", "2"]}], TraditionalForm]]],
  ", donde cada Z es independiente y est\[AAcute] normalmente distribuido con \
-media cero y varianza uno."
+media cero y varianza uno. La distribuci\[OAcute]n ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Chi]", "2"], TraditionalForm]]],
+ " se puede interpretar como la distribuci\[OAcute]n del cuadrado de la \
+desviaci\[OAcute]n est\[AAcute]ndar en una muestra. En concreto (n-1) ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    SuperscriptBox["S", "2"], 
+    SuperscriptBox["\[Sigma]", "2"]], TraditionalForm]]],
+ " sigue la distribuci\[OAcute]n ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Chi]", "2"], TraditionalForm]]],
+ "."
 }], "Text",
  CellChangeTimes->{{3.6597440462592163`*^9, 3.659744052227128*^9}, {
-  3.65974545150949*^9, 3.65974569655541*^9}}],
+  3.65974545150949*^9, 3.65974569655541*^9}, {3.662238044974248*^9, 
+  3.662238112934184*^9}}],
 
 Cell[CellGroupData[{
 
@@ -819,7 +845,7 @@ Cell[BoxData[
     1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
        Hold[$CellContext`k$$], 2}, 1, 50, 1}, {{
        Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
-    Typeset`size$$ = {360., {109., 114.}}, Typeset`update$$ = 0, 
+    Typeset`size$$ = {360., {108., 112.}}, Typeset`update$$ = 0, 
     Typeset`initDone$$, Typeset`skipInitDone$$ = 
     True, $CellContext`k$23641$$ = 0, $CellContext`seed$23642$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
@@ -851,7 +877,7 @@ Cell[BoxData[
       "Options" :> {
        TrackedSymbols :> {$CellContext`k$$, $CellContext`seed$$}}, 
       "DefaultOptions" :> {}],
-     ImageSizeCache->{407., {166., 173.}},
+     ImageSizeCache->{411., {167., 174.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -884,32 +910,27 @@ libertad la distribuci\[OAcute]n de su varianza est\[AAcute] relacionada con \
 la distribuci\[OAcute]n ",
  Cell[BoxData[
   FormBox[
-   SuperscriptBox["\[Chi]", "2"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
- ". En concreto (n-1) ",
+   SuperscriptBox["\[Chi]", "2"], TraditionalForm]]],
+ ", (n-1) ",
  Cell[BoxData[
   FormBox[
    FractionBox[
     SuperscriptBox["S", "2"], 
-    SuperscriptBox["\[Sigma]", "2"]], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+    SuperscriptBox["\[Sigma]", "2"]], TraditionalForm]]],
  " sigue la distribuci\[OAcute]n ",
  Cell[BoxData[
   FormBox[
-   SuperscriptBox["\[Chi]", "2"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   SuperscriptBox["\[Chi]", "2"], TraditionalForm]]],
  ". Sea f(x) la funci\[OAcute]n de densidad de la distribuci\[OAcute]n ",
  Cell[BoxData[
   FormBox[
-   SuperscriptBox["\[Chi]", "2"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   SuperscriptBox["\[Chi]", "2"], TraditionalForm]]],
  ", con esto se puede obtener la probabilidad de que la desviaci\[OAcute]n \
 est\[AAcute]ndar sea menor a 8.8 integrando con los l\[IAcute]mites ",
  Cell[BoxData[
   FormBox[
    RowBox[{
-    SubscriptBox["x", "i"], " ", "=", " ", "0"}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+    SubscriptBox["x", "i"], " ", "=", " ", "0"}], TraditionalForm]]],
  ", ",
  Cell[BoxData[
   FormBox[
@@ -919,34 +940,30 @@ est\[AAcute]ndar sea menor a 8.8 integrando con los l\[IAcute]mites ",
      RowBox[{"(", 
       RowBox[{"n", "-", "1"}], ")"}], " ", 
      FractionBox["8.8", 
-      SuperscriptBox["\[Sigma]", "2"]]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+      SuperscriptBox["\[Sigma]", "2"]]}]}], TraditionalForm]]],
  ", de manera que ",
  Cell[BoxData[
   FormBox[
    SubsuperscriptBox["\[Integral]", 
     SubscriptBox["x", "i"], 
-    SubscriptBox["x", "f"]], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+    SubscriptBox["x", "f"]], TraditionalForm]]],
  "f(x) dx = 0.0257108. A continuaci\[OAcute]n se har\[AAcute] la prueba \
 generando la distribuci\[OAcute]n (n-1) ",
  Cell[BoxData[
   FormBox[
    FractionBox[
     SuperscriptBox["S", "2"], 
-    SuperscriptBox["\[Sigma]", "2"]], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+    SuperscriptBox["\[Sigma]", "2"]], TraditionalForm]]],
  " y comparando con la distribuci\[OAcute]n ",
  Cell[BoxData[
   FormBox[
-   SuperscriptBox["\[Chi]", "2"], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+   SuperscriptBox["\[Chi]", "2"], TraditionalForm]]],
  "."
 }], "Text",
  CellChangeTimes->{{3.659754386781773*^9, 3.659754477437516*^9}, 
    3.6597558747408733`*^9, {3.659759393282675*^9, 3.6597597621104794`*^9}, {
    3.659759797756734*^9, 3.65975983541247*^9}, {3.659764628790496*^9, 
-   3.659764629806123*^9}}],
+   3.659764629806123*^9}, {3.6622381237475147`*^9, 3.662238125014429*^9}}],
 
 Cell[CellGroupData[{
 
@@ -983,7 +1000,6 @@ Cell[BoxData[{
           RowBox[{"\[Sigma]", "^", "2"}]}]}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"AppendTo", "[", 
         RowBox[{"dist", ",", "s"}], "]"}], ";"}], ",", "\[IndentingNewLine]", 
-      
       RowBox[{"{", "k", "}"}]}], "\[IndentingNewLine]", "]"}], ";", 
     "\[IndentingNewLine]", 
     RowBox[{"Show", "[", "\[IndentingNewLine]", 
@@ -1057,7 +1073,7 @@ Cell[BoxData[
     1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
        Hold[$CellContext`k$$], 1500}, 1, 4450}, {{
        Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
-    Typeset`size$$ = {360., {109., 114.}}, Typeset`update$$ = 0, 
+    Typeset`size$$ = {360., {108., 112.}}, Typeset`update$$ = 0, 
     Typeset`initDone$$, Typeset`skipInitDone$$ = 
     True, $CellContext`k$144278$$ = 0, $CellContext`seed$144279$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
@@ -1094,7 +1110,7 @@ $CellContext`n]; $CellContext`s = ($CellContext`n - 1) (
       "Options" :> {
        TrackedSymbols :> {$CellContext`k$$, $CellContext`seed$$}}, 
       "DefaultOptions" :> {}],
-     ImageSizeCache->{407., {166., 173.}},
+     ImageSizeCache->{411., {167., 174.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -1150,7 +1166,6 @@ Cell[BoxData[
        "\[IndentingNewLine]", 
        RowBox[{"AppendTo", "[", 
         RowBox[{"dist", ",", "s"}], "]"}], ";"}], ",", "\[IndentingNewLine]", 
-      
       RowBox[{"{", "k", "}"}]}], "\[IndentingNewLine]", "]"}], ";", 
     "\[IndentingNewLine]", 
     RowBox[{"Show", "[", "\[IndentingNewLine]", 
@@ -1200,7 +1215,8 @@ Cell[BoxData[
   "]"}]], "Input",
  CellChangeTimes->{{3.6597587211622562`*^9, 3.6597587272169*^9}, {
   3.6597589580353823`*^9, 3.659759072856398*^9}, {3.6597591133526*^9, 
-  3.6597592187197*^9}, {3.6597592996827106`*^9, 3.659759350342332*^9}}],
+  3.6597592187197*^9}, {3.6597592996827106`*^9, 3.659759350342332*^9}, {
+  3.6622377949594774`*^9, 3.662237802996525*^9}}],
 
 Cell[BoxData[
  TagBox[
@@ -1211,15 +1227,15 @@ Cell[BoxData[
     1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
        Hold[$CellContext`k$$], 1500}, 1, 4450}, {{
        Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
-    Typeset`size$$ = {360., {119., 123.}}, Typeset`update$$ = 0, 
+    Typeset`size$$ = {360., {116., 119.}}, Typeset`update$$ = 0, 
     Typeset`initDone$$, Typeset`skipInitDone$$ = 
-    True, $CellContext`k$135899$$ = 0, $CellContext`seed$135900$$ = 0}, 
+    True, $CellContext`k$15631$$ = 0, $CellContext`seed$15632$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
      1, StandardForm, 
       "Variables" :> {$CellContext`k$$ = 1500, $CellContext`seed$$ = 1}, 
       "ControllerVariables" :> {
-        Hold[$CellContext`k$$, $CellContext`k$135899$$, 0], 
-        Hold[$CellContext`seed$$, $CellContext`seed$135900$$, 0]}, 
+        Hold[$CellContext`k$$, $CellContext`k$15631$$, 0], 
+        Hold[$CellContext`seed$$, $CellContext`seed$15632$$, 0]}, 
       "OtherVariables" :> {
        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
         Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
@@ -1253,7 +1269,7 @@ $CellContext`n]; $CellContext`s = StandardDeviation[$CellContext`sample];
       "Options" :> {
        TrackedSymbols :> {$CellContext`k$$, $CellContext`seed$$}}, 
       "DefaultOptions" :> {}],
-     ImageSizeCache->{407., {175., 182.}},
+     ImageSizeCache->{411., {175., 182.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -1267,7 +1283,8 @@ $CellContext`n]; $CellContext`s = StandardDeviation[$CellContext`sample];
  CellChangeTimes->{
   3.659758727918633*^9, {3.6597589833261642`*^9, 3.659759039484565*^9}, 
    3.6597590735013638`*^9, {3.65975911484556*^9, 3.659759185987767*^9}, 
-   3.659759218911718*^9, {3.6597593237326202`*^9, 3.659759351117372*^9}}]
+   3.659759218911718*^9, {3.6597593237326202`*^9, 3.659759351117372*^9}, {
+   3.6622377959922104`*^9, 3.662237803325759*^9}}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -1286,8 +1303,7 @@ distribuci\[OAcute]n se define como\n\nT = ",
    RowBox[{
     FractionBox["Z", 
      SqrtBox[
-      RowBox[{"Y", "/", "k"}]]], ".", " "}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+      RowBox[{"Y", "/", "k"}]]], ".", " "}], TraditionalForm]]],
  " Entonces cada medici\[OAcute]n est\[AAcute] dada por t = ",
  Cell[BoxData[
   FormBox[
@@ -1295,8 +1311,7 @@ distribuci\[OAcute]n se define como\n\nT = ",
     RowBox[{
      OverscriptBox["x", "_"], "-", " ", "\[Mu]"}], 
     RowBox[{"s", "/", 
-     SqrtBox["n"]}]], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+     SqrtBox["n"]}]], TraditionalForm]]],
  ", donde s = ",
  Cell[BoxData[
   FormBox[
@@ -1310,8 +1325,7 @@ distribuci\[OAcute]n se define como\n\nT = ",
       RowBox[{"(", 
        RowBox[{
         SubscriptBox["x", "i"], "-", " ", 
-        OverscriptBox["x", "_"]}], ")"}], "2"]}]}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
+        OverscriptBox["x", "_"]}], ")"}], "2"]}]}], TraditionalForm]]],
  ". La distribuci\[OAcute]n t-Student se puede interpretar como la distribuci\
 \[OAcute]n de la localizaci",
  "\[OAcute]n de la media verdadera.",
@@ -1324,8 +1338,7 @@ definici\[OAcute]n T = ",
      SqrtBox[
       RowBox[{"Y", "/", "k"}]]], " ", "se", " ", "ajusta", " ", "a", " ", 
     "la", " ", "distribuci\[OAcute]n", " ", "de", " ", 
-    RowBox[{"Student", "."}]}], TraditionalForm]],
-  FormatType->"TraditionalForm"]
+    RowBox[{"Student", "."}]}], TraditionalForm]]]
 }], "Text",
  CellChangeTimes->{{3.6597448217785597`*^9, 3.659744910133794*^9}, {
   3.659744952980201*^9, 3.6597450908687267`*^9}, {3.6597465421667223`*^9, 
@@ -1397,7 +1410,7 @@ Cell[BoxData[
     1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
        Hold[$CellContext`k$$], 2}, 1, 50}, {{
        Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
-    Typeset`size$$ = {360., {111., 116.}}, Typeset`update$$ = 0, 
+    Typeset`size$$ = {360., {110., 114.}}, Typeset`update$$ = 0, 
     Typeset`initDone$$, Typeset`skipInitDone$$ = 
     True, $CellContext`k$34250$$ = 0, $CellContext`seed$34251$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
@@ -1427,7 +1440,7 @@ Cell[BoxData[
       "Options" :> {
        TrackedSymbols :> {$CellContext`k$$, $CellContext`seed$$}}, 
       "DefaultOptions" :> {}],
-     ImageSizeCache->{407., {168., 175.}},
+     ImageSizeCache->{411., {169., 176.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -1550,7 +1563,7 @@ Cell[BoxData[
     1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
        Hold[$CellContext`k$$], 50}, 1, 450}, {{
        Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
-    Typeset`size$$ = {360., {111., 116.}}, Typeset`update$$ = 0, 
+    Typeset`size$$ = {360., {110., 114.}}, Typeset`update$$ = 0, 
     Typeset`initDone$$, Typeset`skipInitDone$$ = 
     True, $CellContext`k$42615$$ = 0, $CellContext`seed$42616$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
@@ -1588,7 +1601,7 @@ $CellContext`\[Mu])/($CellContext`s/$CellContext`n^Rational[1, 2]);
       "Options" :> {
        TrackedSymbols :> {$CellContext`k$$, $CellContext`seed$$}}, 
       "DefaultOptions" :> {}],
-     ImageSizeCache->{407., {168., 175.}},
+     ImageSizeCache->{411., {169., 176.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -1763,7 +1776,7 @@ Cell[BoxData[
     1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
        Hold[$CellContext`k$$], 1500}, 1, 4450}, {{
        Hold[$CellContext`seed$$], 1, "Semilla"}, 1, 100000, 1}}, 
-    Typeset`size$$ = {360., {120., 125.}}, Typeset`update$$ = 0, 
+    Typeset`size$$ = {360., {117., 122.}}, Typeset`update$$ = 0, 
     Typeset`initDone$$, Typeset`skipInitDone$$ = 
     True, $CellContext`k$259759$$ = 0, $CellContext`seed$259760$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
@@ -1807,7 +1820,7 @@ $CellContext`n]; $CellContext`s = (
       "Options" :> {
        TrackedSymbols :> {$CellContext`k$$, $CellContext`seed$$}}, 
       "DefaultOptions" :> {}],
-     ImageSizeCache->{407., {177., 184.}},
+     ImageSizeCache->{411., {177., 184.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -1839,9 +1852,9 @@ Cell[BoxData["99.25095661187254`"], "Output",
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1440, 752},
-WindowMargins->{{181, Automatic}, {111, Automatic}},
-FrontEndVersion->"10.1 for Linux x86 (64-bit) (March 23, 2015)",
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -1856,92 +1869,92 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 104, 1, 102, "Title"],
+Cell[580, 22, 104, 1, 101, "Title"],
 Cell[CellGroupData[{
-Cell[709, 27, 115, 1, 73, "Chapter"],
-Cell[827, 30, 1025, 30, 146, "Text"]
+Cell[709, 27, 115, 1, 72, "Chapter"],
+Cell[827, 30, 1472, 42, 262, "Text"]
 }, Open  ]],
-Cell[1867, 63, 118, 1, 73, "Chapter"],
+Cell[2314, 75, 118, 1, 72, "Chapter"],
 Cell[CellGroupData[{
-Cell[2010, 68, 119, 1, 62, "Chapter"],
-Cell[2132, 71, 361, 6, 59, "Text"],
+Cell[2457, 80, 119, 1, 61, "Chapter"],
+Cell[2579, 83, 361, 6, 30, "Text"],
 Cell[CellGroupData[{
-Cell[2518, 81, 2140, 58, 111, "Input"],
-Cell[4661, 141, 2397, 51, 432, "Output"]
+Cell[2965, 93, 2140, 58, 144, "Input"],
+Cell[5108, 153, 2397, 51, 438, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7107, 198, 112, 1, 73, "Chapter"],
-Cell[7222, 201, 1132, 28, 138, "Text"],
+Cell[7554, 210, 112, 1, 72, "Chapter"],
+Cell[7669, 213, 1132, 28, 116, "Text"],
 Cell[CellGroupData[{
-Cell[8379, 233, 99, 1, 69, "Subchapter"],
-Cell[8481, 236, 364, 6, 57, "ItemNumbered"],
+Cell[8826, 245, 99, 1, 67, "Subchapter"],
+Cell[8928, 248, 364, 6, 47, "ItemNumbered"],
 Cell[CellGroupData[{
-Cell[8870, 246, 1895, 49, 188, "Input"],
+Cell[9317, 258, 1895, 49, 218, "Input"],
 Cell[CellGroupData[{
-Cell[10790, 299, 134, 2, 25, "Print"],
-Cell[10927, 303, 134, 2, 25, "Print"],
-Cell[11064, 307, 133, 2, 25, "Print"]
+Cell[11237, 311, 134, 2, 23, "Print"],
+Cell[11374, 315, 134, 2, 23, "Print"],
+Cell[11511, 319, 133, 2, 23, "Print"]
 }, Open  ]]
 }, Open  ]],
-Cell[11224, 313, 5396, 170, 415, "ItemNumbered"],
+Cell[11671, 325, 5396, 170, 338, "ItemNumbered"],
 Cell[CellGroupData[{
-Cell[16645, 487, 2019, 54, 243, "Input"],
+Cell[17092, 499, 2019, 54, 258, "Input"],
 Cell[CellGroupData[{
-Cell[18689, 545, 141, 2, 25, "Print"],
-Cell[18833, 549, 136, 2, 25, "Print"]
+Cell[19136, 557, 141, 2, 23, "Print"],
+Cell[19280, 561, 136, 2, 23, "Print"]
 }, Open  ]]
 }, Open  ]],
-Cell[18996, 555, 250, 5, 35, "Text"],
+Cell[19443, 567, 250, 5, 30, "Text"],
 Cell[CellGroupData[{
-Cell[19271, 564, 3273, 78, 587, "Input"],
-Cell[22547, 644, 2930, 63, 374, "Output"]
-}, Open  ]]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[25538, 714, 203, 6, 73, "Chapter"],
-Cell[25744, 722, 803, 21, 61, "Text"],
-Cell[CellGroupData[{
-Cell[26572, 747, 2557, 63, 361, "Input"],
-Cell[29132, 812, 2724, 56, 356, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[31893, 873, 95, 1, 69, "Subchapter"],
-Cell[31991, 876, 2592, 72, 196, "Text"],
-Cell[CellGroupData[{
-Cell[34608, 952, 4039, 96, 563, "Input"],
-Cell[38650, 1050, 2725, 57, 356, "Output"],
-Cell[41378, 1109, 96, 1, 25, "Print"],
-Cell[41477, 1112, 87, 1, 33, "Output"]
-}, Open  ]],
-Cell[41579, 1116, 303, 5, 35, "Text"],
-Cell[CellGroupData[{
-Cell[41907, 1125, 3302, 77, 536, "Input"],
-Cell[45212, 1204, 3117, 65, 374, "Output"]
+Cell[19718, 576, 3273, 78, 635, "Input"],
+Cell[22994, 656, 2930, 63, 374, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[48390, 1276, 114, 1, 73, "Chapter"],
-Cell[48507, 1279, 1925, 54, 163, "Text"],
+Cell[25985, 726, 203, 6, 72, "Chapter"],
+Cell[26191, 734, 1291, 35, 70, "Text"],
 Cell[CellGroupData[{
-Cell[50457, 1337, 1903, 51, 264, "Input"],
-Cell[52363, 1390, 2472, 52, 360, "Output"]
-}, Open  ]],
-Cell[54850, 1445, 642, 19, 56, "Text"],
-Cell[CellGroupData[{
-Cell[55517, 1468, 3071, 73, 601, "Input"],
-Cell[58591, 1543, 2902, 59, 360, "Output"]
+Cell[27507, 773, 2557, 63, 472, "Input"],
+Cell[30067, 838, 2724, 56, 358, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[61530, 1607, 95, 1, 69, "Subchapter"],
-Cell[61628, 1610, 1529, 35, 228, "Text"],
+Cell[32828, 899, 95, 1, 67, "Subchapter"],
+Cell[32926, 902, 2331, 63, 172, "Text"],
 Cell[CellGroupData[{
-Cell[63182, 1649, 4261, 105, 611, "Input"],
-Cell[67446, 1756, 3202, 67, 378, "Output"],
-Cell[70651, 1825, 296, 4, 25, "Print"],
-Cell[70950, 1831, 282, 4, 33, "Output"]
+Cell[35282, 969, 4032, 95, 668, "Input"],
+Cell[39317, 1066, 2725, 57, 358, "Output"],
+Cell[42045, 1125, 96, 1, 23, "Print"],
+Cell[42144, 1128, 87, 1, 31, "Output"]
+}, Open  ]],
+Cell[42246, 1132, 303, 5, 30, "Text"],
+Cell[CellGroupData[{
+Cell[42574, 1141, 3346, 77, 592, "Input"],
+Cell[45923, 1220, 3165, 66, 374, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49149, 1293, 114, 1, 72, "Chapter"],
+Cell[49266, 1296, 1793, 50, 125, "Text"],
+Cell[CellGroupData[{
+Cell[51084, 1350, 1903, 51, 342, "Input"],
+Cell[52990, 1403, 2472, 52, 362, "Output"]
+}, Open  ]],
+Cell[55477, 1458, 642, 19, 52, "Text"],
+Cell[CellGroupData[{
+Cell[56144, 1481, 3071, 73, 712, "Input"],
+Cell[59218, 1556, 2902, 59, 362, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[62157, 1620, 95, 1, 67, "Subchapter"],
+Cell[62255, 1623, 1529, 35, 156, "Text"],
+Cell[CellGroupData[{
+Cell[63809, 1662, 4261, 105, 686, "Input"],
+Cell[68073, 1769, 3202, 67, 378, "Output"],
+Cell[71278, 1838, 296, 4, 23, "Print"],
+Cell[71577, 1844, 282, 4, 31, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
