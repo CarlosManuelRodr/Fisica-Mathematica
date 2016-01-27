@@ -1,8 +1,10 @@
 Física-Mathematica
 =============
 
-Soluciones a problemas de física hechas en Mathematica. Se incluyen notebooks de:
+Soluciones a problemas de variados hechas en Mathematica. Se incluyen notebooks de:
 
+* Algoritmos de compresión
+* Aprendizaje automático
 * Aleatoriedad de autómata celular regla 30
 * Eigenestados de billar cuántico
 * Caminante aleatorio (juego de moneda)
@@ -12,6 +14,7 @@ Soluciones a problemas de física hechas en Mathematica. Se incluyen notebooks d
 * Algoritmo simple de compresión de audio
 * Cálculo de dimensión fractal
 * Tiempo de retorno cuántico
+* Tráfico vehicular
 
 En algunos notebooks también se incluye documentación acerca de cómo se resuelven los problemas.
 
