@@ -1,0 +1,187 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5619,        177]
+NotebookOptionsPosition[      4978,        150]
+NotebookOutlinePosition[      5314,        165]
+CellTagsIndexPosition[      5271,        162]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"td", "=", 
+   RowBox[{
+    RowBox[{"ExampleData", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\"\<MachineLearning\>\"", ",", "\"\<MNIST\>\""}], "}"}], ",", 
+      "\"\<TrainingData\>\""}], "]"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ";;", "12665"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"td", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Flatten", "[", 
+        RowBox[{"ImageData", "[", 
+         RowBox[{
+          RowBox[{"td", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{"td", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "[", "td", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"td", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "1"}], "]"}], "]"}], " ", "=", " ", 
+   RowBox[{"1", "-", 
+    RowBox[{"td", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "1"}], "]"}], "]"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.663295091064804*^9, 3.663295092224983*^9}, {
+  3.6632952031911497`*^9, 3.663295210847416*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"sample", " ", "=", " ", 
+   RowBox[{"RandomSample", "[", 
+    RowBox[{"td", ",", "1783"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"logit", " ", "=", " ", 
+   RowBox[{"LogitModelFit", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"sample", "[", 
+       RowBox[{"[", 
+        RowBox[{"All", ",", "1"}], "]"}], "]"}], ",", 
+      RowBox[{"sample", "[", 
+       RowBox[{"[", 
+        RowBox[{"All", ",", "2"}], "]"}], "]"}]}], "}"}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.663295476798562*^9, 3.663295546809689*^9}, {
+  3.663295656694722*^9, 3.66329573108781*^9}, {3.663296028010775*^9, 
+  3.663296033832271*^9}, {3.663296232520447*^9, 3.6632962331676893`*^9}, {
+  3.6632963946031017`*^9, 3.663296403491131*^9}, {3.6632965490362062`*^9, 
+  3.663296555137673*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"LogitModelFit", "::", "rank"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The rank of the design matrix \[NoBreak]\\!\\(496\\)\
+\[NoBreak] is less than the number of terms \[NoBreak]\\!\\(784\\)\[NoBreak] \
+in the model. The model and results based upon it may contain significant \
+numerical error. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\
+\"Link\\\", ButtonFrame->None, ButtonData:>\\\"paclet:ref/LogitModelFit\\\", \
+ButtonNote -> \\\"LogitModelFit::rank\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{
+  3.663295492138427*^9, {3.663295522459545*^9, 3.663295570599737*^9}, {
+   3.663295607148995*^9, 3.66329561154809*^9}, {3.6632956658938437`*^9, 
+   3.663295732202434*^9}, 3.6632960341607027`*^9, 3.663296233535789*^9, 
+   3.6632964092635117`*^9, 3.663296556244588*^9, 3.663296836011098*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"sample", "[", 
+  RowBox[{"[", 
+   RowBox[{"2", ",", "2"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Apply", "[", 
+  RowBox[{"logit", ",", 
+   RowBox[{"sample", "[", 
+    RowBox[{"[", 
+     RowBox[{"2", ",", "1"}], "]"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.663296739351904*^9, 3.663296766216442*^9}, {
+  3.663296862731617*^9, 3.663296864396489*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{{3.663296751359417*^9, 3.663296766751288*^9}, {
+  3.663296845947166*^9, 3.6632968647126083`*^9}}],
+
+Cell[BoxData["2.5367839396943484`*^-29"], "Output",
+ CellChangeTimes->{{3.663296751359417*^9, 3.663296766751288*^9}, {
+  3.663296845947166*^9, 3.6632968648383017`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"sample", "[", 
+  RowBox[{"[", 
+   RowBox[{"1", ",", "2"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Apply", "[", 
+  RowBox[{"logit", ",", 
+   RowBox[{"sample", "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ",", "1"}], "]"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.663296870933879*^9, 3.6632968728373938`*^9}}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{3.663296873157464*^9}],
+
+Cell[BoxData["0.9999999999992091`"], "Output",
+ CellChangeTimes->{3.6632968732840633`*^9}]
+}, Open  ]]
+},
+WindowSize->{808, 911},
+WindowMargins->{{518, Automatic}, {Automatic, 37}},
+FrontEndVersion->"10.1 for Linux x86 (64-bit) (March 23, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1365, 42, 86, "Input"],
+Cell[CellGroupData[{
+Cell[1948, 66, 835, 21, 61, "Input"],
+Cell[2786, 89, 876, 15, 59, "Message"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3699, 109, 394, 10, 61, "Input"],
+Cell[4096, 121, 145, 2, 33, "Output"],
+Cell[4244, 125, 168, 2, 33, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4449, 132, 347, 9, 61, "Input"],
+Cell[4799, 143, 70, 1, 33, "Output"],
+Cell[4872, 146, 90, 1, 66, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
