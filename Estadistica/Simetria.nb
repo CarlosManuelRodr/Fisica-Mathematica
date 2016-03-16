@@ -10,20 +10,24 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17529,        486]
-NotebookOptionsPosition[     16885,        459]
-NotebookOutlinePosition[     17222,        474]
-CellTagsIndexPosition[     17179,        471]
+NotebookDataLength[     20377,        551]
+NotebookOptionsPosition[     19101,        508]
+NotebookOutlinePosition[     19436,        523]
+CellTagsIndexPosition[     19393,        520]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-
-Cell[CellGroupData[{
-Cell["Prueba de simetr\[IAcute]a", "Chapter",
- CellChangeTimes->{{3.665100131642851*^9, 3.665100133666543*^9}}],
-
 Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetOptions", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"Histogram", ",", "Plot", ",", "ListPlot", ",", "ListLinePlot"}],
+      "}"}], ",", 
+    RowBox[{"BaseStyle", "\[Rule]", 
+     RowBox[{"FontSize", "\[Rule]", "14"}]}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"TestSymmetry", "[", "data_", "]"}], ":=", 
@@ -45,119 +49,90 @@ Cell[BoxData[{
     "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"AutoFindMedian", "[", "n_", "]"}], ":=", " ", 
-   RowBox[{"Module", "[", 
-    RowBox[{
-     RowBox[{"{", "symmetryval", "}"}], ",", "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"symmetryval", " ", "=", " ", 
-       RowBox[{"ParallelTable", "[", 
-        RowBox[{
-         RowBox[{"TestSymmetry", "[", 
-          RowBox[{"RandomVariate", "[", 
-           RowBox[{
-            RowBox[{"NormalDistribution", "[", "]"}], ",", "n"}], "]"}], 
-          "]"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"i", ",", "0", ",", "2000"}], "}"}]}], "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"Return", "[", 
-       RowBox[{"Median", "[", "symmetryval", "]"}], "]"}], ";"}]}], 
-    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"BuildInterpolationData", "[", "]"}], " ", ":=", 
+   RowBox[{"TestAndViewSymmetry", "[", "data_", "]"}], ":=", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
-      RowBox[{"smallmed", ",", " ", "bigmed", ",", "med"}], "}"}], ",", 
-     "\[IndentingNewLine]", 
+      RowBox[{"o1", ",", "o2", ",", "l"}], "}"}], ",", "\[IndentingNewLine]", 
+     
      RowBox[{
-      RowBox[{"If", "[", 
-       RowBox[{
-        RowBox[{"FileExistsQ", "[", 
+      RowBox[{"o2", " ", "=", " ", 
+       RowBox[{"Sort", "[", "data", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"o1", " ", "=", " ", 
+       RowBox[{"Sort", "[", 
+        RowBox[{"-", "data"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"l", " ", "=", " ", 
+       RowBox[{"Transpose", "[", 
+        RowBox[{"{", 
+         RowBox[{"o1", ",", "o2"}], "}"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"Histogram", "[", 
+        RowBox[{"data", ",", "Automatic", ",", " ", "\"\<PDF\>\"", ",", 
+         RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
          RowBox[{
-          RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<med.wdx\>\""}], 
-         "]"}], ",", "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{"med", " ", "=", " ", 
-          RowBox[{"Import", "[", 
+         "PlotLabel", "\[Rule]", "\"\<Histograma de los datos\>\""}]}], "]"}],
+        "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"ListPlot", "[", 
+        RowBox[{"l", ",", 
+         RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", " ", 
+         RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+         RowBox[{"FrameLabel", "\[Rule]", 
+          RowBox[{"{", 
            RowBox[{
-            RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
-            "\"\<med.wdx\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", ",", 
-        "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{"smallmed", " ", "=", "  ", 
-          RowBox[{"Monitor", "[", 
-           RowBox[{
-            RowBox[{"Table", "[", 
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{"n", ",", 
-                RowBox[{"AutoFindMedian", "[", "n", "]"}]}], "}"}], ",", 
-              RowBox[{"{", 
-               RowBox[{"n", ",", "10", ",", "999", ",", "1"}], "}"}]}], "]"}],
-             ",", "n"}], "]"}]}], ";", "\[IndentingNewLine]", 
-         RowBox[{"bigmed", " ", "=", " ", 
-          RowBox[{"Monitor", "[", 
-           RowBox[{
-            RowBox[{"Table", "[", 
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{"n", ",", 
-                RowBox[{"AutoFindMedian", "[", "n", "]"}]}], "}"}], ",", 
-              RowBox[{"{", 
-               RowBox[{"n", ",", "1000", ",", "40000", ",", "500"}], "}"}]}], 
-             "]"}], ",", "n"}], "]"}]}], ";", "\[IndentingNewLine]", 
-         RowBox[{"med", " ", "=", " ", 
-          RowBox[{"Join", "[", 
-           RowBox[{"smallmed", ",", "bigmed"}], "]"}]}], ";", 
-         "\[IndentingNewLine]", 
-         RowBox[{"Export", "[", 
-          RowBox[{
-           RowBox[{
-            RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
-            "\"\<med.wdx\>\""}], ",", "med"}], "]"}], ";"}]}], 
-       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"Return", "[", "med", "]"}], ";"}]}], "\[IndentingNewLine]", 
-    "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"GetSymmetrySignificance", "[", "data_", "]"}], ":=", " ", 
-   RowBox[{"Module", "[", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{"n", ",", "val", ",", "f", ",", "med"}], "}"}], ",", 
-     "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"med", " ", "=", " ", 
-       RowBox[{"BuildInterpolationData", "[", "]"}]}], ";", 
+           "\"\<\!\(\*SubscriptBox[\(o\), \(1\)]\)\>\"", ",", 
+            "\"\<\!\(\*SubscriptBox[\(o\), \(2\)]\)\>\""}], "}"}]}], ",", " ", 
+         RowBox[{
+         "PlotLabel", "\[Rule]", "\"\<Mapa de simetr\[IAcute]a\>\""}]}], 
+        "]"}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", "\"\<Resultado del test: \>\"", "]"}], ";", 
       "\[IndentingNewLine]", 
-      RowBox[{"n", " ", "=", " ", 
-       RowBox[{"Length", "[", "data", "]"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"val", " ", "=", " ", 
-       RowBox[{"TestSymmetry", "[", "data", "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"f", " ", "=", " ", 
-       RowBox[{"Interpolation", "[", "med", "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"Return", "[", 
-       RowBox[{"Probability", "[", 
-        RowBox[{
-         RowBox[{"x", " ", "\[LessEqual]", " ", "val"}], ",", " ", 
-         RowBox[{"x", "\[Distributed]", " ", 
-          RowBox[{"WeibullDistribution", "[", 
-           RowBox[{"n", ",", 
-            RowBox[{"f", "[", "n", "]"}]}], "]"}]}]}], "]"}], "]"}], ";"}]}], 
+      RowBox[{"Print", "[", 
+       RowBox[{"N", "[", 
+        RowBox[{"Correlation", "[", 
+         RowBox[{"o1", ",", "o2"}], "]"}], "]"}], "]"}], ";"}]}], 
     "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
  InitializationCell->True,
- CellChangeTimes->{{3.6651001820785217`*^9, 3.6651001822697163`*^9}}]
-}, Open  ]],
+ CellChangeTimes->{{3.6649839916019*^9, 3.664984032498282*^9}, {
+  3.664984082714478*^9, 3.664984116034243*^9}, {3.664984179954371*^9, 
+  3.6649841816242943`*^9}, {3.664984268655406*^9, 3.664984326169598*^9}, {
+  3.664989093227152*^9, 3.664989148122306*^9}, {3.664989190436137*^9, 
+  3.6649892866819353`*^9}, {3.664989325533073*^9, 3.664989357127573*^9}, {
+  3.665430474983205*^9, 3.66543047513659*^9}}],
 
-Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"data", " ", "=", " ", 
+   RowBox[{"data", "=", 
+    RowBox[{"RandomVariate", "[", 
+     RowBox[{
+      RowBox[{"NormalDistribution", "[", "]"}], ",", 
+      RowBox[{"10", "^", "4"}]}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TestAndViewSymmetry", "[", "data", "]"}]}], "Input",
+ CellChangeTimes->{{3.6649843645269117`*^9, 3.664984370387862*^9}}],
 
-Cell["Resultados de la prueba de simetr\[IAcute]a", "Chapter",
- CellChangeTimes->{{3.665100153194335*^9, 3.66510015777026*^9}}],
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"RandomVariate", "[", 
+    RowBox[{
+     RowBox[{"PoissonDistribution", "[", "10", "]"}], ",", 
+     RowBox[{"10", "^", "4"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TestAndViewSymmetry", "[", "data", "]"}]}], "Input",
+ CellChangeTimes->{{3.6649840709349127`*^9, 3.664984076143619*^9}, 
+   3.664984347519019*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"data", " ", "=", " ", 
+   RowBox[{"RandomVariate", "[", 
+    RowBox[{
+     RowBox[{"ChiSquareDistribution", "[", "4", "]"}], ",", 
+     RowBox[{"10", "^", "5"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TestAndViewSymmetry", "[", "data", "]"}]}], "Input",
+ CellChangeTimes->{{3.6649842206375217`*^9, 3.6649842308461943`*^9}, 
+   3.66498435315141*^9}],
 
 Cell[BoxData[{
  RowBox[{
@@ -218,6 +193,18 @@ Cell[BoxData[{
   3.6649866952869864`*^9}, {3.664986741685212*^9, 3.664986767550349*^9}, {
   3.665087447670972*^9, 3.66508746776626*^9}}],
 
+Cell[BoxData[
+ RowBox[{"TestAndViewSymmetry", "[", 
+  RowBox[{"GetSymmetricTable", "[", 
+   RowBox[{"0", ",", "200"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.664986773693787*^9, 3.664986784747916*^9}}],
+
+Cell[BoxData[
+ RowBox[{"TestAndViewSymmetry", "[", 
+  RowBox[{"GetSymmetricTable", "[", 
+   RowBox[{"0.99", ",", "200"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.664986804867572*^9, 3.664986805386318*^9}}],
+
 Cell[BoxData[{
  RowBox[{
   RowBox[{"symmetryval", " ", "=", " ", 
@@ -275,190 +262,252 @@ Cell[BoxData[{
      "}"}]}]}], "]"}]}], "Input",
  CellChangeTimes->{{3.664988777601439*^9, 3.6649888194254627`*^9}, {
   3.664988853194372*^9, 3.664988912735911*^9}, {3.664988945332404*^9, 
-  3.66498897312162*^9}}]
+  3.66498897312162*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Modificaci\[OAcute]n de la distribuci\[OAcute]n", "Chapter",
+ CellChangeTimes->{{3.665844649695818*^9, 3.6658446554558*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Variando el tama\[NTilde]o de la muestra", "Subchapter",
+ CellChangeTimes->{{3.6658526756228724`*^9, 3.665852679174673*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"nmin", " ", "=", " ", "100"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nmax", " ", "=", " ", "20000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ndelta", " ", "=", " ", "1000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sim", " ", "=", " ", "5000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"symmetryval", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"n", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        RowBox[{
+         RowBox[{"TestSymmetry", "[", 
+          RowBox[{"RandomVariate", "[", 
+           RowBox[{
+            RowBox[{"NormalDistribution", "[", "]"}], ",", "n"}], "]"}], 
+          "]"}], "^", "2"}]}], ")"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "nmin", ",", "nmax", ",", "ndelta"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "0", ",", "sim"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rang", " ", "=", " ", 
+   RowBox[{"Range", "[", 
+    RowBox[{"nmin", ",", " ", "nmax", ",", "ndelta"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"SmoothHistogram", "[", 
+  RowBox[{"symmetryval", ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", "rang"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.665430537718813*^9, 3.665430541745634*^9}, {
+  3.6654306496068106`*^9, 3.6654306837217455`*^9}, {3.6654307367307568`*^9, 
+  3.665430751996909*^9}, {3.6654308115643616`*^9, 3.6654308407554035`*^9}, {
+  3.6654309375059586`*^9, 3.665430945111758*^9}, {3.665431165486521*^9, 
+  3.665431167174038*^9}, {3.665852266233768*^9, 3.665852276417218*^9}, {
+  3.665852314385582*^9, 3.665852363438438*^9}, {3.665852433800056*^9, 
+  3.665852435462249*^9}, {3.665852735614325*^9, 3.665852753792819*^9}, {
+  3.6658529820437593`*^9, 3.665853029439454*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"Map", "[", 
+    RowBox[{"Mean", ",", "symmetryval"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Media\>\""}], ",", 
+   RowBox[{"DataRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"nmin", ",", "nmax"}], "}"}]}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Experimentos\>\"", ",", "\"\<Media\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{3.6658527044349117`*^9, 3.665852759700206*^9}],
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"Map", "[", 
+    RowBox[{"StandardDeviation", ",", "symmetryval"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Media\>\""}], ",", 
+   RowBox[{"DataRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"nmin", ",", "nmax"}], "}"}]}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Experimentos\>\"", ",", "\"\<Media\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.665853480778475*^9, 3.665853481836174*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Aplicaci\[OAcute]n", "Chapter",
- CellChangeTimes->{{3.66509841263922*^9, 3.6650984141828957`*^9}}],
+Cell["Variando el n\[UAcute]mero de experimentos", "Subchapter",
+ CellChangeTimes->{{3.665852683462607*^9, 3.665852689062642*^9}}],
+
+Cell[BoxData[
+ RowBox[{"FindDistribution", "[", 
+  RowBox[{"symmetryval", ",", "3"}], "]"}]], "Input",
+ CellChangeTimes->{{3.665430777830163*^9, 3.6654307928426957`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"simmin", " ", "=", " ", "500"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"simmax", " ", "=", " ", "100000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"simdelta", " ", "=", " ", "5000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"symtable", " ", "=", " ", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"n", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        RowBox[{
+         RowBox[{"TestSymmetry", "[", 
+          RowBox[{"RandomVariate", "[", 
+           RowBox[{
+            RowBox[{"NormalDistribution", "[", "]"}], ",", "n"}], "]"}], 
+          "]"}], "^", "2"}]}], ")"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "simmin", ",", " ", "simmax", ",", "simdelta"}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "1", ",", "i"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rang", " ", "=", " ", 
+   RowBox[{"Range", "[", 
+    RowBox[{"simmin", ",", " ", "simmax", ",", "simdelta"}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.665431608527031*^9, 3.665431668888686*^9}, {
+  3.665844716707131*^9, 3.665844772378848*^9}, {3.665845055815075*^9, 
+  3.665845091408924*^9}, {3.665845300536862*^9, 3.6658453302959642`*^9}, {
+  3.66584638539575*^9, 3.665846422136108*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SmoothHistogram", "[", 
+  RowBox[{"symtable", ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", "rang"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Simetr\[IAcute]a\>\"", ",", "\"\<PDF\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6654318646917405`*^9, 3.6654318825385246`*^9}, {
+  3.6658452656634207`*^9, 3.665845291759604*^9}, {3.6658453567996492`*^9, 
+  3.665845361390011*^9}, {3.6658455421810827`*^9, 3.665845574213594*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Map", "[", 
+  RowBox[{"FindDistribution", ",", "symtable"}], "]"}]], "Input",
+ CellChangeTimes->{{3.665845370341778*^9, 3.6658453812055197`*^9}}],
 
 Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{"SetOptions", "[", 
-    RowBox[{"ListLinePlot", ",", 
-     RowBox[{"BaseStyle", "\[Rule]", 
-      RowBox[{"{", 
-       RowBox[{"FontSize", "\[Rule]", "13"}], "}"}]}]}], "]"}], ";"}], " ", 
-  RowBox[{"(*", " ", 
-   RowBox[{"Opciones", " ", "de", " ", "la", " ", 
-    RowBox[{"gr\[AAcute]fica", ".", " ", "Aqu\[IAcute]"}], " ", "cambio", " ",
-     "el", " ", "tama\[NTilde]o", " ", "de", " ", "la", " ", 
-    RowBox[{"fuente", "."}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
- RowBox[{
+   RowBox[{"FitLogNormal", "[", "data_", "]"}], ":=", 
+   RowBox[{"FindDistributionParameters", "[", 
+    RowBox[{"data", ",", 
+     RowBox[{"LogNormalDistribution", "[", 
+      RowBox[{"\[Mu]", ",", "\[Sigma]"}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
   RowBox[{
-   RowBox[{"markets", " ", "=", " ", 
+   RowBox[{"\[Mu]", " ", "/.", " ", 
+    RowBox[{"Map", "[", 
+     RowBox[{"FitLogNormal", ",", "symtable"}], "]"}]}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"DataRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"simmin", ",", " ", "simmax"}], "}"}]}], " ", ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Experimentos\>\"", ",", "\"\<Media\>\""}], "}"}]}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.665851936586556*^9, 3.665852002817666*^9}, {
+  3.6658520409392357`*^9, 3.665852079435643*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"\[Sigma]", " ", "/.", " ", 
+    RowBox[{"Map", "[", 
+     RowBox[{"FitLogNormal", ",", "symtable"}], "]"}]}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"DataRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"simmin", ",", " ", "simmax"}], "}"}]}], " ", ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
     RowBox[{"{", 
      RowBox[{
-      RowBox[{"{", 
-       RowBox[{"\"\<S&P 500\>\"", ",", "\"\<^GSPC\>\""}], "}"}], ",", 
-      RowBox[{"{", 
-       RowBox[{"\"\<NASDAQ Composite\>\"", ",", " ", "\"\<^IXIC\>\""}], "}"}],
-       ",", 
-      RowBox[{"{", 
-       RowBox[{"\"\<IPC\>\"", ",", "\"\<^MXX\>\""}], "}"}], ",", 
-      RowBox[{"{", 
-       RowBox[{"\"\<Footsie 100 (London)\>\"", ",", "\"\<^FTSE\>\""}], "}"}], 
-      ",", 
-      RowBox[{"{", 
-       RowBox[{"\"\<Deutscher Aktienindex\>\"", ",", "\"\<^GDAXI\>\""}], 
-       "}"}]}], "}"}]}], ";"}], " ", 
-  RowBox[{"(*", " ", 
-   RowBox[{
-    RowBox[{
-    "Esta", " ", "es", " ", "una", " ", "lista", " ", "con", " ", "los", " ", 
-     "mercados", " ", "que", " ", "voy", " ", "a", " ", 
-     RowBox[{"usar", ".", " ", "Primero"}], " ", "escribo", " ", "el", " ", 
-     "nombre", " ", "que", " ", "quiero", " ", "que", " ", "salga", " ", "en",
-      " ", "la", " ", "gr\[AAcute]fica"}], ",", " ", 
-    RowBox[{"y", " ", "luego", " ", "el", " ", 
-     RowBox[{"mercado", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{
-   "Estas", " ", "son", " ", "etiquetas", " ", "para", " ", "acceder", " ", 
-    "a", " ", "los", " ", "elementos", " ", "de", " ", "la", " ", 
-    RowBox[{"lista", "."}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"LOpen", " ", "=", " ", "1"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"LHigh", " ", "=", " ", "2"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"LLow", " ", "=", " ", "3"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"LClose", " ", "=", " ", "4"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
+     "\"\<Experimentos\>\"", ",", 
+      "\"\<Desviaci\[OAcute]n est\[AAcute]ndar\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.66585201329703*^9, 3.6658520153371468`*^9}, {
+  3.665852092627002*^9, 3.665852105216601*^9}}],
+
+Cell["De la muestra", "Text",
+ CellChangeTimes->{{3.6658521111973057`*^9, 3.665852112893211*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
   RowBox[{
-   RowBox[{"LVolume", " ", "=", " ", "5"}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"timelag", " ", "=", " ", "2"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"svalues", " ", "=", " ", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"ret", " ", "=", " ", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"Do", "[", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"data", " ", "=", " ", 
-       RowBox[{"FinancialData", "[", 
-        RowBox[{"i", ",", "\"\<OHLCV\>\"", ",", 
-         RowBox[{"{", 
-          RowBox[{"2013", ",", "1", ",", "1"}], "}"}]}], "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"retornos", " ", "=", " ", 
-       RowBox[{
-        RowBox[{"Log", "[", 
-         RowBox[{
-          RowBox[{"data", "[", 
-           RowBox[{"[", 
-            RowBox[{"All", ",", "2", ",", "LClose"}], "]"}], "]"}], "[", 
-          RowBox[{"[", 
-           RowBox[{"1", ";;", 
-            RowBox[{"-", "timelag"}]}], "]"}], "]"}], "]"}], "-", 
-        RowBox[{"Log", "[", 
-         RowBox[{
-          RowBox[{"data", "[", 
-           RowBox[{"[", 
-            RowBox[{"All", ",", "2", ",", "LClose"}], "]"}], "]"}], "[", 
-          RowBox[{"[", 
-           RowBox[{"timelag", ";;", 
-            RowBox[{"-", "1"}]}], "]"}], "]"}], "]"}]}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"AppendTo", "[", 
-       RowBox[{"ret", ",", "retornos"}], "]"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"AppendTo", "[", 
-       RowBox[{"svalues", ",", 
-        RowBox[{"GetSymmetrySignificance", "[", "retornos", "]"}]}], "]"}], 
-      ";"}], "\[IndentingNewLine]", ",", 
-     RowBox[{"{", 
-      RowBox[{"i", ",", 
-       RowBox[{"markets", "[", 
-        RowBox[{"[", 
-         RowBox[{"All", ",", "2"}], "]"}], "]"}]}], "}"}]}], 
-    "\[IndentingNewLine]", "]"}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"gridmm", " ", "=", " ", 
-   RowBox[{"{", 
-    RowBox[{
-     RowBox[{"Join", "[", 
-      RowBox[{
-       RowBox[{"{", "\"\<\>\"", "}"}], ",", 
-       RowBox[{"markets", "[", 
-        RowBox[{"[", 
-         RowBox[{"All", ",", "1"}], "]"}], "]"}]}], "]"}], ",", 
-     "\[IndentingNewLine]", 
-     RowBox[{"Join", "[", 
-      RowBox[{
-       RowBox[{"{", "\"\<Significaci\[OAcute]n\>\"", "}"}], ",", " ", 
-       RowBox[{"Table", "[", 
-        RowBox[{"i", ",", 
-         RowBox[{"{", 
-          RowBox[{"i", ",", "svalues"}], "}"}]}], "]"}]}], "]"}]}], "}"}]}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"Print", "[", 
-    RowBox[{"Grid", "[", 
-     RowBox[{"gridmm", ",", 
-      RowBox[{"Alignment", "\[Rule]", "Left"}], ",", 
-      RowBox[{"Spacings", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{"2", ",", "1"}], "}"}]}], ",", 
-      RowBox[{"Frame", "\[Rule]", "All"}], ",", 
-      RowBox[{"ItemStyle", "\[Rule]", "\"\<Text\>\""}], ",", 
-      RowBox[{"Background", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{
-         RowBox[{"{", 
-          RowBox[{"Gray", ",", "None"}], "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"LightGray", ",", "None"}], "}"}]}], "}"}]}]}], "]"}], 
-    "]"}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"SetOptions", "[", 
-   RowBox[{
+   RowBox[{"Map", "[", 
+    RowBox[{"Mean", ",", "symtable"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Media\>\""}], ",", 
+   RowBox[{"DataRange", "\[Rule]", 
     RowBox[{"{", 
-     RowBox[{
-     "SmoothHistogram", ",", "Plot", ",", "ListPlot", ",", "ListLinePlot"}], 
-     "}"}], ",", 
-    RowBox[{"BaseStyle", "\[Rule]", 
-     RowBox[{"FontSize", "\[Rule]", "14"}]}]}], "]"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{"SmoothHistogram", "[", 
-  RowBox[{"ret", ",", 
-   RowBox[{"PlotLegends", "\[Rule]", 
-    RowBox[{"markets", "[", 
-     RowBox[{"[", 
-      RowBox[{"All", ",", "1"}], "]"}], "]"}]}], ",", 
+     RowBox[{"simmin", ",", " ", "simmax"}], "}"}]}], ",", 
    RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
    RowBox[{"FrameLabel", "\[Rule]", 
     RowBox[{"{", 
-     RowBox[{"\"\<Retornos\>\"", ",", " ", "\"\<Frecuencia\>\""}], "}"}]}]}], 
-  "]"}]}], "Input",
- CellChangeTimes->{{3.6650984392376013`*^9, 3.665098543746966*^9}, {
-  3.665098591501568*^9, 3.665098605027349*^9}, {3.665100198135746*^9, 
-  3.665100208551094*^9}}]
+     RowBox[{"\"\<Experimentos\>\"", ",", "\"\<Media\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.665431989620708*^9, 3.6654320656466465`*^9}, {
+   3.6658454230170803`*^9, 3.6658454527023153`*^9}, 3.6658521184751053`*^9}],
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"Map", "[", 
+    RowBox[{"Variance", ",", "symtable"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Varianza\>\""}], ",", 
+   RowBox[{"DataRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"500", ",", "50000"}], "}"}]}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Experimentos\>\"", ",", "\"\<Varianza\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6654320279008007`*^9, 3.665432074062484*^9}, {
+  3.665845469647513*^9, 3.6658454742546873`*^9}}]
+}, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1063, 760},
-WindowMargins->{{562, Automatic}, {Automatic, 75}},
+WindowSize->{1920, 1016},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 FrontEndVersion->"10.1 for Linux x86 (64-bit) (March 23, 2015)",
 StyleDefinitions->"Default.nb"
 ]
@@ -473,20 +522,36 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
+Cell[558, 20, 3367, 81, 386, "Input",
+ InitializationCell->True],
+Cell[3928, 103, 393, 9, 61, "Input"],
+Cell[4324, 114, 385, 9, 61, "Input"],
+Cell[4712, 125, 397, 9, 61, "Input"],
+Cell[5112, 136, 2300, 57, 361, "Input"],
+Cell[7415, 195, 208, 4, 35, "Input"],
+Cell[7626, 201, 211, 4, 35, "Input"],
+Cell[7840, 207, 900, 23, 61, "Input"],
+Cell[8743, 232, 1186, 32, 86, "Input"],
 Cell[CellGroupData[{
-Cell[580, 22, 111, 1, 73, "Chapter"],
-Cell[694, 25, 5023, 128, 686, "Input",
- InitializationCell->True]
+Cell[9954, 268, 130, 1, 73, "Chapter"],
+Cell[CellGroupData[{
+Cell[10109, 273, 130, 1, 69, "Subchapter"],
+Cell[10242, 276, 1877, 43, 186, "Input"],
+Cell[12122, 321, 633, 15, 35, "Input"],
+Cell[12758, 338, 646, 15, 35, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5754, 158, 127, 1, 73, "Chapter"],
-Cell[5884, 161, 2300, 57, 361, "Input"],
-Cell[8187, 220, 900, 23, 86, "Input"],
-Cell[9090, 245, 1186, 32, 86, "Input"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[10313, 282, 104, 1, 73, "Chapter"],
-Cell[10420, 285, 6449, 171, 836, "Input"]
+Cell[13441, 358, 130, 1, 69, "Subchapter"],
+Cell[13574, 361, 170, 3, 35, "Input"],
+Cell[13747, 366, 1317, 34, 136, "Input"],
+Cell[15067, 402, 618, 12, 35, "Input"],
+Cell[15688, 416, 169, 3, 35, "Input"],
+Cell[15860, 421, 968, 24, 61, "Input"],
+Cell[16831, 447, 724, 18, 35, "Input"],
+Cell[17558, 467, 97, 1, 35, "Text"],
+Cell[17658, 470, 719, 16, 35, "Input"],
+Cell[18380, 488, 693, 16, 35, "Input"]
+}, Open  ]]
 }, Open  ]]
 }
 ]
