@@ -1,0 +1,3 @@
+[submodule "PEntropy"]
+	path = PEntropy
+	url = https://github.com/CarlosManuelRodr/PEntropy
