@@ -10,14 +10,19 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20377,        551]
-NotebookOptionsPosition[     19101,        508]
-NotebookOutlinePosition[     19436,        523]
-CellTagsIndexPosition[     19393,        520]
+NotebookDataLength[     21264,        574]
+NotebookOptionsPosition[     19909,        528]
+NotebookOutlinePosition[     20251,        543]
+CellTagsIndexPosition[     20208,        540]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+
+Cell[CellGroupData[{
+Cell["Test de simetr\[IAcute]a", "Title",
+ CellChangeTimes->{{3.6688133645768147`*^9, 3.6688133694671073`*^9}}],
+
 Cell[BoxData[{
  RowBox[{
   RowBox[{"SetOptions", "[", 
@@ -35,7 +40,6 @@ Cell[BoxData[{
     RowBox[{
      RowBox[{"{", 
       RowBox[{"o1", ",", "o2", ",", "l"}], "}"}], ",", "\[IndentingNewLine]", 
-     
      RowBox[{
       RowBox[{"o2", " ", "=", " ", 
        RowBox[{"Sort", "[", "data", "]"}]}], ";", "\[IndentingNewLine]", 
@@ -54,7 +58,6 @@ Cell[BoxData[{
     RowBox[{
      RowBox[{"{", 
       RowBox[{"o1", ",", "o2", ",", "l"}], "}"}], ",", "\[IndentingNewLine]", 
-     
      RowBox[{
       RowBox[{"o2", " ", "=", " ", 
        RowBox[{"Sort", "[", "data", "]"}]}], ";", "\[IndentingNewLine]", 
@@ -332,9 +335,11 @@ Cell[BoxData[
    RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
    RowBox[{"FrameLabel", "\[Rule]", 
     RowBox[{"{", 
-     RowBox[{"\"\<Experimentos\>\"", ",", "\"\<Media\>\""}], "}"}]}]}], 
+     RowBox[{"\"\<Muestra\>\"", ",", "\"\<Media\>\""}], "}"}]}]}], 
   "]"}]], "Input",
- CellChangeTimes->{3.6658527044349117`*^9, 3.665852759700206*^9}],
+ CellChangeTimes->{
+  3.6658527044349117`*^9, 3.665852759700206*^9, {3.6683545842170835`*^9, 
+   3.6683545851703024`*^9}}],
 
 Cell[BoxData[
  RowBox[{"ListLinePlot", "[", 
@@ -342,35 +347,45 @@ Cell[BoxData[
    RowBox[{"Map", "[", 
     RowBox[{"StandardDeviation", ",", "symmetryval"}], "]"}], ",", 
    RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
-   RowBox[{"PlotLabel", "\[Rule]", "\"\<Media\>\""}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", "\"\<Desviaci\[OAcute]n est\[AAcute]ndar\>\""}], 
+   ",", 
    RowBox[{"DataRange", "\[Rule]", 
     RowBox[{"{", 
      RowBox[{"nmin", ",", "nmax"}], "}"}]}], ",", 
    RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
    RowBox[{"FrameLabel", "\[Rule]", 
     RowBox[{"{", 
-     RowBox[{"\"\<Experimentos\>\"", ",", "\"\<Media\>\""}], "}"}]}]}], 
-  "]"}]], "Input",
- CellChangeTimes->{{3.665853480778475*^9, 3.665853481836174*^9}}]
+     RowBox[{
+     "\"\<Muestra\>\"", ",", "\"\<Desviaci\[OAcute]n est\[AAcute]ndar\>\""}], 
+     "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.665853480778475*^9, 3.665853481836174*^9}, {
+  3.6683540565655565`*^9, 3.6683540600276365`*^9}, {3.668354573020526*^9, 
+  3.6683545740559864`*^9}, {3.6683634991803455`*^9, 3.6683635035779405`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"FindDistribution", "[", 
+  RowBox[{
+   RowBox[{"symmetryval", "[", 
+    RowBox[{"[", 
+     RowBox[{"-", "1"}], "]"}], "]"}], ",", "3"}], "]"}]], "Input"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Variando el n\[UAcute]mero de experimentos", "Subchapter",
- CellChangeTimes->{{3.665852683462607*^9, 3.665852689062642*^9}}],
-
-Cell[BoxData[
- RowBox[{"FindDistribution", "[", 
-  RowBox[{"symmetryval", ",", "3"}], "]"}]], "Input",
- CellChangeTimes->{{3.665430777830163*^9, 3.6654307928426957`*^9}}],
+ CellChangeTimes->{{3.665852683462607*^9, 3.665852689062642*^9}, {
+  3.668353951668944*^9, 3.6683539521377153`*^9}}],
 
 Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", " ", "=", " ", "2000"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"simmin", " ", "=", " ", "500"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"simmax", " ", "=", " ", "100000"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"simdelta", " ", "=", " ", "5000"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"simdelta", " ", "=", " ", "10000"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"symtable", " ", "=", " ", 
    RowBox[{"ParallelTable", "[", 
@@ -396,9 +411,12 @@ Cell[BoxData[{
     RowBox[{"simmin", ",", " ", "simmax", ",", "simdelta"}], "]"}]}], 
   ";"}]}], "Input",
  CellChangeTimes->{{3.665431608527031*^9, 3.665431668888686*^9}, {
-  3.665844716707131*^9, 3.665844772378848*^9}, {3.665845055815075*^9, 
-  3.665845091408924*^9}, {3.665845300536862*^9, 3.6658453302959642`*^9}, {
-  3.66584638539575*^9, 3.665846422136108*^9}}],
+   3.665844716707131*^9, 3.665844772378848*^9}, {3.665845055815075*^9, 
+   3.665845091408924*^9}, {3.665845300536862*^9, 3.6658453302959642`*^9}, {
+   3.66584638539575*^9, 3.665846422136108*^9}, {3.668353938917205*^9, 
+   3.6683539573409033`*^9}, {3.668354547544258*^9, 3.6683545499123306`*^9}, 
+   3.668354685202199*^9, 3.6683547311231527`*^9, {3.668363079766015*^9, 
+   3.668363084226179*^9}}],
 
 Cell[BoxData[
  RowBox[{"SmoothHistogram", "[", 
@@ -417,7 +435,8 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"Map", "[", 
   RowBox[{"FindDistribution", ",", "symtable"}], "]"}]], "Input",
- CellChangeTimes->{{3.665845370341778*^9, 3.6658453812055197`*^9}}],
+ CellChangeTimes->{{3.665845370341778*^9, 3.6658453812055197`*^9}, {
+  3.6683547813827705`*^9, 3.668354798703909*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -505,10 +524,11 @@ Cell[BoxData[
   3.665845469647513*^9, 3.6658454742546873`*^9}}]
 }, Open  ]]
 }, Open  ]]
+}, Open  ]]
 },
-WindowSize->{1920, 1016},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
-FrontEndVersion->"10.1 for Linux x86 (64-bit) (March 23, 2015)",
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -522,35 +542,38 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 3367, 81, 386, "Input",
+Cell[CellGroupData[{
+Cell[580, 22, 111, 1, 101, "Title"],
+Cell[694, 25, 3355, 79, 546, "Input",
  InitializationCell->True],
-Cell[3928, 103, 393, 9, 61, "Input"],
-Cell[4324, 114, 385, 9, 61, "Input"],
-Cell[4712, 125, 397, 9, 61, "Input"],
-Cell[5112, 136, 2300, 57, 361, "Input"],
-Cell[7415, 195, 208, 4, 35, "Input"],
-Cell[7626, 201, 211, 4, 35, "Input"],
-Cell[7840, 207, 900, 23, 61, "Input"],
-Cell[8743, 232, 1186, 32, 86, "Input"],
+Cell[4052, 106, 393, 9, 70, "Input"],
+Cell[4448, 117, 385, 9, 70, "Input"],
+Cell[4836, 128, 397, 9, 70, "Input"],
+Cell[5236, 139, 2300, 57, 436, "Input"],
+Cell[7539, 198, 208, 4, 31, "Input"],
+Cell[7750, 204, 211, 4, 31, "Input"],
+Cell[7964, 210, 900, 23, 86, "Input"],
+Cell[8867, 235, 1186, 32, 124, "Input"],
 Cell[CellGroupData[{
-Cell[9954, 268, 130, 1, 73, "Chapter"],
+Cell[10078, 271, 130, 1, 72, "Chapter"],
 Cell[CellGroupData[{
-Cell[10109, 273, 130, 1, 69, "Subchapter"],
-Cell[10242, 276, 1877, 43, 186, "Input"],
-Cell[12122, 321, 633, 15, 35, "Input"],
-Cell[12758, 338, 646, 15, 35, "Input"]
+Cell[10233, 276, 130, 1, 67, "Subchapter"],
+Cell[10366, 279, 1877, 43, 204, "Input"],
+Cell[12246, 324, 685, 17, 48, "Input"],
+Cell[12934, 343, 872, 20, 86, "Input"],
+Cell[13809, 365, 177, 5, 48, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13441, 358, 130, 1, 69, "Subchapter"],
-Cell[13574, 361, 170, 3, 35, "Input"],
-Cell[13747, 366, 1317, 34, 136, "Input"],
-Cell[15067, 402, 618, 12, 35, "Input"],
-Cell[15688, 416, 169, 3, 35, "Input"],
-Cell[15860, 421, 968, 24, 61, "Input"],
-Cell[16831, 447, 724, 18, 35, "Input"],
-Cell[17558, 467, 97, 1, 35, "Text"],
-Cell[17658, 470, 719, 16, 35, "Input"],
-Cell[18380, 488, 693, 16, 35, "Input"]
+Cell[14023, 375, 181, 2, 67, "Subchapter"],
+Cell[14207, 379, 1602, 39, 166, "Input"],
+Cell[15812, 420, 618, 12, 48, "Input"],
+Cell[16433, 434, 220, 4, 48, "Input"],
+Cell[16656, 440, 968, 24, 86, "Input"],
+Cell[17627, 466, 724, 18, 48, "Input"],
+Cell[18354, 486, 97, 1, 30, "Text"],
+Cell[18454, 489, 719, 16, 48, "Input"],
+Cell[19176, 507, 693, 16, 48, "Input"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }
