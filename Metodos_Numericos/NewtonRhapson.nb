@@ -1,0 +1,385 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12712,        376]
+NotebookOptionsPosition[     11944,        348]
+NotebookOutlinePosition[     12281,        363]
+CellTagsIndexPosition[     12238,        360]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["M\[EAcute]todo de Newton-Rhapson", "Chapter",
+ CellChangeTimes->{{3.665267782813842*^9, 3.665267787160653*^9}}],
+
+Cell["Definici\[OAcute]n de gr\[AAcute]fica Cobweb", "Text",
+ CellChangeTimes->{{3.66931699587426*^9, 3.669317002794034*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "CobwebPlot", "]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Options", "[", "CobwebPlot", "]"}], "=", 
+   RowBox[{"Join", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"CobStyle", "\[Rule]", "Automatic"}], "}"}], ",", 
+     RowBox[{"Options", "[", "Graphics", "]"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"CobwebPlot", "[", 
+   RowBox[{"f_", ",", 
+    RowBox[{"start_", "?", "NumericQ"}], ",", "n_", ",", 
+    RowBox[{"xrange", ":", 
+     RowBox[{"{", 
+      RowBox[{"xmin_", ",", "xmax_"}], "}"}]}], ",", 
+    RowBox[{"opts", ":", 
+     RowBox[{"OptionsPattern", "[", "]"}]}]}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"cob", ",", "x", ",", "g1", ",", "coor"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"cob", "=", 
+      RowBox[{"NestList", "[", 
+       RowBox[{"f", ",", 
+        RowBox[{"N", "[", "start", "]"}], ",", "n"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"coor", "=", 
+      RowBox[{"Partition", "[", 
+       RowBox[{
+        RowBox[{"Riffle", "[", 
+         RowBox[{"cob", ",", "cob"}], "]"}], ",", "2", ",", "1"}], "]"}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"coor", "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", "2"}], "]"}], "]"}], "=", "0"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"cobstyle", "=", 
+      RowBox[{"OptionValue", "[", 
+       RowBox[{"CobwebPlot", ",", "CobStyle"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"cobstyle", "=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"cobstyle", "===", "Automatic"}], ",", "Red", ",", 
+        "cobstyle"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"g1", "=", 
+      RowBox[{"Graphics", "[", 
+       RowBox[{"{", 
+        RowBox[{"cobstyle", ",", 
+         RowBox[{"Line", "[", "coor", "]"}]}], "}"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Show", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Plot", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"x", ",", 
+             RowBox[{"f", "[", "x", "]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "xmin", ",", "xmax"}], "}"}], ",", 
+           RowBox[{"PlotStyle", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"Thick", ",", "Black"}], "}"}], ",", "Blue"}], 
+             "}"}]}]}], "]"}], ",", "g1"}], "}"}], ",", 
+       RowBox[{"FilterRules", "[", 
+        RowBox[{
+         RowBox[{"{", "opts", "}"}], ",", 
+         RowBox[{"Options", "[", "Graphics", "]"}]}], "]"}]}], "]"}]}]}], 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.6652716208733273`*^9, 3.6652716208733273`*^9}, {
+  3.6652717171094956`*^9, 3.6652717183697987`*^9}}],
+
+Cell[TextData[{
+ "Newton-Rhapson para f(x) = ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["x", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "Text",
+ CellChangeTimes->{{3.6693170110260553`*^9, 3.669317022788554*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "x_", "]"}], ":=", 
+   SuperscriptBox["x", "2"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"CobwebPlot", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "-", 
+       FractionBox[
+        RowBox[{"f", "[", "#", "]"}], 
+        RowBox[{
+         RowBox[{"f", "'"}], "[", "#", "]"}]]}], "&"}], ",", "x0", ",", "40", 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "4"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "4"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "4"}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"Axes", "\[Rule]", "False"}], ",", 
+     RowBox[{"CobStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{"Dashed", ",", "Red"}], "]"}]}], ",", 
+     RowBox[{"PlotRangePadding", "\[Rule]", "None"}], ",", 
+     RowBox[{"PlotLabel", "\[Rule]", "\"\<Cobweb: Newton-Rhapson\>\""}]}], 
+    "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x0", ",", "2"}], "}"}], ",", "0.001", ",", "4"}], "}"}], ",", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.665271632998637*^9, 3.665271632998637*^9}, {
+  3.6652716864724245`*^9, 3.66527170000161*^9}, {3.665272185311547*^9, 
+  3.665272260694632*^9}, {3.665272357145368*^9, 3.6652723666949444`*^9}}],
+
+Cell["Newton-Rhapson para f(x) = Sin(x)", "Text",
+ CellChangeTimes->{{3.669317028610023*^9, 3.669317037617838*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"fs", "[", "x_", "]"}], ":=", 
+   RowBox[{"Sin", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"CobwebPlot", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "-", 
+       FractionBox[
+        RowBox[{"fs", "[", "#", "]"}], 
+        RowBox[{
+         RowBox[{"fs", "'"}], "[", "#", "]"}]]}], "&"}], ",", "x0", ",", "40",
+      ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "15"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "15"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "15"}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"Axes", "\[Rule]", "False"}], ",", 
+     RowBox[{"CobStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{"Dashed", ",", "Red"}], "]"}]}], ",", 
+     RowBox[{"PlotRangePadding", "\[Rule]", "None"}], ",", 
+     RowBox[{"PlotLabel", "\[Rule]", "\"\<Cobweb: Newton-Rhapson\>\""}]}], 
+    "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x0", ",", "2"}], "}"}], ",", "0.001", ",", "15"}], "}"}], ",", 
+   
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6652723946785593`*^9, 3.665272448758369*^9}}],
+
+Cell["Convergencia para f(x) = Sin(x)", "Text",
+ CellChangeTimes->{{3.6652733144469995`*^9, 3.665273315892544*^9}, {
+  3.669317087513956*^9, 3.669317090921463*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"NewtonMap", "[", 
+    RowBox[{"f_", ",", "x_"}], "]"}], ":=", 
+   RowBox[{"x", "-", 
+    FractionBox[
+     RowBox[{"f", "[", "x", "]"}], 
+     RowBox[{
+      RowBox[{"f", "'"}], "[", "x", "]"}]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Convergece", "[", 
+    RowBox[{"f_", ",", "x_"}], "]"}], ":=", " ", 
+   RowBox[{"Abs", "[", 
+    RowBox[{
+     RowBox[{"D", "[", 
+      RowBox[{
+       RowBox[{"NewtonMap", "[", 
+        RowBox[{"f", ",", "xx"}], "]"}], ",", "xx"}], "]"}], " ", "/.", " ", 
+     RowBox[{"xx", "\[Rule]", "x"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"Convergece", "[", 
+    RowBox[{"Sin", ",", "x"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "0", ",", "6"}], "}"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Convergencia para Sin(x) = 0\>\""}], 
+   ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<x\>\"", ",", "\"\<|g'(x)|\>\""}], "}"}]}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6652730264118757`*^9, 3.6652730899534416`*^9}, {
+  3.665273268491519*^9, 3.6652732934814672`*^9}, {3.6652734466993623`*^9, 
+  3.665273450019029*^9}, {3.66931704650395*^9, 3.669317054288724*^9}}],
+
+Cell[TextData[{
+ "Convergencia para f(x) = ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["x", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "Text",
+ CellChangeTimes->{{3.669317093761622*^9, 3.669317098316062*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"mf", "[", "x_", "]"}], ":=", 
+   SuperscriptBox["x", "2"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"Convergece", "[", 
+    RowBox[{"mf", ",", "x"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "0", ",", "6"}], "}"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", 
+    "\"\<Convergencia para \!\(\*SuperscriptBox[\(x\), \(2\)]\) = 0\>\""}], 
+   ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<x\>\"", ",", "\"\<|g'(x)|\>\""}], "}"}]}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6652733330397015`*^9, 3.665273353661333*^9}, {
+  3.6652734684955206`*^9, 3.6652734753982677`*^9}}],
+
+Cell["\[CapitalOAcute]rbitas", "Text",
+ CellChangeTimes->{{3.665274179763461*^9, 3.665274181332409*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"NewtonsMethodList", "[", 
+    RowBox[{"f_", ",", 
+     RowBox[{"{", 
+      RowBox[{"x_", ",", "x0_"}], "}"}], ",", "n_"}], "]"}], ":=", 
+   RowBox[{"NestList", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "-", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Function", "[", 
+          RowBox[{"x", ",", "f"}], "]"}], "[", "#", "]"}], "/", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Derivative", "[", "1", "]"}], "[", 
+          RowBox[{"Function", "[", 
+           RowBox[{"x", ",", "f"}], "]"}], "]"}], "[", "#", "]"}]}]}], "&"}], 
+     ",", "x0", ",", "n"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"NewtonsMethodList", "[", 
+    RowBox[{
+     SuperscriptBox["x", "2"], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "2"}], "}"}], ",", "10"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<n\>\"", ",", "\"\<\!\(\*SubscriptBox[\(x\), \(n\)]\)\>\""}],
+      "}"}]}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", 
+    "\"\<\[CapitalOAcute]rbita para \!\(\*SuperscriptBox[\(x\), \(2\)]\) = \
+0\>\""}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6652741823792343`*^9, 3.6652741905608797`*^9}, {
+  3.669317111214637*^9, 3.6693171114327993`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"NewtonsMethodList", "[", 
+    RowBox[{
+     RowBox[{"Sin", "[", "x", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "2"}], "}"}], ",", "10"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<n\>\"", ",", "\"\<\!\(\*SubscriptBox[\(x\), \(n\)]\)\>\""}],
+      "}"}]}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", 
+    "\"\<\[CapitalOAcute]rbita para Sen(x) = 0\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6652742319679236`*^9, 3.6652742365189047`*^9}, {
+   3.6652742973332586`*^9, 3.6652743054567356`*^9}, {3.665274344714013*^9, 
+   3.665274349025208*^9}, 3.6654136531898665`*^9, {3.669317117381452*^9, 
+   3.669317120055251*^9}}]
+}, Open  ]]
+},
+WindowSize->{1451, 782},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+FrontEndVersion->"10.1 for Linux x86 (64-bit) (March 23, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 117, 1, 73, "Chapter"],
+Cell[700, 25, 125, 1, 35, "Text"],
+Cell[828, 28, 2812, 78, 236, "Input"],
+Cell[3643, 108, 234, 7, 35, "Text"],
+Cell[3880, 117, 1571, 41, 208, "Input"],
+Cell[5454, 160, 115, 1, 35, "Text"],
+Cell[5572, 163, 1443, 40, 208, "Input"],
+Cell[7018, 205, 164, 2, 35, "Text"],
+Cell[7185, 209, 1339, 38, 115, "Input"],
+Cell[8527, 249, 230, 7, 35, "Text"],
+Cell[8760, 258, 767, 21, 63, "Input"],
+Cell[9530, 281, 104, 1, 35, "Text"],
+Cell[9637, 284, 1423, 39, 90, "Input"],
+Cell[11063, 325, 865, 20, 64, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
