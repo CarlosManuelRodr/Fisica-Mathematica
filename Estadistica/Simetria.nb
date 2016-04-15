@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21264,        574]
-NotebookOptionsPosition[     19909,        528]
-NotebookOutlinePosition[     20251,        543]
-CellTagsIndexPosition[     20208,        540]
+NotebookDataLength[     24802,        694]
+NotebookOptionsPosition[     23182,        639]
+NotebookOutlinePosition[     23519,        654]
+CellTagsIndexPosition[     23476,        651]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -40,6 +40,7 @@ Cell[BoxData[{
     RowBox[{
      RowBox[{"{", 
       RowBox[{"o1", ",", "o2", ",", "l"}], "}"}], ",", "\[IndentingNewLine]", 
+     
      RowBox[{
       RowBox[{"o2", " ", "=", " ", 
        RowBox[{"Sort", "[", "data", "]"}]}], ";", "\[IndentingNewLine]", 
@@ -58,6 +59,7 @@ Cell[BoxData[{
     RowBox[{
      RowBox[{"{", 
       RowBox[{"o1", ",", "o2", ",", "l"}], "}"}], ",", "\[IndentingNewLine]", 
+     
      RowBox[{
       RowBox[{"o2", " ", "=", " ", 
        RowBox[{"Sort", "[", "data", "]"}]}], ";", "\[IndentingNewLine]", 
@@ -385,7 +387,8 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"simmax", " ", "=", " ", "100000"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"simdelta", " ", "=", " ", "10000"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"simdelta", " ", "=", " ", "10000"}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"symtable", " ", "=", " ", 
    RowBox[{"ParallelTable", "[", 
@@ -523,12 +526,120 @@ Cell[BoxData[
  CellChangeTimes->{{3.6654320279008007`*^9, 3.665432074062484*^9}, {
   3.665845469647513*^9, 3.6658454742546873`*^9}}]
 }, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Implementaci\[OAcute]n en C++", "Chapter",
+ CellChangeTimes->{{3.66967057717124*^9, 3.669670577475052*^9}, {
+  3.6696706995048018`*^9, 3.669670701784501*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"link", "=", 
+   RowBox[{"Install", "[", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+     "\"\<MathematicaTestSimmetry\>\""}], "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "10000"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ex", "=", "5000"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"T", "[", 
+    RowBox[{"n_", ",", "ex_"}], "]"}], ":=", 
+   RowBox[{"n", " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "-", 
+      RowBox[{
+       RowBox[{"CppTestSimmetry", "[", 
+        RowBox[{"ex", ",", "n"}], "]"}], "^", "2"}]}], ")"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Ts", "=", 
+   RowBox[{"AbsoluteTiming", "[", 
+    RowBox[{"T", "[", 
+     RowBox[{"n", ",", "ex"}], "]"}], "]"}]}], ";"}], "\n", 
+ RowBox[{"Ts", "[", 
+  RowBox[{"[", "1", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"\[Mu]", "=", 
+   RowBox[{"Mean", "[", 
+    RowBox[{"Ts", "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"\[Sigma]", "=", 
+   RowBox[{"StandardDeviation", "[", 
+    RowBox[{"Ts", "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ";"}], "\n", 
+ RowBox[{"SmoothHistogram", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Ts", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "-", "\[Mu]"}], ")"}], "/", 
+    "\[Sigma]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.669670578463684*^9, 3.669670585624733*^9}, {
+  3.66967066963953*^9, 3.669670669935162*^9}, {3.669672409673024*^9, 
+  3.669672415553878*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Comparaci\[OAcute]n", "Chapter",
+ CellChangeTimes->{{3.6696706094024267`*^9, 3.669670610946485*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "200000"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ex", "=", "5000"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"symtable", "=", 
+   RowBox[{"AbsoluteTiming", "[", 
+    RowBox[{"ParallelTable", "[", 
+     RowBox[{
+      RowBox[{"n", " ", 
+       RowBox[{"(", 
+        RowBox[{"1", "-", 
+         RowBox[{
+          RowBox[{"TestSymmetry", "[", 
+           RowBox[{"RandomVariate", "[", 
+            RowBox[{
+             RowBox[{"NormalDistribution", "[", "]"}], ",", "n"}], "]"}], 
+           "]"}], "^", "2"}]}], ")"}]}], ",", 
+      RowBox[{"{", "ex", "}"}]}], "]"}], "]"}]}], ";", 
+  RowBox[{"symtable", "[", 
+   RowBox[{"[", "1", "]"}], "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"\[Mu]", "=", 
+   RowBox[{"Mean", "[", 
+    RowBox[{"symtable", "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"\[Sigma]", "=", 
+   RowBox[{"StandardDeviation", "[", 
+    RowBox[{"symtable", "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ";"}], "\n", 
+ RowBox[{"SmoothHistogram", "[", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"symtable", "[", 
+      RowBox[{"[", "2", "]"}], "]"}], "-", "\[Mu]"}], ")"}], "/", 
+   "\[Sigma]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.669670611855146*^9, 3.669670611855707*^9}, {
+  3.669670688366404*^9, 3.6696706918625307`*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{1536, 781},
-WindowMargins->{{-8, Automatic}, {Automatic, -8}},
-FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+WindowMargins->{{265, Automatic}, {Automatic, 58}},
+FrontEndVersion->"10.1 for Linux x86 (64-bit) (March 23, 2015)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -543,37 +654,46 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 111, 1, 101, "Title"],
-Cell[694, 25, 3355, 79, 546, "Input",
+Cell[580, 22, 111, 1, 102, "Title"],
+Cell[694, 25, 3367, 81, 386, "Input",
  InitializationCell->True],
-Cell[4052, 106, 393, 9, 70, "Input"],
-Cell[4448, 117, 385, 9, 70, "Input"],
-Cell[4836, 128, 397, 9, 70, "Input"],
-Cell[5236, 139, 2300, 57, 436, "Input"],
-Cell[7539, 198, 208, 4, 31, "Input"],
-Cell[7750, 204, 211, 4, 31, "Input"],
-Cell[7964, 210, 900, 23, 86, "Input"],
-Cell[8867, 235, 1186, 32, 124, "Input"],
+Cell[4064, 108, 393, 9, 61, "Input"],
+Cell[4460, 119, 385, 9, 61, "Input"],
+Cell[4848, 130, 397, 9, 61, "Input"],
+Cell[5248, 141, 2300, 57, 361, "Input"],
+Cell[7551, 200, 208, 4, 35, "Input"],
+Cell[7762, 206, 211, 4, 35, "Input"],
+Cell[7976, 212, 900, 23, 61, "Input"],
+Cell[8879, 237, 1186, 32, 86, "Input"],
 Cell[CellGroupData[{
-Cell[10078, 271, 130, 1, 72, "Chapter"],
+Cell[10090, 273, 130, 1, 73, "Chapter"],
 Cell[CellGroupData[{
-Cell[10233, 276, 130, 1, 67, "Subchapter"],
-Cell[10366, 279, 1877, 43, 204, "Input"],
-Cell[12246, 324, 685, 17, 48, "Input"],
-Cell[12934, 343, 872, 20, 86, "Input"],
-Cell[13809, 365, 177, 5, 48, "Input"]
+Cell[10245, 278, 130, 1, 69, "Subchapter"],
+Cell[10378, 281, 1877, 43, 186, "Input"],
+Cell[12258, 326, 685, 17, 61, "Input"],
+Cell[12946, 345, 872, 20, 61, "Input"],
+Cell[13821, 367, 177, 5, 35, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14023, 375, 181, 2, 67, "Subchapter"],
-Cell[14207, 379, 1602, 39, 166, "Input"],
-Cell[15812, 420, 618, 12, 48, "Input"],
-Cell[16433, 434, 220, 4, 48, "Input"],
-Cell[16656, 440, 968, 24, 86, "Input"],
-Cell[17627, 466, 724, 18, 48, "Input"],
-Cell[18354, 486, 97, 1, 30, "Text"],
-Cell[18454, 489, 719, 16, 48, "Input"],
-Cell[19176, 507, 693, 16, 48, "Input"]
+Cell[14035, 377, 181, 2, 69, "Subchapter"],
+Cell[14219, 381, 1605, 40, 161, "Input"],
+Cell[15827, 423, 618, 12, 35, "Input"],
+Cell[16448, 437, 220, 4, 35, "Input"],
+Cell[16671, 443, 968, 24, 86, "Input"],
+Cell[17642, 469, 724, 18, 61, "Input"],
+Cell[18369, 489, 97, 1, 35, "Text"],
+Cell[18469, 492, 719, 16, 61, "Input"],
+Cell[19191, 510, 693, 16, 61, "Input"]
 }, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19933, 532, 164, 2, 73, "Chapter"],
+Cell[20100, 536, 209, 6, 35, "Input"],
+Cell[20312, 544, 1364, 43, 211, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21713, 592, 106, 1, 73, "Chapter"],
+Cell[21822, 595, 1332, 40, 161, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
