@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     24802,        694]
-NotebookOptionsPosition[     23182,        639]
-NotebookOutlinePosition[     23519,        654]
-CellTagsIndexPosition[     23476,        651]
+NotebookDataLength[     28450,        792]
+NotebookOptionsPosition[     26478,        728]
+NotebookOutlinePosition[     26818,        743]
+CellTagsIndexPosition[     26775,        740]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -52,6 +52,24 @@ Cell[BoxData[{
         RowBox[{"Correlation", "[", 
          RowBox[{"o1", ",", "o2"}], "]"}], "]"}], "]"}], ";"}]}], 
     "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CudaTestSymmetry", "[", "data_", "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"o1", ",", "o2", ",", "l"}], "}"}], ",", "\[IndentingNewLine]", 
+     
+     RowBox[{
+      RowBox[{"o2", " ", "=", " ", 
+       RowBox[{"CUDASort", "[", "data", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"o1", " ", "=", " ", 
+       RowBox[{"CUDASort", "[", 
+        RowBox[{"-", "data"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"N", "[", 
+       RowBox[{"Correlation", "[", 
+        RowBox[{"o1", ",", "o2"}], "]"}], "]"}]}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"TestAndViewSymmetry", "[", "data_", "]"}], ":=", 
@@ -104,7 +122,9 @@ Cell[BoxData[{
   3.6649841816242943`*^9}, {3.664984268655406*^9, 3.664984326169598*^9}, {
   3.664989093227152*^9, 3.664989148122306*^9}, {3.664989190436137*^9, 
   3.6649892866819353`*^9}, {3.664989325533073*^9, 3.664989357127573*^9}, {
-  3.665430474983205*^9, 3.66543047513659*^9}}],
+  3.665430474983205*^9, 3.66543047513659*^9}, {3.670090208239626*^9, 
+  3.670090211568224*^9}, {3.670090268448436*^9, 3.670090272520048*^9}, {
+  3.670095666338832*^9, 3.670095687153784*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -590,56 +610,125 @@ Cell[BoxData[{
 
 Cell[CellGroupData[{
 
-Cell["Comparaci\[OAcute]n", "Chapter",
- CellChangeTimes->{{3.6696706094024267`*^9, 3.669670610946485*^9}}],
+Cell["Versi\[OAcute]n CUDA", "Chapter",
+ CellChangeTimes->{{3.670090287173764*^9, 3.670090289749646*^9}}],
+
+Cell["\<\
+Genera los resultados utilizando una funci\[OAcute]n Sort implementada en \
+CUDA.\
+\>", "Text",
+ CellChangeTimes->{{3.670880638760002*^9, 3.6708806673112783`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<CUDALink`\>\"", "]"}]], "Input"],
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"n", "=", "200000"}], ";"}], "\n", 
+  RowBox[{"n", "=", "10000000"}], ";"}], "\n", 
  RowBox[{
-  RowBox[{"ex", "=", "5000"}], ";"}], "\n", 
+  RowBox[{"ex", "=", "2500"}], ";"}], "\n", 
  RowBox[{
-  RowBox[{"symtable", "=", 
-   RowBox[{"AbsoluteTiming", "[", 
-    RowBox[{"ParallelTable", "[", 
-     RowBox[{
-      RowBox[{"n", " ", 
-       RowBox[{"(", 
-        RowBox[{"1", "-", 
+  RowBox[{"s", "=", 
+   RowBox[{"Monitor", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"CudaTestSymmetry", "[", 
+        RowBox[{"RandomVariate", "[", 
          RowBox[{
-          RowBox[{"TestSymmetry", "[", 
-           RowBox[{"RandomVariate", "[", 
-            RowBox[{
-             RowBox[{"NormalDistribution", "[", "]"}], ",", "n"}], "]"}], 
-           "]"}], "^", "2"}]}], ")"}]}], ",", 
-      RowBox[{"{", "ex", "}"}]}], "]"}], "]"}]}], ";", 
-  RowBox[{"symtable", "[", 
-   RowBox[{"[", "1", "]"}], "]"}]}], "\n", 
+          RowBox[{"NormalDistribution", "[", "]"}], ",", "n"}], "]"}], "]"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "ex"}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     
+     RowBox[{"Row", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"ProgressIndicator", "[", 
+          RowBox[{"i", ",", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "ex"}], "}"}]}], "]"}], ",", "i", ",", " ", 
+         "\"\< \>\""}], "}"}], ",", "\"\< \>\""}], "]"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ts", " ", "=", " ", 
+   RowBox[{"n", 
+    RowBox[{"(", 
+     RowBox[{"1", "-", 
+      RowBox[{"s", "^", "2"}]}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<s1.dat\>\""}], ",", 
+   "s"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.670090295182733*^9, 3.670090296438698*^9}, {
+  3.670090338559799*^9, 3.670090371501836*^9}, {3.670090412550099*^9, 
+  3.6700904382617283`*^9}, {3.670090653476452*^9, 3.6700906576202717`*^9}, {
+  3.670090737048933*^9, 3.6700907822035913`*^9}, {3.670090933778013*^9, 
+  3.6700909352334423`*^9}, {3.670095513201683*^9, 3.670095517465932*^9}, {
+  3.6700958999175253`*^9, 3.670095901525256*^9}, {3.670100775549065*^9, 
+  3.670100822923419*^9}}],
+
+Cell["Histograma de la estad\[IAcute]stica.", "Text",
+ CellChangeTimes->{{3.6708806826949453`*^9, 3.670880698534882*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Histogram", "[", " ", 
+  RowBox[{"n", " ", 
+   RowBox[{"Sqrt", "[", 
+    RowBox[{"(", 
+     RowBox[{"1", "-", 
+      RowBox[{"s", "^", "2"}]}], ")"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.670090803563019*^9, 3.670090806289606*^9}, {
+  3.670108190573245*^9, 3.6701083220746307`*^9}}],
+
+Cell["Par\[AAcute]metros de la estad\[IAcute]stica.", "Text",
+ CellChangeTimes->{{3.670880690158849*^9, 3.670880695974669*^9}}],
+
+Cell[BoxData[{
  RowBox[{
   RowBox[{"\[Mu]", "=", 
-   RowBox[{"Mean", "[", 
-    RowBox[{"symtable", "[", 
-     RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ";"}], "\n", 
+   RowBox[{"Mean", "[", "Ts", "]"}]}], ";"}], "\n", 
  RowBox[{
   RowBox[{"\[Sigma]", "=", 
-   RowBox[{"StandardDeviation", "[", 
-    RowBox[{"symtable", "[", 
-     RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ";"}], "\n", 
- RowBox[{"SmoothHistogram", "[", 
+   RowBox[{"StandardDeviation", "[", "Ts", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Histogram", "[", 
+  RowBox[{"Ts", ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Histogram", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"Ts", "-", "\[Mu]"}], ")"}], "/", "\[Sigma]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6700999257867413`*^9, 3.670099968506598*^9}, {
+  3.6701001658682632`*^9, 3.670100169208796*^9}, {3.670100539151771*^9, 
+  3.670100540893964*^9}}],
+
+Cell[BoxData[
+ RowBox[{"FindDistribution", "[", "Ts", "]"}]], "Input",
+ CellChangeTimes->{{3.670100193173993*^9, 3.670100197944357*^9}}],
+
+Cell[BoxData[
+ RowBox[{"FindDistribution", "[", 
   RowBox[{
    RowBox[{"(", 
-    RowBox[{
-     RowBox[{"symtable", "[", 
-      RowBox[{"[", "2", "]"}], "]"}], "-", "\[Mu]"}], ")"}], "/", 
-   "\[Sigma]"}], "]"}]}], "Input",
- CellChangeTimes->{{3.669670611855146*^9, 3.669670611855707*^9}, {
-  3.669670688366404*^9, 3.6696706918625307`*^9}}]
+    RowBox[{"Ts", "-", "\[Mu]"}], ")"}], "/", "\[Sigma]"}], "]"}]], "Input",
+ CellChangeTimes->{3.670100209529752*^9}],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<ts2.dat\>\"", ",", "Ts"}], "]"}]], "Input",
+ CellChangeTimes->{{3.670099885932232*^9, 3.670099895178648*^9}, 
+   3.670100266361005*^9}]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1536, 781},
-WindowMargins->{{265, Automatic}, {Automatic, 58}},
-FrontEndVersion->"10.1 for Linux x86 (64-bit) (March 23, 2015)",
+WindowSize->{1600, 863},
+WindowMargins->{{Automatic, -1}, {Automatic, -28}},
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (February 25, 2016)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -654,50 +743,58 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 111, 1, 102, "Title"],
-Cell[694, 25, 3367, 81, 386, "Input",
+Cell[580, 22, 111, 1, 93, "Title"],
+Cell[694, 25, 4182, 101, 511, "Input",
  InitializationCell->True],
-Cell[4064, 108, 393, 9, 61, "Input"],
-Cell[4460, 119, 385, 9, 61, "Input"],
-Cell[4848, 130, 397, 9, 61, "Input"],
-Cell[5248, 141, 2300, 57, 361, "Input"],
-Cell[7551, 200, 208, 4, 35, "Input"],
-Cell[7762, 206, 211, 4, 35, "Input"],
-Cell[7976, 212, 900, 23, 61, "Input"],
-Cell[8879, 237, 1186, 32, 86, "Input"],
+Cell[4879, 128, 393, 9, 61, "Input"],
+Cell[5275, 139, 385, 9, 61, "Input"],
+Cell[5663, 150, 397, 9, 61, "Input"],
+Cell[6063, 161, 2300, 57, 361, "Input"],
+Cell[8366, 220, 208, 4, 35, "Input"],
+Cell[8577, 226, 211, 4, 35, "Input"],
+Cell[8791, 232, 900, 23, 61, "Input"],
+Cell[9694, 257, 1186, 32, 86, "Input"],
 Cell[CellGroupData[{
-Cell[10090, 273, 130, 1, 73, "Chapter"],
+Cell[10905, 293, 130, 1, 66, "Chapter"],
 Cell[CellGroupData[{
-Cell[10245, 278, 130, 1, 69, "Subchapter"],
-Cell[10378, 281, 1877, 43, 186, "Input"],
-Cell[12258, 326, 685, 17, 61, "Input"],
-Cell[12946, 345, 872, 20, 61, "Input"],
-Cell[13821, 367, 177, 5, 35, "Input"]
+Cell[11060, 298, 130, 1, 66, "Subchapter"],
+Cell[11193, 301, 1877, 43, 186, "Input"],
+Cell[13073, 346, 685, 17, 61, "Input"],
+Cell[13761, 365, 872, 20, 61, "Input"],
+Cell[14636, 387, 177, 5, 35, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14035, 377, 181, 2, 69, "Subchapter"],
-Cell[14219, 381, 1605, 40, 161, "Input"],
-Cell[15827, 423, 618, 12, 35, "Input"],
-Cell[16448, 437, 220, 4, 35, "Input"],
-Cell[16671, 443, 968, 24, 86, "Input"],
-Cell[17642, 469, 724, 18, 61, "Input"],
-Cell[18369, 489, 97, 1, 35, "Text"],
-Cell[18469, 492, 719, 16, 61, "Input"],
-Cell[19191, 510, 693, 16, 61, "Input"]
+Cell[14850, 397, 181, 2, 66, "Subchapter"],
+Cell[15034, 401, 1605, 40, 161, "Input"],
+Cell[16642, 443, 618, 12, 35, "Input"],
+Cell[17263, 457, 220, 4, 35, "Input"],
+Cell[17486, 463, 968, 24, 61, "Input"],
+Cell[18457, 489, 724, 18, 61, "Input"],
+Cell[19184, 509, 97, 1, 35, "Text"],
+Cell[19284, 512, 719, 16, 61, "Input"],
+Cell[20006, 530, 693, 16, 61, "Input"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19933, 532, 164, 2, 73, "Chapter"],
-Cell[20100, 536, 209, 6, 35, "Input"],
-Cell[20312, 544, 1364, 43, 211, "Input"]
+Cell[20748, 552, 164, 2, 66, "Chapter"],
+Cell[20915, 556, 209, 6, 35, "Input"],
+Cell[21127, 564, 1364, 43, 211, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21713, 592, 106, 1, 73, "Chapter"],
-Cell[21822, 595, 1332, 40, 161, "Input"]
+Cell[22528, 612, 105, 1, 66, "Chapter"],
+Cell[22636, 615, 173, 4, 35, "Text"],
+Cell[22812, 621, 74, 1, 35, "Input"],
+Cell[22889, 624, 1732, 46, 211, "Input"],
+Cell[24624, 672, 121, 1, 35, "Text"],
+Cell[24748, 675, 317, 8, 35, "Input"],
+Cell[25068, 685, 127, 1, 35, "Text"],
+Cell[25198, 688, 723, 19, 111, "Input"],
+Cell[25924, 709, 136, 2, 35, "Input"],
+Cell[26063, 713, 195, 5, 35, "Input"],
+Cell[26261, 720, 189, 4, 35, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
 ]
 *)
 
-(* End of internal cache information *)
