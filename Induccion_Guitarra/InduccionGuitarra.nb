@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     30437,        841]
-NotebookOptionsPosition[     29674,        810]
-NotebookOutlinePosition[     30010,        825]
-CellTagsIndexPosition[     29967,        822]
+NotebookDataLength[     30503,        843]
+NotebookOptionsPosition[     29737,        812]
+NotebookOutlinePosition[     30077,        827]
+CellTagsIndexPosition[     30034,        824]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -238,8 +238,8 @@ Cell[BoxData[
           RowBox[{"(", 
            RowBox[{"nyq", "-", "1"}], ")"}], "/", "time"}], "]"}], "/", 
         RowBox[{"Length", "[", "f", "]"}]}], ")"}], 
-      RowBox[{"FindPeaks", "[", "f", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
-   "\n", 
+      RowBox[{"FindPeaks", "[", "f", "]"}]}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{"Periodogram", "[", 
     RowBox[{
      RowBox[{"data", "[", 
@@ -337,8 +337,8 @@ Cell[BoxData[
           RowBox[{"(", 
            RowBox[{"nyq", "-", "1"}], ")"}], "/", "time"}], "]"}], "/", 
         RowBox[{"Length", "[", "f", "]"}]}], ")"}], 
-      RowBox[{"FindPeaks", "[", "f", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
-   "\n", 
+      RowBox[{"FindPeaks", "[", "f", "]"}]}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{"Periodogram", "[", 
     RowBox[{
      RowBox[{"data", "[", 
@@ -435,8 +435,8 @@ Cell[BoxData[
           RowBox[{"(", 
            RowBox[{"nyq", "-", "1"}], ")"}], "/", "time"}], "]"}], "/", 
         RowBox[{"Length", "[", "f", "]"}]}], ")"}], 
-      RowBox[{"FindPeaks", "[", "f", "]"}]}]}], ";"}], "\n", 
-   "\[IndentingNewLine]", 
+      RowBox[{"FindPeaks", "[", "f", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   "\n", 
    RowBox[{"Periodogram", "[", 
     RowBox[{
      RowBox[{"data", "[", 
@@ -683,6 +683,7 @@ Cell[BoxData[
      RowBox[{"audio", "[", 
       RowBox[{"[", 
        RowBox[{"1", ",", "2"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   
    RowBox[{
     RowBox[{"time", " ", "=", " ", 
      RowBox[{"Table", "[", 
@@ -743,8 +744,8 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"V", "[", "t_", "]"}], " ", ":=", " ", 
      RowBox[{"B", " ", 
-      RowBox[{"a", "^", "2"}], " ", 
-      RowBox[{"L", "^", "2"}], " ", 
+      SuperscriptBox["a", "2"], " ", 
+      SuperscriptBox["L", "2"], " ", 
       FractionBox[
        RowBox[{"\[Mu]", "-", "1"}], 
        RowBox[{"\[Mu]", "+", "1"}]], 
@@ -757,26 +758,26 @@ Cell[BoxData[
          FractionBox[
           RowBox[{
            RowBox[{"3", 
-            RowBox[{"h", "^", "2"}]}], " ", "-", " ", 
+            SuperscriptBox["h", "2"]}], " ", "-", " ", 
            FractionBox[
-            RowBox[{"L", "^", "2"}], "4"]}], 
-          RowBox[{
+            SuperscriptBox["L", "2"], "4"]}], 
+          SuperscriptBox[
            RowBox[{"(", 
             RowBox[{
-             RowBox[{"h", "^", "2"}], " ", "+", " ", 
+             SuperscriptBox["h", "2"], " ", "+", " ", 
              FractionBox[
-              RowBox[{"L", "^", "2"}], "4"]}], ")"}], "^", "3"}]]}], "+", 
+              SuperscriptBox["L", "2"], "4"]}], ")"}], "3"]]}], "+", 
         FractionBox[
          RowBox[{"2", " ", "h", " ", 
           RowBox[{
            RowBox[{"y", "'"}], "[", "t", "]"}]}], 
-         RowBox[{
+         SuperscriptBox[
           RowBox[{"(", 
            RowBox[{
-            RowBox[{"h", "^", "2"}], " ", "+", " ", 
+            SuperscriptBox["h", "2"], " ", "+", " ", 
             FractionBox[
-             RowBox[{"L", "^", "2"}], "4"]}], ")"}], "^", "2"}]]}], ")"}]}]}],
-     ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+             SuperscriptBox["L", "2"], "4"]}], ")"}], "2"]]}], ")"}]}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{"(*", " ", "Audios", " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{"Text", "[", "\"\<Audio de la se\[NTilde]al\>\"", "]"}], 
    "\[IndentingNewLine]", 
@@ -804,13 +805,14 @@ Cell[BoxData[
    3.644616484454867*^9, 3.6446164951078877`*^9}, {3.64461652664917*^9, 
    3.644616559231829*^9}, {3.6446190110575852`*^9, 3.6446190307907133`*^9}, {
    3.644629947970502*^9, 3.644629958102516*^9}, {3.653748879506268*^9, 
-   3.6537489162925816`*^9}, {3.653749917969906*^9, 3.6537499567673287`*^9}}]
+   3.6537489162925816`*^9}, {3.653749917969906*^9, 3.6537499567673287`*^9}, {
+   3.67217443417339*^9, 3.672174471804433*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1440, 998},
-WindowMargins->{{Automatic, 93}, {Automatic, -8}},
-FrontEndVersion->"10.1 for Linux x86 (64-bit) (March 23, 2015)",
+WindowSize->{1600, 863},
+WindowMargins->{{Automatic, -1}, {Automatic, -28}},
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (February 25, 2016)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -825,26 +827,25 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 159, 2, 102, "Title"],
+Cell[580, 22, 159, 2, 93, "Title"],
 Cell[742, 26, 993, 16, 131, "Text"],
 Cell[CellGroupData[{
-Cell[1760, 46, 133, 1, 73, "Chapter"],
+Cell[1760, 46, 133, 1, 66, "Chapter"],
 Cell[1896, 49, 264, 5, 35, "Text"],
-Cell[2163, 56, 15713, 428, 1598, "Input"]
+Cell[2163, 56, 15713, 428, 1523, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17913, 489, 147, 1, 73, "Chapter"],
+Cell[17913, 489, 147, 1, 66, "Chapter"],
 Cell[18063, 492, 424, 7, 59, "Text"],
 Cell[18490, 501, 4705, 132, 623, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23232, 638, 131, 1, 73, "Chapter"],
+Cell[23232, 638, 131, 1, 66, "Chapter"],
 Cell[23366, 641, 275, 5, 35, "Text"],
-Cell[23644, 648, 6002, 158, 673, "Input"]
+Cell[23644, 648, 6065, 160, 680, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
 ]
 *)
 
-(* End of internal cache information *)

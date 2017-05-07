@@ -5,6 +5,7 @@ Soluciones a problemas de variados hechas en Mathematica. Se incluyen notebooks 
 
 * Algoritmos de compresión
 * Aprendizaje automático
+* Análisis de series de tiempo
 * Aleatoriedad de autómata celular regla 30
 * Eigenestados de billar cuántico
 * Caminante aleatorio (juego de moneda)
@@ -15,6 +16,7 @@ Soluciones a problemas de variados hechas en Mathematica. Se incluyen notebooks 
 * Cálculo de dimensión fractal
 * Tiempo de retorno cuántico
 * Tráfico vehicular
+* Sección de Poincaré de problema de 3 cuerpos
 
 En algunos notebooks también se incluye documentación acerca de cómo se resuelven los problemas.
 
