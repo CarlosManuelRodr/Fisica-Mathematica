@@ -1,0 +1,332 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10526,        324]
+NotebookOptionsPosition[      8949,        278]
+NotebookOutlinePosition[      9285,        293]
+CellTagsIndexPosition[      9242,        290]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["LSTM para predecir serie de tiempo", "Title",
+ CellChangeTimes->{{3.704156906570201*^9, 
+  3.7041569129542027`*^9}},ExpressionUUID->"cda254e0-b9a7-4540-b5a7-\
+af6347197430"],
+
+Cell["\<\
+Basado en el tutorial:
+http://machinelearningmastery.com/time-series-prediction-lstm-recurrent-\
+neural-networks-python-keras/
+
+Datos: https://datamarket.com/data/set/22u3/international-airline-passengers-\
+monthly-totals-in-thousands-jan-49-dec-60#\
+\>", "Text",
+ CellChangeTimes->{{3.704157586294877*^9, 3.704157591981406*^9}, {
+  3.704232792633559*^9, 
+  3.704232799976458*^9}},ExpressionUUID->"69f9b003-3f10-4073-b096-\
+f85a9451759a"],
+
+Cell[CellGroupData[{
+
+Cell["Cargar muestra", "Chapter",
+ CellChangeTimes->{{3.70415693404161*^9, 3.7041569367218933`*^9}, {
+  3.704157149656534*^9, 
+  3.704157150544813*^9}},ExpressionUUID->"4b9499c8-db12-429e-9608-\
+75ad966a2f67"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"data", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+     "\"\<international-airline-passengers.csv\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data", " ", "=", " ", 
+   RowBox[{"data", "[", 
+    RowBox[{"[", 
+     RowBox[{"3", ";;", 
+      RowBox[{"-", "4"}]}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"values", " ", "=", " ", 
+   RowBox[{"data", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+
+ RowBox[{
+  RowBox[{
+   RowBox[{"scaledValues", " ", "=", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{"Rescale", "[", "values", "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"trainSize", " ", "=", " ", 
+   RowBox[{"Floor", "[", 
+    RowBox[{"0.67", "*", 
+     RowBox[{"Length", "[", "scaledValues", "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"testSize", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"Length", "[", "scaledValues", "]"}], "-", "trainSize"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"train", ",", "test"}], "}"}], " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"scaledValues", "[", 
+      RowBox[{"[", 
+       RowBox[{"1", ";;", "trainSize"}], "]"}], "]"}], ",", 
+     RowBox[{"scaledValues", "[", 
+      RowBox[{"[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"trainSize", "+", "1"}], ")"}], ";;", 
+        RowBox[{"-", "1"}]}], "]"}], "]"}]}], "}"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.70415694754617*^9, 3.704156957852249*^9}, {
+  3.7041574060503397`*^9, 3.704157411776854*^9}, {3.704232723754466*^9, 
+  3.704232723832654*^9}},ExpressionUUID->"4bca5812-be1e-441c-9b6a-\
+685f857a76a6"],
+
+Cell[BoxData[
+ RowBox[{"DateListPlot", "[", 
+  RowBox[{"data", ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Fecha\>\"", ",", "\"\<Pasajeros\>\""}], "}"}]}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.704156971285963*^9, 3.704157052828288*^9}, {
+   3.7041576175520372`*^9, 3.7041576204922647`*^9}, 
+   3.704232737692442*^9},ExpressionUUID->"0a5d294c-f573-44ac-b61a-\
+079a0d6d0aaf"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Crear conjunto de entrenamiento", "Chapter",
+ CellChangeTimes->{{3.7041571261527443`*^9, 
+  3.704157159488833*^9}},ExpressionUUID->"0d5e5faf-f3c9-4b0d-84a5-\
+b2eeaa3d3b37"],
+
+Cell["\<\
+Lookback es el n\[UAcute]mero de muestras con las cuales se \
+alimentar\[AAcute] el modelo para predecir un solo valor.
+Ej: Para una serie de tiempo {a,b,c,d,e,f} el conjunto de entrenamiento con \
+un lookback = 3 ser\[AAcute]
+
+X ={{a,b,c},{b,c,d},{c,d,e}}
+Y = {d,e,f}\
+\>", "Text",
+ CellChangeTimes->{{3.704157420183736*^9, 
+  3.704157551455226*^9}},ExpressionUUID->"28249301-5c67-4f07-a5c6-\
+32b6e6e5bfc6"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"lookback", " ", "=", " ", "4"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"trainX", "  ", "=", " ", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"train", "[", 
+      RowBox[{"[", 
+       RowBox[{"1", ";;", 
+        RowBox[{"-", "lookback"}]}], "]"}], "]"}], ",", "lookback", ",", 
+     "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"trainY", " ", "=", " ", 
+   RowBox[{"train", "[", 
+    RowBox[{"[", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "+", "lookback"}], ")"}], ";;", 
+      RowBox[{"-", 
+       RowBox[{"(", 
+        RowBox[{"lookback", "-", "1"}], ")"}]}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"testX", "  ", "=", " ", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"test", "[", 
+      RowBox[{"[", 
+       RowBox[{"1", ";;", 
+        RowBox[{"-", "lookback"}]}], "]"}], "]"}], ",", "lookback", ",", 
+     "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"testY", " ", "=", " ", 
+    RowBox[{"test", "[", 
+     RowBox[{"[", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"1", "+", "lookback"}], ")"}], ";;", 
+       RowBox[{"-", 
+        RowBox[{"(", 
+         RowBox[{"lookback", "-", "1"}], ")"}]}]}], "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"trainX", " ", "=", " ", 
+   RowBox[{"ArrayReshape", "[", 
+    RowBox[{"trainX", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Length", "[", "trainX", "]"}], ",", "1", ",", "lookback"}], 
+      "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"testX", " ", "=", " ", 
+   RowBox[{"ArrayReshape", "[", 
+    RowBox[{"testX", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Length", "[", "testX", "]"}], ",", "1", ",", "lookback"}], 
+      "}"}]}], "]"}]}], ";"}]}], "Input",ExpressionUUID->"03eaf3f6-6112-4d76-\
+b180-8ee7a247776a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Modelo", "Chapter",
+ CellChangeTimes->{{3.704157166912689*^9, 
+  3.704157167576796*^9}},ExpressionUUID->"cc62ba09-6d4b-4c2f-8eff-\
+1dd20632f8f7"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"net", "=", 
+    RowBox[{"NetInitialize", "[", 
+     RowBox[{"NetChain", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"LongShortTermMemoryLayer", "[", "4", "]"}], ",", 
+         RowBox[{"LinearLayer", "[", "]"}]}], "}"}], ",", 
+       RowBox[{"\"\<Input\>\"", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "lookback"}], "}"}]}], ",", 
+       RowBox[{"\"\<Output\>\"", "\[Rule]", "\"\<Real\>\""}]}], "]"}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"net", " ", "=", " ", 
+  RowBox[{"NetTrain", "[", 
+   RowBox[{"net", ",", 
+    RowBox[{"trainX", "\[Rule]", "trainY"}], ",", 
+    RowBox[{"MeanSquaredLossLayer", "[", "]"}], ",", 
+    RowBox[{"TargetDevice", "\[Rule]", "\"\<GPU\>\""}], ",", 
+    RowBox[{"Method", "\[Rule]", "\"\<ADAM\>\""}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.704157178891491*^9, 
+  3.7041571846985807`*^9}},ExpressionUUID->"c03b07c1-9d2e-47e1-86a6-\
+73655a40f9e6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Predicciones", "Chapter",
+ CellChangeTimes->{{3.704157238584484*^9, 
+  3.704157240216653*^9}},ExpressionUUID->"6d1a057e-ed7d-4859-907d-\
+b0305cd8eed6"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"trainPredict", " ", "=", " ", 
+   RowBox[{"net", "[", "trainX", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"testPredict", " ", "=", " ", 
+    RowBox[{"net", "[", "testX", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"scaledValues", ",", 
+     RowBox[{"Join", "[", 
+      RowBox[{
+       RowBox[{"ConstantArray", "[", 
+        RowBox[{"0", ",", 
+         RowBox[{"{", 
+          RowBox[{"lookback", "-", "1"}], "}"}]}], "]"}], ",", "trainPredict",
+        ",", "testPredict"}], "]"}]}], "}"}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Original\>\"", ",", "\"\<Predicci\[OAcute]n\>\""}], "}"}]}],
+    ",", " ", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Fecha\>\"", ",", "\"\<Pasajeros\>\""}], "}"}]}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.704157605401009*^9, 
+  3.704157645519973*^9}},ExpressionUUID->"e2904ae5-511e-4828-a58e-\
+4a0d60804610"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{933, 810},
+WindowMargins->{{553, Automatic}, {Automatic, 95}},
+FrontEndVersion->"11.1 for Linux x86 (64-bit) (April 18, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 179, 3, 93, "Title", "ExpressionUUID" -> \
+"cda254e0-b9a7-4540-b5a7-af6347197430"],
+Cell[762, 27, 448, 11, 111, "Text", "ExpressionUUID" -> \
+"69f9b003-3f10-4073-b096-f85a9451759a"],
+Cell[CellGroupData[{
+Cell[1235, 42, 209, 4, 66, "Chapter", "ExpressionUUID" -> \
+"4b9499c8-db12-429e-9608-75ad966a2f67"],
+Cell[1447, 48, 1856, 55, 202, "Input", "ExpressionUUID" -> \
+"4bca5812-be1e-441c-9b6a-685f857a76a6"],
+Cell[3306, 105, 477, 10, 35, "Input", "ExpressionUUID" -> \
+"0a5d294c-f573-44ac-b61a-079a0d6d0aaf"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3820, 120, 178, 3, 66, "Chapter", "ExpressionUUID" -> \
+"0d5e5faf-f3c9-4b0d-84a5-b2eeaa3d3b37"],
+Cell[4001, 125, 418, 11, 111, "Text", "ExpressionUUID" -> \
+"28249301-5c67-4f07-a5c6-32b6e6e5bfc6"],
+Cell[4422, 138, 1947, 60, 202, "Input", "ExpressionUUID" -> \
+"03eaf3f6-6112-4d76-b180-8ee7a247776a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6406, 203, 151, 3, 66, "Chapter", "ExpressionUUID" -> \
+"cc62ba09-6d4b-4c2f-8eff-1dd20632f8f7"],
+Cell[6560, 208, 1021, 25, 129, "Input", "ExpressionUUID" -> \
+"c03b07c1-9d2e-47e1-86a6-73655a40f9e6"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7618, 238, 157, 3, 66, "Chapter", "ExpressionUUID" -> \
+"6d1a057e-ed7d-4859-907d-b0305cd8eed6"],
+Cell[7778, 243, 1143, 31, 190, "Input", "ExpressionUUID" -> \
+"e2904ae5-511e-4828-a58e-4a0d60804610"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
