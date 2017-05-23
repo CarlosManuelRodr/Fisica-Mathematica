@@ -1,0 +1,176 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6015,        168]
+NotebookOptionsPosition[      5386,        146]
+NotebookOutlinePosition[      5724,        161]
+CellTagsIndexPosition[      5681,        158]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Navegador de archivos", "Title",
+ CellChangeTimes->{{3.7044890172768593`*^9, 
+  3.704489020653026*^9}},ExpressionUUID->"91d04f50-55b7-4747-aab1-\
+4f47b9cb51e8"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Browse", "[", 
+    RowBox[{"path_", ",", "filePattern_", ",", "hideEmpty_", ",", "state_"}], 
+    "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "directories", ",", "files", ",", "currentDir", ",", "dirSection", ",", 
+       "fileSection"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"directories", " ", "=", " ", 
+       RowBox[{"Select", "[", 
+        RowBox[{
+         RowBox[{"FileNames", "[", 
+          RowBox[{"\"\<*\>\"", ",", "path"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"FileType", "[", "#", "]"}], "\[Equal]", "Directory"}], 
+          "&"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"files", " ", "=", " ", 
+       RowBox[{"Select", "[", 
+        RowBox[{
+         RowBox[{"FileNames", "[", 
+          RowBox[{"filePattern", ",", "path"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"FileType", "[", "#", "]"}], "\[Equal]", "File"}], "&"}]}],
+         "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"hideEmpty", " ", "&&", " ", 
+         RowBox[{
+          RowBox[{"Length", "[", "directories", "]"}], " ", "\[Equal]", " ", 
+          "0"}], " ", "&&", " ", 
+         RowBox[{
+          RowBox[{"Length", "[", "files", "]"}], " ", "\[Equal]", " ", 
+          "0"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", "Nothing", "]"}], ",", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"currentDir", " ", "=", " ", 
+          RowBox[{"Row", "[", 
+           RowBox[{"{", 
+            RowBox[{"path", ",", "\"\< \>\"", ",", " ", 
+             RowBox[{"Button", "[", 
+              RowBox[{"\"\<Open\>\"", ",", 
+               RowBox[{"SystemOpen", "[", "path", "]"}]}], "]"}]}], "}"}], 
+           "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"dirSection", " ", "=", " ", 
+          RowBox[{"Map", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Browse", "[", 
+              RowBox[{
+              "#", ",", "filePattern", ",", "hideEmpty", ",", "state"}], 
+              "]"}], "&"}], ",", "directories"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"fileSection", " ", "=", " ", 
+          RowBox[{"Map", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Row", "[", 
+              RowBox[{"{", 
+               RowBox[{"#", ",", "\"\< \>\"", ",", " ", 
+                RowBox[{"Button", "[", 
+                 RowBox[{"\"\<Open\>\"", ",", 
+                  RowBox[{"SystemOpen", "[", "#", "]"}]}], "]"}]}], "}"}], 
+              "]"}], "&"}], ",", "files"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Return", "[", 
+          RowBox[{"OpenerView", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"currentDir", ",", 
+              RowBox[{"Column", "[", 
+               RowBox[{"Join", "[", 
+                RowBox[{"dirSection", ",", "fileSection"}], "]"}], "]"}]}], 
+             "}"}], ",", "state"}], "]"}], "]"}]}]}], "\[IndentingNewLine]", 
+       "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FileBrowser", "[", 
+    RowBox[{
+     RowBox[{"path_:", 
+      RowBox[{"Directory", "[", "]"}]}], ",", 
+     RowBox[{"filePattern_:", "\"\<*\>\""}], ",", 
+     RowBox[{"hideEmpty_:", "False"}]}], "]"}], ":=", 
+   RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Browse", "[", 
+      RowBox[{"path", ",", "filePattern", ",", "hideEmpty", ",", "State"}], 
+      "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"State", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"False", "\[Rule]", "\"\<Collapse all\>\""}], ",", 
+         RowBox[{"True", "\[Rule]", "\"\<Uncollapse all\>\""}]}], "}"}]}], 
+      "}"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",ExpressionUUID->"73e59355-b4b7-4341-a53c-c7716de6c3c3"],
+
+Cell["Ejemplo de uso", "Text",
+ CellChangeTimes->{{3.704489031748823*^9, 
+  3.704489035884861*^9}},ExpressionUUID->"e30be099-d6d6-4596-93a2-\
+88504cf126ad"],
+
+Cell[BoxData[
+ RowBox[{"FileBrowser", "[", 
+  RowBox[{"ParentDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7044889279557858`*^9, 3.70448893302391*^9}, {
+  3.704489006702389*^9, 3.704489010533204*^9}, {3.704489041590145*^9, 
+  3.7044890432852287`*^9}},ExpressionUUID->"12d847d1-c16f-40ad-bf8f-\
+bdd48d29718e"]
+}, Open  ]]
+},
+WindowSize->{1081, 753},
+WindowMargins->{{263, Automatic}, {Automatic, 112}},
+FrontEndVersion->"11.1 for Linux x86 (64-bit) (April 18, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 166, 3, 93, "Title", "ExpressionUUID" -> \
+"91d04f50-55b7-4747-aab1-4f47b9cb51e8"],
+Cell[749, 27, 4089, 102, 440, "Input", "ExpressionUUID" -> \
+"73e59355-b4b7-4341-a53c-c7716de6c3c3"],
+Cell[4841, 131, 156, 3, 31, "Text", "ExpressionUUID" -> \
+"e30be099-d6d6-4596-93a2-88504cf126ad"],
+Cell[5000, 136, 370, 7, 33, "Input", "ExpressionUUID" -> \
+"12d847d1-c16f-40ad-bf8f-bdd48d29718e"]
+}, Open  ]]
+}
+]
+*)
+
