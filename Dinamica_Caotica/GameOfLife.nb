@@ -1,0 +1,1046 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     35446,       1038]
+NotebookOptionsPosition[     31629,        938]
+NotebookOutlinePosition[     31965,        953]
+CellTagsIndexPosition[     31922,        950]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Game of life emerging properties", "Title",
+ CellChangeTimes->{{3.705004825799399*^9, 
+  3.705004840607024*^9}},ExpressionUUID->"4979dffb-a3b0-4ae4-9ee6-\
+3c87e068ba9b"],
+
+Cell["\<\
+Based on:
+A.R. Hern\[AAcute]ndez-Montoya et. al. Emerging properties of financial time \
+series in the Game Of Life (2011).
+Link: http://www.bcamath.org/documentos_public/archivos/publicaciones/\
+golfinal.pdf\
+\>", "Text",
+ CellChangeTimes->{{3.705005736206593*^9, 3.7050057801667356`*^9}, {
+  3.705007373319648*^9, 
+  3.7050073765329514`*^9}},ExpressionUUID->"b024569c-6ee3-44cd-ab53-\
+ca7e8b47003d"],
+
+Cell[CellGroupData[{
+
+Cell["Simple simulation", "Chapter",
+ CellChangeTimes->{{3.7050048531752853`*^9, 
+  3.705004855767255*^9}},ExpressionUUID->"bc8302c2-ff7b-43b1-b777-\
+36c8ac36d146"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", " ", "=", " ", "50"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"alivePercentage", " ", "=", " ", "0.5"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"maxIter", " ", "=", " ", "100"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"init", " ", "=", " ", 
+   RowBox[{"RandomChoice", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"1", "-", "alivePercentage"}], ",", "alivePercentage"}], 
+       "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "n"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gol", " ", "=", " ", 
+   RowBox[{"CellularAutomaton", "[", 
+    RowBox[{"\"\<GameOfLife\>\"", ",", "init", ",", "maxIter"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListAnimate", "[", 
+  RowBox[{"Map", "[", 
+   RowBox[{"ArrayPlot", ",", "gol"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.705004898676865*^9, 3.705004961006255*^9}, {
+  3.705005067901764*^9, 
+  3.705005074270719*^9}},ExpressionUUID->"6a0f6aae-2eeb-4f50-9aba-\
+30933a79440b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Random walk generation", "Chapter",
+ CellChangeTimes->{{3.705004864710731*^9, 
+  3.705004868590974*^9}},ExpressionUUID->"9504bb56-c970-4dac-a1eb-\
+8efb5d84e84b"],
+
+Cell[TextData[{
+ "To obtain an observable of the state of the Game Of Life the vector ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    StyleBox["R",
+     FontWeight->"Bold"], "CM"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "10969b9d-bb15-4c18-8b8a-8a99ca469177"],
+ " can be defined as the center of mass of the system, where\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox[
+      StyleBox["R",
+       FontWeight->"Bold"], "CM"], "(", "i", ")"}], " ", "=", " ", 
+    RowBox[{
+     FractionBox["1", "N"], 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"x", "=", "1"}], "N"], 
+      RowBox[{
+       UnderoverscriptBox["\[Sum]", 
+        RowBox[{"y", "=", "1"}], "N"], 
+       RowBox[{
+        RowBox[{
+         SubscriptBox["C", "xy"], "(", "i", ")"}], " ", 
+        RowBox[{"(", 
+         RowBox[{"x", ",", "y"}], ")"}]}]}]}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "7c314883-363e-404a-bf16-bfa73a745807"],
+ "\n\nwhere ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["C", "xy"], "(", "i", ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "f3954b00-dc19-4775-b89f-d38c3c494722"],
+ " denotes the state (1 or 0) of the cell at coordinates (x,y) at the time \
+step i.\nTo obtain a one-dimensional observable we can use the norm of ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    StyleBox["R",
+     FontWeight->"Bold"], "CM"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "e9186351-d1c1-4ec2-b5d3-e91668254309"],
+ ",\n\n",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["r", "i"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "35d634c6-32ad-4d0e-a607-f4940737af3d"],
+ " = |",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    StyleBox["R",
+     FontWeight->"Bold"], "CM"], TraditionalForm]],ExpressionUUID->
+  "1dae931f-57f0-4311-913d-62da397256e3"],
+ "(i)|.\n\nTo analyze the stilized facts I will use the one step logarithmic \
+returns,\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["s", "i"], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"log", " ", 
+      SubscriptBox["r", 
+       RowBox[{"i", "+", "1"}]]}], "-", 
+     RowBox[{"log", " ", 
+      SubscriptBox["r", "i"]}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "3d3d825f-1cb9-4db4-8d5e-c8a78ea554ed"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.705005849157736*^9, 3.705006046548588*^9}, 
+   3.705006105027718*^9, {3.70500614749161*^9, 
+   3.70500631617059*^9}},ExpressionUUID->"fce10a5f-560b-4f81-963b-\
+c3b2892e57f3"],
+
+Cell[CellGroupData[{
+
+Cell["Small grid code", "Subchapter",
+ CellChangeTimes->{{3.7050050036535463`*^9, 
+  3.705005008853763*^9}},ExpressionUUID->"e1a3001c-5441-4a86-9d2c-\
+9bd6f3c3e847"],
+
+Cell["\<\
+Code optimized for speed. Consumes a lot of ram because it stores all the \
+states of the cellular automata.\
+\>", "Text",
+ CellChangeTimes->{{3.7050055642561398`*^9, 
+  3.705005589848413*^9}},ExpressionUUID->"69531ef5-07bf-4611-9bf2-\
+f982224c199c"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "50"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"alive", " ", "=", " ", "0.2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"maxIter", " ", "=", " ", "100"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Returns", "[", 
+    RowBox[{"x_", ",", "lag_"}], "]"}], ":=", " ", 
+   RowBox[{
+    RowBox[{"Log", "[", 
+     RowBox[{"x", "[", 
+      RowBox[{"[", 
+       RowBox[{"1", ";;", 
+        RowBox[{"-", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "lag"}], ")"}]}]}], "]"}], "]"}], "]"}], "-", 
+    RowBox[{"Log", "[", 
+     RowBox[{"x", "[", 
+      RowBox[{"[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1", "+", "lag"}], ")"}], ";;", 
+        RowBox[{"-", "1"}]}], "]"}], "]"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"RCM", " ", "=", " ", 
+   RowBox[{"Compile", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"gol", ",", "_Integer", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "_Integer"}], "}"}]}], "}"}], ",", 
+     RowBox[{
+      FractionBox["1", "n"], 
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"gol", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", "j"}], "]"}], "]"}], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"i", ",", "j"}], "}"}], "-", 
+           RowBox[{"n", "/", "2"}]}], ")"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", "n"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"j", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ",", 
+     RowBox[{"Parallelization", "\[Rule]", "True"}], ",", 
+     RowBox[{"RuntimeOptions", "\[Rule]", "\"\<Speed\>\""}], ",", 
+     RowBox[{"RuntimeAttributes", "\[Rule]", 
+      RowBox[{"{", "Listable", "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gol", " ", "=", " ", 
+   RowBox[{"CellularAutomaton", "[", 
+    RowBox[{"\"\<GameOfLife\>\"", ",", 
+     RowBox[{"RandomChoice", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"1", "-", "alive"}], ",", "alive"}], "}"}], "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "n"}], "}"}]}], "]"}], ",", "maxIter"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rcms", " ", "=", 
+   RowBox[{"RCM", "[", 
+    RowBox[{"gol", ",", "n"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r", " ", "=", " ", 
+   RowBox[{"Map", "[", 
+    RowBox[{"Norm", ",", "rcms"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ret", " ", "=", " ", 
+   RowBox[{"Returns", "[", 
+    RowBox[{"r", ",", "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"rcms", ",", 
+   RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<x\>\"", ",", "\"\<y\>\""}], "}"}]}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", 
+    "\"\<\!\(\*SubscriptBox[\(R\), \(CM\)]\) of Game Of Life\>\""}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"FontSize", "\[Rule]", "14"}]}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"r", ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", "\"\<r(t)\>\""}], "}"}]}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"FontSize", "\[Rule]", "14"}]}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Time evolution of r(t)\>\""}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"ret", ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", "\"\<s(t)\>\""}], "}"}]}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"FontSize", "\[Rule]", "14"}]}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Time evolution of s(t)\>\""}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.705005058622167*^9, 3.705005098969432*^9}, {
+  3.705005142228902*^9, 3.7050052122684526`*^9}, {3.7050053452147083`*^9, 
+  3.705005429555294*^9}},ExpressionUUID->"899134c7-5d9d-49b1-8e09-\
+44a0bd41cbc5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Large grid code", "Subchapter",
+ CellChangeTimes->{{3.705005028085259*^9, 
+  3.705005029877324*^9}},ExpressionUUID->"2c5e6758-829e-4c8a-99eb-\
+49f5ec37ee9a"],
+
+Cell["\<\
+This code improves memory management at the cost of speed because it can\
+\[CloseCurlyQuote]t be parallelized.\
+\>", "Text",
+ CellChangeTimes->{{3.7050055176565437`*^9, 
+  3.705005557584227*^9}},ExpressionUUID->"7c504b7f-4af5-48ba-9552-\
+6282eb801140"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "50"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"alive", " ", "=", " ", "0.5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"maxIter", " ", "=", " ", "100"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"RCM", " ", "=", " ", 
+   RowBox[{"Compile", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"gol", ",", "_Integer", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "_Integer"}], "}"}]}], "}"}], ",", 
+     RowBox[{
+      FractionBox["1", "n"], 
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"gol", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", "j"}], "]"}], "]"}], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"i", ",", "j"}], "}"}], "-", 
+           RowBox[{"n", "/", "2"}]}], ")"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", "n"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"j", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ",", 
+     RowBox[{"RuntimeOptions", "\[Rule]", "\"\<Speed\>\""}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"GetRCMS", "[", 
+    RowBox[{"n_", ",", "maxIter_", ",", "alive_"}], "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"i", "=", "0"}], ",", 
+       RowBox[{"rcms", " ", "=", " ", 
+        RowBox[{"ConstantArray", "[", 
+         RowBox[{"0", ",", "maxIter"}], "]"}]}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Nest", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"i", "++"}], ";", 
+           RowBox[{
+            RowBox[{"rcms", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "=", 
+            RowBox[{"RCM", "[", 
+             RowBox[{"#", ",", "n"}], "]"}]}], ";", 
+           RowBox[{"CellularAutomaton", "[", 
+            RowBox[{"\"\<GameOfLife\>\"", ",", "#"}], "]"}]}], ")"}], "&"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{"RandomChoice", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"1", "-", "alive"}], ",", "alive"}], "}"}], "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "1"}], "}"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"n", ",", "n"}], "}"}]}], "]"}], ",", "maxIter"}], "]"}], 
+      ";", "\[IndentingNewLine]", "rcms"}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rcms", " ", "=", " ", 
+   RowBox[{"GetRCMS", "[", 
+    RowBox[{"n", ",", "maxIter", ",", "alive"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r", " ", "=", " ", 
+   RowBox[{"Map", "[", 
+    RowBox[{"Norm", ",", "rcms"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ret", " ", "=", " ", 
+   RowBox[{"Returns", "[", 
+    RowBox[{"r", ",", "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"rcms", ",", 
+   RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<x\>\"", ",", "\"\<y\>\""}], "}"}]}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", 
+    "\"\<\!\(\*SubscriptBox[\(R\), \(CM\)]\) of Game Of Life\>\""}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"FontSize", "\[Rule]", "14"}]}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"r", ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", "\"\<r(t)\>\""}], "}"}]}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"FontSize", "\[Rule]", "14"}]}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Time evolution of r(t)\>\""}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"ret", ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", "\"\<s(t)\>\""}], "}"}]}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"FontSize", "\[Rule]", "14"}]}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Time evolution of s(t)\>\""}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.705005670679927*^9, 
+  3.705005706179476*^9}},ExpressionUUID->"79a2cb12-6a0f-404b-ba90-\
+4b14c27f80a5"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Stilyzed facts", "Chapter",
+ CellChangeTimes->{{3.705004874446596*^9, 
+  3.705004876414508*^9}},ExpressionUUID->"9e840b9c-770c-4230-9233-\
+08d5d740e9dd"],
+
+Cell[CellGroupData[{
+
+Cell["Run Game Of Life", "Subchapter",
+ CellChangeTimes->{{3.705006638062502*^9, 
+  3.70500664078246*^9}},ExpressionUUID->"ae23d73d-15f5-4989-ac27-\
+aab6e21c5419"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "500"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"alive", " ", "=", " ", "0.5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"maxIter", " ", "=", " ", "1000"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Returns", "[", 
+    RowBox[{"x_", ",", "lag_"}], "]"}], ":=", " ", 
+   RowBox[{
+    RowBox[{"Log", "[", 
+     RowBox[{"x", "[", 
+      RowBox[{"[", 
+       RowBox[{"1", ";;", 
+        RowBox[{"-", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "lag"}], ")"}]}]}], "]"}], "]"}], "]"}], "-", 
+    RowBox[{"Log", "[", 
+     RowBox[{"x", "[", 
+      RowBox[{"[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1", "+", "lag"}], ")"}], ";;", 
+        RowBox[{"-", "1"}]}], "]"}], "]"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"RCM", " ", "=", " ", 
+   RowBox[{"Compile", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"gol", ",", "_Integer", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "_Integer"}], "}"}]}], "}"}], ",", 
+     RowBox[{
+      FractionBox["1", "n"], 
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"gol", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", "j"}], "]"}], "]"}], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"i", ",", "j"}], "}"}], "-", 
+           RowBox[{"n", "/", "2"}]}], ")"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", "n"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"j", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ",", 
+     RowBox[{"Parallelization", "\[Rule]", "True"}], ",", 
+     RowBox[{"RuntimeOptions", "\[Rule]", "\"\<Speed\>\""}], ",", 
+     RowBox[{"RuntimeAttributes", "\[Rule]", 
+      RowBox[{"{", "Listable", "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gol", " ", "=", " ", 
+   RowBox[{"CellularAutomaton", "[", 
+    RowBox[{"\"\<GameOfLife\>\"", ",", 
+     RowBox[{"RandomChoice", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"1", "-", "alive"}], ",", "alive"}], "}"}], "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "n"}], "}"}]}], "]"}], ",", "maxIter"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rcms", " ", "=", 
+   RowBox[{"RCM", "[", 
+    RowBox[{"gol", ",", "n"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{
+  3.705006496754105*^9},ExpressionUUID->"7d1681a3-d6db-4524-b48d-\
+0b5deb0fa306"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Plots of the time series", "Subchapter",
+ CellChangeTimes->{{3.705006627454322*^9, 
+  3.705006633702524*^9}},ExpressionUUID->"11746514-a11b-424d-816e-\
+94264aba055d"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"r", " ", "=", " ", 
+   RowBox[{"Map", "[", 
+    RowBox[{"Norm", ",", "rcms"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ret", " ", "=", " ", 
+   RowBox[{"Returns", "[", 
+    RowBox[{"r", ",", "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"r", ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", "\"\<r(t)\>\""}], "}"}]}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"FontSize", "\[Rule]", "14"}]}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Time evolution of r(t)\>\""}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"ret", ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", "\"\<s(t)\>\""}], "}"}]}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"FontSize", "\[Rule]", "14"}]}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Time evolution of s(t)\>\""}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.705006554284136*^9, 
+  3.70500656690617*^9}},ExpressionUUID->"bb688bed-3663-4c5d-abd6-\
+6d0ef75c485d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Agregational gaussianity", "Subchapter",
+ CellChangeTimes->{{3.7050067431173553`*^9, 
+  3.705006746901492*^9}},ExpressionUUID->"2fd35dd2-6c3d-4095-8663-\
+dbd7a9814569"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dtmax", " ", "=", " ", "8"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rets", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Returns", "[", 
+      RowBox[{"r", ",", "dt"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"dt", ",", "1", ",", "dtmax"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"SmoothHistogram", "[", 
+   RowBox[{"rets", ",", "Automatic", ",", " ", "\"\<PDF\>\"", ",", 
+    RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+    RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
+    RowBox[{"FrameLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"\"\<R\>\"", ",", " ", "\"\<PDF\>\""}], "}"}]}], ",", 
+    RowBox[{"PlotLegends", "\[Rule]", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"\"\<\[CapitalDelta]t = \>\"", " ", "<>", " ", 
+        RowBox[{"ToString", "[", "i", "]"}], "<>", " ", "\"\<. Kurt = \>\"", "<>", 
+        RowBox[{"ToString", "[", 
+         RowBox[{"Kurtosis", "[", 
+          RowBox[{"rets", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "dtmax"}], "}"}]}], "]"}]}]}], "]"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.705006761786663*^9, 
+  3.705006918255677*^9}},ExpressionUUID->"fa703f8c-c226-4d1c-b931-\
+9109a61dafb8"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dtmax", " ", "=", " ", "150"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"kurts", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"dt", ",", 
+       RowBox[{"Kurtosis", "[", 
+        RowBox[{"Returns", "[", 
+         RowBox[{"r", ",", "dt"}], "]"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"dt", ",", "1", ",", "dtmax"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"kurts", ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"GridLines", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"None", ",", 
+      RowBox[{"{", "3", "}"}]}], "}"}]}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<dt\>\"", ",", "\"\<Kurtosis\>\""}], "}"}]}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"FontSize", "\[Rule]", "14"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.705006925362731*^9, 
+  3.705007007867962*^9}},ExpressionUUID->"a4c468c8-d406-4406-ba06-\
+89b9efa3c4f4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Absence of linear autocorrelations", "Subchapter",
+ CellChangeTimes->{{3.7050072737681026`*^9, 
+  3.705007278144301*^9}},ExpressionUUID->"432847e3-c2d3-40f5-a611-\
+9152e8800782"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"lincorr", " ", "=", " ", 
+   RowBox[{"CorrelationFunction", "[", 
+    RowBox[{"ret", ",", 
+     RowBox[{"{", "50", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"lincorr", ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<\[Tau]\>\"", ",", " ", "\"\<Corr\>\""}], "}"}]}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.705007280985256*^9, 
+  3.705007293753826*^9}},ExpressionUUID->"9e0c772d-8bb0-4265-a0cc-\
+e3b024452c42"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Volatility clustering", "Subchapter",
+ CellChangeTimes->{{3.705007033138796*^9, 
+  3.705007037226684*^9}},ExpressionUUID->"22496704-270a-4f30-b3fd-\
+ed9d414521b2"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"volatility", " ", "=", " ", 
+   SuperscriptBox["ret", "2"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"clustering", " ", "=", " ", 
+   RowBox[{"CorrelationFunction", "[", 
+    RowBox[{"volatility", ",", 
+     RowBox[{"{", "50", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"volatility", ",", " ", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<t\>\"", ",", "\"\<\!\(\*SuperscriptBox[\(R\), \(2\)]\)\>\""}], 
+     "}"}]}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"clustering", ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<\[Tau]\>\"", ",", " ", "\"\<Corr\>\""}], "}"}]}]}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.705007046234013*^9, 3.705007069684494*^9}, {
+  3.705007099852663*^9, 
+  3.705007127931821*^9}},ExpressionUUID->"ac1acba5-5f03-4964-8eff-\
+ea04e19e939b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Heavy tails", "Subchapter",
+ CellChangeTimes->{{3.705007191897368*^9, 
+  3.705007193625288*^9}},ExpressionUUID->"e724f56b-c2da-4b63-b2de-\
+7609c77f8931"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"hist", " ", "=", " ", 
+   RowBox[{"HistogramList", "[", 
+    RowBox[{"ret", ",", "100", ",", " ", "\"\<Probability\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"minl", " ", "=", " ", 
+   RowBox[{"Min", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Length", "[", 
+       RowBox[{"hist", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", " ", 
+      RowBox[{"Length", "[", 
+       RowBox[{"hist", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "]"}]}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"histlist", " ", "=", " ", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"hist", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ";;", "minl"}], "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"hist", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ";;", "minl"}], "]"}], "]"}]}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"histlistneg", " ", "=", " ", "histlist"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"histlistneg", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "1"}], "]"}], "]"}], " ", "=", " ", 
+   RowBox[{"-", 
+    RowBox[{"histlistneg", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "1"}], "]"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLogLogPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"histlist", ",", "histlistneg"}], "}"}], ",", " ", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<R\>\"", ",", " ", "\"\<Frecuencia\>\""}], "}"}]}], ",", 
+   RowBox[{"Joined", "\[Rule]", "True"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7050071987048693`*^9, 
+  3.705007253913929*^9}},ExpressionUUID->"0dc764b2-2160-4c6d-ab13-\
+89e9428b41ee"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Life expectancy", "Chapter",
+ CellChangeTimes->{{3.705007658073596*^9, 
+  3.705007660689701*^9}},ExpressionUUID->"34e20f9d-fa2f-4132-a7d3-\
+38da5c65acb0"],
+
+Cell["\<\
+Calculate the medium life expectancy of the system. I will considerate a \
+system as dead if it\[CloseCurlyQuote]s still or periodic.\
+\>", "Text",
+ CellChangeTimes->{{3.7050107485069647`*^9, 
+  3.705010785354547*^9}},ExpressionUUID->"8e478575-fab5-4265-9ebd-\
+4f28e7b6f1da"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"StillQ", "[", 
+    RowBox[{"a1_", ",", "a2_", ",", "a3_"}], "]"}], ":=", 
+   RowBox[{"Or", "[", 
+    RowBox[{
+     RowBox[{"SameQ", "[", 
+      RowBox[{"a1", ",", "a2"}], "]"}], ",", 
+     RowBox[{"SameQ", "[", 
+      RowBox[{"a1", ",", "a3"}], "]"}], ",", 
+     RowBox[{"SameQ", "[", 
+      RowBox[{"a2", ",", "a3"}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"IterUntilStill", "[", 
+    RowBox[{"n_", ",", "maxIter_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "i", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"i", "=", "0"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"NestWhile", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"i", "++"}], ";", 
+           RowBox[{"CellularAutomaton", "[", 
+            RowBox[{"\"\<GameOfLife\>\"", ",", "#"}], "]"}]}], ")"}], "&"}], 
+        ",", 
+        RowBox[{"RandomInteger", "[", 
+         RowBox[{"1", ",", 
+          RowBox[{"{", 
+           RowBox[{"n", ",", "n"}], "}"}]}], "]"}], ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"!", 
+            RowBox[{"StillQ", "[", "##", "]"}]}], "&&", 
+           RowBox[{"i", "<", "maxIter"}]}], ")"}], "&"}], ",", "3"}], "]"}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "i", "]"}], ";"}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"maxIter", " ", "=", " ", "10000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"iter", " ", "=", " ", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"n", ",", 
+       RowBox[{"IterUntilStill", "[", 
+        RowBox[{"n", ",", "maxIter"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "10", ",", "300", ",", "10"}], "}"}], ",", 
+     RowBox[{"{", "15", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"iter2", " ", "=", " ", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"DeleteCases", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"{", 
+         RowBox[{"_", ",", "maxIter"}], "}"}]}], "]"}], "&"}], ",", "iter"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pts", " ", "=", " ", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", 
+          RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", 
+        RowBox[{"Mean", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}]}], "}"}], "&"}], ",", 
+     "iter2"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"pts", ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<n\>\"", ",", "\"\<Life expectancy\>\""}], "}"}]}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"FontSize", "\[Rule]", "14"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7050077569930553`*^9, 3.705007784689088*^9}, {
+  3.705008035166573*^9, 3.7050080352772703`*^9}, {3.705008649834593*^9, 
+  3.705008658851927*^9}, {3.7050107185008497`*^9, 
+  3.705010722780614*^9}},ExpressionUUID->"3135cfc7-50c7-4cd1-aa1f-\
+f0e000a1f3d9"],
+
+Cell["\<\
+We can fit the points to create a function that calculates life expectancy\
+\>", "Text",
+ CellChangeTimes->{{3.7050107293392363`*^9, 
+  3.7050107436431*^9}},ExpressionUUID->"60456b30-667d-404b-bc72-8908d5e472bc"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"LifeExpectancy", "[", "size_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Fit", "[", 
+     RowBox[{"pts", ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "x"}], "}"}], ",", "x"}], "]"}], " ", "/.", 
+    RowBox[{"x", "\[Rule]", "size"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.705010616668209*^9, 
+  3.7050107275240507`*^9}},ExpressionUUID->"bfb3c06c-e3b9-4e0a-8557-\
+d05384579fbb"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1459, 788},
+WindowMargins->{{Automatic, 64}, {Automatic, 64}},
+FrontEndVersion->"11.1 for Linux x86 (64-bit) (April 18, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 175, 3, 93, "Title", "ExpressionUUID" -> \
+"4979dffb-a3b0-4ae4-9ee6-3c87e068ba9b"],
+Cell[758, 27, 411, 10, 72, "Text", "ExpressionUUID" -> \
+"b024569c-6ee3-44cd-ab53-ca7e8b47003d"],
+Cell[CellGroupData[{
+Cell[1194, 41, 164, 3, 66, "Chapter", "ExpressionUUID" -> \
+"bc8302c2-ff7b-43b1-b777-36c8ac36d146"],
+Cell[1361, 46, 1162, 32, 155, "Input", "ExpressionUUID" -> \
+"6a0f6aae-2eeb-4f50-9aba-30933a79440b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2560, 83, 167, 3, 66, "Chapter", "ExpressionUUID" -> \
+"9504bb56-c970-4dac-a1eb-8efb5d84e84b"],
+Cell[2730, 88, 2604, 80, 262, "Text", "ExpressionUUID" -> \
+"fce10a5f-560b-4f81-963b-c3b2892e57f3"],
+Cell[CellGroupData[{
+Cell[5359, 172, 165, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"e1a3001c-5441-4a86-9d2c-9bd6f3c3e847"],
+Cell[5527, 177, 260, 6, 31, "Text", "ExpressionUUID" -> \
+"69531ef5-07bf-4611-9bf2-f982224c199c"],
+Cell[5790, 185, 4466, 123, 374, "Input", "ExpressionUUID" -> \
+"899134c7-5d9d-49b1-8e09-44a0bd41cbc5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10293, 313, 163, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"2c5e6758-829e-4c8a-99eb-49f5ec37ee9a"],
+Cell[10459, 318, 262, 6, 31, "Text", "ExpressionUUID" -> \
+"7c504b7f-4af5-48ba-9552-6282eb801140"],
+Cell[10724, 326, 4589, 126, 434, "Input", "ExpressionUUID" -> \
+"79a2cb12-6a0f-404b-ba90-4b14c27f80a5"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15362, 458, 159, 3, 66, "Chapter", "ExpressionUUID" -> \
+"9e840b9c-770c-4230-9233-08d5d740e9dd"],
+Cell[CellGroupData[{
+Cell[15546, 465, 163, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"ae23d73d-15f5-4989-ac27-aab6e21c5419"],
+Cell[15712, 470, 2688, 82, 254, "Input", "ExpressionUUID" -> \
+"7d1681a3-d6db-4524-b48d-0b5deb0fa306"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18437, 557, 172, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"11746514-a11b-424d-816e-94264aba055d"],
+Cell[18612, 562, 1364, 31, 130, "Input", "ExpressionUUID" -> \
+"bb688bed-3663-4c5d-abd6-6d0ef75c485d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20013, 598, 174, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"2fd35dd2-6c3d-4095-8663-dbd7a9814569"],
+Cell[20190, 603, 1384, 34, 107, "Input", "ExpressionUUID" -> \
+"fa703f8c-c226-4d1c-b931-9109a61dafb8"],
+Cell[21577, 639, 1075, 29, 83, "Input", "ExpressionUUID" -> \
+"a4c468c8-d406-4406-ba06-89b9efa3c4f4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22689, 673, 184, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"432847e3-c2d3-40f5-a611-9152e8800782"],
+Cell[22876, 678, 645, 16, 59, "Input", "ExpressionUUID" -> \
+"9e0c772d-8bb0-4265-a0cc-e3b024452c42"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23558, 699, 169, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"22496704-270a-4f30-b3fd-ed9d414521b2"],
+Cell[23730, 704, 1216, 29, 135, "Input", "ExpressionUUID" -> \
+"ac1acba5-5f03-4964-8eff-ea04e19e939b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24983, 738, 159, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"e724f56b-c2da-4b63-b2de-7609c77f8931"],
+Cell[25145, 743, 1963, 58, 155, "Input", "ExpressionUUID" -> \
+"0dc764b2-2160-4c6d-ab13-89e9428b41ee"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27157, 807, 160, 3, 66, "Chapter", "ExpressionUUID" -> \
+"34e20f9d-fa2f-4132-a7d3-38da5c65acb0"],
+Cell[27320, 812, 285, 6, 31, "Text", "ExpressionUUID" -> \
+"8e478575-fab5-4265-9ebd-4f28e7b6f1da"],
+Cell[27608, 820, 3334, 94, 275, "Input", "ExpressionUUID" -> \
+"3135cfc7-50c7-4cd1-aa1f-f0e000a1f3d9"],
+Cell[30945, 916, 222, 4, 31, "Text", "ExpressionUUID" -> \
+"60456b30-667d-404b-bc72-8908d5e472bc"],
+Cell[31170, 922, 431, 12, 35, "Input", "ExpressionUUID" -> \
+"bfb3c06c-e3b9-4e0a-8557-d05384579fbb"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
