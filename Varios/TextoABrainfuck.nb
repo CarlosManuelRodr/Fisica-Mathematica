@@ -1,0 +1,156 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5185,        148]
+NotebookOptionsPosition[      4560,        126]
+NotebookOutlinePosition[      4897,        141]
+CellTagsIndexPosition[      4854,        138]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Texto a Brainfuck", "Title",
+ CellChangeTimes->{{3.6911805217167873`*^9, 3.69118052600487*^9}}],
+
+Cell["S\[OAcute]lo soporta caracteres lowercase y espacios.", "Text",
+ CellChangeTimes->{{3.691181080983553*^9, 3.69118109032756*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"BSum", "[", "n_", "]"}], ":=", 
+   RowBox[{"StringJoin", "[", 
+    RowBox[{"ConstantArray", "[", 
+     RowBox[{"\"\<+\>\"", ",", "n"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"BMultiply", "[", 
+     RowBox[{"a_", ",", "b_"}], "]"}], ":=", 
+    RowBox[{"StringJoin", "[", 
+     RowBox[{
+      RowBox[{"BSum", "[", "a", "]"}], ",", "\"\<[>\>\"", ",", 
+      RowBox[{"BSum", "[", "b", "]"}], ",", "\"\<<-]\>\""}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"WriteChar", "[", "n_", "]"}], ":=", " ", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"n", "\[Equal]", "32"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{
+       RowBox[{"BMultiply", "[", 
+        RowBox[{"4", ",", "8"}], "]"}], ",", "\"\<>.[-]<\>\""}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{
+       RowBox[{"BMultiply", "[", 
+        RowBox[{"8", ",", "12"}], "]"}], ",", "\"\<>\>\"", ",", 
+       RowBox[{"BSum", "[", 
+        RowBox[{"n", "-", "96"}], "]"}], " ", ",", "\"\<.[-]<\>\""}], "]"}]}],
+     "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TextToBrainfuck", "[", "text_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "characters", ",", "alphabet", ",", "codes", ",", "sustrule", ",", 
+       "charcodes"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"characters", " ", "=", " ", 
+       RowBox[{"Characters", "[", "text", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"alphabet", " ", "=", " ", 
+       RowBox[{"Alphabet", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"codes", " ", "=", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{"i", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "97", ",", 
+           RowBox[{"97", "+", 
+            RowBox[{"Length", "[", "alphabet", "]"}]}]}], "}"}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"sustrule", " ", "=", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"alphabet", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "\[Rule]", 
+          RowBox[{"codes", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "alphabet", "]"}]}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"sustrule", " ", "=", " ", 
+       RowBox[{"Join", "[", 
+        RowBox[{"sustrule", ",", 
+         RowBox[{"{", 
+          RowBox[{"\"\< \>\"", "\[Rule]", "32"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"charcodes", " ", "=", " ", 
+       RowBox[{"characters", " ", "/.", " ", "sustrule"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"Map", "[", 
+         RowBox[{"WriteChar", ",", "charcodes"}], "]"}], "]"}], "]"}], 
+      ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.691180529905121*^9, 3.6911807137630777`*^9}, {
+   3.691180762979971*^9, 3.691180800530107*^9}, {3.6911808593695498`*^9, 
+   3.691181053458042*^9}, {3.691181791861438*^9, 3.691181793227844*^9}, {
+   3.705017721912365*^9, 3.70501778624759*^9}, 
+   3.705017818417098*^9},ExpressionUUID->"3405f64c-f835-42d9-953c-\
+45f4756740e8"],
+
+Cell[BoxData[
+ RowBox[{"TextToBrainfuck", "[", "\"\<example\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.705017826282351*^9, 
+  3.70501783078165*^9}},ExpressionUUID->"0b0402df-a696-43cd-85a9-\
+7b42f984bdf5"]
+}, Open  ]]
+},
+WindowSize->{797, 697},
+WindowMargins->{{647, Automatic}, {Automatic, 175}},
+FrontEndVersion->"11.1 for Linux x86 (64-bit) (April 18, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 101, 1, 93, "Title", "ExpressionUUID" -> \
+"9318025f-b5b9-4893-9442-afe44522e614"],
+Cell[684, 25, 134, 1, 31, "Text", "ExpressionUUID" -> \
+"830062d4-a9e3-455d-be24-b84e71899d27"],
+Cell[821, 28, 3513, 89, 418, "Input", "ExpressionUUID" -> \
+"3405f64c-f835-42d9-953c-45f4756740e8"],
+Cell[4337, 119, 207, 4, 33, "Input", "ExpressionUUID" -> \
+"0b0402df-a696-43cd-85a9-7b42f984bdf5"]
+}, Open  ]]
+}
+]
+*)
+
