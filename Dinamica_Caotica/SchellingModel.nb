@@ -1,0 +1,606 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     23923,        598]
+NotebookOptionsPosition[     22614,        560]
+NotebookOutlinePosition[     22950,        575]
+CellTagsIndexPosition[     22907,        572]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Schelling model", "Title",
+ CellChangeTimes->{{3.705596876371955*^9, 
+  3.705596878275756*^9}},ExpressionUUID->"0917c064-de35-4876-8da8-\
+9190f0768cba"],
+
+Cell["\<\
+Based on: http://nifty.stanford.edu/2014/mccown-schelling-model-segregation/\
+\>", "Text",
+ CellChangeTimes->{{3.70561062008386*^9, 
+  3.705610622754633*^9}},ExpressionUUID->"b6601594-2d6f-4b55-bd0c-\
+53b1d42d1f24"],
+
+Cell["\<\
+Text from the lecture:
+Suppose there are two types of agents: X and O. The two types of agents might \
+represent different races, ethnicity, economic status, etc. Two populations \
+of the two agent types are initially placed into random locations of a \
+neighborhood represented by a grid. After placing all the agents in the grid, \
+each cell is either occupied by an agent or is empty as shown below. 
+Now we must determine if each agent is satisfied with its current location. A \
+satisfied agent is one that is surrounded by at least t percent of agents \
+that are like itself. This threshold t is one that will apply to all agents \
+in the model, even though in reality everyone might have a different \
+threshold they are satisfied with. Note that the higher the threshold, the \
+higher the likelihood the agents will not be satisfied with their current \
+location.
+
+For example, if t = 30%, agent X is satisfied if at least 30% of its \
+neighbors are also X. If fewer than 30% are X, then the agent is not \
+satisfied, and it will want to change its location in the grid. For the \
+remainder of this explanation, let\[CloseCurlyQuote]s assume a threshold t of \
+30%. This means every agent is fine with being in the minority as long as \
+there are at least 30% of similar agents in adjacent cells.
+
+When an agent is not satisfied, it can be moved to any vacant location in the \
+grid. Any algorithm can be used to choose this new location. For example, a \
+randomly selected cell may be chosen, or the agent could move to the nearest \
+available location.
+
+All dissatisfied agents must be moved in the same round. After the round is \
+complete, a new round begins, and dissatisfied agents are once again moved to \
+new locations in the grid. These rounds continue until all agents in the \
+neighborhood are satisfied with their location.\
+\>", "Text",
+ CellChangeTimes->{{3.705612761739448*^9, 
+  3.705612815888033*^9}},ExpressionUUID->"129d0820-a4aa-4cfd-98a9-\
+589005567b3a"],
+
+Cell[CellGroupData[{
+
+Cell["Definition", "Chapter",
+ CellChangeTimes->{{3.705610598428316*^9, 
+  3.705610599923876*^9}},ExpressionUUID->"01ff61e9-8309-4a36-89e8-\
+2bb43b681d13"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"CreateGrid", "[", 
+     RowBox[{
+     "sizex_", ",", "sizey_", ",", "similar_", ",", "groupratio_", ",", 
+      "empty_"}], "]"}], ":=", 
+    RowBox[{"Association", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\"\<sizex\>\"", "\[Rule]", "sizex"}], ",", " ", 
+       RowBox[{"\"\<sizey\>\"", "\[Rule]", "sizey"}], ",", 
+       RowBox[{"\"\<similar_threshold\>\"", "\[Rule]", "similar"}], ",", 
+       RowBox[{"\"\<values\>\"", "\[Rule]", 
+        RowBox[{"RandomChoice", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"empty", ",", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"1", "-", "empty"}], ")"}], "groupratio"}], ",", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"1", "-", "empty"}], ")"}], 
+              RowBox[{"(", 
+               RowBox[{"1", "-", "groupratio"}], ")"}]}]}], "}"}], "\[Rule]", 
+           
+           RowBox[{"{", 
+            RowBox[{"0", ",", "1", ",", "2"}], "}"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"sizex", ",", "sizey"}], "}"}]}], "]"}]}]}], "}"}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Part", " ", "with", " ", "periodic", " ", "boundaries", " ", "that", " ", 
+    "also", " ", "support", " ", "transition", " ", "to", " ", "negative", 
+    " ", "values"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"PeriodicPart", "[", 
+     RowBox[{"grid_", ",", 
+      RowBox[{"{", 
+       RowBox[{"i_", ",", "j_"}], "}"}]}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Part", "[", 
+       RowBox[{
+        RowBox[{"grid", "[", "\"\<values\>\"", "]"}], ",", "##"}], "]"}], 
+      "&"}], "@@", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Mod", "[", 
+          RowBox[{"i", ",", 
+           RowBox[{"grid", "[", "\"\<sizex\>\"", "]"}]}], "]"}], ",", 
+         RowBox[{"Mod", "[", 
+          RowBox[{"j", ",", 
+           RowBox[{"grid", "[", "\"\<sizey\>\"", "]"}]}], "]"}]}], "}"}], "/.", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"n_", "?", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"#", "<", "1"}], " ", "&"}], ")"}]}], ")"}], 
+        "\[RuleDelayed]", 
+        RowBox[{"n", "-", "1"}]}]}], ")"}]}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"GetNeighbors", "[", 
+     RowBox[{"grid_", ",", 
+      RowBox[{"{", 
+       RowBox[{"i_", ",", "j_"}], "}"}]}], "]"}], " ", ":=", " ", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "neighbors", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"neighbors", " ", "=", 
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"i", ",", "j"}], "}"}], "+", "#"}], "&"}], ",", 
+          RowBox[{"Tuples", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "1"}], ",", "0", ",", "1"}], "}"}], ",", "2"}], 
+           "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Return", "[", 
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"PeriodicPart", "[", 
+            RowBox[{"grid", ",", "#"}], "]"}], "&"}], ",", "neighbors"}], 
+         "]"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Returns", " ", "true", " ", "if", " ", "the", " ", "cell", " ", "is", " ",
+     "not", " ", "satisfied", " ", "with", " ", "their", " ", "current", " ", 
+    "neighbors"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"IterateCell", "[", 
+     RowBox[{"grid_", ",", 
+      RowBox[{"{", 
+       RowBox[{"i_", ",", "j_"}], "}"}]}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "value", ",", "neighbors", ",", "numberOfNeighbors", ",", 
+        "satisfaction", ",", "updateValue"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"value", " ", "=", " ", 
+        RowBox[{
+         RowBox[{"grid", "[", "\"\<values\>\"", "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "j"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"value", " ", "\[NotEqual]", " ", "0"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"neighbors", " ", "=", " ", 
+           RowBox[{"GetNeighbors", "[", 
+            RowBox[{"grid", ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "j"}], "}"}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"numberOfNeighbors", " ", "=", " ", 
+           RowBox[{"Count", "[", 
+            RowBox[{"neighbors", ",", 
+             RowBox[{"_", "?", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"#", "\[Equal]", "1"}], ")"}], "||", 
+                 RowBox[{"(", 
+                  RowBox[{"#", "\[Equal]", "2"}], ")"}]}], "&"}], ")"}]}]}], 
+            "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"numberOfNeighbors", " ", "\[NotEqual]", " ", "0"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"satisfaction", " ", "=", " ", 
+             RowBox[{"N", "[", 
+              FractionBox[
+               RowBox[{"Count", "[", 
+                RowBox[{"neighbors", ",", 
+                 RowBox[{"_", "?", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"#", "\[Equal]", "value"}], "&"}], ")"}]}]}], 
+                "]"}], "numberOfNeighbors"], "]"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"satisfaction", " ", "=", " ", "0"}]}], 
+           "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Return", "[", 
+           RowBox[{"satisfaction", "\[GreaterEqual]", 
+            RowBox[{"grid", "[", "\"\<similar_threshold\>\"", "]"}]}], 
+           "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Return", "[", "True", "]"}]}], " ", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "An", " ", "empty", " ", "cell", " ", "will", " ", "be", " ", 
+          "considered", " ", "satisfied", " ", "to", " ", "avoid", " ", 
+          "moving", " ", "it"}], " ", "*)"}], "\[IndentingNewLine]", "]"}], 
+       ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Move", " ", "every", " ", "unsatisfied", " ", "nonempty", " ", "cell"}], 
+   " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"IterateCA", "[", "grid_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "satisfactionMap", ",", "emptySlot", ",", "unsatisfiedPos", ",", 
+       "moving", ",", "newgrid"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"satisfactionMap", " ", "=", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"IterateCell", "[", 
+          RowBox[{"grid", ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "j"}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"grid", "[", "\"\<sizex\>\"", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", "1", ",", 
+           RowBox[{"grid", "[", "\"\<sizey\>\"", "]"}]}], "}"}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"unsatisfiedPos", " ", "=", " ", 
+       RowBox[{"Position", "[", 
+        RowBox[{"satisfactionMap", ",", "False"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "unsatisfiedPos", "]"}], " ", "\[NotEqual]", 
+         " ", "0"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"emptySlot", " ", "=", " ", 
+          RowBox[{"RandomSample", "[", 
+           RowBox[{"Position", "[", 
+            RowBox[{
+             RowBox[{"grid", "[", "\"\<values\>\"", "]"}], ",", "0"}], "]"}], 
+           "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"moving", " ", "=", " ", 
+          RowBox[{"RandomChoice", "[", 
+           RowBox[{"unsatisfiedPos", ",", " ", 
+            RowBox[{"Length", "[", "emptySlot", "]"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"newgrid", " ", "=", " ", "grid"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"Swap", " ", "values"}], " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"MapThread", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"newgrid", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"\"\<values\>\"", ",", 
+                   RowBox[{"#1", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                   RowBox[{"#1", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], ",", 
+                RowBox[{"newgrid", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"\"\<values\>\"", ",", 
+                   RowBox[{"#2", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                   RowBox[{"#2", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}]}], "}"}], 
+              " ", "=", " ", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"newgrid", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"\"\<values\>\"", ",", 
+                   RowBox[{"#2", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                   RowBox[{"#2", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], ",", 
+                RowBox[{"newgrid", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"\"\<values\>\"", ",", 
+                   RowBox[{"#1", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", 
+                   RowBox[{"#1", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}]}], "}"}]}],
+              ")"}], "&"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{"moving", ",", "emptySlot"}], "}"}]}], 
+          "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Return", "[", "newgrid", "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", "grid", "]"}]}], "\[IndentingNewLine]", "]"}], 
+      ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.705596896148581*^9, 3.7055969031324987`*^9}, {
+   3.7055969406520023`*^9, 3.705597040171917*^9}, {3.705597312217312*^9, 
+   3.705597369081316*^9}, 3.705597405242186*^9, {3.7055974427067204`*^9, 
+   3.70559747596143*^9}, {3.705597527033716*^9, 3.705597568890427*^9}, {
+   3.705597702112916*^9, 3.705597739496963*^9}, 3.705597784847023*^9, {
+   3.705599363916086*^9, 3.705599416658515*^9}, {3.705599503443583*^9, 
+   3.705599560619773*^9}, {3.7055996887692747`*^9, 3.70559969971428*^9}, {
+   3.705599763496628*^9, 3.705599770873851*^9}, {3.705599812775742*^9, 
+   3.705599866113179*^9}, {3.705607282636177*^9, 3.705607323370901*^9}, {
+   3.705607389113929*^9, 3.705607432183736*^9}, {3.705607466224069*^9, 
+   3.7056075737680473`*^9}, {3.705607607022277*^9, 3.705607704606407*^9}, 
+   3.7056077420642767`*^9, {3.705607869387302*^9, 3.7056078716502037`*^9}, {
+   3.705608184261387*^9, 3.705608203852263*^9}, {3.705608251485783*^9, 
+   3.705608280525189*^9}, {3.705608360755466*^9, 3.70560839246096*^9}, {
+   3.705608436739974*^9, 3.7056085046422358`*^9}, 3.705608669480809*^9, {
+   3.705609218883554*^9, 3.705609222192479*^9}, {3.705609414784493*^9, 
+   3.705609420680332*^9}, {3.7056095127490377`*^9, 3.705609579971999*^9}, {
+   3.7056096521084948`*^9, 3.705609714538693*^9}, {3.705609790880725*^9, 
+   3.705609791945053*^9}, {3.7056098261288548`*^9, 3.70560987380758*^9}, {
+   3.705609991325959*^9, 3.705610024707666*^9}, {3.705610448508801*^9, 
+   3.705610541058441*^9}},ExpressionUUID->"0f2c0890-1145-4d8d-b224-\
+11c3efba1313"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"caEvolution", " ", "=", " ", 
+   RowBox[{"NestList", "[", 
+    RowBox[{"IterateCA", ",", 
+     RowBox[{"CreateGrid", "[", 
+      RowBox[{"30", ",", "30", ",", "0.7", ",", "0.5", ",", "0.1"}], "]"}], 
+     ",", "100"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListAnimate", "[", 
+  RowBox[{"Map", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ArrayPlot", "[", 
+      RowBox[{
+       RowBox[{"#", "[", "\"\<values\>\"", "]"}], ",", 
+       RowBox[{"ColorRules", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"0", "\[Rule]", "White"}], ",", 
+          RowBox[{"1", "\[Rule]", "Red"}], ",", 
+          RowBox[{"2", "\[Rule]", "Blue"}]}], "}"}]}], ",", 
+       RowBox[{"Mesh", "\[Rule]", "All"}], ",", 
+       RowBox[{"MeshStyle", "\[Rule]", "Black"}]}], "]"}], "&"}], ",", 
+    "caEvolution"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.705609316331283*^9, 3.7056093668306103`*^9}, {
+   3.705610042516203*^9, 3.705610043618718*^9}, {3.7056101267467422`*^9, 
+   3.7056101530578012`*^9}, {3.70561026199249*^9, 3.705610351391601*^9}, {
+   3.70561132412105*^9, 3.705611324279567*^9}, {3.705611357008321*^9, 
+   3.7056113845770273`*^9}, 3.7056114819514027`*^9, {3.7056116082780533`*^9, 
+   3.70561160892507*^9}, {3.705611650285803*^9, 
+   3.705611650357067*^9}},ExpressionUUID->"97d2c24a-643b-4d69-bde8-\
+358126122c40"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Measures", "Chapter",
+ CellChangeTimes->{{3.7056106045321293`*^9, 
+  3.7056106055798807`*^9}},ExpressionUUID->"81120a44-a0c7-4b6a-925f-\
+cb3104af0e16"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"CellHomogeneity", "[", 
+    RowBox[{"grid_", ",", 
+     RowBox[{"{", 
+      RowBox[{"i_", ",", "j_"}], "}"}]}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "value", ",", "neighbors", ",", "numberOfNeighbors", ",", 
+       "satisfaction", ",", "updateValue"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"value", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"grid", "[", "\"\<values\>\"", "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"i", ",", "j"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"value", " ", "\[NotEqual]", " ", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"neighbors", " ", "=", " ", 
+          RowBox[{"GetNeighbors", "[", 
+           RowBox[{"grid", ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "j"}], "}"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"numberOfNeighbors", " ", "=", " ", 
+          RowBox[{"Count", "[", 
+           RowBox[{"neighbors", ",", 
+            RowBox[{"_", "?", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"#", "\[Equal]", "1"}], ")"}], "||", 
+                RowBox[{"(", 
+                 RowBox[{"#", "\[Equal]", "2"}], ")"}]}], "&"}], ")"}]}]}], 
+           "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"numberOfNeighbors", " ", "\[NotEqual]", " ", "0"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Return", "[", 
+            RowBox[{"N", "[", 
+             FractionBox[
+              RowBox[{"Count", "[", 
+               RowBox[{"neighbors", ",", 
+                RowBox[{"_", "?", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"#", "\[Equal]", "value"}], "&"}], ")"}]}]}], 
+               "]"}], "numberOfNeighbors"], "]"}], "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Return", "[", "Nothing", "]"}], ";"}]}], 
+          "\[IndentingNewLine]", "]"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Return", "[", "Nothing", "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MeasureHomogeneity", "[", "grid_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "homogeneity", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"homogeneity", " ", "=", " ", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"CellHomogeneity", "[", 
+           RowBox[{"grid", ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "j"}], "}"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"grid", "[", "\"\<sizex\>\"", "]"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"j", ",", "1", ",", 
+            RowBox[{"grid", "[", "\"\<sizey\>\"", "]"}]}], "}"}]}], "]"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", 
+       RowBox[{"Mean", "[", "homogeneity", "]"}], "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.705610739975906*^9, 3.7056107733072777`*^9}, {
+  3.7056108165705137`*^9, 3.7056109931541433`*^9}, {3.7056114525269203`*^9, 
+  3.705611453991087*^9}},ExpressionUUID->"d7f2a2d9-a54a-4ab3-8d4e-\
+2aabbcc1b01b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"homogeneitytbl", " ", "=", " ", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"intolerance", ",", 
+       RowBox[{"MeasureHomogeneity", "[", 
+        RowBox[{"Nest", "[", 
+         RowBox[{"IterateCA", ",", 
+          RowBox[{"CreateGrid", "[", 
+           RowBox[{
+           "30", ",", "30", ",", "intolerance", ",", "0.5", ",", "0.1"}], 
+           "]"}], ",", "100"}], "]"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"intolerance", ",", "0.1", ",", "0.9", ",", "0.01"}], "}"}]}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.705611153112102*^9, 3.705611215391736*^9}, {
+  3.705611439454921*^9, 3.705611462317945*^9}, {3.705611763068351*^9, 
+  3.7056117749232883`*^9}, {3.705611843476164*^9, 3.705611843875307*^9}, {
+  3.705612307536721*^9, 
+  3.705612312799986*^9}},ExpressionUUID->"b4151788-4a36-41b7-908c-\
+0554a2830c28"],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"homogeneitytbl", ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Intolerance\>\"", ",", " ", "\"\<Homogeneity\>\""}], 
+     "}"}]}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"FontSize", "\[Rule]", "13"}]}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "400"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.705611284781129*^9, 3.705611286927153*^9}, 
+   3.705611459841021*^9, {3.705611742908844*^9, 3.705611787396118*^9}, {
+   3.7056128429650517`*^9, 
+   3.705612848844583*^9}},ExpressionUUID->"108e098c-6272-4210-b09d-\
+6970dc2bca7d"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1226, 790},
+WindowMargins->{{97, Automatic}, {73, Automatic}},
+FrontEndVersion->"11.1 for Linux x86 (64-bit) (April 18, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 158, 3, 93, "Title", "ExpressionUUID" -> \
+"0917c064-de35-4876-8da8-9190f0768cba"],
+Cell[741, 27, 225, 5, 31, "Text", "ExpressionUUID" -> \
+"b6601594-2d6f-4b55-bd0c-53b1d42d1f24"],
+Cell[969, 34, 1994, 34, 351, "Text", "ExpressionUUID" -> \
+"129d0820-a4aa-4cfd-98a9-589005567b3a"],
+Cell[CellGroupData[{
+Cell[2988, 72, 155, 3, 66, "Chapter", "ExpressionUUID" -> \
+"01ff61e9-8309-4a36-89e8-2bb43b681d13"],
+Cell[3146, 77, 12576, 301, 1277, "Input", "ExpressionUUID" -> \
+"0f2c0890-1145-4d8d-b224-11c3efba1313"],
+Cell[15725, 380, 1384, 31, 82, "Input", "ExpressionUUID" -> \
+"97d2c24a-643b-4d69-bde8-358126122c40"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17146, 416, 157, 3, 66, "Chapter", "ExpressionUUID" -> \
+"81120a44-a0c7-4b6a-925f-cb3104af0e16"],
+Cell[17306, 421, 3668, 94, 500, "Input", "ExpressionUUID" -> \
+"d7f2a2d9-a54a-4ab3-8d4e-2aabbcc1b01b"],
+Cell[20977, 517, 919, 22, 82, "Input", "ExpressionUUID" -> \
+"b4151788-4a36-41b7-908c-0554a2830c28"],
+Cell[21899, 541, 687, 15, 59, "Input", "ExpressionUUID" -> \
+"108e098c-6272-4210-b09d-6970dc2bca7d"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
