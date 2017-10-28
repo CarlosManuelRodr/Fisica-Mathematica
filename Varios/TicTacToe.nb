@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    106107,       1888]
-NotebookOptionsPosition[    105000,       1854]
-NotebookOutlinePosition[    105335,       1869]
-CellTagsIndexPosition[    105292,       1866]
+NotebookDataLength[    120701,       2256]
+NotebookOptionsPosition[    118266,       2190]
+NotebookOutlinePosition[    118602,       2205]
+CellTagsIndexPosition[    118559,       2202]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1619,26 +1619,55 @@ Cell[BoxData[{
      "\"\<x\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
+   RowBox[{"ReturnValueTarget", "[", 
+    RowBox[{"player_", ",", "target_"}], "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"player", "\[Equal]", "target"}], ",", "1", ",", 
+     RowBox[{"-", "1"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
    RowBox[{"MinMaxStrategy", "[", 
-    RowBox[{"board_", ",", "player_", ",", "minMaxState_"}], "]"}], ":=", 
+    RowBox[{
+    "board_", ",", "currentplayer_", ",", "minMaxState_", ",", 
+     "targetPlayer_"}], "]"}], ":=", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{"availablePositions", ",", "strategies"}], "}"}], ",", 
      "\[IndentingNewLine]", 
-     RowBox[{"(*", " ", 
-      RowBox[{
-      "Check", " ", "if", " ", "a", " ", "player", " ", "has", " ", "won"}], 
-      " ", "*)"}], "\[IndentingNewLine]", 
      RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", 
+          RowBox[{"Position", "[", 
+           RowBox[{"board", ",", " ", 
+            RowBox[{"\"\<x\>\"", "|", "\"\<o\>\""}]}], "]"}], "]"}], 
+         "\[Equal]", "0"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Return", "[", 
+          RowBox[{"{", 
+           RowBox[{"RandomInteger", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"1", ",", "3"}], "}"}], ",", "2"}], "]"}], "}"}], "]"}],
+          ";"}]}], "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "Check", " ", "if", " ", "a", " ", "player", " ", "has", " ", "won"}], 
+       " ", "*)"}], "\[IndentingNewLine]", 
       RowBox[{"If", "[", 
        RowBox[{
         RowBox[{"WinnerQ", "[", 
          RowBox[{"board", ",", "\"\<x\>\""}], "]"}], ",", " ", 
         RowBox[{"Return", "[", 
          RowBox[{"{", 
-          RowBox[{"Null", ",", "1"}], "}"}], "]"}]}], "]"}], ";", 
-      "\[IndentingNewLine]", 
+          RowBox[{"Null", ",", 
+           RowBox[{"ReturnValueTarget", "[", 
+            RowBox[{"\"\<x\>\"", ",", "targetPlayer"}], "]"}]}], "}"}], 
+         "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
       RowBox[{"If", "[", 
        RowBox[{
         RowBox[{"WinnerQ", "[", 
@@ -1646,8 +1675,9 @@ Cell[BoxData[{
         RowBox[{"Return", "[", 
          RowBox[{"{", 
           RowBox[{"Null", ",", 
-           RowBox[{"-", "1"}]}], "}"}], "]"}]}], "]"}], ";", 
-      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"ReturnValueTarget", "[", 
+            RowBox[{"\"\<o\>\"", ",", "targetPlayer"}], "]"}]}], "}"}], 
+         "]"}]}], "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{"(*", " ", 
        RowBox[{
        "Check", " ", "if", " ", "there", " ", "is", " ", "a", " ", "draw"}], 
@@ -1679,10 +1709,10 @@ Cell[BoxData[{
              RowBox[{
               RowBox[{"ReplacePart", "[", 
                RowBox[{"board", ",", 
-                RowBox[{"pos", "\[Rule]", "player"}]}], "]"}], ",", 
-              RowBox[{"AnotherPlayer", "[", "player", "]"}], ",", 
-              RowBox[{"!", "minMaxState"}]}], "]"}], "]"}]}], "}"}], ",", 
-         "\[IndentingNewLine]", 
+                RowBox[{"pos", "\[Rule]", "currentplayer"}]}], "]"}], ",", 
+              RowBox[{"AnotherPlayer", "[", "currentplayer", "]"}], ",", 
+              RowBox[{"!", "minMaxState"}], ",", "targetPlayer"}], "]"}], 
+            "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
          RowBox[{"{", 
           RowBox[{"pos", ",", "availablePositions"}], "}"}]}], 
         "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
@@ -1700,12 +1730,13 @@ Cell[BoxData[{
        "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], 
   ";"}]}], "Input",
  CellChangeTimes->CompressedData["
-1:eJxTTMoPSmViYGAQAWIQfXnRhTUWc147vuRz2w6iBdh/XgXRLxrZ7oDobWdi
+1:eJxTTMoPSmViYGCQAGIQfXnRhTUWc147vuRz2w6iBdh/XgXRLxrZ7oDobWdi
 H4Jovt+l7JZA+sOybg8Q/fTBVF8wfeVlMIieZaoXAqLdtGbEgejTEznjQfS3
 Lf1ZIJov/FQ2iLbeod8MotlEvcG0W/LhHhD9S055Cog+IrV9JojepN0/H0Rn
 rhR7DKKXzPwCpk9sfPcFRCump3wH0VWFFcxWQNquLIoFRJddeykEoptMVYVB
 tEwGjxKI3vr3gzKIvirGowWiM75KgOmFAlq+YP26LSEgOu/HsdcgOmD6/o8g
-+lf2dBZrIH1heig7iL4yL/81iDZ51QGmAb7gohk=
++lf2dBZrIH1heig7iL4yL/81iDZ51QGmF01n4OoB0qfcd/OB6IjCoAwQ/U87
+pghE71oVWQmi7RY8nwiiw5rPfQPRfPb830E0AHS+w9A=
   
   "],ExpressionUUID->"5555ad64-9514-4a2e-a755-899d15a89ba6"]
 }, Open  ]],
@@ -1849,11 +1880,316 @@ Cell[BoxData[{
    3.7057976808997803`*^9, 3.705797728411384*^9}, {3.705797798490205*^9, 
    3.7057978442984877`*^9}},ExpressionUUID->"bdca7adb-48c3-4607-abb0-\
 5350827367e5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Machine vs Machine", "Chapter",
+ CellChangeTimes->{{3.705956350375125*^9, 
+  3.705956354081612*^9}},ExpressionUUID->"a8b5b8b4-c157-4e18-bfd2-\
+b9861de39346"],
+
+Cell["Make the machine play against herself", "Text",
+ CellChangeTimes->{{3.705961055529109*^9, 
+  3.705961065348474*^9}},ExpressionUUID->"35a67812-311c-497f-9b4a-\
+c30d2589321d"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"board", " ", "=", " ", 
+   RowBox[{"CreateBoard", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"moves", " ", "=", " ", 
+   RowBox[{"{", "board", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"player", " ", "=", " ", "\"\<o\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"move", " ", "=", " ", 
+     RowBox[{"First", "[", 
+      RowBox[{"MinMaxStrategy", "[", 
+       RowBox[{"board", ",", "player", ",", "True", ",", "player"}], "]"}], 
+      "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"board", " ", "=", " ", 
+     RowBox[{"ReplacePart", "[", 
+      RowBox[{"board", ",", 
+       RowBox[{"move", "\[Rule]", "player"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"AppendTo", "[", 
+     RowBox[{"moves", ",", "board"}], "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"player", " ", "=", " ", 
+     RowBox[{"AnotherPlayer", "[", "player", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", ",", 
+   RowBox[{"{", "9", "}"}]}], "\[IndentingNewLine]", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Map", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Grid", "[", 
+     RowBox[{"#", ",", 
+      RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}], "&"}], ",", "moves"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.705956370929669*^9, 
+  3.7059563712022676`*^9}},ExpressionUUID->"b00520e9-07de-4ff2-917b-\
+fa47bd9e62a4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Neural network", "Chapter",
+ CellChangeTimes->{{3.705953775520293*^9, 
+  3.705953777920277*^9}},ExpressionUUID->"e482633c-771d-47ae-94ce-\
+eda8dbc02439"],
+
+Cell["Train player x to defeat player o", "Text",
+ CellChangeTimes->{{3.705956729002902*^9, 
+  3.705956740197908*^9}},ExpressionUUID->"8296d18c-edae-4387-98d7-\
+eb36c652dfa3"],
+
+Cell[CellGroupData[{
+
+Cell["Build the sample", "Subchapter",
+ CellChangeTimes->{{3.70595674812477*^9, 
+  3.7059567529013243`*^9}},ExpressionUUID->"49f82c2b-ae54-4d82-b7dc-\
+acf86cdc89b3"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"moves", " ", "=", " ", 
+    RowBox[{"{", "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"board", " ", "=", " ", 
+      RowBox[{"CreateBoard", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"player", " ", "=", " ", "\"\<o\>\""}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Do", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"move", " ", "=", " ", 
+         RowBox[{"First", "[", 
+          RowBox[{"MinMaxStrategy", "[", 
+           RowBox[{"board", ",", "player", ",", "True", ",", "player"}], 
+           "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"moves", ",", 
+          RowBox[{
+           RowBox[{"Flatten", "[", 
+            RowBox[{"board", "/.", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"\"\< \>\"", "\[Rule]", "0"}], ",", " ", 
+               RowBox[{"\"\<o\>\"", "\[Rule]", "1"}], ",", " ", 
+               RowBox[{"\"\<x\>\"", "\[Rule]", "2"}]}], "}"}]}], "]"}], 
+           "\[Rule]", "move"}]}], "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"board", " ", "=", " ", 
+         RowBox[{"ReplacePart", "[", 
+          RowBox[{"board", ",", 
+           RowBox[{"move", "\[Rule]", "player"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"player", " ", "=", " ", 
+         RowBox[{"AnotherPlayer", "[", "player", "]"}]}], ";"}], 
+       "\[IndentingNewLine]", ",", 
+       RowBox[{"{", "9", "}"}]}], "\[IndentingNewLine]", "]"}]}], 
+    "\[IndentingNewLine]", ",", 
+    RowBox[{"{", "100", "}"}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.705956774873868*^9, 3.705956864907756*^9}, {
+  3.705957229792593*^9, 3.705957233858317*^9}, {3.705959866837718*^9, 
+  3.705959881370824*^9}},ExpressionUUID->"174d1b62-cad0-404f-800e-\
+5aa0ad23d5f0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Model training", "Subchapter",
+ CellChangeTimes->{{3.705958222183796*^9, 3.7059582227754707`*^9}, {
+  3.705959566647832*^9, 
+  3.7059595687537737`*^9}},ExpressionUUID->"ecc4d253-4c24-4b59-ac31-\
+77549043339a"],
+
+Cell[BoxData[{
+ RowBox[{"net", " ", "=", " ", 
+  RowBox[{"NetChain", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"LinearLayer", "[", "30", "]"}], ",", 
+      RowBox[{"ElementwiseLayer", "[", "Tanh", "]"}], ",", 
+      RowBox[{"LinearLayer", "[", "2", "]"}]}], "}"}], ",", 
+    RowBox[{"\"\<Input\>\"", "\[Rule]", 
+     RowBox[{"{", "9", "}"}]}], ",", 
+    RowBox[{"\"\<Output\>\"", "\[Rule]", 
+     RowBox[{"{", "2", "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"net", " ", "=", " ", 
+   RowBox[{"NetTrain", "[", 
+    RowBox[{"net", ",", "moves"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.705958224204295*^9, 3.705958236156992*^9}, {
+  3.705958269220593*^9, 3.705958320881195*^9}, {3.705958464389338*^9, 
+  3.705958477624837*^9}, {3.705958514499771*^9, 3.705958524032248*^9}, {
+  3.705958891486434*^9, 3.70595893959973*^9}, {3.705959295425618*^9, 
+  3.705959308652795*^9}, {3.705959529671938*^9, 3.705959531234981*^9}, {
+  3.705961033850532*^9, 
+  3.705961034120792*^9}},ExpressionUUID->"6c9eb662-f32c-4e47-9314-\
+b8a49db5b829"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Now play against the net", "Subchapter",
+ CellChangeTimes->{{3.705959693147945*^9, 
+  3.705959697837813*^9}},ExpressionUUID->"6fdca691-86e2-4f20-aef6-\
+d3007c1eb8d5"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"board", " ", "=", " ", 
+   RowBox[{"CreateBoard", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"styling", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\"\<x\>\"", "\[Rule]", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<x\>\"", ",", " ", 
+         RowBox[{"FontSize", "\[Rule]", "100"}], ",", 
+         RowBox[{"FontColor", "\[Rule]", "Red"}]}], "]"}]}], ",", 
+      RowBox[{"\"\<o\>\"", "\[Rule]", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<o\>\"", ",", " ", 
+         RowBox[{"FontSize", "\[Rule]", "100"}], ",", 
+         RowBox[{"FontColor", "\[Rule]", "Blue"}]}], "]"}]}], ",", " ", 
+      RowBox[{"\"\< \>\"", "\[Rule]", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\< \>\"", ",", " ", 
+         RowBox[{"FontSize", "\[Rule]", "100"}]}], "]"}]}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"BoardFull", "[", "board_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Length", "[", 
+    RowBox[{"Position", "[", 
+     RowBox[{"board", ",", "\"\< \>\""}], "]"}], "]"}], " ", "\[Equal]", " ", 
+   "0"}]}], "\[IndentingNewLine]", 
+ RowBox[{"DynamicModule", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"enemyMove", ",", "interactiveElements", ",", " ", 
+     RowBox[{"playing", " ", "=", " ", "True"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"interactiveElements", " ", "=", " ", 
+       RowBox[{"MapIndexed", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Button", "[", 
+           RowBox[{
+            RowBox[{"#1", " ", "/.", "styling"}], ",", "\[IndentingNewLine]", 
+            
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#1", " ", "\[Equal]", " ", "\"\< \>\""}], " ", "&&", 
+               " ", "playing"}], ",", "\[IndentingNewLine]", 
+              "\[IndentingNewLine]", 
+              RowBox[{"(*", " ", 
+               RowBox[{"Process", " ", "player", " ", "movement"}], " ", 
+               "*)"}], "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"board", " ", "=", " ", 
+                RowBox[{"ReplacePart", "[", 
+                 RowBox[{"board", ",", 
+                  RowBox[{"#2", "\[Rule]", "\"\<o\>\""}]}], "]"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"WinnerQ", "[", 
+                  RowBox[{"board", ",", "\"\<o\>\""}], "]"}], ",", " ", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"playing", " ", "=", " ", "False"}], ";", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"Print", "[", "\"\<The player has won!\>\"", "]"}], 
+                  ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+               "\[IndentingNewLine]", "\[IndentingNewLine]", 
+               RowBox[{"(*", " ", 
+                RowBox[{"Process", " ", "machine", " ", "movement"}], " ", 
+                "*)"}], "\[IndentingNewLine]", 
+               RowBox[{"enemyMove", " ", "=", " ", 
+                RowBox[{"Round", "[", 
+                 RowBox[{"net", "[", 
+                  RowBox[{"Flatten", "[", 
+                   RowBox[{"board", " ", "/.", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"\"\< \>\"", "\[Rule]", "0"}], ",", " ", 
+                    RowBox[{"\"\<o\>\"", "\[Rule]", "1"}], ",", " ", 
+                    RowBox[{"\"\<x\>\"", "\[Rule]", "2"}]}], "}"}]}], "]"}], 
+                  "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"Length", "[", "enemyMove", "]"}], ">", "0"}], " ",
+                   "&&", " ", 
+                  RowBox[{"!", 
+                   RowBox[{"BoardFull", "[", "board", "]"}]}]}], ",", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"board", " ", "=", " ", 
+                   RowBox[{"ReplacePart", "[", 
+                    RowBox[{"board", ",", 
+                    RowBox[{"enemyMove", "\[Rule]", "\"\<x\>\""}]}], "]"}]}], 
+                  ";", "\[IndentingNewLine]", 
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{"WinnerQ", "[", 
+                    RowBox[{"board", ",", "\"\<x\>\""}], "]"}], ",", " ", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"playing", " ", "=", " ", "False"}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    "Print", "[", "\"\<The machine has won...\>\"", "]"}], 
+                    ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+                 "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"Print", "[", "\"\<Game over\>\"", "]"}], ";"}]}], 
+                "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+             "]"}], ",", 
+            RowBox[{"Method", "\[Rule]", "\"\<Queued\>\""}]}], 
+           "\[IndentingNewLine]", "]"}], "&"}], ",", "board", ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", "2", "}"}]}], "\[IndentingNewLine]", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Grid", "[", 
+       RowBox[{"interactiveElements", " ", ",", 
+        RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+      RowBox[{"{", "board", "}"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{{3.7059597141676188`*^9, 3.705959746012385*^9}, {
+  3.7059608881769657`*^9, 
+  3.705960906023662*^9}},ExpressionUUID->"9dbec314-e593-483c-9af3-\
+c08554c4048d"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{808, 830},
-WindowMargins->{{Automatic, 431}, {Automatic, 4}},
+WindowMargins->{{Automatic, 495}, {Automatic, 34}},
 FrontEndVersion->"11.1 for Linux x86 (64-bit) (April 18, 2017)",
 StyleDefinitions->"Default.nb"
 ]
@@ -1880,14 +2216,46 @@ Cell[1160, 42, 387, 8, 31, "Text", "ExpressionUUID" -> \
 "d3bcb8bb-c3c6-49c7-9c57-4aff9af44af0"],
 Cell[1550, 52, 90165, 1483, 545, "Input", "ExpressionUUID" -> \
 "47c0463a-01fc-48b6-8662-732dc7547f5c"],
-Cell[91718, 1537, 6681, 172, 725, "Input", "ExpressionUUID" -> \
+Cell[91718, 1537, 7942, 203, 845, "Input", "ExpressionUUID" -> \
 "5555ad64-9514-4a2e-a755-899d15a89ba6"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[98436, 1714, 148, 3, 66, "Chapter", "ExpressionUUID" -> \
+Cell[99697, 1745, 148, 3, 66, "Chapter", "ExpressionUUID" -> \
 "7cfa01aa-7814-4f4a-b042-10ccbceaf43b"],
-Cell[98587, 1719, 6385, 131, 817, "Input", "ExpressionUUID" -> \
+Cell[99848, 1750, 6385, 131, 817, "Input", "ExpressionUUID" -> \
 "bdca7adb-48c3-4607-abb0-5350827367e5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[106270, 1886, 163, 3, 66, "Chapter", "ExpressionUUID" -> \
+"a8b5b8b4-c157-4e18-bfd2-b9861de39346"],
+Cell[106436, 1891, 179, 3, 31, "Text", "ExpressionUUID" -> \
+"35a67812-311c-497f-9b4a-c30d2589321d"],
+Cell[106618, 1896, 1494, 40, 296, "Input", "ExpressionUUID" -> \
+"b00520e9-07de-4ff2-917b-fa47bd9e62a4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[108149, 1941, 159, 3, 66, "Chapter", "ExpressionUUID" -> \
+"e482633c-771d-47ae-94ce-eda8dbc02439"],
+Cell[108311, 1946, 175, 3, 31, "Text", "ExpressionUUID" -> \
+"8296d18c-edae-4387-98d7-eb36c652dfa3"],
+Cell[CellGroupData[{
+Cell[108511, 1953, 165, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"49f82c2b-ae54-4d82-b7dc-acf86cdc89b3"],
+Cell[108679, 1958, 2020, 48, 366, "Input", "ExpressionUUID" -> \
+"174d1b62-cad0-404f-800e-5aa0ad23d5f0"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[110736, 2011, 215, 4, 64, "Subchapter", "ExpressionUUID" -> \
+"ecc4d253-4c24-4b59-ac31-77549043339a"],
+Cell[110954, 2017, 1076, 24, 59, "Input", "ExpressionUUID" -> \
+"6c9eb662-f32c-4e47-9314-b8a49db5b829"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[112067, 2046, 172, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"6fdca691-86e2-4f20-aef6-d3007c1eb8d5"],
+Cell[112242, 2051, 5984, 134, 864, "Input", "ExpressionUUID" -> \
+"9dbec314-e593-483c-9af3-c08554c4048d"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }
