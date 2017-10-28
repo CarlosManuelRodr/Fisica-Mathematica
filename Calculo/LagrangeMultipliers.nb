@@ -1,0 +1,408 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16809,        400]
+NotebookOptionsPosition[     16070,        379]
+NotebookOutlinePosition[     16412,        394]
+CellTagsIndexPosition[     16369,        391]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Multiplicadores de Lagrange", "Title",
+ CellChangeTimes->{{3.71821936849395*^9, 
+  3.718219375213813*^9}},ExpressionUUID->"d38b8905-0645-4875-8195-\
+f93eadd2a101"],
+
+Cell["\<\
+Basado en la demostraci\[OAcute]n: \
+http://demonstrations.wolfram.com/LagrangeMultipliersInOneDimension/\
+\>", "Text",
+ CellChangeTimes->{{3.718219377309597*^9, 
+  3.718219398906948*^9}},ExpressionUUID->"8eb8868e-9435-41af-a17d-\
+2f226a46f391"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "x_", "]"}], ":=", 
+   RowBox[{"3", "+", 
+    RowBox[{"2", 
+     RowBox[{"Cos", "[", "x", "]"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"R", "[", "x_", "]"}], ":=", 
+   RowBox[{"1.5", "-", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"x", "-", "1"}], ")"}], "2"]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"xmin", ",", "xmax"}], "}"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"0.7", ",", "3"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"arrowlength", " ", "=", " ", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"arrows", " ", "=", " ", "5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[CapitalDelta]x", " ", "=", " ", "0.2"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.718215726012929*^9, 3.718215734237769*^9}, {
+   3.718215899658399*^9, 3.718215931225037*^9}, {3.71821780890582*^9, 
+   3.718217814568798*^9}, 3.718218059890505*^9, {3.71821812125764*^9, 
+   3.718218127489668*^9}, {3.7182189750753107`*^9, 
+   3.718219000818858*^9}},ExpressionUUID->"a7fa7409-301f-45ff-84eb-\
+064bdb64039f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"xsol", " ", "=", 
+     RowBox[{"1", "+", 
+      SqrtBox[
+       RowBox[{"1.5", "-", "k"}]]}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"f", "[", "x", "]"}], ",", 
+          RowBox[{"\[Lambda]", " ", 
+           RowBox[{"R", "[", "x", "]"}]}], ",", 
+          RowBox[{
+           RowBox[{"f", "[", "x", "]"}], "-", 
+           RowBox[{"\[Lambda]", " ", 
+            RowBox[{"R", "[", "x", "]"}]}]}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "xmin", ",", "xmax"}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"AspectRatio", "\[Rule]", "Automatic"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<f(x)\>\"", ",", "\"\<\[Lambda]R(x)\>\"", ",", 
+           "\"\<f(x)-\[Lambda]R(x)\>\""}], "}"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Frame", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"TicksStyle", "\[Rule]", "Large"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ImageSize", "\[Rule]", "300"}]}], "\[IndentingNewLine]", 
+       "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"f", "[", "xsol", "]"}], "-", 
+         RowBox[{"\[Lambda]", " ", 
+          RowBox[{"R", "[", "xsol", "]"}]}], "-", 
+         RowBox[{"2", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Sin", "[", "xsol", "]"}], "-", 
+            RowBox[{"\[Lambda]", 
+             RowBox[{"(", 
+              RowBox[{"xsol", "-", "1"}], ")"}]}]}], ")"}], " ", 
+          RowBox[{"(", 
+           RowBox[{"x", "-", "xsol"}], ")"}]}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", 
+          RowBox[{"xsol", "-", 
+           RowBox[{"2", "\[CapitalDelta]x"}]}], ",", 
+          RowBox[{"xsol", "+", 
+           RowBox[{"2", "\[CapitalDelta]x"}]}]}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Thick", ",", "Orange"}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ContourPlot", "[", 
+       RowBox[{
+        RowBox[{"x", "\[Equal]", "xsol"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "xmin", ",", "xmax"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"y", ",", 
+          RowBox[{"-", "2.5"}], ",", "6.5"}], "}"}], ",", 
+        RowBox[{"ContourStyle", "\[Rule]", "Black"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", "\"\<x | R(x) = k\>\"", "}"}]}], ",", 
+        RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Graphics", "[", "\[IndentingNewLine]", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{"Blue", ",", "\[IndentingNewLine]", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Arrow", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"x", ",", 
+                RowBox[{"f", "[", "x", "]"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"x", "+", "\[CapitalDelta]x"}], ",", 
+                RowBox[{
+                 RowBox[{"f", "[", "x", "]"}], "+", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"f", "'"}], "[", "x", "]"}], 
+                  "\[CapitalDelta]x"}]}]}], "}"}]}], "}"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "xmin", ",", "xmax", ",", 
+             FractionBox[
+              RowBox[{"xmax", "-", "xmin"}], "arrows"]}], "}"}]}], "]"}], ",",
+          "\[IndentingNewLine]", "Red", ",", "\[IndentingNewLine]", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Arrow", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"x", ",", 
+                RowBox[{"f", "[", "x", "]"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"x", "+", "\[CapitalDelta]x"}], ",", 
+                RowBox[{
+                 RowBox[{"f", "[", "x", "]"}], "-", 
+                 RowBox[{
+                  FractionBox["1", 
+                   RowBox[{
+                    RowBox[{"f", "'"}], "[", "x", "]"}]], 
+                  "\[CapitalDelta]x"}]}]}], "}"}]}], "}"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "xmin", ",", "xmax", ",", 
+             FractionBox[
+              RowBox[{"xmax", "-", "xmin"}], "arrows"]}], "}"}]}], "]"}], ",",
+          "\[IndentingNewLine]", "Black", ",", "\[IndentingNewLine]", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Arrow", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"x", ",", 
+                RowBox[{"\[Lambda]", " ", 
+                 RowBox[{"R", "[", "x", "]"}]}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"x", "+", "\[CapitalDelta]x"}], ",", 
+                RowBox[{
+                 RowBox[{"\[Lambda]", " ", 
+                  RowBox[{"R", "[", "x", "]"}]}], "+", 
+                 RowBox[{"\[Lambda]", " ", 
+                  RowBox[{
+                   RowBox[{"R", "'"}], "[", "x", "]"}], 
+                  "\[CapitalDelta]x"}]}]}], "}"}]}], "}"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "xmin", ",", "xmax", ",", 
+             FractionBox[
+              RowBox[{"xmax", "-", "xmin"}], "arrows"]}], "}"}]}], "]"}], ",",
+          "\[IndentingNewLine]", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Arrow", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"x", ",", 
+                RowBox[{"\[Lambda]", " ", 
+                 RowBox[{"R", "[", "x", "]"}]}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"x", "+", "\[CapitalDelta]x"}], ",", 
+                RowBox[{
+                 RowBox[{"\[Lambda]", " ", 
+                  RowBox[{"R", "[", "x", "]"}]}], "-", 
+                 RowBox[{
+                  FractionBox["1", 
+                   RowBox[{"\[Lambda]", " ", 
+                    RowBox[{
+                    RowBox[{"R", "'"}], "[", "x", "]"}]}]], 
+                  "\[CapitalDelta]x"}]}]}], "}"}]}], "}"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "xmin", ",", "xmax", ",", 
+             FractionBox[
+              RowBox[{"xmax", "-", "xmin"}], "arrows"]}], "}"}]}], "]"}]}], 
+        "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "]"}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Lambda]", ",", "1"}], "}"}], ",", "0.4", ",", "3.1"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"k", ",", "0.83"}], "}"}], ",", 
+     RowBox[{"-", "2"}], ",", "1.4"}], "}"}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.718215951649837*^9, 3.718215984936315*^9}, {
+  3.7182179602071323`*^9, 3.718218049426519*^9}, {3.71821811483564*^9, 
+  3.718218149802442*^9}, {3.71821839884617*^9, 3.718218442845354*^9}, {
+  3.718218494462695*^9, 3.718218579426962*^9}, {3.718218611700612*^9, 
+  3.718218613956336*^9}, {3.718218677768674*^9, 3.7182186780907173`*^9}, {
+  3.7182187221633797`*^9, 3.7182187280422897`*^9}, {3.7182188136945267`*^9, 
+  3.718219004069027*^9}, {3.718219043836585*^9, 3.7182190582715607`*^9}, {
+  3.718219164253623*^9, 3.718219210525803*^9}, {3.718219249957926*^9, 
+  3.718219341865779*^9}, {3.718219500521905*^9, 
+  3.718219565556473*^9}},ExpressionUUID->"49a641f4-556b-40d1-93aa-\
+7a42dc93a3bd"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`k$$ = 0.83, $CellContext`\[Lambda]$$ = 
+    1.185, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`\[Lambda]$$], 1}, 0.4, 3.1}, {{
+       Hold[$CellContext`k$$], 0.83}, -2, 1.4}}, Typeset`size$$ = {
+    410., {490., 493.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`\[Lambda]$212840$$ = 
+    0, $CellContext`k$212841$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`k$$ = 0.83, $CellContext`\[Lambda]$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`\[Lambda]$$, $CellContext`\[Lambda]$212840$$, 0], 
+        Hold[$CellContext`k$$, $CellContext`k$212841$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`xsol = 1 + Sqrt[1.5 - $CellContext`k$$]; Show[
+         Plot[{
+           $CellContext`f[$CellContext`x], $CellContext`\[Lambda]$$ \
+$CellContext`R[$CellContext`x], $CellContext`f[$CellContext`x] - \
+$CellContext`\[Lambda]$$ $CellContext`R[$CellContext`x]}, {$CellContext`x, \
+$CellContext`xmin, $CellContext`xmax}, AspectRatio -> Automatic, 
+          PlotLegends -> {"f(x)", "\[Lambda]R(x)", "f(x)-\[Lambda]R(x)"}, 
+          PlotTheme -> "Scientific", Frame -> True, TicksStyle -> Large, 
+          ImageSize -> 300], 
+         Plot[$CellContext`f[$CellContext`xsol] - $CellContext`\[Lambda]$$ \
+$CellContext`R[$CellContext`xsol] - 
+          2 (Sin[$CellContext`xsol] - $CellContext`\[Lambda]$$ \
+($CellContext`xsol - 
+            1)) ($CellContext`x - $CellContext`xsol), {$CellContext`x, \
+$CellContext`xsol - 2 $CellContext`\[CapitalDelta]x, $CellContext`xsol + 
+           2 $CellContext`\[CapitalDelta]x}, PlotStyle -> {Thick, Orange}], 
+         ContourPlot[$CellContext`x == $CellContext`xsol, {$CellContext`x, \
+$CellContext`xmin, $CellContext`xmax}, {$CellContext`y, -2.5, 6.5}, 
+          ContourStyle -> Black, PlotLegends -> {"x | R(x) = k"}, PlotTheme -> 
+          "Scientific"], 
+         Graphics[{Blue, 
+           Table[
+            Arrow[{{$CellContext`x, 
+               $CellContext`f[$CellContext`x]}, {$CellContext`x + \
+$CellContext`\[CapitalDelta]x, $CellContext`f[$CellContext`x] + 
+               Derivative[
+                 1][$CellContext`f][$CellContext`x] $CellContext`\
+\[CapitalDelta]x}}], {$CellContext`x, $CellContext`xmin, $CellContext`xmax, \
+($CellContext`xmax - $CellContext`xmin)/$CellContext`arrows}], Red, 
+           Table[
+            Arrow[{{$CellContext`x, 
+               $CellContext`f[$CellContext`x]}, {$CellContext`x + \
+$CellContext`\[CapitalDelta]x, $CellContext`f[$CellContext`x] - (1/Derivative[
+                1][$CellContext`f][$CellContext`x]) $CellContext`\
+\[CapitalDelta]x}}], {$CellContext`x, $CellContext`xmin, $CellContext`xmax, \
+($CellContext`xmax - $CellContext`xmin)/$CellContext`arrows}], Black, 
+           Table[
+            
+            Arrow[{{$CellContext`x, $CellContext`\[Lambda]$$ \
+$CellContext`R[$CellContext`x]}, {$CellContext`x + $CellContext`\
+\[CapitalDelta]x, $CellContext`\[Lambda]$$ $CellContext`R[$CellContext`x] + \
+$CellContext`\[Lambda]$$ 
+                Derivative[
+                 1][$CellContext`R][$CellContext`x] $CellContext`\
+\[CapitalDelta]x}}], {$CellContext`x, $CellContext`xmin, $CellContext`xmax, \
+($CellContext`xmax - $CellContext`xmin)/$CellContext`arrows}], 
+           Table[
+            
+            Arrow[{{$CellContext`x, $CellContext`\[Lambda]$$ \
+$CellContext`R[$CellContext`x]}, {$CellContext`x + $CellContext`\
+\[CapitalDelta]x, $CellContext`\[Lambda]$$ $CellContext`R[$CellContext`x] - (
+                1/($CellContext`\[Lambda]$$ 
+                Derivative[
+                 1][$CellContext`R][$CellContext`x])) $CellContext`\
+\[CapitalDelta]x}}], {$CellContext`x, $CellContext`xmin, $CellContext`xmax, \
+($CellContext`xmax - $CellContext`xmin)/$CellContext`arrows}]}]]), 
+      "Specifications" :> {{{$CellContext`\[Lambda]$$, 1}, 0.4, 
+         3.1}, {{$CellContext`k$$, 0.83}, -2, 1.4}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{457., {547., 552.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.718215949233374*^9, 3.718215985058648*^9}, {
+   3.718217960732595*^9, 3.718218001775424*^9}, {3.718218034091145*^9, 
+   3.718218062028419*^9}, {3.7182181181784554`*^9, 3.718218150267632*^9}, 
+   3.718218443203209*^9, {3.7182184977631197`*^9, 3.718218511767405*^9}, {
+   3.718218548831731*^9, 3.718218579919997*^9}, 3.7182186143623238`*^9, 
+   3.718218678537694*^9, 3.718218728509212*^9, {3.718218862656664*^9, 
+   3.718218891931587*^9}, {3.7182189777743196`*^9, 3.7182190043814087`*^9}, {
+   3.718219047210655*^9, 3.718219058606677*^9}, 3.718219210992609*^9, 
+   3.718219263079362*^9, {3.718219318450964*^9, 3.718219342923049*^9}, 
+   3.718219532867661*^9, 
+   3.718219566304236*^9},ExpressionUUID->"1663a38e-f5d7-4018-9279-\
+81020671fefd"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1317, 756},
+WindowMargins->{{Automatic, 176}, {Automatic, 107}},
+FrontEndVersion->"11.2 for Linux x86 (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 169, 3, 98, "Title",ExpressionUUID->"d38b8905-0645-4875-8195-f93eadd2a101"],
+Cell[752, 27, 255, 6, 35, "Text",ExpressionUUID->"8eb8868e-9435-41af-a17d-2f226a46f391"],
+Cell[1010, 35, 1169, 32, 148, "Input",ExpressionUUID->"a7fa7409-301f-45ff-84eb-064bdb64039f"],
+Cell[CellGroupData[{
+Cell[2204, 71, 8139, 198, 824, "Input",ExpressionUUID->"49a641f4-556b-40d1-93aa-7a42dc93a3bd"],
+Cell[10346, 271, 5696, 104, 1118, "Output",ExpressionUUID->"1663a38e-f5d7-4018-9279-81020671fefd"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
