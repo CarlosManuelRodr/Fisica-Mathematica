@@ -1,0 +1,236 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8469,        226]
+NotebookOptionsPosition[      7821,        206]
+NotebookOutlinePosition[      8171,        221]
+CellTagsIndexPosition[      8128,        218]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Curvas de bezier", "Title",
+ CellChangeTimes->{{3.7217664354441643`*^9, 
+  3.721766439236142*^9}},ExpressionUUID->"302e8c89-486a-412c-91c0-\
+d86fe793e0e9"],
+
+Cell["\<\
+Visualizaci\[OAcute]n de una curva de bezier junto con su recta normal y \
+tangente\
+\>", "Text",
+ CellChangeTimes->{{3.7217664410601287`*^9, 
+  3.7217664751245103`*^9}},ExpressionUUID->"734dc2aa-c756-41b0-9921-\
+b3ecea5c2f4e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"arrowLength", " ", "=", " ", "0.6"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"r", " ", "=", " ", 
+     RowBox[{"BezierFunction", "[", "lo", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"TUnit", "[", "t_", "]"}], " ", ":=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"r", "'"}], "[", "t", "]"}], "/", 
+      RowBox[{"Norm", "[", 
+       RowBox[{
+        RowBox[{"r", "'"}], "[", "t", "]"}], "]"}]}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ParametricPlot", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"r", "[", "tp", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"tp", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"Epilog", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Green", ",", 
+           RowBox[{"Line", "[", "lo", "]"}]}], "}"}]}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "4"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "4"}], "}"}]}], "}"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+        RowBox[{"FrameLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"\"\<x\>\"", ",", "\"\<y\>\""}], "}"}]}]}], 
+       "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Graphics", "[", 
+       RowBox[{"{", 
+        RowBox[{"Orange", ",", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"r", "[", "t", "]"}], ",", 
+            RowBox[{
+             RowBox[{"r", "[", "t", "]"}], "+", 
+             RowBox[{
+              RowBox[{"TUnit", "[", "t", "]"}], "*", "arrowLength"}]}]}], 
+           "}"}], "]"}]}], "}"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Graphics", "[", 
+       RowBox[{"{", 
+        RowBox[{"Red", ",", 
+         RowBox[{"Arrow", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"r", "[", "t", "]"}], ",", 
+            RowBox[{
+             RowBox[{"r", "[", "t", "]"}], "+", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"RotationMatrix", "[", 
+                RowBox[{"\[Pi]", "/", "2"}], "]"}], ".", 
+               RowBox[{"TUnit", "[", "t", "]"}]}], "*", "arrowLength"}]}]}], 
+           "}"}], "]"}]}], "}"}], "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"lo", ",", "pts"}], "}"}], ",", "Locator"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0.5"}], "}"}], ",", "0", ",", "1"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Initialization", "\[RuleDelayed]", 
+    RowBox[{"(", 
+     RowBox[{"pts", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"2", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"3", ",", "3"}], "}"}]}], "}"}]}], ")"}]}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{"lo", ",", "t"}], "}"}]}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.7217664930964217`*^9, 
+  3.721766518728055*^9}},ExpressionUUID->"290afad7-2bb1-47cf-b262-\
+1fd69072cdbc"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`lo$$ = {{0, 0}, {1, 2}, {2, 0}, {3, 
+    3}}, $CellContext`t$$ = 0.5, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"sin t\[IAcute]tulo\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`lo$$], {{0, 0}, {1, 2}, {2, 0}, {3, 3}}}, 
+      Automatic}, {{
+       Hold[$CellContext`t$$], 0.5}, 0, 1}}, Typeset`size$$ = {
+    360., {183., 188.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = False, $CellContext`t$74204$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`lo$$ = {{0, 0}, {1, 2}, {2, 0}, {3, 
+         3}}, $CellContext`t$$ = 0.5}, "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$74204$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`r = 
+        BezierFunction[$CellContext`lo$$]; $CellContext`TUnit[
+          Pattern[$CellContext`t, 
+           Blank[]]] := Derivative[1][$CellContext`r][$CellContext`t]/Norm[
+          Derivative[1][$CellContext`r][$CellContext`t]]; Show[
+         ParametricPlot[
+          $CellContext`r[$CellContext`tp], {$CellContext`tp, 0, 1}, 
+          Epilog -> {Green, 
+            Line[$CellContext`lo$$]}, PlotRange -> {{0, 4}, {0, 4}}, 
+          PlotTheme -> "Scientific", FrameLabel -> {"x", "y"}], 
+         Graphics[{Orange, 
+           Arrow[{
+             $CellContext`r[$CellContext`t$$], \
+$CellContext`r[$CellContext`t$$] + $CellContext`TUnit[$CellContext`t$$] \
+$CellContext`arrowLength}]}], 
+         Graphics[{Red, 
+           Arrow[{
+             $CellContext`r[$CellContext`t$$], \
+$CellContext`r[$CellContext`t$$] + Dot[
+                RotationMatrix[Pi/2], 
+                $CellContext`TUnit[$CellContext`t$$]] \
+$CellContext`arrowLength}]}]]), 
+      "Specifications" :> {{{$CellContext`lo$$, {{0, 0}, {1, 2}, {2, 0}, {3, 
+          3}}}, Automatic, ControlType -> Locator}, {{$CellContext`t$$, 0.5}, 
+         0, 1}}, "Options" :> {
+       TrackedSymbols :> {$CellContext`lo$$, $CellContext`t$$}}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{417., {233., 239.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>($CellContext`pts = {{0, 0}, {1, 2}, {2, 0}, {3, 3}}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.721766485609501*^9, 
+  3.721766520011278*^9}},ExpressionUUID->"fc91c21e-167d-4620-a923-\
+8628268a9425"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1152, 718},
+WindowMargins->{{183, Automatic}, {Automatic, 60}},
+FrontEndVersion->"11.2 para Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 161, 3, 96, "Title",ExpressionUUID->"302e8c89-486a-412c-91c0-d86fe793e0e9"],
+Cell[744, 27, 237, 6, 34, "Text",ExpressionUUID->"734dc2aa-c756-41b0-9921-b3ecea5c2f4e"],
+Cell[CellGroupData[{
+Cell[1006, 37, 3666, 98, 587, "Input",ExpressionUUID->"290afad7-2bb1-47cf-b262-1fd69072cdbc"],
+Cell[4675, 137, 3118, 65, 548, "Output",ExpressionUUID->"fc91c21e-167d-4620-a923-8628268a9425"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
