@@ -1,0 +1,190 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6974,        182]
+NotebookOptionsPosition[      6669,        169]
+NotebookOutlinePosition[      7020,        184]
+CellTagsIndexPosition[      6977,        181]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"InitializeSplines", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "Contenido", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"UpdateIfChanged", "[", 
+     RowBox[{
+      RowBox[{"selectedSplineName", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"splineList", "[", 
+         RowBox[{"[", 
+          RowBox[{"selected", ",", "\"\<Name\>\""}], "]"}], "]"}], " ", "=", 
+        " ", "splineName"}]}], ",", 
+      RowBox[{"{", "splineName", "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"UpdateIfChanged", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"lo", ",", "selected", ",", "splineName"}], "}"}], "=", " ", 
+       RowBox[{"UpdateSelection", "[", 
+        RowBox[{
+        "splineList", ",", "selectedSplineName", ",", "lo", ",", "selected"}],
+         "]"}]}], ",", 
+      RowBox[{"{", "selectedSplineName", "}"}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"UpdateIfChanged", "[", 
+     RowBox[{
+      RowBox[{"splineList", "=", 
+       RowBox[{"UpdateCoordinates", "[", 
+        RowBox[{"splineList", ",", "lo", ",", "selected"}], "]"}]}], ",", 
+      RowBox[{"{", "lo", "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Draw", "[", 
+     RowBox[{"splineList", ",", "lo", ",", "size", ",", "view"}], "]"}]}], 
+   "\[IndentingNewLine]", ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Control", " ", "de", " ", "splines"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"lo", ",", 
+       RowBox[{
+        RowBox[{"First", "[", "splineList", "]"}], "[", "\"\<Coordinates\>\"",
+         "]"}]}], "}"}], ",", "Locator"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<Control de splines\>\"", ",", "Bold", ",", "Medium"}], "]"}],
+    ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"view", ",", 
+       RowBox[{"viewTypes", "[", "\"\<Vector\>\"", "]"}], ",", 
+       "\"\<Vista\>\""}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"viewTypes", "[", "\"\<Vector\>\"", "]"}], "\[Rule]", 
+        "\"\<Curvas\>\""}], ",", 
+       RowBox[{
+        RowBox[{"viewTypes", "[", "\"\<Raster\>\"", "]"}], "\[Rule]", 
+        "\"\<Rasterizado\>\""}]}], "}"}]}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"size", ",", "50", ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<Tama\[NTilde]o\>\"", ",", " ", "Bold"}], "]"}]}], "}"}], 
+     ",", "1", ",", "300", ",", "1", ",", 
+     RowBox[{"Enabled", "\[Rule]", 
+      RowBox[{"(", 
+       RowBox[{"view", " ", "\[Equal]", 
+        RowBox[{"viewTypes", "[", "\"\<Raster\>\"", "]"}]}], ")"}]}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Button", "[", 
+    RowBox[{"\"\<A\[NTilde]adir spline\>\"", ",", 
+     RowBox[{"CreateSimpleSpline", "[", "]"}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Button", "[", 
+    RowBox[{"\"\<Quitar spline\>\"", ",", 
+     RowBox[{"selectedSplineName", " ", "=", " ", 
+      RowBox[{"splineList", "[", 
+       RowBox[{"[", 
+        RowBox[{
+         RowBox[{"DeleteSpline", "[", "selected", "]"}], ",", 
+         "\"\<Name\>\""}], "]"}], "]"}]}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "splineName", ",", "selectedSplineName", ",", "\"\<Nombre\>\""}], "}"}],
+      ",", "selectedSplineName", ",", 
+     RowBox[{
+      RowBox[{"InputField", "[", 
+       RowBox[{"#", ",", "String"}], "]"}], "&"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"selectedSplineName", ",", 
+       RowBox[{
+        RowBox[{"First", "[", "splineList", "]"}], "[", "\"\<Name\>\"", "]"}],
+        ",", " ", "\"\<Objeto\>\""}], "}"}], ",", 
+     RowBox[{"Dynamic", "[", 
+      RowBox[{"splineList", "[", 
+       RowBox[{"[", 
+        RowBox[{"All", ",", "\"\<Name\>\""}], "]"}], "]"}], "]"}], ",", 
+     RowBox[{"ControlType", "\[Rule]", "SetterBar"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Vertical\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "Delimiter", ",", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Propiedades", " ", "del", " ", "spline"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<Propiedades\>\"", ",", "Bold", ",", "Medium"}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Dynamic", "[", 
+    RowBox[{"SimpleSplineOptions", "[", 
+     RowBox[{"splineList", "[", 
+      RowBox[{"[", "selected", "]"}], "]"}], "]"}], "]"}], ",", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Opciones", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{"lo", ",", "selectedSplineName", ",", "splineName", ",", 
+      RowBox[{"Dynamic", "[", "splineCount", "]"}]}], "}"}]}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"SynchronousUpdating", "\[Rule]", "False"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"ContinuousAction", "\[Rule]", "False"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Initialization", "\[RuleDelayed]", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"selected", " ", "=", " ", "1"}], ";"}], "\[IndentingNewLine]", 
+     "}"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Left"}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.722284932766136*^9, 3.7222849635803885`*^9}, {
+  3.7223463098308425`*^9, 3.722346311387783*^9}, {3.7223463733593082`*^9, 
+  3.7223463807035947`*^9}, {3.722346578271591*^9, 3.7223466223675413`*^9}, {
+  3.7223466525923767`*^9, 3.7223466527925463`*^9}, {3.722346699184317*^9, 
+  3.722346735591552*^9}},ExpressionUUID->"3c43a718-39a1-4808-bd5f-\
+606fe2b095e6"]
+},
+WindowSize->{1447, 761},
+WindowMargins->{{Automatic, -1506}, {Automatic, 4}},
+FrontEndVersion->"11.2 para Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 6107, 147, 925, "Input",ExpressionUUID->"3c43a718-39a1-4808-bd5f-606fe2b095e6"]
+}
+]
+*)
+

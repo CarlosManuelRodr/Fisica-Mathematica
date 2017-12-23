@@ -1,0 +1,2058 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     81131,       2050]
+NotebookOptionsPosition[     66703,       1857]
+NotebookOutlinePosition[     67051,       1872]
+CellTagsIndexPosition[     67008,       1869]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["2 - Se\[NTilde]ales de audio y espectro de frecuencias", "Title",
+ CellChangeTimes->{{3.6973145399199505`*^9, 
+  3.6973145532292347`*^9}},ExpressionUUID->"1e0258bb-6c40-476e-aa12-\
+374cc4d0c97e"],
+
+Cell[CellGroupData[{
+
+Cell["El sonido como onda", "Chapter",
+ CellChangeTimes->{{3.697319904125991*^9, 
+  3.6973199071179113`*^9}},ExpressionUUID->"eef35953-5ffd-4014-b857-\
+1cf261e7874c"],
+
+Cell[CellGroupData[{
+
+Cell["\[DownQuestion]Qu\[EAcute] es el sonido?", "Subchapter",
+ CellChangeTimes->{{3.697321687893457*^9, 
+  3.6973216994931035`*^9}},ExpressionUUID->"88804495-3239-49f4-8066-\
+00615e5aa38a"],
+
+Cell["\<\
+El sonido en esencia es una vibraci\[OAcute]n que se propaga a trav\[EAcute]s \
+un medio (como el aire o a trav\[EAcute]s de s\[OAcute]lidos como la madera) \
+y que nuestros o\[IAcute]dos son capaces de percibir. El sonido se puede \
+crear a partir de cualquier objeto que vibre a una frecuencia \
+espec\[IAcute]fica, como por ejemplo un diapas\[OAcute]n, cuyo movimiento \
+hace vibrar a las part\[IAcute]culas de aire.\
+\>", "Text",
+ CellChangeTimes->{{3.6973210302054167`*^9, 3.697321081526029*^9}, {
+  3.697321143126498*^9, 
+  3.697321193702327*^9}},ExpressionUUID->"0fffd0f7-b990-4b4d-b300-\
+575a5dc98d36"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Ref", ":", " ", "http", ":"}], "//", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"demonstrations", ".", "wolfram", ".", "com"}], "/", 
+      "TuningFork"}], "/"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"diapason", " ", "=", " ", 
+   RowBox[{"Animate", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "stripes", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"stripes", " ", "/:", " ", 
+         RowBox[{"Random`DistributionVector", "[", 
+          RowBox[{
+           RowBox[{"stripes", "[", 
+            RowBox[{
+             RowBox[{"(", "r_", ")"}], "?", "Positive"}], "]"}], ",", " ", 
+           "n_Integer", ",", 
+           RowBox[{"prec_", "?", "Positive"}]}], "]"}], " ", ":=", 
+         RowBox[{"Transpose", "@", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"Mod", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"#", "/", "5"}], "+", 
+                  RowBox[{".1", " ", 
+                   RowBox[{"Cos", "[", 
+                    RowBox[{"3.7", "#"}], "]"}]}], "+", "t", "+", "1."}], ",",
+                  "1"}], "]"}], "+", ".15"}], "&"}], "@", 
+             RowBox[{"RandomReal", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "r"}], "}"}], ",", " ", "n", ",", 
+               RowBox[{"WorkingPrecision", "\[Rule]", "prec"}]}], "]"}]}], 
+            ",", 
+            RowBox[{"RandomReal", "[", 
+             RowBox[{"1", ",", " ", "n", ",", 
+              RowBox[{"WorkingPrecision", "\[Rule]", "prec"}]}], "]"}]}], 
+           "}"}]}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Show", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"ListPlot", "[", 
+           RowBox[{
+            RowBox[{"RandomReal", "[", 
+             RowBox[{
+              RowBox[{"stripes", "[", "8", "]"}], ",", "3000"}], "]"}], ",", 
+            RowBox[{"PlotStyle", "\[Rule]", 
+             RowBox[{"RGBColor", "[", 
+              RowBox[{".25", ",", ".43", ",", ".82"}], "]"}]}]}], "]"}], ",", 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"ListPlot", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"t0", ",", 
+                RowBox[{
+                 RowBox[{".1", 
+                  RowBox[{"Cos", "[", " ", 
+                   RowBox[{
+                    RowBox[{"17.76`", "t0"}], "-", 
+                    RowBox[{"18.5", "t"}], "+", "2"}], "]"}]}], "-", ".25", 
+                 "+", 
+                 RowBox[{"0.005", " ", 
+                  RowBox[{"RandomReal", "[", 
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "8"}], "}"}], "]"}]}]}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"t0", ",", "0.12", ",", "1.2", ",", "0.001"}], "}"}]}],
+              "]"}], ",", 
+            RowBox[{"PlotStyle", "\[Rule]", 
+             RowBox[{"RGBColor", "[", 
+              RowBox[{".25", ",", ".43", ",", ".82"}], "]"}]}]}], "]"}], ",", 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"Graphics", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"EdgeForm", "[", 
+              RowBox[{"RGBColor", "[", 
+               RowBox[{".25", ",", ".43", ",", ".82"}], "]"}], "]"}], ",", 
+             RowBox[{"RGBColor", "[", 
+              RowBox[{".25", ",", ".43", ",", ".82"}], "]"}], ",", 
+             RowBox[{"Polygon", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", ".12"}], ",", "0"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"-", ".12"}], "-", 
+                   RowBox[{".01", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{"20", "t"}], "]"}]}]}], ",", "1"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"-", ".05"}], "-", 
+                   RowBox[{".01", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{"20", "t"}], "]"}]}]}], ",", "1"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", ".05"}], ",", "0"}], "}"}]}], "}"}], "]"}], 
+             ",", 
+             RowBox[{"Polygon", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{".12", ",", "0"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{".12", "+", 
+                   RowBox[{".01", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{"20", "t"}], "]"}]}]}], ",", "1"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{".05", "+", 
+                   RowBox[{".01", 
+                    RowBox[{"Cos", "[", 
+                    RowBox[{"20", "t"}], "]"}]}]}], ",", "1"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{".05", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+             RowBox[{"Polygon", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{".05", ",", 
+                  RowBox[{"-", "1"}]}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{".05", ",", "0"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", ".05"}], ",", "0"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", ".05"}], ",", 
+                  RowBox[{"-", "1"}]}], "}"}]}], "}"}], "]"}], ",", 
+             RowBox[{"Disk", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0"}], "}"}], ",", ".12", ",", 
+               RowBox[{"{", 
+                RowBox[{"\[Pi]", ",", 
+                 RowBox[{"2", "\[Pi]"}]}], "}"}]}], "]"}], ",", 
+             RowBox[{"EdgeForm", "[", "]"}], ",", "White", ",", 
+             RowBox[{"Disk", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0"}], "}"}], ",", ".05"}], "]"}]}], "}"}], 
+           "]"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"PlotRange", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", ".3"}], ",", "1.5"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], "}"}]}], ",", 
+          RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", 
+          RowBox[{"Axes", "\[Rule]", "False"}], ",", 
+          RowBox[{"ImageSize", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"450", ",", "450"}], "}"}]}]}], "\[IndentingNewLine]", 
+         "]"}]}]}], "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"t", ",", "0", ",", "\"\<Tiempo\>\""}], "}"}], ",", "0", ",", 
+       "10", ",", "0.01"}], "}"}], ",", 
+     RowBox[{"AnimationRate", "\[Rule]", ".2"}]}], "\[IndentingNewLine]", 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.697319921191784*^9, 3.697319925948704*^9}, {
+  3.6974121075846467`*^9, 3.6974121332641487`*^9}, {3.6974124944990597`*^9, 
+  3.697412566781291*^9}},ExpressionUUID->"d0f8479d-7ad6-4da1-90a6-\
+896161902302"],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<diapason2.avi\>\""}], 
+   ",", " ", "diapason", ",", 
+   RowBox[{"\"\<AnimationDuration\>\"", "\[Rule]", "40"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.697412137929422*^9, 3.6974121513332043`*^9}, {
+  3.697412771617363*^9, 3.6974127719134245`*^9}, {3.697412822343137*^9, 
+  3.69741282729543*^9}, {3.6974128655356708`*^9, 3.697412865646677*^9}, {
+  3.697412955792361*^9, 3.697412964822941*^9}, {3.6974130728819265`*^9, 
+  3.6974130862397103`*^9}, {3.6974131525037017`*^9, 3.697413153118739*^9}, {
+  3.697413260544216*^9, 3.697413260687272*^9}, {3.6974135517067385`*^9, 
+  3.697413554160883*^9}},ExpressionUUID->"ff5a8dd4-12e4-4de1-a8fe-\
+94132cf544ba"],
+
+Cell[TextData[{
+ "Cuando las part\[IAcute]culas de aire se comprimen se crea una onda \
+transversal, la cual llega a nuestros o\[IAcute]dos haciendo vibrar a \
+nuestros t\[IAcute]mpanos, y \[EAcute]stos los registran como sonido. En \
+esencia lo que hacen todos los dispositivos que registran sonido como los o\
+\[IAcute]dos o los micr\[OAcute]fonos es registrar la amplitud de las \
+vibraciones. Si se registrara la amplitud de las vibraciones de la nota ",
+ StyleBox["La",
+  FontSlant->"Italic"],
+ " (440 Hz) se obtendr\[IAcute]a una gr\[AAcute]fica como la siguiente."
+}], "Text",
+ CellChangeTimes->{{3.697321199108506*^9, 
+  3.697321349589303*^9}},ExpressionUUID->"3fe9deaf-7b0c-4507-9f59-\
+ef5b8c1284b3"],
+
+Cell[BoxData[
+ RowBox[{"onda", " ", "=", " ", 
+  RowBox[{"Animate", "[", 
+   RowBox[{
+    RowBox[{"Plot", "[", 
+     RowBox[{
+      RowBox[{"Sin", "[", 
+       RowBox[{"2", "*", "440", " ", "2", "Pi", " ", 
+        RowBox[{"(", 
+         RowBox[{"t", "+", "\[Phi]"}], ")"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "0", ",", "0.01"}], "}"}], ",", " ", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Tiempo [s]\>\"", ",", " ", "\"\<Amplitud\>\""}], "}"}]}],
+       ",", 
+      RowBox[{"PlotTheme", "\[Rule]", "\"\<Minimal\>\""}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", "Red"}], ",", 
+      RowBox[{"BaseStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"FontSize", "\[Rule]", "17"}], ",", 
+         RowBox[{"FontFamily", "->", "\"\<Calibri\>\""}]}], "}"}]}]}], "]"}], 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Phi]", ",", "0", ",", "0.02"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.697321351057576*^9, 3.6973213998413115`*^9}, {
+  3.6974117548788347`*^9, 3.697411845893157*^9}, {3.6974119627424793`*^9, 
+  3.697412032198238*^9}, {3.697412086102439*^9, 3.697412087007443*^9}, {
+  3.6974134812195845`*^9, 3.6974135255391965`*^9}, {3.697414243671974*^9, 
+  3.697414259093836*^9}, {3.697414456873665*^9, 
+  3.6974144649471445`*^9}},ExpressionUUID->"681ff06e-fca3-47b3-aec0-\
+3ae5dca9b98d"],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<onda2.avi\>\""}], ",",
+    " ", "onda", ",", 
+   RowBox[{"\"\<AnimationDuration\>\"", "\[Rule]", "20"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6974135410881157`*^9, 3.6974135460803614`*^9}, {
+   3.697414031984834*^9, 3.6974140453626204`*^9}, 
+   3.6974144719725523`*^9},ExpressionUUID->"2aeba885-8fd5-445d-a034-\
+0e4dd094917b"],
+
+Cell[TextData[{
+ "Es notable que la onda se puede representar por una funci\[OAcute]n \
+trigonom\[EAcute]trica Seno o Coseno. El n\[UAcute]mero 440 indica que la \
+frecuencia de la onda son 440 oscilaciones por segundo. A partir de esta \
+funci\[OAcute]n el lenguaje Wolfram permite generar sonido utilizando la \
+funci\[OAcute]n Play. A continuaci\[OAcute]n se reproduce la nota ",
+ StyleBox["La.",
+  FontSlant->"Italic"]
+}], "Text",
+ CellChangeTimes->{{3.6973214064130535`*^9, 
+  3.6973214954781594`*^9}},ExpressionUUID->"da0d435f-5800-485c-ab98-\
+970beb648e44"],
+
+Cell[BoxData[
+ RowBox[{"s1", " ", "=", " ", 
+  RowBox[{"Play", "[", 
+   RowBox[{
+    RowBox[{"Sin", "[", 
+     RowBox[{"2", "*", "440", " ", "2", "Pi", " ", "t"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"t", ",", "0", ",", "10"}], "}"}], ",", 
+    RowBox[{"SampleRate", "\[Rule]", "44100"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.697321358561286*^9, {3.697414507939437*^9, 3.697414508792487*^9}, 
+   3.697414595212572*^9, {3.6974146833389716`*^9, 
+   3.697414699011898*^9}},ExpressionUUID->"1c94c535-adef-45c2-8619-\
+5b16175b3872"],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<sonido2.wav\>\""}], 
+   ",", " ", "s1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.697414517978029*^9, 3.697414523697363*^9}, {
+  3.6974147045247765`*^9, 
+  3.6974147046508265`*^9}},ExpressionUUID->"96d1a0bd-496e-4315-b2f4-\
+19468685cb42"],
+
+Cell[TextData[{
+ "Se pueden generar tonos utilizando frecuencias variables, es decir, en vez \
+de utilizar la frecuencia de la nota ",
+ StyleBox["La",
+  FontSlant->"Italic"],
+ ", se puede variar con el tiempo para crear una se\[NTilde]al m\[AAcute]s \
+compleja."
+}], "Text",
+ CellChangeTimes->{{3.6973215405812883`*^9, 
+  3.6973215863171663`*^9}},ExpressionUUID->"987ca25e-723e-4ddf-8faa-\
+46a6a613a9f8"],
+
+Cell[BoxData[
+ RowBox[{"Play", "[", 
+  RowBox[{
+   RowBox[{"Sin", "[", 
+    RowBox[{"440", " ", 
+     RowBox[{"Cos", "[", "t", "]"}], " ", "2", "Pi", " ", "t"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "10"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6973204584717817`*^9, 3.6973205358493004`*^9}, {
+  3.697320589262612*^9, 3.6973205898164787`*^9}, {3.6973215088974853`*^9, 
+  3.6973215204889035`*^9}},ExpressionUUID->"3621c4e9-2f52-4c9e-b128-\
+1c77035144e3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Cuerda vibrando", "Subchapter",
+ CellChangeTimes->{{3.6976669092489347`*^9, 
+  3.697666914030648*^9}},ExpressionUUID->"c68c6e05-96cf-4936-9712-\
+4df216abc69c"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"weqn", "=", 
+   RowBox[{
+    RowBox[{"D", "[", 
+     RowBox[{
+      RowBox[{"u", "[", 
+       RowBox[{"x", ",", "t"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "2"}], "}"}]}], "]"}], "\[Equal]", 
+    RowBox[{"D", "[", 
+     RowBox[{
+      RowBox[{"u", "[", 
+       RowBox[{"x", ",", "t"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "2"}], "}"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bc", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"u", "[", 
+       RowBox[{"0", ",", "t"}], "]"}], "\[Equal]", "0"}], ",", 
+     RowBox[{
+      RowBox[{"u", "[", 
+       RowBox[{"\[Pi]", ",", "t"}], "]"}], "\[Equal]", "0"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ic", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"u", "[", 
+       RowBox[{"x", ",", " ", "0"}], "]"}], " ", "==", " ", 
+      RowBox[{
+       RowBox[{"x", "^", "2"}], " ", 
+       RowBox[{"(", 
+        RowBox[{"\[Pi]", " ", "-", " ", "x"}], ")"}]}]}], ",", " ", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["u", 
+        TagBox[
+         RowBox[{"(", 
+          RowBox[{"0", ",", "1"}], ")"}],
+         Derivative],
+        MultilineFunction->None], "[", 
+       RowBox[{"x", ",", " ", "0"}], "]"}], " ", "==", " ", "0"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"dsol", "=", 
+  RowBox[{
+   RowBox[{"DSolve", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"weqn", ",", "bc", ",", "ic"}], "}"}], ",", "u", ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "t"}], "}"}]}], "]"}], "/.", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"K", "[", "1", "]"}], "\[Rule]", "m"}], 
+    "}"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"asol", "[", 
+    RowBox[{"x_", ",", "t_"}], "]"}], "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"u", "[", 
+       RowBox[{"x", ",", "t"}], "]"}], "/.", 
+      RowBox[{"dsol", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], "/.", 
+     RowBox[{"{", 
+      RowBox[{"\[Infinity]", "\[Rule]", "10"}], "}"}]}], "//", "Activate"}]}],
+   ";"}]}], "Input",ExpressionUUID->"3673bb61-9940-4dd3-972e-3ad57acf8cab"],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Play", "[", 
+    RowBox[{
+     RowBox[{"asol", "[", 
+      RowBox[{"x", ",", 
+       RowBox[{"440", " ", "2", "\[Pi]", " ", "t"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "1"}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x", ",", "1"}], "}"}], ",", "0", ",", "\[Pi]"}], "}"}]}], 
+  "]"}]], "Input",ExpressionUUID->"9bd040ed-c8c3-4d80-bf59-a61d3e2acc15"],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"asol", "[", 
+      RowBox[{"x", ",", "t"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "\[Pi]"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "5"}], ",", "5"}], "}"}]}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Medium"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", "Red"}], ",", 
+     RowBox[{"GridLines", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"\[Pi]", "/", "4"}], ",", 
+          RowBox[{"\[Pi]", "/", "2"}], ",", 
+          RowBox[{"3", 
+           RowBox[{"\[Pi]", "/", "4"}]}]}], "}"}], ",", "None"}], "}"}]}]}], 
+    "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", 
+     RowBox[{"2", " ", "Pi"}]}], "}"}], ",", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "]"}]], "Input",Expressio\
+nUUID->"054aa59e-bf4f-49ac-8902-ab81cef19c4d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Superposici\[OAcute]n de ondas: \[DownQuestion]Por qu\[EAcute] podemos \
+escuchar varias cosas a la vez?\
+\>", "Subchapter",
+ CellChangeTimes->{{3.697321741781007*^9, 3.6973217578524714`*^9}, 
+   3.6973221695980587`*^9},ExpressionUUID->"47492ecb-592b-48b8-b24f-\
+cf94f83c6714"],
+
+Cell[TextData[{
+ "Cuando escuchamos varias cosas a la vez, o incluso cuando escuchamos un \
+acorde en una melod\[IAcute]a lo que nuestros o\[IAcute]dos est\[AAcute]n \
+registrando es la superposici\[OAcute]n entre las dos ondas que nos llegan. \
+Por ejemplo, en un instrumento musical se pueden tocar las notas ",
+ StyleBox["Do",
+  FontSlant->"Italic"],
+ ", que tiene una frecuencia de 261.63 Hz, ",
+ StyleBox["Mi",
+  FontSlant->"Italic"],
+ ", que tiene una frecuencia de 329.63 Hz, y ",
+ StyleBox["Sol,",
+  FontSlant->"Italic"],
+ " que tiene una frecuencia de 392 Hz. Si se grafican las tres notas al mismo \
+tiempo se puede observar que entre m\[AAcute]s aguda es la nota \[EAcute]sta \
+oscila m\[AAcute]s r\[AAcute]pidamente."
+}], "Text",
+ CellChangeTimes->{{3.697322186268625*^9, 3.697322245380978*^9}, {
+  3.6973224561571536`*^9, 3.697322511141159*^9}, {3.6973225455181074`*^9, 
+  3.6973225866302643`*^9}},ExpressionUUID->"61f2377d-1658-478e-babc-\
+ae9cc136b532"],
+
+Cell[BoxData[
+ RowBox[{"sup", " ", "=", " ", 
+  RowBox[{"Animate", "[", 
+   RowBox[{
+    RowBox[{"Plot", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Sin", "[", 
+         RowBox[{"261.63", " ", "2", "Pi", " ", 
+          RowBox[{"(", 
+           RowBox[{"t", "+", "\[Phi]"}], ")"}]}], "]"}], ",", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"329.63", " ", "2", "Pi", " ", 
+          RowBox[{"(", 
+           RowBox[{"t", "+", "\[Phi]"}], ")"}]}], "]"}], ",", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"392.00", " ", "2", "Pi", " ", 
+          RowBox[{"(", 
+           RowBox[{"t", "+", "\[Phi]"}], ")"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "0", ",", "0.01"}], "}"}], ",", 
+      RowBox[{"PlotTheme", "\[Rule]", "\"\<Minimal\>\""}], ",", " ", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Tiempo [s]\>\"", ",", " ", "\"\<Amplitud\>\""}], "}"}]}],
+       ",", 
+      RowBox[{"PlotLegends", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<Do\>\"", ",", " ", "\"\<Mi\>\"", ",", " ", "\"\<Sol\>\""}], 
+        "}"}]}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Phi]", ",", "0", ",", "0.02"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.69732259009081*^9, 3.69732265416597*^9}, {
+  3.697322699890377*^9, 3.697322723714343*^9}, {3.6974147170865135`*^9, 
+  3.6974147826724195`*^9}, {3.6974148603909473`*^9, 
+  3.697414901942437*^9}},ExpressionUUID->"7ad92eef-a315-44c2-a46c-\
+af4dbaafe89d"],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+    "\"\<variasnotas.avi\>\""}], ",", "sup", ",", 
+   RowBox[{"\"\<AnimationDuration\>\"", "\[Rule]", "40"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.697414914226162*^9, 
+  3.6974149198104916`*^9}},ExpressionUUID->"1e0b269a-83f4-4c5b-ae10-\
+245b84a3991c"],
+
+Cell["\<\
+Al sumar todas las frecuencias se obtiene la onda superpuesta\
+\>", "Text",
+ CellChangeTimes->{{3.6973228138042407`*^9, 
+  3.6973228231875715`*^9}},ExpressionUUID->"41bdf9a0-687d-4e4c-9ef8-\
+5bfaddddd5dc"],
+
+Cell[BoxData[
+ RowBox[{"sup", " ", "=", " ", 
+  RowBox[{"Animate", "[", 
+   RowBox[{
+    RowBox[{"Plot", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Sin", "[", 
+        RowBox[{"261.63", " ", "2", "Pi", " ", 
+         RowBox[{"(", 
+          RowBox[{"t", "+", "\[Phi]"}], ")"}]}], "]"}], "+", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"329.63", " ", "2", "Pi", " ", 
+         RowBox[{"(", 
+          RowBox[{"t", "+", "\[Phi]"}], ")"}]}], "]"}], "+", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"392.00", " ", "2", "Pi", " ", 
+         RowBox[{"(", 
+          RowBox[{"t", "+", "\[Phi]"}], ")"}]}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "0", ",", "0.05"}], "}"}], ",", 
+      RowBox[{"PlotTheme", "\[Rule]", "\"\<Minimal\>\""}], ",", 
+      RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Tiempo [s]\>\"", ",", " ", "\"\<Amplitud\>\""}], 
+        "}"}]}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Phi]", ",", "0", ",", "0.05"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.697322828551*^9, 3.697322850814826*^9}, {
+  3.6974151902606735`*^9, 3.6974152162041545`*^9}, {3.6974152611170683`*^9, 
+  3.6974152646152263`*^9}},ExpressionUUID->"08cb8af0-a12b-4722-ba69-\
+bdf3a220a65d"],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+    "\"\<superposicion.avi\>\""}], ",", "sup", ",", 
+   RowBox[{"\"\<AnimationDuration\>\"", "\[Rule]", "40"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.697415229139135*^9, 
+  3.6974152329643574`*^9}},ExpressionUUID->"8b1e9c47-c957-4fa5-90df-\
+ea6003500676"],
+
+Cell["\<\
+Y al reproducir la onda superpuesta se pueden escuchar las 3 notas que \
+componen el acorde.\
+\>", "Text",
+ CellChangeTimes->{{3.69732285765148*^9, 
+  3.6973228776445203`*^9}},ExpressionUUID->"13c0c645-2265-4faf-8b17-\
+702a740c160f"],
+
+Cell[BoxData[
+ RowBox[{"acorde", " ", "=", " ", 
+  RowBox[{"Play", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Sin", "[", 
+      RowBox[{"261.63", " ", "2", "Pi", " ", "t"}], "]"}], "+", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"329.63", " ", "2", "Pi", " ", "t"}], "]"}], "+", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"392.00", " ", "2", "Pi", " ", "t"}], "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"t", ",", "0", ",", "10"}], "}"}], ",", 
+    RowBox[{"SampleRate", "\[Rule]", "44100"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6973223418700714`*^9, 3.6973223779768133`*^9}, {
+  3.6974154828017592`*^9, 
+  3.697415509564085*^9}},ExpressionUUID->"ca913f49-932a-49a7-a539-\
+f6c9eb4220e3"],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<acorde.wav\>\""}], 
+   ",", " ", "acorde"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6974154978038664`*^9, 
+  3.697415501435604*^9}},ExpressionUUID->"bb43f19d-5064-4c4a-b5ec-\
+683b25fde576"],
+
+Cell["\<\
+Se puede combinar una cantidad arbitraria de frecuencias para crear sonidos m\
+\[AAcute]s complejos.\
+\>", "Text",
+ CellChangeTimes->{{3.697323687259182*^9, 
+  3.6973237300114074`*^9}},ExpressionUUID->"a8621775-453e-48a5-bb90-\
+4d4ebb8be45d"]
+}, Open  ]],
+
+Cell["\<\
+Pregunta: Si dos instrumentos musicales diferentes, como por ejemplo un piano \
+y una guitarra, est\[AAcute]n tocando la misma nota, \[DownQuestion]Qu\
+\[EAcute] es lo que diferencia el timbre de ambos?\
+\>", "Subchapter",
+ CellChangeTimes->{{3.697323764515197*^9, 
+  3.6973238513229904`*^9}},ExpressionUUID->"29e913f8-86f0-435b-8f5a-\
+801e2ea015b0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Cargar el archivo de audio usando el lenguaje Wolfram", "Chapter",
+ CellChangeTimes->{{3.697314621732849*^9, 
+  3.6973146426698065`*^9}},ExpressionUUID->"0b46ad62-fcba-448c-8d33-\
+1b372ff39654"],
+
+Cell["\<\
+Para responder la pregunta se puede analizar un archivo de audio utilizando \
+el lenguaje Wolfram con el fin de entender cu\[AAcute]les son las caracter\
+\[IAcute]sticas de cada sonido.\
+\>", "Text",
+ CellChangeTimes->{{3.697323939874915*^9, 
+  3.697323980195899*^9}},ExpressionUUID->"547223be-3931-4776-8970-\
+ee5893c19f66"],
+
+Cell["Primero se carga el archivo de audio.", "Text",
+ CellChangeTimes->{{3.6973146967175517`*^9, 3.697314704101055*^9}, 
+   3.6973147500059986`*^9},ExpressionUUID->"1e52855b-90c2-49e2-9b32-\
+8cc148ab7960"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"audio", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<audio.aiff\>\""}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6973146665821695`*^9, 
+  3.6973146862149673`*^9}},ExpressionUUID->"17ba5765-95e7-491f-b516-\
+e5e4efdb3aaa"],
+
+Cell["\<\
+En el lenguaje Wolfram el audio se queda guardado en una variable, a la cual \
+se puede acceder para escucharlo.\
+\>", "Text",
+ CellChangeTimes->{{3.697314707013756*^9, 
+  3.697314746157629*^9}},ExpressionUUID->"417f88b3-9215-4e39-ad62-\
+91f69541f816"],
+
+Cell[BoxData["audio"], "Input",
+ CellChangeTimes->{{3.6973146883198776`*^9, 
+  3.697314688761361*^9}},ExpressionUUID->"a87093e4-f739-4c0b-a57b-\
+5c93dca7f0ef"],
+
+Cell[TextData[{
+ "Las se\[NTilde]ales de audio que registran todos los dispositivos electr\
+\[OAcute]nicos de grabaci\[OAcute]n son en realidad un conjunto de puntos que \
+representan una onda. Estos puntos son grabados a una ",
+ StyleBox["frecuencia de muestreo",
+  FontSlant->"Italic"],
+ " espec\[IAcute]fica. La ",
+ StyleBox["frecuencia de muestreo",
+  FontSlant->"Italic"],
+ " es la cantidad de puntos de la onda de audio que se registran en cada \
+segundo. Por lo general la mayor\[IAcute]a de los dispositivos de audio graba \
+o reproduce con una ",
+ StyleBox["frecuencia de muestreo",
+  FontSlant->"Italic"],
+ " de 44100 Hz.\n\nPara averiguar la frecuencia de muestreo de nuestro audio \
+primero debemos obtener los puntos que conforman nuestra se\[NTilde]al."
+}], "Text",
+ CellChangeTimes->{{3.697314808805069*^9, 3.697314856413266*^9}, {
+  3.69731582945509*^9, 
+  3.697315950109705*^9}},ExpressionUUID->"1e96489c-6a6b-465e-9327-\
+656ff1fcd81b"],
+
+Cell[BoxData[
+ RowBox[{"data", " ", "=", " ", 
+  RowBox[{"AudioData", "[", "audio", "]"}]}]], "Input",
+ CellChangeTimes->{{3.6973155774341908`*^9, 3.697315584302551*^9}, {
+  3.6973156992992177`*^9, 
+  3.697315704327257*^9}},ExpressionUUID->"d5fedc5c-e1b9-4286-b3e9-\
+7393904b5b1c"],
+
+Cell["\<\
+Luego se averigua la duraci\[OAcute]n. El lenguaje Wolfram nos devuelve la \
+duraci\[OAcute]n en la unidad de segundos.\
+\>", "Text",
+ CellChangeTimes->{{3.697315953525939*^9, 3.6973159583976336`*^9}, {
+  3.697315988845502*^9, 
+  3.6973160105655227`*^9}},ExpressionUUID->"f7145adc-44ea-4245-a6b6-\
+6924e0812424"],
+
+Cell[BoxData[
+ RowBox[{"duracion", " ", "=", " ", 
+  RowBox[{"Duration", "[", "audio", "]"}]}]], "Input",
+ CellChangeTimes->{{3.6973156902803373`*^9, 
+  3.6973157089259267`*^9}},ExpressionUUID->"d2e23179-2aab-4ca1-abef-\
+3ed9df40e33e"],
+
+Cell["\<\
+Por \[UAcute]ltimo la frecuencia de muestreo es la cantidad de muestras \
+dividida por la duraci\[OAcute]n total de la se\[NTilde]al.\
+\>", "Text",
+ CellChangeTimes->{{3.6973159620623503`*^9, 
+  3.6973159861910524`*^9}},ExpressionUUID->"2ab38bd1-f456-4084-865f-\
+773f080fb9cb"],
+
+Cell[BoxData[
+ RowBox[{"samplerate", " ", "=", " ", 
+  RowBox[{"IntegerPart", "[", 
+   RowBox[{
+    RowBox[{"Length", "[", "data", "]"}], "/", 
+    RowBox[{"QuantityMagnitude", "[", 
+     RowBox[{"Quantity", "[", 
+      RowBox[{"duracion", ",", "\"\<Seconds\>\""}], "]"}], "]"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6973157400792503`*^9, 3.6973157602797947`*^9}, {
+  3.6973252210472913`*^9, 
+  3.6973252289966636`*^9}},ExpressionUUID->"f9247830-44d7-47d0-88d9-\
+477a7020e0f0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Visualizaci\[OAcute]n de una se\[NTilde]al de audio", "Chapter",
+ CellChangeTimes->{{3.6973145599578314`*^9, 
+  3.6973145643656354`*^9}},ExpressionUUID->"10a4d646-9407-4a9e-be4d-\
+ac8083023056"],
+
+Cell["\<\
+Para visualizar la se\[NTilde]al de audio en su totalidad se puede usar la \
+funci\[OAcute]n AudioPlot que se encuentra definida en el lenguaje Wolfram. \
+El problema es que con esta funci\[OAcute]n no se puede apreciar todav\
+\[IAcute]a el caracter ondulatorio de la se\[NTilde]al.\
+\>", "Text",
+ CellChangeTimes->{{3.6973160628131227`*^9, 
+  3.6973161011189384`*^9}},ExpressionUUID->"d1fd0d29-d6a0-4edc-ba45-\
+45dd1c99790b"],
+
+Cell[BoxData[
+ RowBox[{"AudioPlot", "[", 
+  RowBox[{"audio", ",", " ", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Tiempo [s]\>\"", ",", " ", "\"\<Amplitud\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6973160370088687`*^9, 
+  3.6973160524154463`*^9}},ExpressionUUID->"c0f4cba6-907a-4d80-a0ac-\
+fe9b98789347"],
+
+Cell["\<\
+Para poder visualizar las ondas es necesario realizar una ampliaci\[OAcute]n. \
+Para esto podemos partir de la lista de las muestras. Primero se hace una \
+sublista en un intervalo peque\[NTilde]o, por ejemplo, desde la muestra \
+100000 a la muestra 102000, es decir, tomamos 2000 muestras desde el tiempo \
+2.26757 [s] hasta el tiempo 2.31293 [s].\
+\>", "Text",
+ CellChangeTimes->{{3.6973161042377405`*^9, 3.6973161456943583`*^9}, {
+  3.6973161831418605`*^9, 3.6973161873653913`*^9}, {3.6973162402706184`*^9, 
+  3.6973163047737308`*^9}},ExpressionUUID->"ab6e8c6e-7486-4023-af74-\
+16e1c9ef4523"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"sublista", " ", "=", " ", 
+   RowBox[{"data", "[", 
+    RowBox[{"[", 
+     RowBox[{"100000", ";;", "102000"}], "]"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.697316147651621*^9, 3.6973161525683756`*^9}, {
+  3.697316189307011*^9, 
+  3.6973162341114826`*^9}},ExpressionUUID->"b71bcb0c-3b37-4551-9def-\
+c9a99c4d2554"],
+
+Cell["Y se grafica la sublista.", "Text",
+ CellChangeTimes->{{3.697316309726142*^9, 
+  3.6973163135177283`*^9}},ExpressionUUID->"f6454791-de5f-444d-a90a-\
+96d02cb95a91"],
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"sublista", ",", " ", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Indice\>\"", ",", " ", "\"\<Amplitud\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.697316204113282*^9, 3.6973162130623813`*^9}, {
+  3.6973163173353066`*^9, 
+  3.697316341927206*^9}},ExpressionUUID->"a3002d04-f8e4-49e6-a05d-\
+c23d83ee73d1"],
+
+Cell["\<\
+Se puede observar que el sonido que produce una guitarra tambi\[EAcute]n es \
+una onda que oscila a una frecuencia determinada, pero tiene una forma muy \
+compleja que es producto de la suma de muchas frecuencias. \[DownQuestion]C\
+\[OAcute]mo podemos saber las frecuencias que componen una onda?\
+\>", "Text",
+ CellChangeTimes->{{3.697324008683087*^9, 
+  3.6973240696757994`*^9}},ExpressionUUID->"60f6ac0d-34fc-4177-b9e3-\
+e44151c3b36c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Visualizaci\[OAcute]n de las frecuencias que componen una se\[NTilde]al de \
+audio\
+\>", "Chapter",
+ CellChangeTimes->{{3.6973145659089313`*^9, 
+  3.697314575445622*^9}},ExpressionUUID->"1bbbd55c-cfb1-48be-8904-\
+9f1ae31de2dd"],
+
+Cell[CellGroupData[{
+
+Cell["Transformada de Fourier para una muestra", "Subchapter",
+ CellChangeTimes->{{3.6973264761369553`*^9, 
+  3.6973264813379507`*^9}},ExpressionUUID->"be33d0ab-45ad-4df3-a715-\
+41059f2a0efb"],
+
+Cell[TextData[{
+ "La ",
+ StyleBox["Transformada De Fourier",
+  FontSlant->"Italic"],
+ " es una herramienta matem\[AAcute]tica que nos permite encontrar \
+cu\[AAcute]les son las frecuencias que componen una se\[NTilde]al. Existen \
+numerosas variaciones del concepto, nosotros nos centraremos en la ",
+ StyleBox["Transformada Discreta De Fourier",
+  FontSlant->"Italic"],
+ " que se puede aplicar a se\[NTilde]ales discretas, esto es que se muestrean \
+en intervalos de tiempo regulares como en el caso del audio. La implementaci\
+\[OAcute]n que nos conviene usar para la transformada de Fourier se encuentra \
+en el lenguaje Wolfram en la funci\[OAcute]n FourierDCT.\n\nPara usarla \
+primero se parte la se\[NTilde]al de audio en varios pedazos, los cuales \
+tienen un tama\[NTilde]o proporcional a medio segundo."
+}], "Text",
+ CellChangeTimes->{{3.6973260824098644`*^9, 
+  3.6973262954593973`*^9}},ExpressionUUID->"207c2774-e216-49bb-a95f-\
+e6f229d6558c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"samples", " ", "=", " ", 
+   RowBox[{"Partition", "[", 
+    RowBox[{"data", ",", " ", 
+     RowBox[{"samplerate", "/", "2"}]}], "]"}]}], ";"}]], "Input",ExpressionUU\
+ID->"a525654b-f29b-4ef4-8e26-ee9a02691eb9"],
+
+Cell[BoxData[
+ RowBox[{"ListPlay", "[", 
+  RowBox[{
+   RowBox[{"samples", "[", 
+    RowBox[{"[", "6", "]"}], "]"}], ",", 
+   RowBox[{"SampleRate", "\[Rule]", "samplerate"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.69732633565816*^9, 
+  3.69732635258696*^9}},ExpressionUUID->"41921650-e777-42cf-bc1a-\
+aeb7321a4143"],
+
+Cell["\<\
+Nos fijamos que la secci\[OAcute]n de audio que mejor suena para realizar el \
+an\[AAcute]lisis es la sexta, as\[IAcute] que se realiza la transformada de \
+Fourier en la sexta muestra.\
+\>", "Text",
+ CellChangeTimes->{{3.6973263110894537`*^9, 
+  3.697326374433292*^9}},ExpressionUUID->"d1435a1d-9f57-4616-b662-\
+7271ba039229"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"transformada", " ", "=", "  ", 
+   RowBox[{"FourierDCT", "[", 
+    RowBox[{"samples", "[", 
+     RowBox[{"[", "6", "]"}], "]"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.697325089338978*^9, 3.6973251007871237`*^9}, {
+  3.6973257425248327`*^9, 3.697325742755582*^9}, {3.697325802867921*^9, 
+  3.697325865677495*^9}, {3.697326070205474*^9, 3.6973260703644457`*^9}, {
+  3.6973263017448697`*^9, 3.6973263073824244`*^9}, {3.6973263810665445`*^9, 
+  3.697326381266782*^9}},ExpressionUUID->"6f6b3022-5417-4f90-a55a-\
+a2f800de58e6"],
+
+Cell["\<\
+Por \[UAcute]ltimo, para obtener la intensidad de las frecuencias se toma el \
+valor absoluto de la transformada de Fourier.\
+\>", "Text",
+ CellChangeTimes->{{3.697326386201355*^9, 
+  3.6973264111541224`*^9}},ExpressionUUID->"b4bedd5f-fddf-4db9-a8e6-\
+518070f0ac58"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"transformadaabsoluta", " ", "=", " ", 
+   RowBox[{"Abs", "[", "transformada", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6973264142917643`*^9, 
+  3.6973264205147057`*^9}},ExpressionUUID->"d76d090e-9bd6-4f7b-b203-\
+4f218e6d22b2"],
+
+Cell["Y se grafica", "Text",
+ CellChangeTimes->{{3.6973264291534677`*^9, 
+  3.697326431536778*^9}},ExpressionUUID->"45c9e491-9dc3-4b66-9130-\
+4fd2eeaaddc4"],
+
+Cell[BoxData[
+ RowBox[{"ListLogPlot", "[", 
+  RowBox[{
+   RowBox[{"transformadaabsoluta", "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ";;", "2000"}], "]"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", " ", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Frecuencia\>\"", ",", " ", "\"\<Intensidad\>\""}], 
+     "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.6973264255321283`*^9, {3.69732649039705*^9, 
+   3.6973264998859296`*^9}},ExpressionUUID->"02f14ded-81de-4ca9-bc2d-\
+a932fb8a27ca"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Ejercicio: Identificar la frecuencia fundamental (la que tiene mayor \
+intensidad) y reproducir el audio. Comparar con el audio de la grabaci\
+\[OAcute]n. \[DownQuestion]Es la misma nota?\
+\>", "Subsection",
+ CellChangeTimes->{{3.6973279561917367`*^9, 
+  3.6973279614579883`*^9}},ExpressionUUID->"52608006-8033-4fc2-ab79-\
+487152515d38"],
+
+Cell["Resultado:", "Text",
+ CellChangeTimes->{{3.6973279659515705`*^9, 
+  3.6973279686557727`*^9}},ExpressionUUID->"eee0fc6e-fe2e-41d8-92eb-\
+4cb92a5212a7"],
+
+Cell[BoxData[
+ RowBox[{"Play", "[", 
+  RowBox[{
+   RowBox[{"Sin", "[", 
+    RowBox[{"109", " ", "2", "Pi", " ", "t"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",ExpressionUUID\
+->"ad0b624c-f5e6-4ff4-b37a-ffd45cbef420"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+B\[UAcute]squeda de frecuencias fundamentales y reconstrucci\[OAcute]n de la \
+se\[NTilde]al\
+\>", "Subchapter",
+ CellChangeTimes->{{3.6973265184658194`*^9, 
+  3.6973265319543037`*^9}},ExpressionUUID->"99a2f025-22f3-44af-8799-\
+30e3039b4fb5"],
+
+Cell["\<\
+\[DownQuestion]Cu\[AAcute]les son las frecuencias fundamentales? Se puede \
+hacer uso de la funci\[OAcute]n FindPeaks para encontrar las frecuencias \
+fundamentales junto con su amplitud.\
+\>", "Text",
+ CellChangeTimes->{{3.6973279076485734`*^9, 3.697327918463536*^9}, {
+  3.6973279816012554`*^9, 
+  3.6973280088878994`*^9}},ExpressionUUID->"fd1d6fe4-72f2-4fe7-8140-\
+b5d911a66889"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"submuestra", " ", "=", " ", 
+   RowBox[{"transformadaabsoluta", "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ";;", "4000"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"picos", " ", "=", " ", 
+   RowBox[{"FindPeaks", "[", 
+    RowBox[{"submuestra", ",", "10"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLogPlot", "[", 
+  RowBox[{"submuestra", ",", " ", 
+   RowBox[{"Epilog", "\[Rule]", " ", 
+    RowBox[{"{", 
+     RowBox[{"Red", ",", 
+      RowBox[{"PointSize", "[", "0.01", "]"}], ",", 
+      RowBox[{"Point", "[", "picos", "]"}]}], "}"}]}], ",", " ", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Frecuencia\>\"", ",", " ", "\"\<Intensidad\>\""}], 
+     "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6973265398607616`*^9, 3.6973266199892616`*^9}, {
+  3.697326744089177*^9, 3.697326744223751*^9}, {3.697327888573781*^9, 
+  3.697327903052165*^9}},ExpressionUUID->"af002f18-eef0-43e5-bb1c-\
+0132d19a4074"],
+
+Cell["\<\
+Con esto podemos conocer cu\[AAcute]les son las magnitudes de las frecuencias\
+\>", "Text",
+ CellChangeTimes->{{3.697328029240577*^9, 
+  3.697328039735773*^9}},ExpressionUUID->"8e984509-ffe0-4800-bb69-\
+2cbf5ad79857"],
+
+Cell[BoxData[
+ RowBox[{"freq", " ", "=", " ", 
+  RowBox[{"picos", "[", 
+   RowBox[{"[", 
+    RowBox[{"All", ",", "1"}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6973267881190343`*^9, 3.697326800530735*^9}, {
+  3.697326864610964*^9, 3.6973268978111787`*^9}, {3.6973280227102633`*^9, 
+  3.6973280493849363`*^9}},ExpressionUUID->"d5e545b8-f6db-415a-90a6-\
+7a0d3dd642dd"],
+
+Cell["Y sus amplitudes", "Text",
+ CellChangeTimes->{{3.697328052144104*^9, 
+  3.697328053960058*^9}},ExpressionUUID->"2dccccee-9ef9-4284-8308-\
+3e9950f81e29"],
+
+Cell[BoxData[
+ RowBox[{"amplitud", " ", "=", " ", 
+  RowBox[{"picos", "[", 
+   RowBox[{"[", 
+    RowBox[{"All", ",", "2"}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.6973280566429853`*^9},ExpressionUUID->"e2af4756-7039-45ed-bd7c-\
+d43cc5cc2c62"],
+
+Cell["\<\
+Con esta informaci\[OAcute]n adem\[AAcute]s se puede reconstruir una se\
+\[NTilde]al que es parecida a la se\[NTilde]al original\
+\>", "Text",
+ CellChangeTimes->{{3.6973280592084126`*^9, 
+  3.6973280812083807`*^9}},ExpressionUUID->"5dc38534-5ded-4f8d-8625-\
+6da76581d9c8"],
+
+Cell[BoxData[
+ RowBox[{"Play", "[", 
+  RowBox[{
+   RowBox[{"Sum", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"amplitud", "[", 
+       RowBox[{"[", "i", "]"}], "]"}], " ", 
+      RowBox[{"Sin", "[", 
+       RowBox[{
+        RowBox[{"freq", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], " ", "2", "Pi", " ", "t"}], "]"}]}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "[", "picos", "]"}]}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "2"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.6973281206420383`*^9},ExpressionUUID->"5a464f39-6b5d-4aba-8dd5-\
+58aed7b31482"],
+
+Cell["\<\
+Y al compararla con la se\[NTilde]al original se observa que son muy \
+parecidas.\
+\>", "Text",
+ CellChangeTimes->{{3.6973281362554054`*^9, 
+  3.6973281477197824`*^9}},ExpressionUUID->"0a347d04-f251-4317-a842-\
+9398c3730bea"],
+
+Cell[BoxData[
+ RowBox[{"ListPlay", "[", 
+  RowBox[{
+   RowBox[{"samples", "[", 
+    RowBox[{"[", "6", "]"}], "]"}], ",", 
+   RowBox[{"SampleRate", "\[Rule]", "samplerate"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6973269888874016`*^9, 
+  3.697327022692051*^9}},ExpressionUUID->"882b7321-63c9-4185-8dc9-\
+def2cf98bdae"],
+
+Cell["\<\
+Es notable el contraste entre la cantidad de informaci\[OAcute]n que se \
+necesita para almacenar ambas se\[NTilde]ales. Para almacenar la \
+se\[NTilde]al original se requieren almacenar 22050 n\[UAcute]meros.\
+\>", "Text",
+ CellChangeTimes->{{3.697328157800127*^9, 
+  3.6973282084009514`*^9}},ExpressionUUID->"70b65be8-f8d1-4e99-9d79-\
+48cc784f3119"],
+
+Cell[BoxData[
+ RowBox[{"Length", "[", 
+  RowBox[{"samples", "[", 
+   RowBox[{"[", "6", "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.69732819134604*^9, 
+  3.6973281967698097`*^9}},ExpressionUUID->"ba58adbd-b079-4a8e-872a-\
+894b6b5e12e8"],
+
+Cell["\<\
+Mientras que para almacenar la se\[NTilde]al que se obtiene de los picos se \
+requieren almacenar 110 n\[UAcute]meros\
+\>", "Text",
+ CellChangeTimes->{{3.6973282113208437`*^9, 
+  3.6973282587997246`*^9}},ExpressionUUID->"b88c7b2c-ff60-4e12-bab8-\
+c873186f1e04"],
+
+Cell[BoxData[
+ RowBox[{"Length", "[", 
+  RowBox[{"Flatten", "[", "picos", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6973282310169907`*^9, 
+  3.697328244592692*^9}},ExpressionUUID->"67e4200a-9295-41d6-9cb5-\
+7dae4701faec"],
+
+Cell["\<\
+\[DownExclamation]Esto es se comprimi\[OAcute] la se\[NTilde]al al 0.49 % de \
+su tama\[NTilde]o! Este es un ejemplo de c\[OAcute]mo funciona el principio \
+sobre el cual se rigen los algoritmos de compresi\[OAcute]n de audio como el \
+mp3 o mp4, los cuales utilizan practicamente todos los dispositivos modernos.\
+\>", "Text",
+ CellChangeTimes->{{3.697328279008149*^9, 
+  3.6973283530319967`*^9}},ExpressionUUID->"5a2a3576-7f4d-4b7b-b5e7-\
+d36bb9bdabd0"],
+
+Cell[BoxData[
+ RowBox[{"100", "*", 
+  RowBox[{"N", "[", 
+   RowBox[{
+    RowBox[{"Length", "[", 
+     RowBox[{"Flatten", "[", "picos", "]"}], "]"}], "/", 
+    RowBox[{"Length", "[", 
+     RowBox[{"samples", "[", 
+      RowBox[{"[", "6", "]"}], "]"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6973282659057117`*^9, 
+  3.6973282741309333`*^9}},ExpressionUUID->"aa75bd05-8640-417a-888d-\
+dc2091679e80"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Transformada de Fourier para todo el audio", "Subchapter",
+ CellChangeTimes->{{3.6973264550026555`*^9, 
+  3.6973264607137237`*^9}},ExpressionUUID->"fa2418c9-a58b-4ff0-bb2e-\
+eb2073642ca4"],
+
+Cell["\<\
+Si se desea obtener la transformada de Fourier utilizando el archivo de audio \
+en su totalidad se puede usar la funci\[OAcute]n Periodogram que est\[AAcute] \
+incluida en el lenguaje Wolfram.
+
+Por defecto Periodogram dibuja la gr\[AAcute]fica en la escala \
+logar\[IAcute]tmica.\
+\>", "Text",
+ CellChangeTimes->{{3.697335566915517*^9, 
+  3.6973356199422693`*^9}},ExpressionUUID->"7e389dfe-9012-4c24-b88f-\
+de4b3e2ccc47"],
+
+Cell[BoxData[
+ RowBox[{"Periodogram", "[", 
+  RowBox[{"audio", ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Frecuencia\>\"", ",", " ", "\"\<Amplitud (dB)\>\""}], 
+     "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.697324536933241*^9, {3.697335649074032*^9, 
+   3.6973356706541624`*^9}},ExpressionUUID->"21ddcdfc-e855-4154-8e67-\
+236aa8102fa0"],
+
+Cell["\<\
+Si nos interesa estudiar las frecuencias m\[AAcute]s bajas [0,500] se puede \
+limitar la gr\[AAcute]fica a ese intervalo.\
+\>", "Text",
+ CellChangeTimes->{{3.6973356975048885`*^9, 
+  3.6973357226594043`*^9}},ExpressionUUID->"e8614fab-54e1-4a2c-9d4a-\
+85180ab6f0b3"],
+
+Cell[BoxData[
+ RowBox[{"Periodogram", "[", 
+  RowBox[{"audio", ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "500"}], "}"}], ",", "Full"}], "}"}]}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Frecuencia\>\"", ",", " ", "\"\<Amplitud (dB)\>\""}], 
+     "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6973245067879825`*^9, 3.6973245071874275`*^9}, 
+   3.697335683628414*^9},ExpressionUUID->"ba59ed2e-983b-49c0-818c-\
+ffee1f5d04fe"],
+
+Cell["\<\
+En caso de que no se desee utilizar utilizando el escalamiento \
+logar\[IAcute]tmico \[EAcute]sto se puede especificar en la funci\[OAcute]n \
+de escalamiento.\
+\>", "Text",
+ CellChangeTimes->{{3.6973357277858267`*^9, 
+  3.6973357499901066`*^9}},ExpressionUUID->"36905489-4b51-4f69-81e8-\
+6a03ea23e7b5"],
+
+Cell[BoxData[
+ RowBox[{"Periodogram", "[", 
+  RowBox[{"audio", ",", 
+   RowBox[{"ScalingFunctions", "\[Rule]", "\"\<Absolute\>\""}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "500"}], "}"}], ",", "Full"}], "}"}]}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Frecuencia\>\"", ",", " ", "\"\<Amplitud\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.697335755283201*^9, 
+  3.697335758991479*^9}},ExpressionUUID->"439b1c7f-43c0-484f-a79c-\
+6b47f5ef46af"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Algoritmos de compresi\[OAcute]n de audio", "Chapter",
+ CellChangeTimes->{{3.697335820025236*^9, 
+  3.697335828430983*^9}},ExpressionUUID->"4cbf3bb9-37e6-49b8-9561-\
+2126816b28d9"],
+
+Cell[CellGroupData[{
+
+Cell["Algoritmo 1: Quitar frecuencias m\[AAcute]s altas", "Subchapter",
+ CellChangeTimes->{{3.697335918714267*^9, 
+  3.6973359258909097`*^9}},ExpressionUUID->"1252be28-caa7-4ca9-aa17-\
+c8bc757d1a0a"],
+
+Cell[CellGroupData[{
+
+Cell["Compresi\[OAcute]n", "Subsection",
+ CellChangeTimes->{{3.6973370692234025`*^9, 
+  3.697337070858677*^9}},ExpressionUUID->"f892263d-e4b9-43ed-a1e0-\
+61fd35e76176"],
+
+Cell["\<\
+Primero se carga el audio y se guardan cu\[AAcute]les son sus \
+par\[AAcute]metros.\
+\>", "Text",
+ CellChangeTimes->{{3.697338119595996*^9, 
+  3.6973381405401974`*^9}},ExpressionUUID->"a9d4287e-2487-40a8-87f4-\
+d259d638d62d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"compressioncut", " ", "=", " ", "30000"}], ";"}]], "Input",
+ CellChangeTimes->{{3.6973361169381866`*^9, 
+  3.6973361225827956`*^9}},ExpressionUUID->"ffd19b97-e4bf-44e3-9a2a-\
+04a8bdb27b00"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"audio", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<audio.aiff\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data", " ", "=", " ", 
+   RowBox[{"AudioData", "[", "audio", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"duracion", " ", "=", " ", 
+   RowBox[{"Duration", "[", "audio", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"samplesize", " ", "=", " ", 
+   RowBox[{"samplerate", " ", "=", " ", 
+    RowBox[{"IntegerPart", "[", 
+     RowBox[{
+      RowBox[{"Length", "[", "data", "]"}], "/", 
+      RowBox[{"QuantityMagnitude", "[", 
+       RowBox[{"Quantity", "[", 
+        RowBox[{"duracion", ",", "\"\<Seconds\>\""}], "]"}], "]"}]}], 
+     "]"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.69733598847375*^9, 3.697336002635175*^9}, {
+  3.697336037841709*^9, 3.6973360692791758`*^9}, {3.697336107984151*^9, 
+  3.6973361085278893`*^9}},ExpressionUUID->"831e36f5-69c3-4ccf-9993-\
+520f8e0b2538"],
+
+Cell["Se parte la muestra en varios segmentos", "Text",
+ CellChangeTimes->{{3.697338169380189*^9, 
+  3.697338180460228*^9}},ExpressionUUID->"03862ca2-ed21-47f9-974a-\
+c7a611aaa3dd"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"samples", " ", "=", " ", 
+   RowBox[{"Partition", "[", 
+    RowBox[{"data", ",", " ", "samplesize"}], "]"}]}], ";"}]], "Input",Express\
+ionUUID->"a91e8d66-1547-4485-9ac0-9af7064a4f2a"],
+
+Cell["\<\
+A cada uno de los segmentos se le calcula la transformada de Fourier, la cual \
+nos da la amplitud de las frecuencias que componen la se\[NTilde]al.\
+\>", "Text",
+ CellChangeTimes->{{3.697338194748025*^9, 
+  3.6973382482840185`*^9}},ExpressionUUID->"d5042e68-2f7b-4e29-8461-\
+276d8dacd4ee"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fouriersamples", " ", "=", " ", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"FourierDCT", "[", "i", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "samples"}], "}"}]}], "]"}]}], ";"}]], "Input",Express\
+ionUUID->"bbb2bc6c-2903-4655-b4e7-d515073675d7"],
+
+Cell["Y por \[UAcute]ltimo se cortan las frecuencias m\[AAcute]s altas", \
+"Text",
+ CellChangeTimes->{{3.697338225155881*^9, 
+  3.697338260004496*^9}},ExpressionUUID->"96f7835d-3c08-4968-a4a1-\
+3ca2c63a1ea6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fouriersamplescut", " ", "=", " ", 
+   RowBox[{"fouriersamples", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", 
+      RowBox[{"1", ";;", 
+       RowBox[{"(", 
+        RowBox[{"samplesize", "-", "compressioncut"}], ")"}]}]}], "]"}], 
+    "]"}]}], ";"}]], "Input",ExpressionUUID->"e4edf304-2024-43e3-9d2c-\
+ed95f43d556b"],
+
+Cell["\<\
+Se aplana la lista para obtener una lista de datos tal como se encontrar\
+\[IAcute]a en una archivo comprimido.\
+\>", "Text",
+ CellChangeTimes->{{3.697338271100026*^9, 
+  3.697338296332835*^9}},ExpressionUUID->"4f481172-039f-4118-be99-\
+050e429a6212"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"compressedaudio", " ", "=", " ", 
+   RowBox[{"Flatten", "[", "fouriersamplescut", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6973360740763283`*^9, 3.697336088758527*^9}, {
+  3.697336231978361*^9, 3.697336259491517*^9}, {3.697336614752918*^9, 
+  3.69733661512655*^9}, {3.6973382677011414`*^9, 
+  3.697338268172799*^9}},ExpressionUUID->"be58e308-817d-4559-85df-\
+c5efa2411e4d"],
+
+Cell["Podemos averiguar la tasa de compresi\[OAcute]n.", "Text",
+ CellChangeTimes->{{3.6973383007561903`*^9, 
+  3.697338307604017*^9}},ExpressionUUID->"0dbea4c1-ea2b-4f9f-a2fd-\
+f13280e4796b"],
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{
+   RowBox[{"Length", "[", "compressedaudio", "]"}], "/", 
+   RowBox[{"Length", "[", "data", "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6973363059827166`*^9, 
+  3.6973363225824633`*^9}},ExpressionUUID->"c27064ef-707d-46a5-af9e-\
+8fc09471344f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Descompresi\[OAcute]n", "Subsection",
+ CellChangeTimes->{{3.6973370748986444`*^9, 
+  3.6973370769010277`*^9}},ExpressionUUID->"76d4ee38-38e5-43e2-88af-\
+f911a979d4e1"],
+
+Cell["\<\
+Para descomprimir la se\[NTilde]al primero establecemos cu\[AAcute]les fueron \
+las magnitudes de corte y el tama\[NTilde]o de la muestra.\
+\>", "Text",
+ CellChangeTimes->{{3.697338525836137*^9, 
+  3.697338544676437*^9}},ExpressionUUID->"5ddddaae-3f62-40d7-b714-\
+a984db251a08"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"compressioncut", " ", "=", " ", "30000"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"samplesize", " ", "=", " ", 
+   RowBox[{"samplerate", " ", "=", " ", "44100"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6973371779727345`*^9, 
+  3.6973372015633984`*^9}},ExpressionUUID->"2e5d2d52-b3fc-4f03-90eb-\
+8e5a3b701aa9"],
+
+Cell["Posteriormente se particiona la muestra comprimida", "Text",
+ CellChangeTimes->{{3.6973385482924757`*^9, 
+  3.697338558268341*^9}},ExpressionUUID->"c99ce9ed-4596-4cd1-94c1-\
+941089585a31"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"compressedsamples", " ", "=", " ", 
+   RowBox[{"Partition", "[", 
+    RowBox[{"compressedaudio", ",", " ", 
+     RowBox[{"samplesize", "-", "compressioncut"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.697337104557748*^9, 3.697337128458105*^9}, {
+   3.697337172707656*^9, 3.6973371736408453`*^9}, 3.697337383916254*^9, {
+   3.697337525620719*^9, 3.697337566629121*^9}, {3.6973385756457243`*^9, 
+   3.697338576021063*^9}},ExpressionUUID->"00874226-4b1a-455a-b6f2-\
+4390d874338e"],
+
+Cell["\<\
+Y se reconstruye la muestra utilizando de nuevo la transformada de Fourier y \
+rellenando los espacios recortados con ceros.\
+\>", "Text",
+ CellChangeTimes->{{3.6973385784044437`*^9, 
+  3.6973385938124623`*^9}},ExpressionUUID->"d53a969e-ab52-4a86-a2dc-\
+aa8d3a765450"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"reconstructedsamples", " ", "=", "  ", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"FourierDCT", "[", 
+      RowBox[{"Join", "[", 
+       RowBox[{"i", ",", 
+        RowBox[{"ConstantArray", "[", 
+         RowBox[{"0", ",", "compressioncut"}], "]"}]}], "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "compressedsamples"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"restoredaudio", " ", "=", " ", 
+   RowBox[{"Flatten", "[", "reconstructedsamples", "]"}]}], ";"}]}], "Input",E\
+xpressionUUID->"844357a6-5388-4bd3-97df-3700329add9d"],
+
+Cell["\<\
+El audio reconstruido se puede reproducir con ListPlay. Es notable la p\
+\[EAcute]rdida de calidad y el chasqueo.\
+\>", "Text",
+ CellChangeTimes->{{3.6973385973811417`*^9, 
+  3.6973386227242002`*^9}},ExpressionUUID->"f5623390-9b3b-4467-9b66-\
+05ec4df29fe0"],
+
+Cell[BoxData[
+ RowBox[{"ListPlay", "[", 
+  RowBox[{"restoredaudio", ",", " ", 
+   RowBox[{"SampleRate", "\[Rule]", "samplerate"}]}], "]"}]], "Input",Expressi\
+onUUID->"d87766a2-4cb5-48e0-b971-bd3db4189c6a"],
+
+Cell["\<\
+La p\[EAcute]rdida de calidad tambi\[EAcute]n se puede apreciar en el \
+periodograma\
+\>", "Text",
+ CellChangeTimes->{{3.6973386300520515`*^9, 
+  3.6973386424925003`*^9}},ExpressionUUID->"ac2f79e2-3b4c-4da2-9758-\
+98ac3ef2ffda"],
+
+Cell[BoxData[
+ RowBox[{"Periodogram", "[", 
+  RowBox[{"audio", ",", " ", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Frecuencia\>\"", ",", " ", "\"\<Amplitud\>\""}], "}"}]}], 
+   ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Se\[NTilde]al original\>\""}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6973376997326355`*^9, 3.697337706276374*^9}, {
+  3.697338645086167*^9, 
+  3.6973386605143065`*^9}},ExpressionUUID->"c7fbf01f-da5a-4ca0-81d6-\
+2abc220c8501"],
+
+Cell[BoxData[
+ RowBox[{"Periodogram", "[", 
+  RowBox[{"restoredaudio", ",", 
+   RowBox[{"SampleRate", "\[Rule]", "samplerate"}], ",", " ", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Frecuencia\>\"", ",", " ", "\"\<Amplitud\>\""}], "}"}]}], 
+   ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Se\[NTilde]al reconstruida\>\""}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.697337589790265*^9, 3.6973376154864583`*^9}, {
+  3.6973376705572324`*^9, 3.6973376831569805`*^9}, {3.6973386634464593`*^9, 
+  3.697338668550331*^9}},ExpressionUUID->"34f8d731-ecb4-46eb-832f-\
+e4b7163c8961"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Algoritmo 2: Intercalar las frecuencias borradas", "Subchapter",
+ CellChangeTimes->{{3.6973359279470716`*^9, 
+  3.697335958629416*^9}},ExpressionUUID->"9f13abb8-2fe2-4cba-8e9a-\
+fbc62abaf432"],
+
+Cell[CellGroupData[{
+
+Cell["Compresi\[OAcute]n", "Subsection",
+ CellChangeTimes->{{3.6973370692234025`*^9, 
+  3.697337070858677*^9}},ExpressionUUID->"bb0cf6fa-6f60-4987-802c-\
+1b1b006afff4"],
+
+Cell["\<\
+Primero se carga el audio y se guardan cu\[AAcute]les son sus \
+par\[AAcute]metros.\
+\>", "Text",
+ CellChangeTimes->{{3.697338119595996*^9, 
+  3.6973381405401974`*^9}},ExpressionUUID->"2f86bdc7-44f2-4e06-b81c-\
+4d4a8089561a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"saltos", " ", "=", " ", "5"}], ";"}]], "Input",
+ CellChangeTimes->{{3.6973361169381866`*^9, 3.6973361225827956`*^9}, {
+  3.697338734420774*^9, 3.69733875164506*^9}, {3.697338805046998*^9, 
+  3.6973388060615516`*^9}, {3.6974114016116605`*^9, 
+  3.6974114023157005`*^9}},ExpressionUUID->"4ccc7bd4-8399-41da-8a10-\
+686f3686ad1f"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"audio", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<audio.aiff\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data", " ", "=", " ", 
+   RowBox[{"AudioData", "[", "audio", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"duracion", " ", "=", " ", 
+   RowBox[{"Duration", "[", "audio", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"samplesize", " ", "=", " ", 
+   RowBox[{"samplerate", " ", "=", " ", 
+    RowBox[{"IntegerPart", "[", 
+     RowBox[{
+      RowBox[{"Length", "[", "data", "]"}], "/", 
+      RowBox[{"QuantityMagnitude", "[", 
+       RowBox[{"Quantity", "[", 
+        RowBox[{"duracion", ",", "\"\<Seconds\>\""}], "]"}], "]"}]}], 
+     "]"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.69733598847375*^9, 3.697336002635175*^9}, {
+  3.697336037841709*^9, 3.6973360692791758`*^9}, {3.697336107984151*^9, 
+  3.6973361085278893`*^9}},ExpressionUUID->"eef77bb6-7f91-43f1-b278-\
+66793febb2b4"],
+
+Cell["Se parte la muestra en varios segmentos", "Text",
+ CellChangeTimes->{{3.697338169380189*^9, 
+  3.697338180460228*^9}},ExpressionUUID->"b70b3405-94ef-4d30-926d-\
+f27212b11479"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"samples", " ", "=", " ", 
+   RowBox[{"Partition", "[", 
+    RowBox[{"data", ",", " ", "samplesize"}], "]"}]}], ";"}]], "Input",Express\
+ionUUID->"604d2c98-8ac5-4400-9b2a-88b0fa82441f"],
+
+Cell["\<\
+A cada uno de los segmentos se le calcula la transformada de Fourier, la cual \
+nos da la amplitud de las frecuencias que componen la se\[NTilde]al.\
+\>", "Text",
+ CellChangeTimes->{{3.697338194748025*^9, 
+  3.6973382482840185`*^9}},ExpressionUUID->"185ffccd-0768-48b9-be58-\
+56aa8e512996"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fouriersamples", " ", "=", " ", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"FourierDCT", "[", "i", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "samples"}], "}"}]}], "]"}]}], ";"}]], "Input",Express\
+ionUUID->"ab4f2eb5-595d-4892-aaa8-5d49afa3689a"],
+
+Cell["Y por \[UAcute]ltimo se cortan las frecuencias m\[AAcute]s altas", \
+"Text",
+ CellChangeTimes->{{3.697338225155881*^9, 
+  3.697338260004496*^9}},ExpressionUUID->"2e46eca2-9c25-4b07-8745-\
+7d099e8097b2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fouriersamplescut", " ", "=", " ", 
+   RowBox[{"fouriersamples", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", 
+      RowBox[{"1", ";;", 
+       RowBox[{"-", "1"}], ";;", "saltos"}]}], "]"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6973387257028437`*^9, 
+  3.6973387558130407`*^9}},ExpressionUUID->"56ee0a68-de13-4da1-99d2-\
+6a99c89dfdab"],
+
+Cell["\<\
+Se aplana la lista para obtener una lista de datos tal como se encontrar\
+\[IAcute]a en una archivo comprimido.\
+\>", "Text",
+ CellChangeTimes->{{3.697338271100026*^9, 
+  3.697338296332835*^9}},ExpressionUUID->"8c5cfb0f-bc7c-4474-90a5-\
+8f753c8f3de8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"compressedaudio", " ", "=", " ", 
+   RowBox[{"Flatten", "[", "fouriersamplescut", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6973360740763283`*^9, 3.697336088758527*^9}, {
+  3.697336231978361*^9, 3.697336259491517*^9}, {3.697336614752918*^9, 
+  3.69733661512655*^9}, {3.6973382677011414`*^9, 
+  3.697338268172799*^9}},ExpressionUUID->"cb42568f-908e-4997-82f0-\
+39820e25d2e4"],
+
+Cell["Podemos averiguar la tasa de compresi\[OAcute]n.", "Text",
+ CellChangeTimes->{{3.6973383007561903`*^9, 
+  3.697338307604017*^9}},ExpressionUUID->"321c0ff7-9184-49ba-a8b4-\
+b491617cd0c9"],
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{
+   RowBox[{"Length", "[", "compressedaudio", "]"}], "/", 
+   RowBox[{"Length", "[", "data", "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6973363059827166`*^9, 
+  3.6973363225824633`*^9}},ExpressionUUID->"ba3d9263-708f-47a3-93b8-\
+7d27bcda8d52"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Descompresi\[OAcute]n", "Subsection",
+ CellChangeTimes->{{3.6973370748986444`*^9, 
+  3.6973370769010277`*^9}},ExpressionUUID->"47a38168-3855-47ec-8b7d-\
+7f4b4672233f"],
+
+Cell["\<\
+Para descomprimir la se\[NTilde]al primero establecemos cu\[AAcute]les fueron \
+las magnitudes de corte y el tama\[NTilde]o de la muestra.\
+\>", "Text",
+ CellChangeTimes->{{3.697338525836137*^9, 
+  3.697338544676437*^9}},ExpressionUUID->"592485fb-8e78-47a3-8a03-\
+3b913b9a2484"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"saltos", " ", "=", " ", "5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"samplesize", " ", "=", " ", 
+   RowBox[{"samplerate", " ", "=", " ", "44100"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6973371779727345`*^9, 3.6973372015633984`*^9}, 
+   3.697338802834669*^9, {3.697411395916377*^9, 
+   3.697411396172389*^9}},ExpressionUUID->"ae0a08ae-786d-49f6-8d8a-\
+034880f09868"],
+
+Cell["Posteriormente se particiona la muestra comprimida", "Text",
+ CellChangeTimes->{{3.6973385482924757`*^9, 
+  3.697338558268341*^9}},ExpressionUUID->"ad556db3-87f0-4eaa-aed8-\
+27aef313d3e4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"compressedsamples", " ", "=", " ", 
+   RowBox[{"Partition", "[", 
+    RowBox[{"compressedaudio", ",", " ", 
+     RowBox[{"samplesize", "/", "saltos"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.697337104557748*^9, 3.697337128458105*^9}, {
+   3.697337172707656*^9, 3.6973371736408453`*^9}, 3.697337383916254*^9, {
+   3.697337525620719*^9, 3.697337566629121*^9}, {3.6973385756457243`*^9, 
+   3.697338576021063*^9}, {3.6973389013965063`*^9, 
+   3.6973389078545604`*^9}},ExpressionUUID->"13281863-8c83-4f7d-a626-\
+e2111f231cc3"],
+
+Cell["\<\
+Y se reconstruye la muestra utilizando de nuevo la transformada de Fourier y \
+rellenando los espacios recortados con ceros.\
+\>", "Text",
+ CellChangeTimes->{{3.6973385784044437`*^9, 
+  3.6973385938124623`*^9}},ExpressionUUID->"6fa8537f-caf5-47aa-bfee-\
+757ae6435ff9"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Intercalar", "[", 
+    RowBox[{"list_", ",", "every_"}], "]"}], ":=", " ", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Join", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Riffle", "[", 
+        RowBox[{"list", ",", "y"}], "]"}], "/.", " ", 
+       RowBox[{"y", "\[Rule]", 
+        RowBox[{"ConstantArray", "[", 
+         RowBox[{"0", ",", "every"}], "]"}]}]}], ",", 
+      RowBox[{"ConstantArray", "[", 
+       RowBox[{"0", ",", "every"}], "]"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"reconstructedsamples", " ", "=", " ", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"FourierDCT", "[", 
+      RowBox[{"Intercalar", "[", 
+       RowBox[{"i", ",", 
+        RowBox[{"saltos", "-", "1"}]}], "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "compressedsamples"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"restoredaudio", " ", "=", " ", 
+   RowBox[{"Flatten", "[", "reconstructedsamples", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6973388260184813`*^9, 
+  3.697338844967986*^9}},ExpressionUUID->"c5cab9ba-4823-4a5c-ae5e-\
+f3ab01d642ab"],
+
+Cell["\<\
+El audio reconstruido se puede reproducir con ListPlay. Es notable la p\
+\[EAcute]rdida de calidad y el chasqueo.\
+\>", "Text",
+ CellChangeTimes->{{3.6973385973811417`*^9, 
+  3.6973386227242002`*^9}},ExpressionUUID->"e86960a8-5c63-43d6-8695-\
+d29c87d0186b"],
+
+Cell[BoxData[
+ RowBox[{"ListPlay", "[", 
+  RowBox[{"restoredaudio", ",", " ", 
+   RowBox[{"SampleRate", "\[Rule]", "samplerate"}]}], "]"}]], "Input",Expressi\
+onUUID->"891eda6c-e877-4c70-9993-44dc546ba9b8"],
+
+Cell["En este caso el periodograma no nos dice tanta informaci\[OAcute]n", \
+"Text",
+ CellChangeTimes->{{3.6973386300520515`*^9, 3.6973386424925003`*^9}, {
+  3.697338941759552*^9, 
+  3.6973389522368317`*^9}},ExpressionUUID->"6c29b425-843a-4a9d-b9ff-\
+dafe75de8420"],
+
+Cell[BoxData[
+ RowBox[{"Periodogram", "[", 
+  RowBox[{"audio", ",", " ", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Frecuencia\>\"", ",", " ", "\"\<Amplitud\>\""}], "}"}]}], 
+   ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Se\[NTilde]al original\>\""}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6973376997326355`*^9, 3.697337706276374*^9}, {
+  3.697338645086167*^9, 
+  3.6973386605143065`*^9}},ExpressionUUID->"4e4570b4-81fc-48c3-83cc-\
+bdf71e638169"],
+
+Cell[BoxData[
+ RowBox[{"Periodogram", "[", 
+  RowBox[{"restoredaudio", ",", 
+   RowBox[{"SampleRate", "\[Rule]", "samplerate"}], ",", " ", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Frecuencia\>\"", ",", " ", "\"\<Amplitud\>\""}], "}"}]}], 
+   ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Se\[NTilde]al reconstruida\>\""}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.697337589790265*^9, 3.6973376154864583`*^9}, {
+  3.6973376705572324`*^9, 3.6973376831569805`*^9}, {3.6973386634464593`*^9, 
+  3.697338668550331*^9}},ExpressionUUID->"5c55babb-984e-41f7-98bf-\
+290f01cad5fb"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1904, 997},
+WindowMargins->{{-8, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.2 para Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 201, 3, 96, "Title",ExpressionUUID->"1e0258bb-6c40-476e-aa12-374cc4d0c97e"],
+Cell[CellGroupData[{
+Cell[806, 29, 166, 3, 67, "Chapter",ExpressionUUID->"eef35953-5ffd-4014-b857-1cf261e7874c"],
+Cell[CellGroupData[{
+Cell[997, 36, 190, 3, 64, "Subchapter",ExpressionUUID->"88804495-3239-49f4-8066-00615e5aa38a"],
+Cell[1190, 41, 620, 11, 56, "Text",ExpressionUUID->"0fffd0f7-b990-4b4d-b300-575a5dc98d36"],
+Cell[1813, 54, 7719, 187, 352, "Input",ExpressionUUID->"d0f8479d-7ad6-4da1-90a6-896161902302"],
+Cell[9535, 243, 771, 14, 28, "Input",ExpressionUUID->"ff5a8dd4-12e4-4de1-a8fe-94132cf544ba"],
+Cell[10309, 259, 709, 13, 56, "Text",ExpressionUUID->"3fe9deaf-7b0c-4507-9f59-ef5b8c1284b3"],
+Cell[11021, 274, 1383, 32, 28, "Input",ExpressionUUID->"681ff06e-fca3-47b3-aec0-3ae5dca9b98d"],
+Cell[12407, 308, 448, 10, 28, "Input",ExpressionUUID->"2aeba885-8fd5-445d-a034-0e4dd094917b"],
+Cell[12858, 320, 564, 11, 56, "Text",ExpressionUUID->"da0d435f-5800-485c-ab98-970beb648e44"],
+Cell[13425, 333, 543, 13, 28, "Input",ExpressionUUID->"1c94c535-adef-45c2-8619-5b16175b3872"],
+Cell[13971, 348, 355, 9, 28, "Input",ExpressionUUID->"96d1a0bd-496e-4315-b2f4-19468685cb42"],
+Cell[14329, 359, 404, 10, 34, "Text",ExpressionUUID->"987ca25e-723e-4ddf-8faa-46a6a613a9f8"],
+Cell[14736, 371, 488, 11, 28, "Input",ExpressionUUID->"3621c4e9-2f52-4c9e-b128-1c77035144e3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15261, 387, 165, 3, 64, "Subchapter",ExpressionUUID->"c68c6e05-96cf-4936-9712-4df216abc69c"],
+Cell[15429, 392, 2207, 74, 110, "Input",ExpressionUUID->"3673bb61-9940-4dd3-972e-3ad57acf8cab"],
+Cell[17639, 468, 490, 14, 47, "Input",ExpressionUUID->"9bd040ed-c8c3-4d80-bf59-a61d3e2acc15"],
+Cell[18132, 484, 1021, 29, 47, "Input",ExpressionUUID->"054aa59e-bf4f-49ac-8902-ab81cef19c4d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19190, 518, 287, 6, 61, "Subchapter",ExpressionUUID->"47492ecb-592b-48b8-b24f-cf94f83c6714"],
+Cell[19480, 526, 968, 20, 49, "Text",ExpressionUUID->"61f2377d-1658-478e-babc-ae9cc136b532"],
+Cell[20451, 548, 1518, 38, 47, "Input",ExpressionUUID->"7ad92eef-a315-44c2-a46c-af4dbaafe89d"],
+Cell[21972, 588, 370, 9, 47, "Input",ExpressionUUID->"1e0b269a-83f4-4c5b-ae10-245b84a3991c"],
+Cell[22345, 599, 215, 5, 30, "Text",ExpressionUUID->"41bdf9a0-687d-4e4c-9ef8-5bfaddddd5dc"],
+Cell[22563, 606, 1324, 32, 47, "Input",ExpressionUUID->"08cb8af0-a12b-4722-ba69-bdf3a220a65d"],
+Cell[23890, 640, 372, 9, 47, "Input",ExpressionUUID->"8b1e9c47-c957-4fa5-90df-ea6003500676"],
+Cell[24265, 651, 243, 6, 30, "Text",ExpressionUUID->"13c0c645-2265-4faf-8b17-702a740c160f"],
+Cell[24511, 659, 694, 17, 47, "Input",ExpressionUUID->"ca913f49-932a-49a7-a539-f6c9eb4220e3"],
+Cell[25208, 678, 307, 8, 47, "Input",ExpressionUUID->"bb43f19d-5064-4c4a-b5ec-683b25fde576"],
+Cell[25518, 688, 252, 6, 30, "Text",ExpressionUUID->"a8621775-453e-48a5-bb90-4d4ebb8be45d"]
+}, Open  ]],
+Cell[25785, 697, 360, 7, 95, "Subchapter",ExpressionUUID->"29e913f8-86f0-435b-8f5a-801e2ea015b0"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26182, 709, 200, 3, 65, "Chapter",ExpressionUUID->"0b46ad62-fcba-448c-8d33-1b372ff39654"],
+Cell[26385, 714, 335, 7, 30, "Text",ExpressionUUID->"547223be-3931-4776-8970-ee5893c19f66"],
+Cell[26723, 723, 206, 3, 30, "Text",ExpressionUUID->"1e52855b-90c2-49e2-9b32-8cc148ab7960"],
+Cell[26932, 728, 335, 9, 47, "Input",ExpressionUUID->"17ba5765-95e7-491f-b516-e5e4efdb3aaa"],
+Cell[27270, 739, 262, 6, 30, "Text",ExpressionUUID->"417f88b3-9215-4e39-ad62-91f69541f816"],
+Cell[27535, 747, 159, 3, 30, "Input",ExpressionUUID->"a87093e4-f739-4c0b-a57b-5c93dca7f0ef"],
+Cell[27697, 752, 953, 20, 87, "Text",ExpressionUUID->"1e96489c-6a6b-465e-9327-656ff1fcd81b"],
+Cell[28653, 774, 281, 6, 47, "Input",ExpressionUUID->"d5fedc5c-e1b9-4286-b3e9-7393904b5b1c"],
+Cell[28937, 782, 322, 7, 30, "Text",ExpressionUUID->"f7145adc-44ea-4245-a6b6-6924e0812424"],
+Cell[29262, 791, 235, 5, 47, "Input",ExpressionUUID->"d2e23179-2aab-4ca1-abef-3ed9df40e33e"],
+Cell[29500, 798, 287, 6, 30, "Text",ExpressionUUID->"2ab38bd1-f456-4084-865f-773f080fb9cb"],
+Cell[29790, 806, 487, 12, 47, "Input",ExpressionUUID->"f9247830-44d7-47d0-88d9-477a7020e0f0"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30314, 823, 200, 3, 65, "Chapter",ExpressionUUID->"10a4d646-9407-4a9e-be4d-ac8083023056"],
+Cell[30517, 828, 436, 8, 30, "Text",ExpressionUUID->"d1fd0d29-d6a0-4edc-ba45-45dd1c99790b"],
+Cell[30956, 838, 354, 9, 47, "Input",ExpressionUUID->"c0f4cba6-907a-4d80-a0ac-fe9b98789347"],
+Cell[31313, 849, 605, 10, 49, "Text",ExpressionUUID->"ab6e8c6e-7486-4023-af74-16e1c9ef4523"],
+Cell[31921, 861, 357, 9, 30, "Input",ExpressionUUID->"b71bcb0c-3b37-4551-9def-c9a99c4d2554"],
+Cell[32281, 872, 169, 3, 30, "Text",ExpressionUUID->"f6454791-de5f-444d-a90a-96d02cb95a91"],
+Cell[32453, 877, 475, 11, 47, "Input",ExpressionUUID->"a3002d04-f8e4-49e6-a05d-c23d83ee73d1"],
+Cell[32931, 890, 448, 8, 30, "Text",ExpressionUUID->"60f6ac0d-34fc-4177-b9e3-e44151c3b36c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33416, 903, 237, 6, 65, "Chapter",ExpressionUUID->"1bbbd55c-cfb1-48be-8904-9f1ae31de2dd"],
+Cell[CellGroupData[{
+Cell[33678, 913, 192, 3, 61, "Subchapter",ExpressionUUID->"be33d0ab-45ad-4df3-a715-41059f2a0efb"],
+Cell[33873, 918, 955, 18, 87, "Text",ExpressionUUID->"207c2774-e216-49bb-a95f-e6f229d6558c"],
+Cell[34831, 938, 245, 6, 47, "Input",ExpressionUUID->"a525654b-f29b-4ef4-8e26-ee9a02691eb9"],
+Cell[35079, 946, 316, 8, 47, "Input",ExpressionUUID->"41921650-e777-42cf-bc1a-aeb7321a4143"],
+Cell[35398, 956, 337, 7, 30, "Text",ExpressionUUID->"d1435a1d-9f57-4616-b662-7271ba039229"],
+Cell[35738, 965, 566, 11, 47, "Input",ExpressionUUID->"6f6b3022-5417-4f90-a55a-a2f800de58e6"],
+Cell[36307, 978, 276, 6, 30, "Text",ExpressionUUID->"b4bedd5f-fddf-4db9-a8e6-518070f0ac58"],
+Cell[36586, 986, 268, 6, 47, "Input",ExpressionUUID->"d76d090e-9bd6-4f7b-b203-4f218e6d22b2"],
+Cell[36857, 994, 156, 3, 30, "Text",ExpressionUUID->"45c9e491-9dc3-4b66-9130-4fd2eeaaddc4"],
+Cell[37016, 999, 606, 15, 47, "Input",ExpressionUUID->"02f14ded-81de-4ca9-bc2d-a932fb8a27ca"],
+Cell[CellGroupData[{
+Cell[37647, 1018, 347, 7, 43, "Subsection",ExpressionUUID->"52608006-8033-4fc2-ab79-487152515d38"],
+Cell[37997, 1027, 156, 3, 30, "Text",ExpressionUUID->"eee0fc6e-fe2e-41d8-92eb-4cb92a5212a7"],
+Cell[38156, 1032, 270, 7, 47, "Input",ExpressionUUID->"ad0b624c-f5e6-4ff4-b37a-ffd45cbef420"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38475, 1045, 252, 6, 61, "Subchapter",ExpressionUUID->"99a2f025-22f3-44af-8799-30e3039b4fb5"],
+Cell[38730, 1053, 392, 8, 30, "Text",ExpressionUUID->"fd1d6fe4-72f2-4fe7-8140-b5d911a66889"],
+Cell[39125, 1063, 1081, 26, 103, "Input",ExpressionUUID->"af002f18-eef0-43e5-bb1c-0132d19a4074"],
+Cell[40209, 1091, 227, 5, 30, "Text",ExpressionUUID->"8e984509-ffe0-4800-bb69-2cbf5ad79857"],
+Cell[40439, 1098, 374, 8, 47, "Input",ExpressionUUID->"d5e545b8-f6db-415a-90a6-7a0d3dd642dd"],
+Cell[40816, 1108, 158, 3, 30, "Text",ExpressionUUID->"2dccccee-9ef9-4284-8308-3e9950f81e29"],
+Cell[40977, 1113, 253, 7, 47, "Input",ExpressionUUID->"e2af4756-7039-45ed-bd7c-d43cc5cc2c62"],
+Cell[41233, 1122, 282, 6, 30, "Text",ExpressionUUID->"5dc38534-5ded-4f8d-8625-6da76581d9c8"],
+Cell[41518, 1130, 648, 20, 47, "Input",ExpressionUUID->"5a464f39-6b5d-4aba-8dd5-58aed7b31482"],
+Cell[42169, 1152, 235, 6, 30, "Text",ExpressionUUID->"0a347d04-f251-4317-a842-9398c3730bea"],
+Cell[42407, 1160, 320, 8, 47, "Input",ExpressionUUID->"882b7321-63c9-4185-8dc9-def2cf98bdae"],
+Cell[42730, 1170, 361, 7, 30, "Text",ExpressionUUID->"70b65be8-f8d1-4e99-9d79-48cc784f3119"],
+Cell[43094, 1179, 244, 6, 47, "Input",ExpressionUUID->"ba58adbd-b079-4a8e-872a-894b6b5e12e8"],
+Cell[43341, 1187, 271, 6, 30, "Text",ExpressionUUID->"b88c7b2c-ff60-4e12-bab8-c873186f1e04"],
+Cell[43615, 1195, 225, 5, 47, "Input",ExpressionUUID->"67e4200a-9295-41d6-9cb5-7dae4701faec"],
+Cell[43843, 1202, 465, 8, 30, "Text",ExpressionUUID->"5a2a3576-7f4d-4b7b-b5e7-d36bb9bdabd0"],
+Cell[44311, 1212, 408, 11, 47, "Input",ExpressionUUID->"aa75bd05-8640-417a-888d-dc2091679e80"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44756, 1228, 194, 3, 61, "Subchapter",ExpressionUUID->"fa2418c9-a58b-4ff0-bb2e-eb2073642ca4"],
+Cell[44953, 1233, 431, 10, 68, "Text",ExpressionUUID->"7e389dfe-9012-4c24-b88f-de4b3e2ccc47"],
+Cell[45387, 1245, 382, 10, 47, "Input",ExpressionUUID->"21ddcdfc-e855-4154-8e67-236aa8102fa0"],
+Cell[45772, 1257, 275, 6, 30, "Text",ExpressionUUID->"e8614fab-54e1-4a2c-9d4a-85180ab6f0b3"],
+Cell[46050, 1265, 540, 14, 47, "Input",ExpressionUUID->"ba59ed2e-983b-49c0-818c-ffee1f5d04fe"],
+Cell[46593, 1281, 313, 7, 30, "Text",ExpressionUUID->"36905489-4b51-4f69-81e8-6a03ea23e7b5"],
+Cell[46909, 1290, 575, 15, 47, "Input",ExpressionUUID->"439b1c7f-43c0-484f-a79c-6b47f5ef46af"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47533, 1311, 186, 3, 65, "Chapter",ExpressionUUID->"4cbf3bb9-37e6-49b8-9561-2126816b28d9"],
+Cell[CellGroupData[{
+Cell[47744, 1318, 199, 3, 61, "Subchapter",ExpressionUUID->"1252be28-caa7-4ca9-aa17-c8bc757d1a0a"],
+Cell[CellGroupData[{
+Cell[47968, 1325, 168, 3, 43, "Subsection",ExpressionUUID->"f892263d-e4b9-43ed-a1e0-61fd35e76176"],
+Cell[48139, 1330, 235, 6, 30, "Text",ExpressionUUID->"a9d4287e-2487-40a8-87f4-d259d638d62d"],
+Cell[48377, 1338, 224, 5, 30, "Input",ExpressionUUID->"ffd19b97-e4bf-44e3-9a2a-04a8bdb27b00"],
+Cell[48604, 1345, 1058, 26, 158, "Input",ExpressionUUID->"831e36f5-69c3-4ccf-9993-520f8e0b2538"],
+Cell[49665, 1373, 181, 3, 30, "Text",ExpressionUUID->"03862ca2-ed21-47f9-974a-c7a611aaa3dd"],
+Cell[49849, 1378, 219, 5, 47, "Input",ExpressionUUID->"a91e8d66-1547-4485-9ac0-9af7064a4f2a"],
+Cell[50071, 1385, 300, 6, 30, "Text",ExpressionUUID->"d5042e68-2f7b-4e29-8461-276d8dacd4ee"],
+Cell[50374, 1393, 312, 8, 47, "Input",ExpressionUUID->"bbb2bc6c-2903-4655-b4e7-d515073675d7"],
+Cell[50689, 1403, 208, 4, 30, "Text",ExpressionUUID->"96f7835d-3c08-4968-a4a1-3ca2c63a1ea6"],
+Cell[50900, 1409, 357, 10, 47, "Input",ExpressionUUID->"e4edf304-2024-43e3-9d2c-ed95f43d556b"],
+Cell[51260, 1421, 261, 6, 30, "Text",ExpressionUUID->"4f481172-039f-4118-be99-050e429a6212"],
+Cell[51524, 1429, 415, 8, 47, "Input",ExpressionUUID->"be58e308-817d-4559-85df-c5efa2411e4d"],
+Cell[51942, 1439, 192, 3, 30, "Text",ExpressionUUID->"0dbea4c1-ea2b-4f9f-a2fd-f13280e4796b"],
+Cell[52137, 1444, 292, 7, 47, "Input",ExpressionUUID->"c27064ef-707d-46a5-af9e-8fc09471344f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52466, 1456, 173, 3, 43, "Subsection",ExpressionUUID->"76d4ee38-38e5-43e2-88af-f911a979d4e1"],
+Cell[52642, 1461, 288, 6, 30, "Text",ExpressionUUID->"5ddddaae-3f62-40d7-b714-a984db251a08"],
+Cell[52933, 1469, 363, 9, 50, "Input",ExpressionUUID->"2e5d2d52-b3fc-4f03-90eb-8e5a3b701aa9"],
+Cell[53299, 1480, 194, 3, 30, "Text",ExpressionUUID->"c99ce9ed-4596-4cd1-94c1-941089585a31"],
+Cell[53496, 1485, 521, 10, 47, "Input",ExpressionUUID->"00874226-4b1a-455a-b6f2-4390d874338e"],
+Cell[54020, 1497, 278, 6, 30, "Text",ExpressionUUID->"d53a969e-ab52-4a86-a2dc-aa8d3a765450"],
+Cell[54301, 1505, 630, 16, 84, "Input",ExpressionUUID->"844357a6-5388-4bd3-97df-3700329add9d"],
+Cell[54934, 1523, 267, 6, 30, "Text",ExpressionUUID->"f5623390-9b3b-4467-9b66-05ec4df29fe0"],
+Cell[55204, 1531, 206, 4, 47, "Input",ExpressionUUID->"d87766a2-4cb5-48e0-b971-bd3db4189c6a"],
+Cell[55413, 1537, 238, 6, 30, "Text",ExpressionUUID->"ac2f79e2-3b4c-4da2-9758-98ac3ef2ffda"],
+Cell[55654, 1545, 485, 12, 47, "Input",ExpressionUUID->"c7fbf01f-da5a-4ca0-81d6-2abc220c8501"],
+Cell[56142, 1559, 605, 13, 47, "Input",ExpressionUUID->"34f8d731-ecb4-46eb-832f-e4b7163c8961"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[56796, 1578, 198, 3, 61, "Subchapter",ExpressionUUID->"9f13abb8-2fe2-4cba-8e9a-fbc62abaf432"],
+Cell[CellGroupData[{
+Cell[57019, 1585, 168, 3, 43, "Subsection",ExpressionUUID->"bb0cf6fa-6f60-4987-802c-1b1b006afff4"],
+Cell[57190, 1590, 235, 6, 30, "Text",ExpressionUUID->"2f86bdc7-44f2-4e06-b81c-4d4a8089561a"],
+Cell[57428, 1598, 361, 7, 30, "Input",ExpressionUUID->"4ccc7bd4-8399-41da-8a10-686f3686ad1f"],
+Cell[57792, 1607, 1058, 26, 158, "Input",ExpressionUUID->"eef77bb6-7f91-43f1-b278-66793febb2b4"],
+Cell[58853, 1635, 181, 3, 30, "Text",ExpressionUUID->"b70b3405-94ef-4d30-926d-f27212b11479"],
+Cell[59037, 1640, 219, 5, 47, "Input",ExpressionUUID->"604d2c98-8ac5-4400-9b2a-88b0fa82441f"],
+Cell[59259, 1647, 300, 6, 30, "Text",ExpressionUUID->"185ffccd-0768-48b9-be58-56aa8e512996"],
+Cell[59562, 1655, 312, 8, 47, "Input",ExpressionUUID->"ab4f2eb5-595d-4892-aaa8-5d49afa3689a"],
+Cell[59877, 1665, 208, 4, 30, "Text",ExpressionUUID->"2e46eca2-9c25-4b07-8745-7d099e8097b2"],
+Cell[60088, 1671, 385, 10, 47, "Input",ExpressionUUID->"56ee0a68-de13-4da1-99d2-6a99c89dfdab"],
+Cell[60476, 1683, 261, 6, 30, "Text",ExpressionUUID->"8c5cfb0f-bc7c-4474-90a5-8f753c8f3de8"],
+Cell[60740, 1691, 415, 8, 47, "Input",ExpressionUUID->"cb42568f-908e-4997-82f0-39820e25d2e4"],
+Cell[61158, 1701, 192, 3, 30, "Text",ExpressionUUID->"321c0ff7-9184-49ba-a8b4-b491617cd0c9"],
+Cell[61353, 1706, 292, 7, 47, "Input",ExpressionUUID->"ba3d9263-708f-47a3-93b8-7d27bcda8d52"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[61682, 1718, 173, 3, 43, "Subsection",ExpressionUUID->"47a38168-3855-47ec-8b7d-7f4b4672233f"],
+Cell[61858, 1723, 288, 6, 30, "Text",ExpressionUUID->"592485fb-8e78-47a3-8a03-3b913b9a2484"],
+Cell[62149, 1731, 421, 9, 50, "Input",ExpressionUUID->"ae0a08ae-786d-49f6-8d8a-034880f09868"],
+Cell[62573, 1742, 194, 3, 30, "Text",ExpressionUUID->"ad556db3-87f0-4eaa-aed8-27aef313d3e4"],
+Cell[62770, 1747, 567, 11, 47, "Input",ExpressionUUID->"13281863-8c83-4f7d-a626-e2111f231cc3"],
+Cell[63340, 1760, 278, 6, 30, "Text",ExpressionUUID->"6fa8537f-caf5-47aa-bfee-757ae6435ff9"],
+Cell[63621, 1768, 1187, 33, 121, "Input",ExpressionUUID->"c5cab9ba-4823-4a5c-ae5e-f3ab01d642ab"],
+Cell[64811, 1803, 267, 6, 30, "Text",ExpressionUUID->"e86960a8-5c63-43d6-8695-d29c87d0186b"],
+Cell[65081, 1811, 206, 4, 47, "Input",ExpressionUUID->"891eda6c-e877-4c70-9993-44dc546ba9b8"],
+Cell[65290, 1817, 265, 5, 30, "Text",ExpressionUUID->"6c29b425-843a-4a9d-b9ff-dafe75de8420"],
+Cell[65558, 1824, 485, 12, 47, "Input",ExpressionUUID->"4e4570b4-81fc-48c3-83cc-bdf71e638169"],
+Cell[66046, 1838, 605, 13, 47, "Input",ExpressionUUID->"5c55babb-984e-41f7-98bf-290f01cad5fb"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,658 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     26290,        650]
+NotebookOptionsPosition[     25958,        636]
+NotebookOutlinePosition[     26307,        651]
+CellTagsIndexPosition[     26264,        648]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"viewTypes", " ", "=", " ", 
+   RowBox[{"<|", 
+    RowBox[{
+     RowBox[{"\"\<Vector\>\"", "\[Rule]", "1"}], ",", 
+     RowBox[{"\"\<Raster\>\"", "\[Rule]", "2"}]}], "|>"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"splineTypes", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<Simple\>\"", ",", " ", "\"\<Hojas\>\"", ",", 
+     "\"\<Patr\[OAcute]n\>\""}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"splineDefaultColors", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"Red", ",", " ", "Blue", ",", " ", "Purple", ",", " ", 
+     RowBox[{
+      RowBox[{"ColorData", "[", "\"\<WebSafe\>\"", "]"}], "[", 
+      "\"\<#6600FF\>\"", "]"}], ",", " ", 
+     RowBox[{
+      RowBox[{"ColorData", "[", "\"\<WebSafe\>\"", "]"}], "[", 
+      "\"\<#3399FF\>\"", "]"}], ",", " ", 
+     RowBox[{
+      RowBox[{"ColorData", "[", "\"\<WebSafe\>\"", "]"}], "[", 
+      "\"\<#33CC00\>\"", "]"}], ",", " ", 
+     RowBox[{
+      RowBox[{"ColorData", "[", "\"\<WebSafe\>\"", "]"}], "[", 
+      "\"\<#339900\>\"", "]"}], ",", " ", 
+     RowBox[{
+      RowBox[{"ColorData", "[", "\"\<WebSafe\>\"", "]"}], "[", 
+      "\"\<#FF3399\>\"", "]"}], ",", " ", 
+     RowBox[{
+      RowBox[{"ColorData", "[", "\"\<WebSafe\>\"", "]"}], "[", 
+      "\"\<#993300\>\"", "]"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"dashingTypes", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{"None", ",", "Tiny", ",", "Medium", ",", "Large"}], "}"}]}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CreateSimpleSpline", "[", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "newSpline", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"newSpline", " ", "=", " ", 
+       RowBox[{"<|", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"\"\<Name\>\"", "\[Rule]", 
+          RowBox[{"StringJoin", "[", 
+           RowBox[{"\"\<Spline \>\"", ",", 
+            RowBox[{"ToString", "[", 
+             RowBox[{
+              RowBox[{"Length", "[", "splineList", "]"}], "+", "1"}], "]"}]}],
+            "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"\"\<Coordinates\>\"", "\[Rule]", 
+          RowBox[{"RandomReal", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"4", ",", "2"}], "}"}]}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"\"\<Type\>\"", "\[Rule]", "\"\<Simple\>\""}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"\"\<Color\>\"", "\[Rule]", 
+          RowBox[{"RandomChoice", "[", "splineDefaultColors", "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"\"\<Thickness\>\"", "\[Rule]", "1"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"\"\<Dashing\>\"", "\[Rule]", "None"}]}], 
+        "\[IndentingNewLine]", "|>"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"splineList", ",", "newSpline"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"splineCount", "++"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DeleteSpline", "[", "index_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "splineList", "]"}], ">", "1"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"splineList", " ", "=", " ", 
+          RowBox[{"Delete", "[", 
+           RowBox[{"splineList", ",", "index"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"splineCount", "--"}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"index", ">", "1"}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Return", "[", 
+             RowBox[{"index", "-", "1"}], "]"}], ";"}], "\[IndentingNewLine]",
+            ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Return", "[", 
+             RowBox[{"index", "+", "1"}], "]"}], ";"}]}], 
+          "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Return", "[", "index", "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{"SimpleSplineOptions", ",", "HoldFirst"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SimpleSplineOptions", "[", "spline_", "]"}], ":=", 
+    RowBox[{"Column", "[", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"ColorSlider", "[", 
+        RowBox[{"Dynamic", "[", 
+         RowBox[{"spline", "[", 
+          RowBox[{"[", "\"\<Color\>\"", "]"}], "]"}], "]"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Row", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Grosor \>\"", ",", "Bold"}], "]"}], ",", 
+          RowBox[{"Dynamic", "[", 
+           RowBox[{"spline", "[", 
+            RowBox[{"[", "\"\<Thickness\>\"", "]"}], "]"}], "]"}], ",", 
+          "\"\< \>\"", ",", 
+          RowBox[{"Slider", "[", 
+           RowBox[{
+            RowBox[{"Dynamic", "[", 
+             RowBox[{"spline", "[", 
+              RowBox[{"[", "\"\<Thickness\>\"", "]"}], "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "30", ",", "1"}], "}"}]}], "]"}]}], "}"}], 
+        "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Row", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Punteado \>\"", ",", "Bold"}], "]"}], ",", 
+          RowBox[{"Dynamic", "[", 
+           RowBox[{"spline", "[", 
+            RowBox[{"[", "\"\<Dashing\>\"", "]"}], "]"}], "]"}], ",", 
+          "\"\< \>\"", ",", 
+          RowBox[{"PopupMenu", "[", 
+           RowBox[{
+            RowBox[{"Dynamic", "[", 
+             RowBox[{"spline", "[", 
+              RowBox[{"[", "\"\<Dashing\>\"", "]"}], "]"}], "]"}], ",", 
+            "dashingTypes"}], "]"}]}], "}"}], "]"}]}], "\[IndentingNewLine]", 
+      "}"}], "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"InitializeSplines", "[", "]"}], ":=", 
+   RowBox[{"(", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"splineCount", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"splineList", " ", "=", " ", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"CreateSimpleSpline", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+    ")"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"UpdateSelection", "[", 
+    RowBox[{"splineList_", ",", "splineName_", ",", "lo_", ",", "selected_"}],
+     "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"loNew", ",", "selectionNew", ",", "splineNameNew"}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"selectionNew", " ", "=", " ", 
+       RowBox[{"First", "[", 
+        RowBox[{"FirstPosition", "[", 
+         RowBox[{
+          RowBox[{"splineList", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", "\"\<Name\>\""}], "]"}], "]"}], ",", 
+          "splineName"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"loNew", " ", "=", " ", 
+       RowBox[{"splineList", "[", 
+        RowBox[{"[", 
+         RowBox[{"selectionNew", ",", "\"\<Coordinates\>\""}], "]"}], "]"}]}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"splineNameNew", " ", "=", " ", 
+       RowBox[{"splineList", "[", 
+        RowBox[{"[", 
+         RowBox[{"selectionNew", ",", "\"\<Name\>\""}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", 
+       RowBox[{"{", 
+        RowBox[{"loNew", ",", "selectionNew", ",", "splineNameNew"}], "}"}], 
+       "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"UpdateCoordinates", "[", 
+    RowBox[{"splineList_", ",", "lo_", ",", "selected_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "splineListNew", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"splineListNew", " ", "=", " ", "splineList"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"splineListNew", "[", 
+        RowBox[{"[", 
+         RowBox[{"selected", ",", "\"\<Coordinates\>\""}], "]"}], "]"}], " ", 
+       "=", " ", "lo"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "splineListNew", "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"VectorDraw", "[", 
+    RowBox[{"splineList_", ",", "lo_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"bezierFunctions", ",", "plt"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"bezierFunctions", " ", "=", " ", 
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"#", "[", "\"\<Color\>\"", "]"}], ",", 
+            RowBox[{"BezierCurve", "[", 
+             RowBox[{"#", "[", "\"\<Coordinates\>\"", "]"}], "]"}]}], "}"}], 
+          "&"}], ",", "splineList"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"plt", " ", "=", " ", 
+       RowBox[{"Graphics", "[", 
+        RowBox[{"bezierFunctions", ",", 
+         RowBox[{"Epilog", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"Green", ",", 
+            RowBox[{"Line", "[", "lo", "]"}]}], "}"}]}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "plt", "]"}], ";"}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"RasterDraw", "[", 
+    RowBox[{"splineList_", ",", "lo_", ",", "size_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"bezierFunctions", ",", "plt", ",", " ", "array"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"bezierFunctions", " ", "=", " ", 
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"#", "[", "\"\<Color\>\"", "]"}], ",", 
+            RowBox[{"Thickness", "[", 
+             RowBox[{"0.01", 
+              RowBox[{"#", "[", "\"\<Thickness\>\"", "]"}]}], "]"}], ",", 
+            RowBox[{"Dashing", "[", 
+             RowBox[{"#", "[", "\"\<Dashing\>\"", "]"}], "]"}], ",", 
+            RowBox[{"BezierCurve", "[", 
+             RowBox[{"#", "[", "\"\<Coordinates\>\"", "]"}], "]"}]}], "}"}], 
+          "&"}], ",", "splineList"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"plt", " ", "=", " ", 
+       RowBox[{"Graphics", "[", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{"bezierFunctions", ",", 
+           RowBox[{"Antialiasing", "\[Rule]", "False"}]}], "]"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"plt", " ", "=", " ", 
+       RowBox[{"Rasterize", "[", 
+        RowBox[{"plt", ",", 
+         RowBox[{"RasterSize", "\[Rule]", "size"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"array", " ", "=", " ", 
+       RowBox[{"Map", "[", 
+        RowBox[{"RGBColor", ",", 
+         RowBox[{"ImageData", "[", "plt", "]"}], ",", 
+         RowBox[{"{", "2", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"plt", " ", "=", " ", 
+       RowBox[{"ArrayPlot", "[", 
+        RowBox[{"array", ",", 
+         RowBox[{"Frame", "\[Rule]", "False"}], ",", 
+         RowBox[{"DataRange", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ",", 
+         RowBox[{"Epilog", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"Green", ",", 
+            RowBox[{"Line", "[", "lo", "]"}]}], "}"}]}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "plt", "]"}], ";"}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Draw", "[", 
+     RowBox[{"splineList_", ",", "lo_", ",", "size_", ",", "view_"}], "]"}], ":=", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"view", " ", "\[Equal]", " ", 
+       RowBox[{"viewTypes", "[", "\"\<Vector\>\"", "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"VectorDraw", "[", 
+       RowBox[{"splineList", ",", "lo"}], "]"}], "\[IndentingNewLine]", ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RasterDraw", "[", 
+       RowBox[{"splineList", ",", "lo", ",", "size"}], "]"}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"UpdateIfChanged", ",", "SpecialSymbol"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"HoldAll", ",", "HoldAll"}], "}"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SpecialSymbol", "[", "expr_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"SpecialSymbol", "[", "expr", "]"}], "=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"t", ",", "tempSymbol"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"SpecialSymbol", "[", 
+        RowBox[{"expr", ",", 
+         RowBox[{"t", " ", ":=", 
+          RowBox[{"Unique", "[", "tempSymbol", "]"}]}]}], "]"}], "=", "t"}]}],
+      "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"UpdateIfChanged", "[", 
+     RowBox[{"expr_", ",", "trackedSymbols_"}], "]"}], ":=", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"UnsameQ", "[", 
+       RowBox[{
+        RowBox[{"SpecialSymbol", "[", "expr", "]"}], ",", "trackedSymbols"}], 
+       "]"}], " ", ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"SpecialSymbol", "[", "expr", "]"}], " ", "=", " ", 
+        "trackedSymbols"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"ReleaseHold", "[", "expr", "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LaunchTileEditor", "[", 
+    RowBox[{"dataArgument_:", 
+     RowBox[{"{", "}"}]}], "]"}], ":=", 
+   RowBox[{"DialogInput", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+      "h", ",", "w", ",", "data", ",", "tool", ",", "color", ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"toolTypes", " ", "=", " ", 
+        RowBox[{"<|", 
+         RowBox[{
+          RowBox[{"\"\<Pencil\>\"", "\[Rule]", "1"}], ",", 
+          RowBox[{"\"\<Eraser\>\"", "\[Rule]", "2"}], ",", 
+          RowBox[{"\"\<Color Picker\>\"", "\[Rule]", "3"}]}], "|>"}]}]}], 
+      "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "dataArgument", "]"}], "\[Equal]", "0"}], ",",
+         "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"data", " ", "=", " ", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"<|", 
+             RowBox[{
+              RowBox[{"\"\<Position\>\"", "\[Rule]", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "j"}], "}"}]}], ",", 
+              RowBox[{"\"\<Color\>\"", "\[Rule]", "Transparent"}]}], "|>"}], 
+            ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "20"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", "1", ",", "20"}], "}"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"h", ",", "w"}], "}"}], " ", "=", 
+          RowBox[{"{", 
+           RowBox[{"5", ",", "5"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"data", " ", "=", " ", "dataArgument"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"h", ",", "w"}], "}"}], " ", "=", " ", 
+          RowBox[{"Dimensions", "[", "data", "]"}]}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Grid", "[", 
+         RowBox[{
+          RowBox[{"MakeButtonMap", "[", 
+           RowBox[{"Take", "[", 
+            RowBox[{"data", ",", "h", ",", "w"}], "]"}], "]"}], ",", 
+          RowBox[{"Spacings", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}], ",", 
+          RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}], "\[IndentingNewLine]",
+         ",", "\[IndentingNewLine]", 
+        RowBox[{"Row", "[", "\[IndentingNewLine]", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Column", "[", "\[IndentingNewLine]", 
+            RowBox[{"{", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"Style", "[", 
+               RowBox[{"\"\<Par\[AAcute]metros\>\"", ",", "Bold"}], "]"}], 
+              ",", "\[IndentingNewLine]", 
+              RowBox[{"Control", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"h", ",", "hInit", ",", "\"\<Altura\>\""}], "}"}], 
+                 ",", "1", ",", "20", ",", "1"}], "}"}], "]"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"Control", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"w", ",", "wInit", ",", " ", "\"\<Anchura\>\""}], 
+                  "}"}], ",", "1", ",", "20", ",", "1"}], "}"}], "]"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"Control", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"tool", ",", 
+                   RowBox[{"toolTypes", "[", "\"\<Pencil\>\"", "]"}], ",", 
+                   "\"\<Herramienta\>\""}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"toolTypes", "[", "\"\<Pencil\>\"", "]"}], 
+                    "\[Rule]", "\"\<L\[AAcute]piz\>\""}], ",", 
+                   RowBox[{
+                    RowBox[{"toolTypes", "[", "\"\<Eraser\>\"", "]"}], 
+                    "\[Rule]", "\"\<Borrador\>\""}], ",", 
+                   RowBox[{
+                    RowBox[{"toolTypes", "[", "\"\<Color Picker\>\"", "]"}], 
+                    "\[Rule]", "\"\<Igualar color\>\""}]}], "}"}]}], "}"}], 
+               "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"Control", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"color", ",", "Black", ",", "\"\<Color\>\""}], 
+                  "}"}], ",", "Black"}], "}"}], "]"}]}], 
+             "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "]"}], ",", 
+           "\[IndentingNewLine]", "\"\<  \>\"", ",", "\[IndentingNewLine]", 
+           RowBox[{"Column", "[", "\[IndentingNewLine]", 
+            RowBox[{"{", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"Style", "[", 
+               RowBox[{"\"\<Previsualizaci\[OAcute]n\>\"", ",", "Bold"}], 
+               "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"Dynamic", "[", 
+               RowBox[{"ArrayPlot", "[", 
+                RowBox[{
+                 RowBox[{"Take", "[", 
+                  RowBox[{
+                   RowBox[{"data", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "All", ",", "\"\<Color\>\""}], "]"}], 
+                    "]"}], ",", "h", ",", "w"}], "]"}], ",", 
+                 RowBox[{"ImageSize", "->", "Tiny"}]}], "]"}], "]"}]}], 
+             "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "]"}]}], 
+          "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Item", "[", 
+         RowBox[{
+          RowBox[{"Row", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Button", "[", 
+              RowBox[{"\"\<Guardar\>\"", ",", 
+               RowBox[{"DialogReturn", "[", 
+                RowBox[{"Take", "[", 
+                 RowBox[{"data", ",", "h", ",", "w"}], "]"}], "]"}]}], "]"}], 
+             ",", 
+             RowBox[{"CancelButton", "[", "]"}]}], "}"}], "]"}], ",", 
+          RowBox[{"ControlPlacement", " ", "\[Rule]", " ", "Bottom"}]}], 
+         "]"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Initialization", "\[RuleDelayed]", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Interact", "[", "pos_", "]"}], ":=", 
+            RowBox[{"Switch", "[", 
+             RowBox[{"tool", " ", ",", "\[IndentingNewLine]", 
+              RowBox[{"toolTypes", "[", "\"\<Pencil\>\"", "]"}], ",", " ", 
+              RowBox[{
+               RowBox[{"data", "[", 
+                RowBox[{"[", 
+                 RowBox[{
+                  RowBox[{"First", "[", "pos", "]"}], ",", 
+                  RowBox[{"Last", "[", "pos", "]"}], ",", "\"\<Color\>\""}], 
+                 "]"}], "]"}], " ", "=", " ", "color"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"toolTypes", "[", "\"\<Eraser\>\"", "]"}], ",", 
+              RowBox[{
+               RowBox[{"data", "[", 
+                RowBox[{"[", 
+                 RowBox[{
+                  RowBox[{"First", "[", "pos", "]"}], ",", 
+                  RowBox[{"Last", "[", "pos", "]"}], ",", "\"\<Color\>\""}], 
+                 "]"}], "]"}], " ", "=", " ", "Transparent"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"toolTypes", "[", "\"\<Color Picker\>\"", "]"}], ",", 
+              " ", 
+              RowBox[{"color", " ", "=", " ", 
+               RowBox[{"data", "[", 
+                RowBox[{"[", 
+                 RowBox[{
+                  RowBox[{"First", "[", "pos", "]"}], ",", 
+                  RowBox[{"Last", "[", "pos", "]"}], ",", "\"\<Color\>\""}], 
+                 "]"}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"MakeButtonMap", "[", "currentData_", "]"}], ":=", " ", 
+            RowBox[{"Map", "[", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Button", "[", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"ConstantImage", "[", 
+                  RowBox[{
+                   RowBox[{"#", "[", "\"\<Color\>\"", "]"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"10", ",", "10"}], "}"}]}], "]"}], ",", 
+                 RowBox[{"Interact", "[", 
+                  RowBox[{"#", "[", "\"\<Position\>\"", "]"}], "]"}], ",", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"Appearance", "\[Rule]", "\"\<DialogBox\>\""}], ",", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"ContentPadding", "\[Rule]", "False"}], ",", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"ImageMargins", "\[Rule]", "0"}], ",", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"FrameMargins", "\[Rule]", "None"}]}], 
+                "\[IndentingNewLine]", "]"}], "&"}], ",", 
+              "\[IndentingNewLine]", "currentData", ",", 
+              RowBox[{"{", "2", "}"}]}], "]"}]}], ";"}], 
+          "\[IndentingNewLine]", "}"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"SynchronousUpdating", "\[Rule]", "True"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"LocalizeVariables", "\[Rule]", "False"}]}], 
+       "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"WindowTitle", "\[Rule]", "\"\<Editor de tiles\>\""}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.7222847947935715`*^9, 3.722284814159958*^9}, {
+  3.722285087052644*^9, 3.7222851338315716`*^9}, {3.722285165010969*^9, 
+  3.7222851902514443`*^9}, {3.7222852572365713`*^9, 3.7222853000853205`*^9}, {
+  3.7222853459710217`*^9, 3.7222853568992443`*^9}, {3.7222854395716925`*^9, 
+  3.722285442346235*^9}, {3.7222856915501246`*^9, 3.7222857716673107`*^9}, {
+  3.722369360634094*^9, 
+  3.722369360969062*^9}},ExpressionUUID->"726d7baf-3843-4cf3-b663-\
+1cd3247b1da4"]
+},
+WindowSize->{1447, 761},
+WindowMargins->{{Automatic, 73}, {Automatic, 62}},
+FrontEndVersion->"11.2 para Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 25396, 614, 4075, "Input",ExpressionUUID->"726d7baf-3843-4cf3-b663-1cd3247b1da4",
+ InitializationCell->True]
+}
+]
+*)
+
