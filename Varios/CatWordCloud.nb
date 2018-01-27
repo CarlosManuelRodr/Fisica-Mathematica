@@ -1,0 +1,165 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4849,        155]
+NotebookOptionsPosition[      4432,        139]
+NotebookOutlinePosition[      4771,        154]
+CellTagsIndexPosition[      4728,        151]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Cat word cloud", "Title",
+ CellChangeTimes->{{3.726068166979888*^9, 
+  3.7260681719624033`*^9}},ExpressionUUID->"28aabdb0-8200-4729-94ad-\
+83fb002a3b5b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"catHeadShape", "=", 
+    RowBox[{"RegionUnion", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Disk", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", "0.7"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Triangle", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"0.7", "*", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", 
+             RowBox[{"Cos", "[", 
+              RowBox[{"20", " ", "Degree"}], "]"}]}], ",", 
+            RowBox[{"Sin", "[", 
+             RowBox[{"20", " ", "Degree"}], "]"}]}], "}"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+         RowBox[{"0.7", "*", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", 
+             RowBox[{"Cos", "[", 
+              RowBox[{"80", " ", "Degree"}], "]"}]}], ",", 
+            RowBox[{"Sin", "[", 
+             RowBox[{"80", " ", "Degree"}], "]"}]}], "}"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"Triangle", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"0.7", "*", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Cos", "[", 
+             RowBox[{"20", " ", "Degree"}], "]"}], ",", 
+            RowBox[{"Sin", "[", 
+             RowBox[{"20", " ", "Degree"}], "]"}]}], "}"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "1"}], "}"}], ",", 
+         RowBox[{"0.7", "*", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Cos", "[", 
+             RowBox[{"80", " ", "Degree"}], "]"}], ",", 
+            RowBox[{"Sin", "[", 
+             RowBox[{"80", " ", "Degree"}], "]"}]}], "}"}]}]}], "}"}], 
+       "]"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MapIf", "[", 
+    RowBox[{"f_", ",", "expr_", ",", "crit_"}], "]"}], ":=", 
+   RowBox[{"MapAt", "[", 
+    RowBox[{"f", ",", "expr", ",", 
+     RowBox[{"Position", "[", 
+      RowBox[{
+       RowBox[{"Map", "[", 
+        RowBox[{"crit", ",", "expr"}], "]"}], ",", "True"}], "]"}]}], "]"}]}],
+   ";"}], "\n", 
+ RowBox[{
+  RowBox[{"usefulWords", "=", 
+   RowBox[{"DeleteStopwords", "[", 
+    RowBox[{"ToLowerCase", "[", 
+     RowBox[{"TextCases", "[", 
+      RowBox[{
+       RowBox[{
+       "Import", "[", "\"\<https://en.wikipedia.org/wiki/Cat\>\"", "]"}], ",", 
+       RowBox[{
+       "\"\<Verb\>\"", "|", "\"\<Adjective\>\"", "|", "\"\<Noun\>\""}]}], 
+      "]"}], "]"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"usefulWords", "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"StringReplace", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"\"\<'s\>\"", "\[Rule]", "\"\<\>\""}]}], "]"}], "&"}], ",", 
+     "usefulWords"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"stemmedWords", "=", 
+   RowBox[{"MapIf", "[", 
+    RowBox[{"WordStem", ",", "usefulWords", ",", 
+     RowBox[{
+      RowBox[{"DictionaryWordQ", "[", 
+       RowBox[{"WordStem", "[", "#", "]"}], "]"}], "&"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"relevantWords", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{"stemmedWords", ",", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"DictionaryWordQ", "[", "#", "]"}], "&&", 
+        RowBox[{
+         RowBox[{"StringLength", "[", "#", "]"}], ">", "2"}]}], ")"}], 
+      "&"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{"WordCloud", "[", 
+  RowBox[{"relevantWords", ",", "catHeadShape"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.726068172507111*^9, 
+  3.7260681927805233`*^9}},ExpressionUUID->"fa992007-9294-46fe-9905-\
+89274caed60b"]
+}, Open  ]]
+},
+WindowSize->{1431, 767},
+WindowMargins->{{Automatic, 68}, {0, Automatic}},
+FrontEndVersion->"11.2 for Linux x86 (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 159, 3, 98, "Title",ExpressionUUID->"28aabdb0-8200-4729-94ad-83fb002a3b5b"],
+Cell[742, 27, 3674, 109, 286, "Input",ExpressionUUID->"fa992007-9294-46fe-9905-89274caed60b"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
