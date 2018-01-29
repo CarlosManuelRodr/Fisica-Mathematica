@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     24184,        618]
-NotebookOptionsPosition[     21796,        565]
-NotebookOutlinePosition[     22138,        580]
-CellTagsIndexPosition[     22095,        577]
+NotebookDataLength[     24783,        638]
+NotebookOptionsPosition[     22267,        566]
+NotebookOutlinePosition[     22603,        581]
+CellTagsIndexPosition[     22560,        578]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -40,10 +40,8 @@ Cell[BoxData[{
     RowBox[{
      RowBox[{"Round", "[", 
       RowBox[{"Mod", "[", 
-       RowBox[{
-        RowBox[{"GetUnit", "[", 
-         RowBox[{"time", ",", "\"\<Seconds\>\""}], "]"}], ",", "60"}], "]"}], 
-      "]"}], ",", "10", ",", "2"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+       RowBox[{"time", ",", "60"}], "]"}], "]"}], ",", "10", ",", "2"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"GetMinutes", "[", "time_", "]"}], ":=", 
@@ -52,21 +50,16 @@ Cell[BoxData[{
      RowBox[{"Mod", "[", 
       RowBox[{
        RowBox[{"Floor", "[", 
-        FractionBox[
-         RowBox[{"GetUnit", "[", 
-          RowBox[{"time", ",", "\"\<Seconds\>\""}], "]"}], "60"], "]"}], ",", 
-       "60"}], "]"}], ",", "10", ",", "2"}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+        FractionBox["time", "60"], "]"}], ",", "60"}], "]"}], ",", "10", ",", 
+     "2"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"GetHours", "[", "time_", "]"}], ":=", 
    RowBox[{"IntegerString", "[", 
     RowBox[{
      RowBox[{"Floor", "[", 
-      FractionBox[
-       RowBox[{"GetUnit", "[", 
-        RowBox[{"time", ",", "\"\<Seconds\>\""}], "]"}], "3600"], "]"}], ",", 
-     "10", ",", "2"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+      FractionBox["time", "3600"], "]"}], ",", "10", ",", "2"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"ClockFormat", "[", "time_", "]"}], ":=", 
@@ -75,9 +68,9 @@ Cell[BoxData[{
      RowBox[{"GetHours", "[", "time", "]"}], ",", "\"\<:\>\"", ",", 
      RowBox[{"GetMinutes", "[", "time", "]"}], ",", "\"\<:\>\"", ",", 
      RowBox[{"GetSeconds", "[", "time", "]"}]}], "]"}]}], ";"}]}], "Input",
- CellChangeTimes->{{3.726233744468918*^9, 
-  3.7262337802598248`*^9}},ExpressionUUID->"73add87f-212f-467e-b719-\
-78629b87f749"]
+ CellChangeTimes->{{3.726233744468918*^9, 3.7262337802598248`*^9}, {
+  3.726240019135137*^9, 3.7262400288376017`*^9}, {3.72625453632181*^9, 
+  3.7262545419881*^9}},ExpressionUUID->"73add87f-212f-467e-b719-78629b87f749"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -88,28 +81,6 @@ Cell["Mapeos con monitor de progreso", "Subchapter",
 530064fbbede"],
 
 Cell[BoxData[{
- RowBox[{"SetAttributes", "[", 
-  RowBox[{"ProgressFunction", ",", "HoldFirst"}], 
-  "]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"ProgressFunction", "[", 
-     RowBox[{"indexProgress_", ",", 
-      RowBox[{"f_", "[", 
-       RowBox[{"arg_", ",", 
-        RowBox[{"{", "index_", "}"}]}], "]"}]}], "]"}], ":=", " ", 
-    RowBox[{"Module", "[", 
-     RowBox[{
-      RowBox[{"{", "output", "}"}], ",", "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"output", " ", "=", " ", 
-        RowBox[{"f", "[", "arg", "]"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"AppendTo", "[", 
-        RowBox[{"indexProgress", ",", "index"}], "]"}], ";", 
-       "\[IndentingNewLine]", 
-       RowBox[{"Return", "[", "output", "]"}], ";"}]}], "\[IndentingNewLine]",
-      "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -146,7 +117,7 @@ Cell[BoxData[{
          RowBox[{"\"\<Ellapsed time: \>\"", ",", 
           RowBox[{"ClockFormat", "[", 
            RowBox[{
-            RowBox[{"TimeObject", "[", "]"}], "-", "startTime"}], "]"}]}], 
+            RowBox[{"AbsoluteTime", "[", "]"}], "-", "startTime"}], "]"}]}], 
          "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
        RowBox[{"If", "[", 
         RowBox[{
@@ -157,7 +128,7 @@ Cell[BoxData[{
            RowBox[{
             FractionBox[
              RowBox[{
-              RowBox[{"TimeObject", "[", "]"}], "-", "startTime"}], 
+              RowBox[{"AbsoluteTime", "[", "]"}], "-", "startTime"}], 
              "indexProgress"], 
             RowBox[{"(", 
              RowBox[{"totalSize", "-", "indexProgress"}], ")"}]}]}], ";", 
@@ -187,6 +158,27 @@ Cell[BoxData[{
      "\[IndentingNewLine]", "]"}]}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{"SetAttributes", "[", 
+  RowBox[{"ProgressFunction", ",", "HoldFirst"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"ProgressFunction", "[", 
+     RowBox[{
+     "indexProgress_", ",", " ", "f_", ",", "arg_", ",", " ", "index_"}], 
+     "]"}], ":=", " ", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "output", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"output", " ", "=", " ", 
+        RowBox[{"f", "[", "arg", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"indexProgress", ",", "index"}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Return", "[", "output", "]"}], ";"}]}], "\[IndentingNewLine]",
+      "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"SetAttributes", "[", 
   RowBox[{"ParallelMapIndexed", ",", "HoldFirst"}], 
   "]"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -203,10 +195,9 @@ Cell[BoxData[{
        RowBox[{
         RowBox[{
          RowBox[{"ProgressFunction", "[", 
-          RowBox[{"indexProgress", ",", 
-           RowBox[{"f", "[", 
-            RowBox[{"#1", ",", "#2"}], "]"}]}], "]"}], "&"}], ",", "expr"}], 
-       "]"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"indexProgress", ",", "f", ",", "#1", ",", "#2"}], "]"}], 
+         "&"}], ",", "expr"}], "]"}], ",", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
       RowBox[{"FilterRules", "[", 
        RowBox[{
         RowBox[{"{", "opts", "}"}], ",", " ", 
@@ -216,7 +207,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"ParallelMapWithProgress", "[", 
+    RowBox[{"ProgressParallelMap", "[", 
      RowBox[{"f_", ",", "expr_", ",", 
       RowBox[{"opts", ":", 
        RowBox[{"OptionsPattern", "[", 
@@ -236,7 +227,7 @@ Cell[BoxData[{
        RowBox[{"indexProgress", " ", "=", " ", 
         RowBox[{"{", "0", "}"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"startTime", " ", "=", " ", 
-        RowBox[{"TimeObject", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"AbsoluteTime", "[", "]"}]}], ";", "\[IndentingNewLine]", 
        "\[IndentingNewLine]", 
        RowBox[{"Monitor", "[", "\[IndentingNewLine]", 
         RowBox[{
@@ -262,7 +253,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"MapWithProgress", "[", 
+    RowBox[{"ProgressMap", "[", 
      RowBox[{"f_", ",", "expr_", ",", 
       RowBox[{"OptionsPattern", "[", 
        RowBox[{"{", 
@@ -274,12 +265,10 @@ Cell[BoxData[{
        RowBox[{"indexProgress", ",", "startTime"}], "}"}], ",", 
       "\[IndentingNewLine]", 
       RowBox[{
-       RowBox[{"SetSharedVariable", "[", "indexProgress", "]"}], ";", 
-       "\[IndentingNewLine]", 
        RowBox[{"indexProgress", " ", "=", " ", 
         RowBox[{"{", "0", "}"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"startTime", " ", "=", " ", 
-        RowBox[{"TimeObject", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"AbsoluteTime", "[", "]"}]}], ";", "\[IndentingNewLine]", 
        "\[IndentingNewLine]", 
        RowBox[{"Monitor", "[", "\[IndentingNewLine]", 
         RowBox[{
@@ -287,10 +276,9 @@ Cell[BoxData[{
           RowBox[{
            RowBox[{
             RowBox[{"ProgressFunction", "[", 
-             RowBox[{"indexProgress", ",", 
-              RowBox[{"f", "[", 
-               RowBox[{"#1", ",", "#2"}], "]"}]}], "]"}], "&"}], ",", 
-           "expr"}], "]"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+             RowBox[{"indexProgress", ",", " ", "f", ",", "#1", ",", "#2"}], 
+             "]"}], "&"}], ",", "expr"}], "]"}], ",", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
          RowBox[{"If", "[", 
           RowBox[{
            RowBox[{"OptionValue", "[", "\"\<ShowInfo\>\"", "]"}], ",", 
@@ -340,8 +328,12 @@ Cell[BoxData[{
    3.726232294248404*^9, 3.7262322978362627`*^9}, {3.726233453225833*^9, 
    3.72623346895597*^9}, {3.72623380424776*^9, 3.726233810856267*^9}, {
    3.726233843112053*^9, 3.7262340285475073`*^9}, {3.726234087586025*^9, 
-   3.726234115883416*^9}, {3.726234179626759*^9, 
-   3.7262341827370567`*^9}},ExpressionUUID->"a09b85ac-2771-43e5-a7ff-\
+   3.726234115883416*^9}, {3.726234179626759*^9, 3.7262341827370567`*^9}, {
+   3.726240370883519*^9, 3.726240378812187*^9}, {3.726242748919463*^9, 
+   3.726242788303691*^9}, {3.726243380665244*^9, 3.726243382995749*^9}, {
+   3.7262435151800747`*^9, 3.726243516909439*^9}, {3.726244268905148*^9, 
+   3.7262442692305603`*^9}, {3.726254555555408*^9, 
+   3.72625458156017*^9}},ExpressionUUID->"a09b85ac-2771-43e5-a7ff-\
 54bfdbe5b9b4"],
 
 Cell[CellGroupData[{
@@ -362,15 +354,17 @@ Cell[BoxData[{
      RowBox[{"Pause", "[", "1", "]"}], ";", 
      RowBox[{"Return", "[", "x", "]"}]}], ")"}]}], 
   ";"}], "\[IndentingNewLine]", 
- RowBox[{"MapWithProgress", "[", 
+ RowBox[{"ProgressMap", "[", 
   RowBox[{"f", ",", 
    RowBox[{"Range", "[", "10", "]"}], ",", 
    RowBox[{"\"\<ShowInfo\>\"", "\[Rule]", "True"}]}], "]"}]}], "Input",
  CellChangeTimes->{
   3.726150975059457*^9, {3.7261535364461727`*^9, 3.726153552759912*^9}, {
    3.726187993559436*^9, 3.726188001542292*^9}, {3.726188153083023*^9, 
-   3.726188155591186*^9}, 
-   3.726188849850616*^9},ExpressionUUID->"9a29c467-1088-4b66-a6d5-\
+   3.726188155591186*^9}, 3.726188849850616*^9, 3.726240385418626*^9, {
+   3.726242866465246*^9, 3.726242891897746*^9}, {3.726242952500443*^9, 
+   3.726242983844783*^9}, 
+   3.726243544692507*^9},ExpressionUUID->"9a29c467-1088-4b66-a6d5-\
 2c1beee681db"],
 
 Cell[BoxData[
@@ -385,9 +379,12 @@ Cell[BoxData[
    3.726188862637611*^9, 3.726231641935341*^9, {3.7262316762023363`*^9, 
    3.7262316875441017`*^9}, 3.7262317284313917`*^9, {3.726232200661624*^9, 
    3.726232221546241*^9}, 3.726233824240796*^9, 3.726233871908823*^9, 
-   3.726233982172283*^9, 
-   3.726234015167823*^9},ExpressionUUID->"96bfd9f6-b550-4de2-871a-\
-b07ff7e6ef0a"]
+   3.726233982172283*^9, 3.726234015167823*^9, {3.726242792569332*^9, 
+   3.726242806863244*^9}, {3.726242858471311*^9, 3.726242892330303*^9}, {
+   3.726242950535822*^9, 3.7262429842253723`*^9}, {3.726243440075132*^9, 
+   3.726243469164612*^9}, 3.726243555298077*^9, 
+   3.7262545957447166`*^9},ExpressionUUID->"de3d03f0-719c-431e-b4f2-\
+4bc06eb26726"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -401,16 +398,19 @@ Cell[BoxData[{
      RowBox[{"Pause", "[", "1", "]"}], ";", 
      RowBox[{"Return", "[", "x", "]"}]}], ")"}]}], 
   ";"}], "\[IndentingNewLine]", 
- RowBox[{"ParallelMapWithProgress", "[", 
-  RowBox[{"f", ",", 
+ RowBox[{"ProgressParallelMap", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", "#", "]"}], "&"}], ",", 
    RowBox[{"Range", "[", "10", "]"}], ",", 
    RowBox[{"Method", "\[Rule]", "\"\<FinestGrained\>\""}], ",", 
    RowBox[{"\"\<ShowInfo\>\"", "\[Rule]", "True"}]}], "]"}]}], "Input",
  CellChangeTimes->{{3.726150396637908*^9, 3.7261504251955633`*^9}, {
    3.7261518223635902`*^9, 3.726151853397875*^9}, {3.7261519262409773`*^9, 
    3.726151942957512*^9}, {3.7261535446722527`*^9, 3.726153556654043*^9}, {
-   3.726188615657353*^9, 3.7261886481297827`*^9}, 
-   3.726188851262065*^9},ExpressionUUID->"4fc63525-8814-409a-8829-\
+   3.726188615657353*^9, 3.7261886481297827`*^9}, 3.726188851262065*^9, 
+   3.726240389929978*^9, {3.726243530037344*^9, 
+   3.726243531180757*^9}},ExpressionUUID->"4fc63525-8814-409a-8829-\
 6c0905942a03"],
 
 Cell[BoxData[
@@ -428,9 +428,10 @@ Cell[BoxData[
    3.726188683478057*^9}, 3.72618878562261*^9, 3.726188868702784*^9, 
    3.726189100301989*^9, {3.726189143562191*^9, 3.726189156868761*^9}, 
    3.726189193224334*^9, {3.726189287494075*^9, 3.726189309732973*^9}, 
-   3.7261893556928797`*^9, {3.726230501333893*^9, 
-   3.726230518835638*^9}},ExpressionUUID->"c690e790-e543-45b0-8fcd-\
-4573632bc398"]
+   3.7261893556928797`*^9, {3.726230501333893*^9, 3.726230518835638*^9}, {
+   3.726243528858705*^9, 3.7262435367986927`*^9}, 
+   3.726254602195595*^9},ExpressionUUID->"8dc8ad35-516d-4a71-99f6-\
+c6298e5abf11"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -564,8 +565,8 @@ Cell[BoxData[{
 }, Open  ]]
 },
 WindowSize->{1189, 767},
-WindowMargins->{{Automatic, 153}, {119, Automatic}},
-FrontEndVersion->"11.2 for Linux x86 (64-bit) (September 10, 2017)",
+WindowMargins->{{Automatic, 20}, {Automatic, 54}},
+FrontEndVersion->"11.1 for Linux x86 (64-bit) (April 18, 2017)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -580,44 +581,63 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 166, 3, 98, "Title",ExpressionUUID->"7e772245-44cb-4977-94fd-b59df56f29e6"],
+Cell[580, 22, 166, 3, 93, "Title", "ExpressionUUID" -> \
+"7e772245-44cb-4977-94fd-b59df56f29e6"],
 Cell[CellGroupData[{
-Cell[771, 29, 155, 3, 65, "Subchapter",ExpressionUUID->"d7adc496-ac24-45e4-830b-1dc8e81fe866"],
-Cell[929, 34, 1611, 45, 141, "Input",ExpressionUUID->"73add87f-212f-467e-b719-78629b87f749"]
+Cell[771, 29, 155, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"d7adc496-ac24-45e4-830b-1dc8e81fe866"],
+Cell[929, 34, 1441, 38, 142, "Input", "ExpressionUUID" -> \
+"73add87f-212f-467e-b719-78629b87f749"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2577, 84, 180, 3, 65, "Subchapter",ExpressionUUID->"8eee4f32-60bb-4ce6-a4f3-530064fbbede"],
-Cell[2760, 89, 11687, 255, 1766, "Input",ExpressionUUID->"a09b85ac-2771-43e5-a7ff-54bfdbe5b9b4"],
+Cell[2407, 77, 180, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"8eee4f32-60bb-4ce6-a4f3-530064fbbede"],
+Cell[2590, 82, 11753, 254, 1788, "Input", "ExpressionUUID" -> \
+"a09b85ac-2771-43e5-a7ff-54bfdbe5b9b4"],
 Cell[CellGroupData[{
-Cell[14472, 348, 156, 3, 55, "Subsection",ExpressionUUID->"0d9e294f-c17a-4263-b6a0-ce751b9d0c63"],
+Cell[14368, 340, 156, 3, 45, "Subsection", "ExpressionUUID" -> \
+"0d9e294f-c17a-4263-b6a0-ce751b9d0c63"],
 Cell[CellGroupData[{
-Cell[14653, 355, 683, 18, 55, "Input",ExpressionUUID->"9a29c467-1088-4b66-a6d5-2c1beee681db"],
-Cell[15339, 375, 723, 14, 35, "Output",ExpressionUUID->"96bfd9f6-b550-4de2-871a-b07ff7e6ef0a"]
+Cell[14549, 347, 823, 20, 59, "Input", "ExpressionUUID" -> \
+"9a29c467-1088-4b66-a6d5-2c1beee681db"],
+Cell[15375, 369, 967, 17, 35, "Output", "ExpressionUUID" -> \
+"de3d03f0-719c-431e-b4f2-4bc06eb26726"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16099, 394, 835, 19, 55, "Input",ExpressionUUID->"4fc63525-8814-409a-8829-6c0905942a03"],
-Cell[16937, 415, 971, 17, 35, "Output",ExpressionUUID->"c690e790-e543-45b0-8fcd-4573632bc398"]
+Cell[16379, 391, 952, 22, 59, "Input", "ExpressionUUID" -> \
+"4fc63525-8814-409a-8829-6c0905942a03"],
+Cell[17334, 415, 1045, 18, 35, "Output", "ExpressionUUID" -> \
+"8dc8ad35-516d-4a71-99f6-c6298e5abf11"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17969, 439, 214, 4, 65, "Subchapter",ExpressionUUID->"c3b43b58-2256-42df-870d-c028b8035689"],
-Cell[18186, 445, 780, 22, 55, "Input",ExpressionUUID->"a22c934b-b5af-42dd-8191-d1ea42f17457"],
+Cell[18440, 440, 214, 4, 64, "Subchapter", "ExpressionUUID" -> \
+"c3b43b58-2256-42df-870d-c028b8035689"],
+Cell[18657, 446, 780, 22, 59, "Input", "ExpressionUUID" -> \
+"a22c934b-b5af-42dd-8191-d1ea42f17457"],
 Cell[CellGroupData[{
-Cell[18991, 471, 156, 3, 55, "Subsection",ExpressionUUID->"81aaed42-1c1d-4b98-939a-36348b683747"],
+Cell[19462, 472, 156, 3, 45, "Subsection", "ExpressionUUID" -> \
+"81aaed42-1c1d-4b98-939a-36348b683747"],
 Cell[CellGroupData[{
-Cell[19172, 478, 308, 7, 31, "Input",ExpressionUUID->"13f7f4ca-a05e-4397-a015-871409eb4216"],
-Cell[19483, 487, 424, 10, 35, "Output",ExpressionUUID->"9c30ea08-472b-499f-b508-3b7f6da1a20a"]
+Cell[19643, 479, 308, 7, 35, "Input", "ExpressionUUID" -> \
+"13f7f4ca-a05e-4397-a015-871409eb4216"],
+Cell[19954, 488, 424, 10, 35, "Output", "ExpressionUUID" -> \
+"9c30ea08-472b-499f-b508-3b7f6da1a20a"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19944, 502, 348, 9, 31, "Input",ExpressionUUID->"2a8e1a4f-a49e-4968-9819-65f812dfb1e6"],
-Cell[20295, 513, 342, 10, 35, "Output",ExpressionUUID->"5e7a6730-db73-4c99-82dd-c48149ddfc57"]
+Cell[20415, 503, 348, 9, 35, "Input", "ExpressionUUID" -> \
+"2a8e1a4f-a49e-4968-9819-65f812dfb1e6"],
+Cell[20766, 514, 342, 10, 35, "Output", "ExpressionUUID" -> \
+"5e7a6730-db73-4c99-82dd-c48149ddfc57"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20698, 530, 219, 4, 65, "Subchapter",ExpressionUUID->"39c8603b-f5ee-424c-ba1b-94c91d70cb5c"],
-Cell[20920, 536, 848, 25, 57, "Input",ExpressionUUID->"48f3a8d4-0935-40e2-bf88-3186573b820d"]
+Cell[21169, 531, 219, 4, 64, "Subchapter", "ExpressionUUID" -> \
+"39c8603b-f5ee-424c-ba1b-94c91d70cb5c"],
+Cell[21391, 537, 848, 25, 61, "Input", "ExpressionUUID" -> \
+"48f3a8d4-0935-40e2-bf88-3186573b820d"]
 }, Open  ]]
 }, Open  ]]
 }
