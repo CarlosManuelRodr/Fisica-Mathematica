@@ -1,3 +1,6 @@
 [submodule "PEntropy"]
 	path = PEntropy
 	url = https://github.com/CarlosManuelRodr/PEntropy
+[submodule "Varios/AdvancedMapping"]
+	path = Varios/AdvancedMapping
+	url = https://github.com/CarlosManuelRodr/AdvancedMapping
