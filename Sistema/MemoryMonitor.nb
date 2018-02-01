@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13553,        342]
-NotebookOptionsPosition[     13023,        322]
-NotebookOutlinePosition[     13361,        337]
-CellTagsIndexPosition[     13318,        334]
+NotebookDataLength[     15321,        365]
+NotebookOptionsPosition[     14807,        348]
+NotebookOutlinePosition[     15149,        363]
+CellTagsIndexPosition[     15106,        360]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -62,7 +62,7 @@ Cell[BoxData[{
       RowBox[{"{", 
        RowBox[{"miu", ",", 
         RowBox[{"timeStep", "=", "1"}]}], "}"}], ",", "\[IndentingNewLine]", 
-      RowBox[{"Grid", "[", 
+      RowBox[{"Grid", "[", "\[IndentingNewLine]", 
        RowBox[{"{", "\[IndentingNewLine]", 
         RowBox[{
          RowBox[{"{", 
@@ -100,11 +100,12 @@ Cell[BoxData[{
                   RowBox[{"{", "miu", "}"}]}]}], "]"}]}], "}"}], "]"}], ",", 
             RowBox[{"Background", "\[Rule]", "Green"}], ",", 
             RowBox[{"Alignment", "\[Rule]", "Left"}]}], "]"}], "}"}], ",", 
-         RowBox[{"{", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", "\[IndentingNewLine]", 
           RowBox[{
            RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
             RowBox[{
-             RowBox[{"ListLinePlot", "[", 
+             RowBox[{"ListLinePlot", "[", "\[IndentingNewLine]", 
               RowBox[{
                RowBox[{"miu", "=", 
                 RowBox[{"Append", "[", 
@@ -121,7 +122,9 @@ Cell[BoxData[{
                     ",", 
                     RowBox[{"memFunction", "/", 
                     RowBox[{"1024.", "^", "2."}]}]}], "}"}]}], "]"}]}], ",", 
+               "\[IndentingNewLine]", 
                RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+               "\[IndentingNewLine]", 
                RowBox[{"FrameTicks", "\[Rule]", 
                 RowBox[{"{", 
                  RowBox[{
@@ -129,18 +132,23 @@ Cell[BoxData[{
                    RowBox[{"None", ",", "All"}], "}"}], ",", 
                   RowBox[{"{", 
                    RowBox[{"True", ",", "None"}], "}"}]}], "}"}]}], ",", 
+               "\[IndentingNewLine]", 
                RowBox[{"ImageSize", "\[Rule]", "300"}], ",", 
+               "\[IndentingNewLine]", 
                RowBox[{"FrameLabel", "\[Rule]", 
                 RowBox[{"{", 
                  RowBox[{"\"\<Time\>\"", ",", "\"\<Memory (MiB)\>\""}], 
-                 "}"}]}], ",", 
+                 "}"}]}], ",", "\[IndentingNewLine]", 
                RowBox[{"PlotTheme", "\[Rule]", "\"\<Monochrome\>\""}], ",", 
+               "\[IndentingNewLine]", 
                RowBox[{"PlotRange", "\[Rule]", 
                 RowBox[{"{", 
                  RowBox[{"All", ",", 
                   RowBox[{"{", 
-                   RowBox[{"0", ",", "All"}], "}"}]}], "}"}]}]}], "]"}], ",", 
-             "\[IndentingNewLine]", 
+                   RowBox[{"0", ",", "All"}], "}"}]}], "}"}]}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{"PlotMarkers", "\[Rule]", "None"}]}], 
+              "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
              RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
               RowBox[{"{", "}"}]}], ",", "\[IndentingNewLine]", 
              RowBox[{"UpdateInterval", "\[Rule]", 
@@ -158,8 +166,10 @@ Cell[BoxData[{
                     RowBox[{"memFunction", "/", 
                     RowBox[{"1024.", "^", "2."}]}], ",", "500"}], "]"}]}], 
                   "}"}], "]"}]}], ")"}]}]}], "\[IndentingNewLine]", "]"}], 
-           ",", "SpanFromLeft"}], "}"}]}], "}"}], "\[IndentingNewLine]", 
-       "]"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+           "SpanFromLeft"}], "\[IndentingNewLine]", "}"}]}], 
+        "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "]"}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
   "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{
@@ -168,72 +178,78 @@ Cell[BoxData[{
     RowBox[{"Global`", "."}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"SymbolMemoryUsage", "[", "]"}], ":=", 
-   RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"Grid", "[", "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"Join", "[", "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{"{", 
-          RowBox[{"{", 
-           RowBox[{
-            RowBox[{"Item", "[", 
-             RowBox[{
-              RowBox[{"Style", "[", 
-               RowBox[{"\"\<Symbol\>\"", ",", "Bold", ",", "White"}], "]"}], 
-              ",", 
-              RowBox[{"Background", "\[Rule]", "Blue"}], ",", 
-              RowBox[{"Alignment", "\[Rule]", "Center"}]}], "]"}], ",", 
-            RowBox[{"Item", "[", 
-             RowBox[{
-              RowBox[{"Style", "[", 
-               RowBox[{"\"\<Memory (MiB)\>\"", ",", "Bold", ",", "White"}], 
-               "]"}], ",", 
-              RowBox[{"Background", "\[Rule]", "Red"}], ",", 
-              RowBox[{"Alignment", "\[Rule]", "Center"}]}], "]"}]}], "}"}], 
-          "}"}], ",", "\[IndentingNewLine]", 
-         RowBox[{"If", "[", 
-          RowBox[{
-           RowBox[{
-            RowBox[{"Length", "[", 
-             RowBox[{"Names", "[", "\"\<Global`*\>\"", "]"}], "]"}], 
-            "\[Equal]", " ", "0"}], ",", "\[IndentingNewLine]", 
-           RowBox[{"{", 
-            RowBox[{"{", 
-             RowBox[{
-              RowBox[{"Item", "[", 
-               RowBox[{"\"\<No symbols defined\>\"", ",", 
-                RowBox[{"Alignment", "\[Rule]", "Center"}]}], "]"}], ",", 
-              "SpanFromLeft"}], "}"}], "}"}], ",", "\[IndentingNewLine]", 
-           RowBox[{"Thread", "[", 
-            RowBox[{"{", 
-             RowBox[{
-              RowBox[{"Names", "[", "\"\<Global`*\>\"", "]"}], ",", 
+   RowBox[{
+    RowBox[{"SymbolMemoryUsage", "[", "]"}], ":=", 
+    RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Grid", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Join", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Item", "[", 
               RowBox[{
+               RowBox[{"Style", "[", 
+                RowBox[{"\"\<Symbol\>\"", ",", "Bold", ",", "White"}], "]"}], 
+               ",", 
+               RowBox[{"Background", "\[Rule]", "Blue"}], ",", 
+               RowBox[{"Alignment", "\[Rule]", "Center"}]}], "]"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Item", "[", 
+              RowBox[{
+               RowBox[{"Style", "[", 
+                RowBox[{"\"\<Memory (MiB)\>\"", ",", "Bold", ",", "White"}], 
+                "]"}], ",", 
+               RowBox[{"Background", "\[Rule]", "Red"}], ",", 
+               RowBox[{"Alignment", "\[Rule]", "Center"}]}], "]"}]}], 
+            "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Length", "[", 
+              RowBox[{"Names", "[", "\"\<Global`*\>\"", "]"}], "]"}], 
+             "\[Equal]", " ", "0"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"{", "\[IndentingNewLine]", 
+             RowBox[{"{", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"Item", "[", 
+                RowBox[{"\"\<No symbols defined\>\"", ",", 
+                 RowBox[{"Alignment", "\[Rule]", "Center"}]}], "]"}], ",", 
+               "\[IndentingNewLine]", "SpanFromLeft"}], "\[IndentingNewLine]",
+               "}"}], "\[IndentingNewLine]", "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Thread", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Names", "[", "\"\<Global`*\>\"", "]"}], ",", 
                RowBox[{
                 RowBox[{
-                 RowBox[{"ByteCount", "[", "#", "]"}], "/", 
-                 RowBox[{"1024.", "^", "2."}]}], "&"}], "/@", 
-               RowBox[{"ToExpression", "/@", 
-                RowBox[{"Names", "[", "\"\<Global`*\>\"", "]"}]}]}]}], "}"}], 
-            "]"}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
-        "]"}], ",", "\[IndentingNewLine]", 
-       RowBox[{"Alignment", "\[Rule]", "Left"}], ",", "\[IndentingNewLine]", 
-       RowBox[{"Background", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{
-          RowBox[{"{", "LightGray", "}"}], ",", "None"}], "}"}]}], ",", 
-       RowBox[{"Frame", "\[Rule]", "All"}]}], "\[IndentingNewLine]", "]"}], 
-     ",", "\[IndentingNewLine]", 
-     RowBox[{"UpdateInterval", "\[Rule]", "0.5"}]}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"ByteCount", "[", "#", "]"}], "/", 
+                  RowBox[{"1024.", "^", "2."}]}], "&"}], "/@", 
+                RowBox[{"ToExpression", "/@", 
+                 RowBox[{"Names", "[", "\"\<Global`*\>\"", "]"}]}]}]}], "}"}],
+              "]"}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+         "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Alignment", "\[Rule]", "Left"}], ",", "\[IndentingNewLine]", 
+        
+        RowBox[{"Background", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "LightGray", "}"}], ",", "None"}], "}"}]}], ",", 
+        RowBox[{"Frame", "\[Rule]", "All"}]}], "\[IndentingNewLine]", "]"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"UpdateInterval", "\[Rule]", "0.5"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"SetHistoryLength", "[", "]"}], ":=", 
-   RowBox[{"Grid", "[", 
+   RowBox[{"Grid", "[", "\[IndentingNewLine]", 
     RowBox[{
-     RowBox[{"{", 
+     RowBox[{"{", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{
         RowBox[{"Dynamic", "[", 
@@ -247,82 +263,92 @@ Cell[BoxData[{
                "Automatic"}], "]"}]}]}], "]"}], "]"}], "&"}], "/@", 
        RowBox[{"{", 
         RowBox[{"0", ",", "1", ",", "2", ",", "3", ",", "Infinity"}], "}"}]}],
-       "}"}], ",", 
-     RowBox[{"Spacings", "\[Rule]", "1"}]}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Spacings", "\[Rule]", "1"}]}], "\[IndentingNewLine]", "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"End", "[", "]"}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"CreatePalette", "[", 
+  RowBox[{"CreatePalette", "[", "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"Row", "[", 
+    RowBox[{"Row", "[", "\[IndentingNewLine]", 
      RowBox[{
-      RowBox[{"{", 
+      RowBox[{"{", "\[IndentingNewLine]", 
        RowBox[{
-        RowBox[{"Column", "[", 
+        RowBox[{"Column", "[", "\[IndentingNewLine]", 
          RowBox[{
-          RowBox[{"{", 
+          RowBox[{"{", "\[IndentingNewLine]", 
            RowBox[{
             RowBox[{"Item", "[", 
              RowBox[{"\"\<Kernel\>\"", ",", 
               RowBox[{"Alignment", "\[Rule]", "Center"}], ",", 
               RowBox[{"Frame", "\[Rule]", "True"}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
             RowBox[{"MemoryUsagePalette`MemoryPlot", "[", 
              RowBox[{"MemoryInUse", "[", "]"}], "]"}], ",", 
+            "\[IndentingNewLine]", 
             RowBox[{"Item", "[", 
              RowBox[{"\"\<Frontend\>\"", ",", 
               RowBox[{"Alignment", "\[Rule]", "Center"}], ",", 
               RowBox[{"Frame", "\[Rule]", "True"}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
             RowBox[{"MemoryUsagePalette`MemoryPlot", "[", 
-             RowBox[{"MemoryInUse", "[", "$FrontEnd", "]"}], "]"}]}], "}"}], 
-          ",", 
-          RowBox[{"BaselinePosition", "\[Rule]", "Top"}]}], "]"}], ",", 
-        RowBox[{"Column", "[", 
+             RowBox[{"MemoryInUse", "[", "$FrontEnd", "]"}], "]"}]}], 
+           "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"BaselinePosition", "\[Rule]", "Top"}]}], 
+         "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Column", "[", "\[IndentingNewLine]", 
          RowBox[{
-          RowBox[{"{", 
+          RowBox[{"{", "\[IndentingNewLine]", 
            RowBox[{
             RowBox[{"Item", "[", 
              RowBox[{"\"\<Symbol memory usage\>\"", ",", 
               RowBox[{"Alignment", "\[Rule]", "Center"}], ",", 
               RowBox[{"Frame", "\[Rule]", "True"}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
             RowBox[{"Item", "[", 
              RowBox[{
               RowBox[{"MemoryUsagePalette`SymbolMemoryUsage", "[", "]"}], ",", 
               RowBox[{"Alignment", "\[Rule]", "Center"}]}], "]"}], ",", 
-            "\"\< \>\"", ",", 
+            "\[IndentingNewLine]", "\"\< \>\"", ",", "\[IndentingNewLine]", 
             RowBox[{"Item", "[", 
              RowBox[{"\"\<Set history length\>\"", ",", 
               RowBox[{"Alignment", "\[Rule]", "Center"}], ",", 
               RowBox[{"Frame", "\[Rule]", "True"}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
             "\"\<Number of history entries Mathematica can save\>\"", ",", 
+            "\[IndentingNewLine]", 
             RowBox[{"Item", "[", 
              RowBox[{
               RowBox[{"MemoryUsagePalette`SetHistoryLength", "[", "]"}], ",", 
               
-              RowBox[{"Alignment", "\[Rule]", "Center"}]}], "]"}]}], "}"}], 
-          ",", 
-          RowBox[{"BaselinePosition", "\[Rule]", "Top"}]}], "]"}]}], "}"}], 
-      ",", "\[IndentingNewLine]", 
+              RowBox[{"Alignment", "\[Rule]", "Center"}]}], "]"}]}], 
+           "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"BaselinePosition", "\[Rule]", "Top"}]}], 
+         "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+      "\[IndentingNewLine]", 
       RowBox[{"Alignment", "\[Rule]", "Baseline"}]}], "\[IndentingNewLine]", 
      "]"}], ",", "\[IndentingNewLine]", 
     RowBox[{"WindowTitle", "\[Rule]", "\"\<Mathematica Memory Usage\>\""}]}], 
-   "]"}], ";"}]}], "Input",
+   "\[IndentingNewLine]", "]"}], ";"}]}], "Input",
  CellChangeTimes->CompressedData["
-1:eJxTTMoPSmViYGAQBWIQ7fNKLWnKrNeO904EZYDoNunXOSBa7MH0XBDd0Huw
+1:eJxTTMoPSmViYGAQB2IQ7fNKLWnKrNeO904EZYDoNunXOSBa7MH0XBDd0Huw
 E0SXafBOBtGflGYsAdGv5lcsB9EHpgVsAuvfe207iP45v+gQiGbxMTgMoo/1
 Xv8KorftvfQHbH7xd6lpQNrn7gslEJ1yRj4WRG/fogamtx6Z/R1EX1dZAqZl
 J/L+B9Fa/ZNYpwNp238KYiD6yZ5EMG3ZKyEDorkl0sD0J+M4RRBt6syqCqLF
 +2Zrgmie8uuGINott9QKRPNtfuwAom8V/nIH6+Ny9QDRH3oKfED0qzzpABDd
-c2ZvGIjey2sbDqI9Nm2IBsuX3Y8B0YvLbPNAdK3vQzANALiut98=
+c2ZvGIjey2sbDqI9Nm2IBsuX3Y8B0YvLbPNAdK3vQzBdsTKDb9vh145Kx2T0
+QPS9DfutQHQM001nEA0A0ALJPw==
   
   "],ExpressionUUID->"b7dae2b7-ad09-45d2-b406-e015e0c17da8"]
 }, Open  ]]
 },
 WindowSize->{1440, 753},
-WindowMargins->{{254, Automatic}, {Automatic, 134}},
-FrontEndVersion->"11.1 for Linux x86 (64-bit) (April 18, 2017)",
+WindowMargins->{{Automatic, 226}, {129, Automatic}},
+FrontEndVersion->"11.2 for Linux x86 (64-bit) (September 10, 2017)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -337,12 +363,9 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 206, 4, 93, "Title", "ExpressionUUID" -> \
-"6d35e3b2-a1fd-4f48-b8e4-9ff9e2cb483e"],
-Cell[789, 28, 347, 9, 91, "Text", "ExpressionUUID" -> \
-"caf1b4e6-7fa7-47f7-ac4d-0e16443ca507"],
-Cell[1139, 39, 11868, 280, 1213, "Input", "ExpressionUUID" -> \
-"b7dae2b7-ad09-45d2-b406-e015e0c17da8"]
+Cell[580, 22, 206, 4, 98, "Title",ExpressionUUID->"6d35e3b2-a1fd-4f48-b8e4-9ff9e2cb483e"],
+Cell[789, 28, 347, 9, 104, "Text",ExpressionUUID->"caf1b4e6-7fa7-47f7-ac4d-0e16443ca507"],
+Cell[1139, 39, 13652, 306, 2257, "Input",ExpressionUUID->"b7dae2b7-ad09-45d2-b406-e015e0c17da8"]
 }, Open  ]]
 }
 ]
