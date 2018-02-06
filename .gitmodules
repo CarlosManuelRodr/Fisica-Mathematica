@@ -4,3 +4,6 @@
 [submodule "Varios/AdvancedMapping"]
 	path = Varios/AdvancedMapping
 	url = https://github.com/CarlosManuelRodr/AdvancedMapping
+[submodule "Sistema/MemoryMonitor"]
+	path = Sistema/MemoryMonitor
+	url = https://github.com/CarlosManuelRodr/MemoryMonitor
