@@ -1,0 +1,1193 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     43779,       1185]
+NotebookOptionsPosition[     37890,       1049]
+NotebookOutlinePosition[     38226,       1064]
+CellTagsIndexPosition[     38183,       1061]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Algoritmo ID3", "Title",
+ CellChangeTimes->{{3.727022850099358*^9, 
+  3.727022852260338*^9}},ExpressionUUID->"1977b67a-3fd3-4dd8-b834-\
+e3966de22a9b"],
+
+Cell["\<\
+Fuente: CSE5230 Tutorial: The ID3 Decision Tree Algoritm, MONASH UNIVERSITY\
+\>", "Text",
+ CellChangeTimes->{{3.727048200648086*^9, 
+  3.727048226882552*^9}},ExpressionUUID->"b477a27b-55c9-44c2-a931-\
+d9603f0f35c8"],
+
+Cell[CellGroupData[{
+
+Cell["Descripci\[OAcute]n", "Subchapter",
+ CellChangeTimes->{{3.727023418269342*^9, 
+  3.7270234206261873`*^9}},ExpressionUUID->"510cfc1a-45d3-40f6-9392-\
+cf62a442af0f"],
+
+Cell["\<\
+ID3 es un algoritmo de aprendizaje de \[AAcute]rbol de decisi\[OAcute]n. El \
+aprendizaje por \[AAcute]rbol de decisi\[OAcute]n es un m\[EAcute]todo para \
+aproximar una funci\[OAcute]n de elementos discretos. Existen tambi\[EAcute]n \
+otros algoritmos de aprendizaje basados en \[AAcute]rbol de decisi\[OAcute]n \
+como: C4.5, C5.0, CART, CHAID, de los cuales los dos primeros fueron \
+concebidos como una mejora al ID3.
+
+ID3 sigue el principio de la navaja de Ockham, buscando encontrar la mejor \
+explicaci\[OAcute]n para un conjunto de datos maximizando la ganancia de \
+informaci\[OAcute]n. Para ello se usa una medida que en teor\[IAcute]a de la \
+informaci\[OAcute]n se denomina entrop\[IAcute]a. En este contexto la entrop\
+\[IAcute]a es una medida acerca de la incertidumbre de la fuente del mensaje. \
+Cuanto mayor sea la incertidumbre de un receptor de mensajes acerca de la \
+fuente, mayor ser\[AAcute] la informaci\[OAcute]n que necesitar\[AAcute] el \
+receptor para saber que el mensaje ha sido enviado.\
+\>", "Text",
+ CellChangeTimes->{{3.727023423642652*^9, 3.7270234448364*^9}, {
+  3.727023630568178*^9, 
+  3.727023682613521*^9}},ExpressionUUID->"738274ff-b4a4-430c-9fe4-\
+dd8372dc4458"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Implementaci\[OAcute]n", "Subchapter",
+ CellChangeTimes->{{3.727023412584902*^9, 
+  3.727023414662932*^9}},ExpressionUUID->"4b476173-c39e-4154-ac96-\
+9181491d9c7d"],
+
+Cell[TextData[{
+ "Primero se carga una base de datos. Para este algoritmo se usar\[AAcute]n \
+bases de datos sin entradas faltantes. Se define como T a la base de datos y \
+C el atributo que se desea predecir. En este ejemplo se desea predecir el \
+atributo ",
+ StyleBox["Resultado.",
+  FontSlant->"Italic"]
+}], "Text",
+ CellChangeTimes->{{3.7270228831320972`*^9, 3.7270228873903513`*^9}, {
+  3.727023700926591*^9, 3.727023728808622*^9}, {3.727023847797029*^9, 
+  3.727023919442151*^9}},ExpressionUUID->"0ca1b62c-e801-42a9-8e13-\
+c5179ea4c497"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"LoadDatabase", "[", "file_", "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "rawData", ",", "rawDataKeys", ",", "rawDataAttributes", ",", 
+       "dataset"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"rawData", " ", "=", " ", 
+       RowBox[{"Import", "[", 
+        RowBox[{"FileNameJoin", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"NotebookDirectory", "[", "]"}], ",", "file"}], "}"}], 
+         "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"rawDataKeys", " ", "=", " ", 
+       RowBox[{"First", "[", "rawData", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"rawDataAttributes", " ", "=", " ", 
+       RowBox[{"Rest", "[", "rawData", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"dataset", " ", "=", " ", 
+       RowBox[{"Dataset", "[", 
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Association", "[", 
+            RowBox[{"MapThread", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#1", "\[Rule]", "#2"}], "&"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"rawDataKeys", ",", "#"}], "}"}]}], "]"}], "]"}], 
+           "&"}], ",", "rawDataAttributes"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Keys", "[", 
+          RowBox[{"First", "[", "dataset", "]"}], "]"}], ",", "dataset"}], 
+        "}"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",\
+
+ InitializationCell->True,
+ CellChangeTimes->{{3.727022896088231*^9, 
+  3.727022920406221*^9}},ExpressionUUID->"428f137d-5d75-4aa8-8931-\
+05c1fee1e3c5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"keys", ",", "dataset"}], "}"}], " ", "=", " ", 
+   RowBox[{"LoadDatabase", "[", "\"\<MrJohn.csv\>\"", "]"}]}], ";"}]], "Input",\
+ExpressionUUID->"1bd51738-c416-45c6-816e-c7ee70211245"],
+
+Cell[BoxData["dataset"], "Input",
+ CellChangeTimes->{{3.7270229248870163`*^9, 
+  3.7270229255252447`*^9}},ExpressionUUID->"385fbb4e-a44a-4f87-9b90-\
+cc6343c1f0c4"],
+
+Cell[TextData[{
+ "El n\[UAcute]mero promedio de bits requeridos para identificar un mensaje \
+es una medida de la incertidumbre de la fuente y a este se le conoce como \
+entrop\[IAcute]a de la fuente.\nConsidere una fuente S que puede producir n \
+mensajes ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SubscriptBox["m", "1"]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "f1f845ab-765d-4942-b5f8-3e0778d4c257"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["m", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "ee2c78d7-67f5-476b-ad2e-21aaa8a873b2"],
+ ", ..., ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["m", "n"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "e7e9992a-c11f-488b-b455-99a00b5460be"],
+ "). Para la fuente S con una distribuci\[OAcute]n de probabilidad de \
+mensajes P = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SubscriptBox["p", "1"], ",", " ", 
+     SubscriptBox["p", "2"], ",", " ", "...", ",", " ", 
+     SubscriptBox["p", "n"]}], ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "cee84276-1ba6-48cf-a7da-202f27f725df"],
+ ", la entrop\[IAcute]a H(P) es\n\nH(P) = ",
+ Cell[BoxData[
+  RowBox[{"-", 
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", 
+     RowBox[{"i", "=", "1"}], "n"], 
+    RowBox[{
+     SubscriptBox["p", "i"], " ", "log", " ", 
+     RowBox[{"(", 
+      SubscriptBox["p", "i"], ")"}]}]}]}]],ExpressionUUID->
+  "b8eadf19-83bb-4bee-a5c7-47c34d6337ed"]
+}], "Text",
+ CellChangeTimes->{{3.7270239426601562`*^9, 
+  3.727024235106163*^9}},ExpressionUUID->"d24debcf-aa5c-450e-b2e7-\
+3a070b93cb17"],
+
+Cell[TextData[{
+ "Un ejemplo de esto se muestra en la figura, en la cual se muestra la entrop\
+\[IAcute]a asociada a un mensaje con probabilidad ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["p", "1"], " ", "=", " ", "p"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "34cfebde-662f-40a5-ae5a-5a2bb3ff1ab4"],
+ ", y ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["p", "2"], " ", "=", " ", 
+    RowBox[{"1", "-", "p"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "a6cddea5-4ea8-4eb5-bca6-239087947291"],
+ ". La entrop\[IAcute]a tiene un m\[AAcute]ximo cuando la aleatoriedad del \
+ensaje es m\[AAcute]xima, es decir cuando ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["p", "1"], " ", "=", " ", 
+    SubscriptBox["p", "2"]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "4e1b053f-1c45-4aa7-90d4-372de0d263e9"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.727024391250423*^9, 
+  3.727024475551908*^9}},ExpressionUUID->"f82d1e74-3545-49ec-ae7d-\
+70eb0c65d82b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"BinaryDistEntropy", "[", "p_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "p"}], " ", 
+     RowBox[{"Log", "[", "p", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "p"}], ")"}], 
+     RowBox[{"Log", "[", 
+      RowBox[{"1", "-", "p"}], "]"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"BinaryDistEntropy", "[", "p", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"p", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<p\>\"", ",", "\"\<Entrop\[IAcute]a\>\""}], "}"}]}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.727024238582253*^9, 
+  3.7270243729534388`*^9}},ExpressionUUID->"5490fd35-8e07-4356-bc30-\
+1b65796d8b13"],
+
+Cell[TextData[{
+ "Ahora, consideremos un conunto de datos T particionado en k clases ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["C", "1"], ",", " ", 
+     SubscriptBox["C", "2"], ",", " ", "...", ",", " ", 
+     SubscriptBox["C", "k"]}], "}"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "8f354d57-4b21-4ce6-b891-7bf465bef280"],
+ " de manera que\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"P", "(", 
+     SubscriptBox["C", "i"], ")"}], " ", "=", " ", 
+    FractionBox[
+     RowBox[{"|", 
+      SubscriptBox["C", "i"], "|"}], 
+     RowBox[{"|", "T", "|"}]]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "980635db-081f-45b7-a1a7-594e953b23ee"],
+ "\n\ny\n\nH(T) = ",
+ Cell[BoxData[
+  RowBox[{"-", 
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", 
+     RowBox[{"i", "=", "1"}], "n"], 
+    RowBox[{"P", 
+     RowBox[{"(", 
+      SubscriptBox["C", "i"], ")"}], " ", "log", " ", "P", 
+     RowBox[{"(", 
+      SubscriptBox["C", "i"], ")"}]}]}]}]],ExpressionUUID->
+  "86b5cb5e-5b28-4ae4-813a-10fe409b7b81"],
+ "\n\nSi se realiza una partici\[OAcute]n de T en base a un atributo de \
+entrada X en subconjuntos ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["T", "1"], ",", " ", 
+    SubscriptBox["T", "2"], ",", " ", "...", ",", " ", 
+    SubscriptBox["T", "n"]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "a70a7db6-b543-4707-b3d5-b640790c9ab6"],
+ ", la informaci\[OAcute]n necesaria para identificar la clase de un elemento \
+de T es el promedio ponderado de la informaci\[OAcute]n necesaria para \
+identificar la clase de un elemento de cada subconjunto.\n\nH(X,T) =",
+ Cell[BoxData[
+  RowBox[{" ", 
+   RowBox[{"-", 
+    RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"i", "=", "1"}], "n"], 
+     RowBox[{
+      FractionBox[
+       RowBox[{"|", 
+        SubscriptBox["T", "i"], "|"}], 
+       RowBox[{"|", "T", "|"}]], " ", "H", 
+      RowBox[{"(", 
+       SubscriptBox["T", "i"], ")"}]}]}]}]}]],ExpressionUUID->
+  "24e7ae5d-6c64-4eac-b959-d289f69fd6ed"]
+}], "Text",
+ CellChangeTimes->{{3.727022954480609*^9, 3.727023004396944*^9}, 
+   3.727024535160178*^9, {3.727024566524809*^9, 3.727024609988909*^9}, {
+   3.727024661452857*^9, 3.727024705948534*^9}, {3.727024777607377*^9, 
+   3.7270249416146517`*^9}, {3.727024977971789*^9, 
+   3.727025058618855*^9}},ExpressionUUID->"be3b3aa6-8cfe-4857-9499-\
+6bf9e111fd35"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"CalcEntropy", "[", "T_", "]"}], ":=", 
+   RowBox[{"Entropy", "[", 
+    RowBox[{"Normal", "[", "T", "]"}], "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.727025110346734*^9, 
+  3.727025111243824*^9}},ExpressionUUID->"511b4262-b04d-4d0c-a62c-\
+951cef226c09"],
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"CalcEntropy", "[", 
+   RowBox[{"dataset", "[", 
+    RowBox[{"All", ",", "\"\<Resultado\>\""}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.727023051949646*^9, 
+  3.727023070065649*^9}},ExpressionUUID->"dda6eb79-6fe4-4ca3-8afc-\
+6c61c779f5d2"],
+
+Cell[TextData[{
+ "Si se realiza una partici\[OAcute]n de T en base a un atributo de entrada X \
+en subconjuntos ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["T", "1"], ",", " ", 
+    SubscriptBox["T", "2"], ",", " ", "...", ",", " ", 
+    SubscriptBox["T", "n"]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "ba3b0261-bb70-431d-9e43-400d4a7d46b9"],
+ ", la informaci\[OAcute]n necesaria para identificar la clase de un elemento \
+de T es el promedio ponderado de la informaci\[OAcute]n necesaria para \
+identificar la clase de un elemento de cada subconjunto.\n\nH(X,T) =",
+ Cell[BoxData[
+  RowBox[{" ", 
+   RowBox[{"-", 
+    RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"i", "=", "1"}], "n"], 
+     RowBox[{
+      FractionBox[
+       RowBox[{"|", 
+        SubscriptBox["T", "i"], "|"}], 
+       RowBox[{"|", "T", "|"}]], " ", "H", 
+      RowBox[{"(", 
+       SubscriptBox["T", "i"], ")"}]}]}]}]}]],ExpressionUUID->
+  "63e33e58-cc32-4549-b168-038bc4ec6142"]
+}], "Text",
+ CellChangeTimes->{
+  3.7270250950138903`*^9},ExpressionUUID->"5bb10ae4-50ac-40e8-8cdb-\
+4e4b1d86431f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"PartialEntropy", "[", 
+    RowBox[{"X_", ",", "T_", ",", "Cl_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", "grouped", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"grouped", " ", "=", " ", 
+       RowBox[{"T", "[", 
+        RowBox[{"GroupBy", "[", "X", "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Total", "[", 
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"N", "[", 
+           RowBox[{
+            FractionBox[
+             RowBox[{"Count", "[", 
+              RowBox[{
+               RowBox[{"T", "[", 
+                RowBox[{"All", ",", "X"}], "]"}], ",", "#"}], "]"}], 
+             RowBox[{"Length", "[", 
+              RowBox[{"T", "[", 
+               RowBox[{"All", ",", "X"}], "]"}], "]"}]], "*", 
+            RowBox[{"CalcEntropy", "[", 
+             RowBox[{"grouped", "[", 
+              RowBox[{"#", ",", "All", ",", "Cl"}], "]"}], "]"}]}], "]"}], 
+          "&"}], ",", 
+         RowBox[{"Keys", "[", "grouped", "]"}]}], "]"}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"8da03733-765c-4318-96b3-76c538dbc021"],
+
+Cell[BoxData[
+ RowBox[{"PartialEntropy", "[", 
+  RowBox[{"\"\<Tipo de ligue\>\"", ",", "dataset", ",", "\"\<Resultado\>\""}],
+   "]"}]], "Input",
+ CellChangeTimes->{
+  3.727025124847867*^9},ExpressionUUID->"d554b01e-8d37-457c-916e-\
+bcc9a8dced87"],
+
+Cell[TextData[{
+ "Para construir nuestro \[AAcute]rbol de decisi\[OAcute]n nos interesa saber \
+cu\[AAcute]nta informaci\[OAcute]n acerca del atributo de salida (",
+ StyleBox["Resultado",
+  FontSlant->"Italic"],
+ ") se puede obtener conociendo un atributo de entrada X. Se define esta \
+ganancia de informaci\[OAcute]n como\n\nG(X,T) = H(T) - H(X,T)"
+}], "Text",
+ CellChangeTimes->{{3.727023097402615*^9, 3.7270231023690453`*^9}, {
+  3.727025144087237*^9, 
+  3.7270251885503187`*^9}},ExpressionUUID->"45e3f0ae-a8eb-4ded-942b-\
+21c4b6397ba6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"InformationGain", "[", 
+    RowBox[{"X_", ",", "T_", ",", "Cl_"}], "]"}], ":=", 
+   RowBox[{"Ramp", "[", 
+    RowBox[{
+     RowBox[{"CalcEntropy", "[", 
+      RowBox[{"T", "[", 
+       RowBox[{"All", ",", "Cl"}], "]"}], "]"}], "-", 
+     RowBox[{"PartialEntropy", "[", 
+      RowBox[{"X", ",", "T", ",", "Cl"}], "]"}]}], "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.727041499087017*^9, 
+  3.727041503934596*^9}},ExpressionUUID->"3b22c070-665a-4fcb-be07-\
+238d19cab9e2"],
+
+Cell[BoxData[
+ RowBox[{"InformationGain", "[", 
+  RowBox[{"\"\<Tipo de ligue\>\"", ",", "dataset", ",", "\"\<Resultado\>\""}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.727023077651746*^9, 
+  3.727023087026845*^9}},ExpressionUUID->"782c3ab7-4216-4b54-a3f6-\
+958651caf54f"],
+
+Cell["\<\
+El algoritmo ID3 calcula la ganancia de informaci\[OAcute]n para cada \
+atributo X, y a partir del atributo que maximiza la ganancia de informaci\
+\[OAcute]n crea un subconjunto de T agrupando cada posible valor de X.\
+\>", "Text",
+ CellChangeTimes->{{3.727023126815737*^9, 3.7270231323052063`*^9}, {
+  3.727023210928316*^9, 3.727023213906768*^9}, {3.727025199168562*^9, 
+  3.7270253085614433`*^9}},ExpressionUUID->"a417e90d-b5b7-4c82-9080-\
+2d6d9f51d6f2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"AttributesInformationGain", "[", 
+    RowBox[{"XS_", ",", "T_", ",", "Cl_"}], "]"}], ":=", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"#", ",", 
+        RowBox[{"InformationGain", "[", 
+         RowBox[{"#", ",", "T", ",", "Cl"}], "]"}]}], "}"}], "&"}], ",", 
+     RowBox[{"Normal", "[", "XS", "]"}]}], "]"}]}], ";"}]], "Input",
+ InitializationCell->
+  True,ExpressionUUID->"a0f85abd-8b5b-4416-bf76-034b5aa4871f"],
+
+Cell[BoxData[
+ RowBox[{"Dataset", "[", 
+  RowBox[{"AttributesInformationGain", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Tipo de ligue\>\"", ",", "\"\<Es guapa\>\"", ",", 
+      "\"\<Tiene novio\>\"", ",", "\"\<En congreso\>\""}], "}"}], ",", 
+    "dataset", ",", "\"\<Resultado\>\""}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.727023156081854*^9, 
+  3.727023202349799*^9}},ExpressionUUID->"e0972c52-3796-440e-b754-\
+c415b2dc7afe"],
+
+Cell["\<\
+Y se vuelve a realizar el mismo procedimiento anterior haciendo particiones \
+de T seg\[UAcute]n los posibles valores de X.\
+\>", "Text",
+ CellChangeTimes->{{3.72702536657489*^9, 
+  3.727025399265007*^9}},ExpressionUUID->"dc86b33b-12b2-4ba7-94bf-\
+973df4bd2aba"],
+
+Cell[BoxData[
+ RowBox[{"dataset", "[", 
+  RowBox[{"GroupBy", "[", "\"\<Tipo de ligue\>\"", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.727025347698379*^9, 
+  3.7270253551642017`*^9}},ExpressionUUID->"39d1168b-deb4-4f19-8d50-\
+819e637f11ba"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"dataset", "[", 
+     RowBox[{"GroupBy", "[", "\"\<Tipo de ligue\>\"", "]"}], "]"}], "[", 
+    "\"\<Real\>\"", "]"}], ",", 
+   RowBox[{
+    RowBox[{"dataset", "[", 
+     RowBox[{"GroupBy", "[", "\"\<Tipo de ligue\>\"", "]"}], "]"}], "[", 
+    "\"\<Internet\>\"", "]"}]}], "}"}]], "Input",
+ CellChangeTimes->{{3.727025411545742*^9, 
+  3.72702542416894*^9}},ExpressionUUID->"13ffdad6-53ac-4a3f-ab15-\
+fac9d99d337c"],
+
+Cell["\<\
+Algoritmo principal del ID3 se puede definir de forma recursiva, \
+a\[NTilde]adiendo Nodos por cada partici\[OAcute]n de T hasta que no se puede \
+realizar particiones y la recursi\[OAcute]n termina.\
+\>", "Text",
+ CellChangeTimes->{{3.727023220953916*^9, 3.727023224389694*^9}, {
+  3.727025448540421*^9, 
+  3.727025484480426*^9}},ExpressionUUID->"60e08407-7b54-4000-b59b-\
+e2986923e323"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ID3", "[", 
+    RowBox[{"X_", ",", "T_", ",", "Cl_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"gains", ",", "subX", ",", "branches"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"CountDistinct", "[", 
+          RowBox[{"T", "[", 
+           RowBox[{"All", ",", "Cl"}], "]"}], "]"}], "\[Equal]", " ", "1"}], 
+        ",", " ", 
+        RowBox[{"Return", "[", 
+         RowBox[{"StringJoin", "[", 
+          RowBox[{"Cl", ",", "\"\<: \>\"", ",", 
+           RowBox[{"First", "[", 
+            RowBox[{"DeleteDuplicates", "[", 
+             RowBox[{"T", "[", 
+              RowBox[{"All", ",", "Cl"}], "]"}], "]"}], "]"}]}], "]"}], 
+         "]"}]}], "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"gains", " ", "=", " ", 
+       RowBox[{"Dataset", "[", 
+        RowBox[{"AttributesInformationGain", "[", 
+         RowBox[{"X", ",", "T", ",", "Cl"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"subX", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"TakeLargestBy", "[", 
+         RowBox[{"gains", ",", "Last", ",", "1"}], "]"}], "[", 
+        RowBox[{"1", ",", "1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"branches", " ", "=", " ", 
+       RowBox[{"T", "[", 
+        RowBox[{"GroupBy", "[", "subX", "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Map", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"subX", ",", "#", ",", 
+           RowBox[{"ID3", "[", 
+            RowBox[{"X", ",", 
+             RowBox[{"branches", "[", "#", "]"}], ",", "Cl"}], "]"}]}], "}"}],
+          "&"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Normal", "[", 
+         RowBox[{"Keys", "[", "branches", "]"}], "]"}]}], 
+       "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MakeGraph", "[", "nestedList_", "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"rule", ",", "vertex"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"rule", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"x_", ",", "label_String", ",", "rest__"}], "}"}], 
+        "\[RuleDelayed]", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Length", "[", "rest", "]"}], "\[Equal]", " ", "0"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Labeled", "[", 
+           RowBox[{
+            RowBox[{"DirectedEdge", "[", 
+             RowBox[{"x", ",", "rest"}], "]"}], ",", "label"}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Map", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Labeled", "[", 
+                RowBox[{
+                 RowBox[{"DirectedEdge", "[", 
+                  RowBox[{"x", ",", 
+                   RowBox[{"First", "[", "#", "]"}]}], "]"}], ",", "label"}], 
+                "]"}], ",", "#"}], "}"}], "&"}], ",", "rest"}], "]"}]}], 
+         "\[IndentingNewLine]", "]"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"vertex", " ", "=", " ", 
+       RowBox[{"ReplaceRepeated", "[", 
+        RowBox[{"nestedList", ",", "rule"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", 
+       RowBox[{"DeleteDuplicates", "[", 
+        RowBox[{"Flatten", "[", "vertex", "]"}], "]"}], "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.72700434808766*^9, 3.7270043820240927`*^9}, {
+   3.727007047168655*^9, 3.727007169525301*^9}, {3.727008511118833*^9, 
+   3.7270085133432493`*^9}, 3.727008810312302*^9, {3.727009027928928*^9, 
+   3.727009043425086*^9}, {3.727009506413019*^9, 3.72700952366925*^9}, 
+   3.7270096352182493`*^9, {3.727009746897735*^9, 3.727009747336241*^9}, {
+   3.727010064342084*^9, 3.727010085557344*^9}, {3.727010155373505*^9, 
+   3.727010174579555*^9}, {3.727010380216978*^9, 3.727010386244636*^9}, {
+   3.727019191787486*^9, 3.7270193425895433`*^9}, {3.727022930190011*^9, 
+   3.727022930514866*^9}, {3.727023009601753*^9, 3.727023009866542*^9}, {
+   3.727023123843103*^9, 3.727023151633086*^9}, {3.727023241763291*^9, 
+   3.7270232421593246`*^9}, 3.727025617119144*^9, {3.72704251014721*^9, 
+   3.7270425319698057`*^9}, {3.727043529003134*^9, 
+   3.727043529860375*^9}},ExpressionUUID->"18f3a1ac-bae9-4da2-ac42-\
+f68d5d86cd3d"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"id3Nested", " ", "=", " ", 
+   RowBox[{"ID3", "[", 
+    RowBox[{
+     RowBox[{"Drop", "[", 
+      RowBox[{"keys", ",", 
+       RowBox[{"-", "1"}]}], "]"}], ",", "dataset", ",", 
+     RowBox[{"Last", "[", "keys", "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"graphVertex", " ", "=", " ", 
+   RowBox[{"MakeGraph", "[", "id3Nested", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.727019355358911*^9, 
+  3.727019374745798*^9}},ExpressionUUID->"516831b0-adb9-4c90-9b0d-\
+83091d217593"],
+
+Cell[BoxData[
+ RowBox[{"Graph", "[", 
+  RowBox[{"graphVertex", ",", 
+   RowBox[{"VertexLabels", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Diagrama de ligue de Mr. John\>\""}], 
+   ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.7270193829047737`*^9, {3.727022176945561*^9, 
+   3.7270222073372383`*^9}},ExpressionUUID->"e899bd34-022a-4e22-a8c5-\
+825af7183101"],
+
+Cell["\<\
+Para realizar la validaci\[OAcute]n se construye un \[AAcute]rbol de switches \
+basados en el resultado del algoritmo ID3\
+\>", "Text",
+ CellChangeTimes->{{3.727046562081429*^9, 
+  3.727046584821224*^9}},ExpressionUUID->"4fbd00a8-0ddd-46d7-9ea2-\
+9276ae972673"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"BranchSwitch", "[", 
+    RowBox[{"data_", ",", "tree_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"switch", ",", "vertex", ",", "branches", ",", "subVertex"}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "tree", "]"}], ">", "0"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"vertex", " ", "=", " ", 
+          RowBox[{"First", "[", 
+           RowBox[{"tree", "[", 
+            RowBox[{"[", 
+             RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"branches", " ", "=", " ", 
+          RowBox[{"tree", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"subVertex", " ", "=", " ", 
+          RowBox[{"Map", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"BranchSwitch", "[", 
+              RowBox[{"data", ",", "#"}], "]"}], "&"}], ",", 
+            RowBox[{"tree", "[", 
+             RowBox[{"[", 
+              RowBox[{"All", ",", "3"}], "]"}], "]"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"switch", " ", "=", " ", 
+          RowBox[{"Apply", "[", 
+           RowBox[{"Switch", ",", 
+            RowBox[{"Join", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"data", "[", "vertex", "]"}], "}"}], ",", 
+              RowBox[{"Flatten", "[", 
+               RowBox[{
+                RowBox[{"Transpose", "[", 
+                 RowBox[{"{", 
+                  RowBox[{"branches", ",", "subVertex"}], "}"}], "]"}], ",", 
+                "1"}], "]"}]}], "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+         
+         RowBox[{"Return", "[", "switch", "]"}], ";"}], "\[IndentingNewLine]",
+         ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Return", "[", "tree", "]"}], ";"}]}], "\[IndentingNewLine]",
+        "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ID3Prediction", "[", 
+    RowBox[{"data_", ",", "tree_", ",", "predict_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"prediction", ",", "deleteStr"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"prediction", " ", "=", " ", 
+       RowBox[{"BranchSwitch", "[", 
+        RowBox[{"data", ",", "tree"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"deleteStr", " ", "=", " ", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"predict", ",", "\"\<: \>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", 
+       RowBox[{"StringDelete", "[", 
+        RowBox[{"prediction", ",", "deleteStr"}], "]"}], "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SucessRateID3", "[", 
+    RowBox[{"dataset_", ",", "tree_", ",", "predict_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"dataPredict", ",", "modelPredict", ",", "matches"}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"dataPredict", " ", "=", " ", 
+       RowBox[{"Normal", "[", 
+        RowBox[{"dataset", "[", 
+         RowBox[{"All", ",", "predict"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"modelPredict", " ", "=", " ", 
+       RowBox[{"Normal", "[", 
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"ID3Prediction", "[", 
+            RowBox[{"#", ",", "tree", ",", "predict"}], "]"}], "&"}], ",", 
+          "dataset"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"matches", " ", "=", " ", 
+       RowBox[{"Count", "[", 
+        RowBox[{
+         RowBox[{"MapThread", "[", 
+          RowBox[{"SameQ", ",", 
+           RowBox[{"{", 
+            RowBox[{"dataPredict", ",", "modelPredict"}], "}"}]}], "]"}], ",",
+          "True"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", 
+       RowBox[{"100", "*", 
+        FractionBox["matches", 
+         RowBox[{"Length", "[", "dataPredict", "]"}]]}], "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.727046608681551*^9, 3.727046625446826*^9}, {
+  3.727046661775052*^9, 3.727046695146244*^9}, {3.7270471958932543`*^9, 
+  3.727047334475184*^9}, {3.727047374660283*^9, 3.727047471167145*^9}, {
+  3.7270475527154284`*^9, 3.727047609334014*^9}, {3.727047715425599*^9, 
+  3.727047736871111*^9}},ExpressionUUID->"94a49f09-2da4-4b1f-b16f-\
+b5f75ad90f0d"],
+
+Cell[BoxData[
+ RowBox[{"Map", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Append", "[", 
+     RowBox[{"#", ",", 
+      RowBox[{"\"\<Prediccion\>\"", "\[Rule]", 
+       RowBox[{"ID3Prediction", "[", 
+        RowBox[{"#", ",", "id3Nested", ",", "\"\<Resultado\>\""}], "]"}]}]}], 
+     "]"}], "&"}], ",", "dataset"}], "]"}]], "Input",
+ CellChangeTimes->{{3.727046750627088*^9, 3.72704675471832*^9}, {
+  3.7270470546063347`*^9, 3.727047084445972*^9}, {3.727047340694063*^9, 
+  3.727047352479601*^9}},ExpressionUUID->"9050c21a-6195-47f6-8af9-\
+5c2fc78d320d"],
+
+Cell[BoxData[
+ RowBox[{"SucessRateID3", "[", 
+  RowBox[{"dataset", ",", "id3Nested", ",", "\"\<Resultado\>\""}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.727047615009693*^9, 
+  3.727047623038713*^9}},ExpressionUUID->"ca4d8aae-59c5-403d-9514-\
+21f80bf8829d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Informaci\[OAcute]n detallada", "Chapter",
+ CellChangeTimes->{{3.7270043406304293`*^9, 3.7270043419901743`*^9}, {
+  3.727022134859088*^9, 3.727022135900885*^9}, {3.7270232795094643`*^9, 
+  3.727023282087802*^9}},ExpressionUUID->"390e47ee-ed51-42b6-a16b-\
+1bb2a4f5f8d8"],
+
+Cell["\<\
+Algoritmo ID3 con panel de entrop\[IAcute]as y base de datos T en cada paso.\
+\>", "Text",
+ CellChangeTimes->{{3.727048246846054*^9, 
+  3.727048261993828*^9}},ExpressionUUID->"345de8ce-4eb4-46ce-89aa-\
+7d4792c03761"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ID3Labeled", "[", 
+    RowBox[{"X_", ",", "T_", ",", "Cl_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"gains", ",", "subX", ",", "branches"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"CountDistinct", "[", 
+          RowBox[{"T", "[", 
+           RowBox[{"All", ",", "Cl"}], "]"}], "]"}], "\[Equal]", " ", "1"}], 
+        ",", " ", 
+        RowBox[{"Return", "[", 
+         RowBox[{"First", "[", 
+          RowBox[{"DeleteDuplicates", "[", 
+           RowBox[{"T", "[", 
+            RowBox[{"All", ",", "Cl"}], "]"}], "]"}], "]"}], "]"}]}], "]"}], 
+      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"gains", " ", "=", " ", 
+       RowBox[{"Dataset", "[", 
+        RowBox[{"AttributesInformationGain", "[", 
+         RowBox[{"X", ",", "T", ",", "Cl"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"subX", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"TakeLargestBy", "[", 
+         RowBox[{"gains", ",", "Last", ",", "1"}], "]"}], "[", 
+        RowBox[{"1", ",", "1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"branches", " ", "=", " ", 
+       RowBox[{"T", "[", 
+        RowBox[{"GroupBy", "[", "subX", "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Map", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"TabView", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"\"\<Entropias\>\"", "\[Rule]", 
+               RowBox[{"Labeled", "[", 
+                RowBox[{"gains", ",", "subX", ",", "Top"}], "]"}]}], ",", 
+              RowBox[{"\"\<Datos\>\"", "\[Rule]", "T"}]}], "}"}], "]"}], ",", 
+           "#", ",", 
+           RowBox[{"ID3Labeled", "[", 
+            RowBox[{"X", ",", 
+             RowBox[{"branches", "[", "#", "]"}], ",", "Cl"}], "]"}]}], "}"}],
+          "&"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Normal", "[", 
+         RowBox[{"Keys", "[", "branches", "]"}], "]"}]}], 
+       "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.7270195643196487`*^9, 3.727019599677142*^9}, {
+   3.727019745553857*^9, 3.727019758616211*^9}, 3.727019858991922*^9, {
+   3.727020225975832*^9, 3.72702024774641*^9}, {3.72702133670824*^9, 
+   3.727021374492633*^9}, {3.727045882422316*^9, 
+   3.727045882688264*^9}},ExpressionUUID->"c6cc7669-772e-4581-a161-\
+7eeec7ed7914"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"id3Nested", " ", "=", " ", 
+   RowBox[{"ID3Labeled", "[", 
+    RowBox[{
+     RowBox[{"Drop", "[", 
+      RowBox[{"keys", ",", 
+       RowBox[{"-", "1"}]}], "]"}], ",", "dataset", ",", 
+     RowBox[{"Last", "[", "keys", "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"graphVertex", " ", "=", " ", 
+   RowBox[{"MakeGraph", "[", "id3Nested", "]"}]}], ";"}]}], "Input",Expression\
+UUID->"81983700-ce98-4fd8-b114-0e8a481c0993"],
+
+Cell[BoxData[
+ RowBox[{"Graph", "[", 
+  RowBox[{"graphVertex", ",", 
+   RowBox[{"ImageSize", "\[Rule]", "1000"}], ",", 
+   RowBox[{"VertexLabels", "\[Rule]", "Automatic"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7270203008112717`*^9, 3.727020328045848*^9}, 
+   3.727020435258234*^9, {3.727020566143828*^9, 3.727020571619789*^9}, {
+   3.727021397143243*^9, 3.727021403060047*^9}, {3.727021587913795*^9, 
+   3.727021661670664*^9}},ExpressionUUID->"59ce3ea0-d735-4606-84f2-\
+00aa4479e9df"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Medicamento", "Chapter",
+ CellChangeTimes->{{3.727039961712431*^9, 
+  3.7270399632818527`*^9}},ExpressionUUID->"726679f5-27f3-47be-b537-\
+afd5c565b28e"],
+
+Cell["Base de datos Medicamento", "Text",
+ CellChangeTimes->{{3.727048270474369*^9, 
+  3.727048273358616*^9}},ExpressionUUID->"5cf93800-7a6c-4352-bc9a-\
+784fe153e927"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"keys", ",", "dataset"}], "}"}], " ", "=", " ", 
+   RowBox[{"LoadDatabase", "[", "\"\<Medicamento.csv\>\"", "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.727039968357325*^9, 
+  3.727039970138319*^9}},ExpressionUUID->"0c9d4ae9-06ba-4920-ae94-\
+5fb8a5101b70"],
+
+Cell[BoxData["dataset"], "Input",
+ CellChangeTimes->{{3.727039973315*^9, 
+  3.727039973899048*^9}},ExpressionUUID->"f38350ec-8f2d-43e8-a8cf-\
+9fc103c72df6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"id3Nested", " ", "=", " ", 
+   RowBox[{"ID3", "[", 
+    RowBox[{
+     RowBox[{"Drop", "[", 
+      RowBox[{"keys", ",", 
+       RowBox[{"-", "1"}]}], "]"}], ",", "dataset", ",", 
+     RowBox[{"Last", "[", "keys", "]"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7270400285632257`*^9, 
+  3.727040028766584*^9}},ExpressionUUID->"6fb9cd79-ab5f-498c-9969-\
+ea155bb55be8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"graphVertex", " ", "=", " ", 
+   RowBox[{"MakeGraph", "[", "id3Nested", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7270400412622128`*^9, 
+  3.727040047501658*^9}},ExpressionUUID->"4990ae65-9ce5-49f1-aaed-\
+43280769bca2"],
+
+Cell[BoxData[
+ RowBox[{"Graph", "[", 
+  RowBox[{"graphVertex", ",", 
+   RowBox[{"VertexLabels", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.727043539935828*^9, 
+  3.727043541429034*^9}},ExpressionUUID->"90b13a52-3033-4f14-8e32-\
+a8352e993de3"],
+
+Cell[BoxData[
+ RowBox[{"Map", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Append", "[", 
+     RowBox[{"#", ",", 
+      RowBox[{"\"\<Prediccion\>\"", "\[Rule]", 
+       RowBox[{"ID3Prediction", "[", 
+        RowBox[{"#", ",", "id3Nested", ",", "\"\<Administrar\>\""}], 
+        "]"}]}]}], "]"}], "&"}], ",", "dataset"}], "]"}]], "Input",
+ CellChangeTimes->{{3.727047815717663*^9, 
+  3.727047818846977*^9}},ExpressionUUID->"69acbe6a-0612-4f6c-83ae-\
+52866e31b848"],
+
+Cell[BoxData[
+ RowBox[{"SucessRateID3", "[", 
+  RowBox[{"dataset", ",", "id3Nested", ",", "\"\<Administrar\>\""}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.727047809466978*^9, 
+  3.7270478111357727`*^9}},ExpressionUUID->"a3b4f327-1e8e-4c9b-bfb5-\
+f338e4afc4e7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Termograf\[IAcute]a", "Chapter",
+ CellChangeTimes->{{3.727047907169065*^9, 
+  3.727047910464438*^9}},ExpressionUUID->"30b9cdfa-a1a0-46cd-87b6-\
+e1f82c6bdc2f"],
+
+Cell["Not working yet", "Text",
+ CellChangeTimes->{{3.727048019753118*^9, 
+  3.727048023387236*^9}},ExpressionUUID->"56142cae-0f16-4bdb-a9e4-\
+407b38c55ce0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"keys", ",", "dataset"}], "}"}], " ", "=", " ", 
+   RowBox[{"LoadDatabase", "[", "\"\<Termografia.csv\>\"", "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.727047920025071*^9, 
+  3.727047921341496*^9}},ExpressionUUID->"3d87c686-5bd6-47a7-be93-\
+82d9f8650e7e"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{907, 911},
+WindowMargins->{{251, Automatic}, {Automatic, 68}},
+FrontEndVersion->"11.1 for Linux x86 (64-bit) (April 18, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 156, 3, 93, "Title", "ExpressionUUID" -> \
+"1977b67a-3fd3-4dd8-b834-e3966de22a9b"],
+Cell[739, 27, 225, 5, 31, "Text", "ExpressionUUID" -> \
+"b477a27b-55c9-44c2-a931-d9603f0f35c8"],
+Cell[CellGroupData[{
+Cell[989, 36, 169, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"510cfc1a-45d3-40f6-9392-cf62a442af0f"],
+Cell[1161, 41, 1213, 20, 231, "Text", "ExpressionUUID" -> \
+"738274ff-b4a4-430c-9fe4-dd8372dc4458"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2411, 66, 170, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"4b476173-c39e-4154-ac96-9181491d9c7d"],
+Cell[2584, 71, 544, 11, 71, "Text", "ExpressionUUID" -> \
+"0ca1b62c-e801-42a9-8e13-c5179ea4c497"],
+Cell[3131, 84, 1767, 46, 219, "Input", "ExpressionUUID" -> \
+"428f137d-5d75-4aa8-8931-05c1fee1e3c5",
+ InitializationCell->True],
+Cell[4901, 132, 249, 6, 35, "Input", "ExpressionUUID" -> \
+"1bd51738-c416-45c6-816e-c7ee70211245"],
+Cell[5153, 140, 163, 3, 33, "Input", "ExpressionUUID" -> \
+"385fbb4e-a44a-4f87-9b90-cc6343c1f0c4"],
+Cell[5319, 145, 1660, 48, 136, "Text", "ExpressionUUID" -> \
+"d24debcf-aa5c-450e-b2e7-3a070b93cb17"],
+Cell[6982, 195, 1067, 30, 71, "Text", "ExpressionUUID" -> \
+"f82d1e74-3545-49ec-ae7d-70eb0c65d82b"],
+Cell[8052, 227, 864, 25, 88, "Input", "ExpressionUUID" -> \
+"5490fd35-8e07-4356-bc30-1b65796d8b13"],
+Cell[8919, 254, 2454, 68, 327, "Text", "ExpressionUUID" -> \
+"be3b3aa6-8cfe-4857-9499-6bf9e111fd35"],
+Cell[11376, 324, 331, 9, 51, "Input", "ExpressionUUID" -> \
+"511b4262-b04d-4d0c-a62c-951cef226c09",
+ InitializationCell->True],
+Cell[11710, 335, 296, 7, 35, "Input", "ExpressionUUID" -> \
+"dda6eb79-6fe4-4ca3-8afc-6c61c779f5d2"],
+Cell[12009, 344, 1125, 31, 126, "Text", "ExpressionUUID" -> \
+"5bb10ae4-50ac-40e8-8cdb-4e4b1d86431f"],
+Cell[13137, 377, 1247, 34, 187, "Input", "ExpressionUUID" -> \
+"8da03733-765c-4318-96b3-76c538dbc021",
+ InitializationCell->True],
+Cell[14387, 413, 247, 6, 35, "Input", "ExpressionUUID" -> \
+"d554b01e-8d37-457c-916e-bcc9a8dced87"],
+Cell[14637, 421, 541, 11, 111, "Text", "ExpressionUUID" -> \
+"45e3f0ae-a8eb-4ded-942b-21c4b6397ba6"],
+Cell[15181, 434, 546, 15, 51, "Input", "ExpressionUUID" -> \
+"3b22c070-665a-4fcb-be07-238d19cab9e2",
+ InitializationCell->True],
+Cell[15730, 451, 272, 6, 35, "Input", "ExpressionUUID" -> \
+"782c3ab7-4216-4b54-a3f6-958651caf54f"],
+Cell[16005, 459, 466, 8, 51, "Text", "ExpressionUUID" -> \
+"a417e90d-b5b7-4c82-9080-2d6d9f51d6f2"],
+Cell[16474, 469, 504, 14, 75, "Input", "ExpressionUUID" -> \
+"a0f85abd-8b5b-4416-bf76-034b5aa4871f",
+ InitializationCell->True],
+Cell[16981, 485, 454, 11, 58, "Input", "ExpressionUUID" -> \
+"e0972c52-3796-440e-b754-c415b2dc7afe"],
+Cell[17438, 498, 272, 6, 51, "Text", "ExpressionUUID" -> \
+"dc86b33b-12b2-4ba7-94bf-973df4bd2aba"],
+Cell[17713, 506, 242, 5, 33, "Input", "ExpressionUUID" -> \
+"39d1168b-deb4-4f19-8d50-819e637f11ba"],
+Cell[17958, 513, 477, 13, 58, "Input", "ExpressionUUID" -> \
+"13ffdad6-53ac-4a3f-ab15-fac9d99d337c"],
+Cell[18438, 528, 398, 8, 51, "Text", "ExpressionUUID" -> \
+"60e08407-7b54-4000-b59b-e2986923e323"],
+Cell[18839, 538, 4688, 110, 550, "Input", "ExpressionUUID" -> \
+"18f3a1ac-bae9-4da2-ac42-f68d5d86cd3d",
+ InitializationCell->True],
+Cell[23530, 650, 545, 15, 59, "Input", "ExpressionUUID" -> \
+"516831b0-adb9-4c90-9b0d-83091d217593"],
+Cell[24078, 667, 449, 10, 59, "Input", "ExpressionUUID" -> \
+"e899bd34-022a-4e22-a8c5-825af7183101"],
+Cell[24530, 679, 271, 6, 31, "Text", "ExpressionUUID" -> \
+"4fbd00a8-0ddd-46d7-9ea2-9276ae972673"],
+Cell[24804, 687, 4791, 121, 660, "Input", "ExpressionUUID" -> \
+"94a49f09-2da4-4b1f-b16f-b5f75ad90f0d",
+ InitializationCell->True],
+Cell[29598, 810, 551, 13, 58, "Input", "ExpressionUUID" -> \
+"9050c21a-6195-47f6-8af9-5c2fc78d320d"],
+Cell[30152, 825, 258, 6, 35, "Input", "ExpressionUUID" -> \
+"ca4d8aae-59c5-403d-9514-21f80bf8829d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30447, 836, 275, 4, 66, "Chapter", "ExpressionUUID" -> \
+"390e47ee-ed51-42b6-a16b-1bb2a4f5f8d8"],
+Cell[30725, 842, 226, 5, 31, "Text", "ExpressionUUID" -> \
+"345de8ce-4eb4-46ce-89aa-7d4792c03761"],
+Cell[30954, 849, 2651, 65, 334, "Input", "ExpressionUUID" -> \
+"c6cc7669-772e-4581-a161-7eeec7ed7914",
+ InitializationCell->True],
+Cell[33608, 916, 483, 13, 59, "Input", "ExpressionUUID" -> \
+"81983700-ce98-4fd8-b114-0e8a481c0993"],
+Cell[34094, 931, 488, 9, 35, "Input", "ExpressionUUID" -> \
+"59ce3ea0-d735-4606-84f2-00aa4479e9df"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34619, 945, 158, 3, 66, "Chapter", "ExpressionUUID" -> \
+"726679f5-27f3-47be-b537-afd5c565b28e"],
+Cell[34780, 950, 167, 3, 31, "Text", "ExpressionUUID" -> \
+"5cf93800-7a6c-4352-bc9a-784fe153e927"],
+Cell[34950, 955, 326, 9, 35, "Input", "ExpressionUUID" -> \
+"0c9d4ae9-06ba-4920-ae94-5fb8a5101b70"],
+Cell[35279, 966, 156, 3, 33, "Input", "ExpressionUUID" -> \
+"f38350ec-8f2d-43e8-a8cf-9fc103c72df6"],
+Cell[35438, 971, 409, 11, 35, "Input", "ExpressionUUID" -> \
+"6fb9cd79-ab5f-498c-9969-ea155bb55be8"],
+Cell[35850, 984, 260, 6, 35, "Input", "ExpressionUUID" -> \
+"4990ae65-9ce5-49f1-aaed-43280769bca2"],
+Cell[36113, 992, 331, 7, 35, "Input", "ExpressionUUID" -> \
+"90b13a52-3033-4f14-8e32-a8352e993de3"],
+Cell[36447, 1001, 460, 12, 58, "Input", "ExpressionUUID" -> \
+"69acbe6a-0612-4f6c-83ae-52866e31b848"],
+Cell[36910, 1015, 262, 6, 35, "Input", "ExpressionUUID" -> \
+"a3b4f327-1e8e-4c9b-bfb5-f338e4afc4e7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37209, 1026, 164, 3, 66, "Chapter", "ExpressionUUID" -> \
+"30b9cdfa-a1a0-46cd-87b6-e1f82c6bdc2f"],
+Cell[37376, 1031, 157, 3, 31, "Text", "ExpressionUUID" -> \
+"56142cae-0f16-4bdb-a9e4-407b38c55ce0"],
+Cell[37536, 1036, 326, 9, 35, "Input", "ExpressionUUID" -> \
+"3d87c686-5bd6-47a7-be93-82d9f8650e7e"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
