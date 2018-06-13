@@ -1,0 +1,842 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     34318,        834]
+NotebookOptionsPosition[     32461,        792]
+NotebookOutlinePosition[     32821,        808]
+CellTagsIndexPosition[     32778,        805]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Dataset Builder", "Title",
+ CellChangeTimes->{{3.737728526470615*^9, 
+  3.737728530314793*^9}},ExpressionUUID->"71a2b764-d408-4766-a365-\
+157d60a11e61"],
+
+Cell[CellGroupData[{
+
+Cell["Global", "Subchapter",
+ CellChangeTimes->{{3.737729022392901*^9, 
+  3.737729023258521*^9}},ExpressionUUID->"cc5bca84-92b2-42ca-810c-\
+b63ca610e62a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Returns", "[", 
+    RowBox[{"prices_", ",", 
+     RowBox[{"lag_:", "1"}]}], "]"}], ":=", " ", 
+   RowBox[{"N", "[", 
+    RowBox[{
+     RowBox[{"Log", "[", 
+      RowBox[{"Drop", "[", 
+       RowBox[{"prices", ",", "lag"}], "]"}], "]"}], "-", 
+     RowBox[{"Log", "[", 
+      RowBox[{"Drop", "[", 
+       RowBox[{"prices", ",", 
+        RowBox[{"-", "lag"}]}], "]"}], "]"}]}], "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellLabel->"In[12]:=",ExpressionUUID->"0118255c-ae99-468d-a3dd-7c56b5e3508e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["From Yahoo-like datasets", "Subchapter",
+ CellChangeTimes->{{3.737728639443686*^9, 
+  3.737728654548656*^9}},ExpressionUUID->"b5865ee9-dca7-4b0f-961d-\
+f19c1a212382"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ImportFinancialData", "[", "path_", "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "data", ",", " ", "years", ",", " ", "month", ",", " ", "day", ",", " ",
+        "price", ",", " ", "date"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"data", " ", "=", " ", 
+       RowBox[{"Import", "[", "path", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"years", " ", "=", " ", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "1"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"month", " ", "=", " ", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"day", " ", "=", " ", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "3"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"price", " ", "=", " ", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "4"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"date", " ", "=", " ", 
+       RowBox[{"Transpose", "[", 
+        RowBox[{"{", 
+         RowBox[{"years", ",", "month", ",", "day"}], "}"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", 
+       RowBox[{"Transpose", "[", 
+        RowBox[{"{", 
+         RowBox[{"date", ",", "price"}], "}"}], "]"}], "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CreateMarketDatabase", "[", "file_", "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "data", ",", "dates", ",", "prices", ",", "returns", ",", "treturns", 
+       ",", "vtreturns", ",", "database"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"data", " ", "=", " ", 
+       RowBox[{"ImportFinancialData", "[", "file", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"dates", " ", "=", " ", 
+       RowBox[{"Map", "[", 
+        RowBox[{"DateObject", ",", 
+         RowBox[{"data", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "1"}], "]"}], "]"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"prices", " ", "=", " ", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"returns", " ", "=", " ", 
+       RowBox[{"Transpose", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Drop", "[", 
+           RowBox[{"dates", ",", 
+            RowBox[{"-", "1"}]}], "]"}], ",", 
+          RowBox[{"Returns", "[", "prices", "]"}]}], "}"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"database", " ", "=", " ", 
+       RowBox[{"<|", 
+        RowBox[{
+         RowBox[{"\"\<Name\>\"", "\[Rule]", 
+          RowBox[{"FileBaseName", "[", "file", "]"}]}], " ", ",", 
+         RowBox[{"\"\<Dates\>\"", "\[Rule]", "dates"}], ",", 
+         RowBox[{"\"\<Prices\>\"", "\[Rule]", "prices"}], ",", " ", 
+         RowBox[{"\"\<Returns\>\"", "\[Rule]", 
+          RowBox[{"returns", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ",", 
+         RowBox[{"\"\<DatedPrices\>\"", "\[Rule]", 
+          RowBox[{"Transpose", "[", 
+           RowBox[{"{", 
+            RowBox[{"dates", ",", "prices"}], "}"}], "]"}]}], ",", " ", 
+         RowBox[{"\"\<DatedReturns\>\"", "\[Rule]", "returns"}]}], "|>"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "database", "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.72753500055995*^9, 3.727535059255981*^9}, {
+   3.727537505701109*^9, 3.727537514754218*^9}, {3.727537578741809*^9, 
+   3.727537602901269*^9}, {3.727537658509104*^9, 3.727537686064952*^9}, {
+   3.7275377201225567`*^9, 3.727537826045114*^9}, {3.727537937202258*^9, 
+   3.7275379459605227`*^9}, 3.72753799338664*^9, {3.727538242726432*^9, 
+   3.7275382914468718`*^9}, {3.727797989426268*^9, 3.7277979976624823`*^9}, {
+   3.7283129913574944`*^9, 3.728313014493312*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"8a3149f4-3b54-4acd-b37f-052f1e961b10"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"samplesdir", " ", "=", " ", 
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<Samples\>\""}], 
+     "}"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "samplesdir", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"files", " ", "=", " ", 
+   RowBox[{"FileNames", "[", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7276242216809683`*^9, 3.727624228642571*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"987d36f5-9d77-434c-870d-e9232d849908"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"database", " ", "=", " ", 
+   RowBox[{"Map", "[", 
+    RowBox[{"CreateMarketDatabase", ",", "files"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.727538026541671*^9, 3.7275380347252817`*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"0a5c31e2-21d5-4981-bc18-e6e7ab17a42b"],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<database.mx\>\""}], 
+     "}"}], "]"}], ",", "database"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7275380417749777`*^9, 3.727538088955633*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"62544e2a-e69c-4498-8a76-1c876418d913"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["From FinancialData[]", "Subchapter",
+ CellChangeTimes->{{3.737728954975247*^9, 
+  3.737728966698715*^9}},ExpressionUUID->"5bffc729-4b13-4b92-b9de-\
+72e67e209065"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"MarketSearch", "[", "name_", "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"StringLength", "[", "name", "]"}], ">", "0"}], ",", 
+     RowBox[{"FinancialData", "[", 
+      RowBox[{
+       RowBox[{"StringJoin", "[", 
+        RowBox[{"name", ",", "\"\<*\>\""}], "]"}], ",", "\"\<Lookup\>\""}], 
+      "]"}], ",", "\"\<\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"ShowMarketInfo", "[", "marketname_String", "]"}], ":=", 
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"name", ",", "ipoDate", ",", "sector", ",", "marketCap"}], 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"name", " ", "=", " ", 
+        RowBox[{
+         RowBox[{"FinancialData", "[", 
+          RowBox[{"marketname", ",", "\"\<Name\>\""}], "]"}], " ", "//", " ", 
+         "Quiet"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"ipoDate", " ", "=", " ", 
+        RowBox[{
+         RowBox[{"FinancialData", "[", 
+          RowBox[{"marketname", ",", "\"\<IPODate\>\""}], "]"}], " ", "//", 
+         " ", "Quiet"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"sector", " ", "=", " ", 
+        RowBox[{
+         RowBox[{"FinancialData", "[", 
+          RowBox[{"marketname", ",", "\"\<Sector\>\""}], "]"}], " ", "//", 
+         " ", "Quiet"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"marketCap", " ", "=", " ", 
+        RowBox[{
+         RowBox[{"FinancialData", "[", 
+          RowBox[{"marketname", ",", "\"\<MarketCap\>\""}], "]"}], " ", "//", 
+         " ", "Quiet"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       
+       RowBox[{"Panel", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Grid", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"!", 
+                RowBox[{"FailureQ", "[", "name", "]"}]}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\"\<Name: \>\"", " ", ",", "name"}], "}"}], ",", 
+               "Nothing"}], "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"!", 
+                RowBox[{"FailureQ", "[", "ipoDate", "]"}]}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\"\<Fecha IPO: \>\"", " ", ",", "ipoDate"}], "}"}], 
+               ",", "Nothing"}], "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"!", 
+                RowBox[{"FailureQ", "[", "sector", "]"}]}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\"\<Sector: \>\"", " ", ",", "sector"}], "}"}], ",", 
+               "Nothing"}], "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"!", 
+                RowBox[{"FailureQ", "[", "marketCap", "]"}]}], ",", 
+               RowBox[{"{", 
+                RowBox[{"\"\<MarketCap: \>\"", " ", ",", "marketCap"}], "}"}],
+                ",", "Nothing"}], "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Alignment", "\[Rule]", "Left"}]}], "\[IndentingNewLine]", 
+          "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Style", "[", 
+          RowBox[{"\"\<Informaci\[OAcute]n del mercado\>\"", ",", "Bold"}], 
+          "]"}]}], "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"PickPrevious", "[", 
+     RowBox[{"list_", ",", "selected_"}], "]"}], ":=", 
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", "idx", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"idx", " ", "=", " ", 
+        RowBox[{
+         RowBox[{"Position", "[", 
+          RowBox[{"list", ",", 
+           RowBox[{"selected", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]",
+        "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"idx", " ", ">", " ", "1"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Return", "[", 
+          RowBox[{"{", 
+           RowBox[{"list", "[", 
+            RowBox[{"[", 
+             RowBox[{"idx", "-", "1"}], "]"}], "]"}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Return", "[", "selected", "]"}]}], "\[IndentingNewLine]", 
+        "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"PickNext", "[", 
+     RowBox[{"list_", ",", "selected_"}], "]"}], ":=", 
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", "idx", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"idx", " ", "=", " ", 
+        RowBox[{
+         RowBox[{"Position", "[", 
+          RowBox[{"list", ",", 
+           RowBox[{"selected", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]",
+        "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"idx", " ", "<", " ", 
+          RowBox[{"Length", "[", "list", "]"}]}], ",", "\[IndentingNewLine]", 
+         
+         RowBox[{"Return", "[", 
+          RowBox[{"{", 
+           RowBox[{"list", "[", 
+            RowBox[{"[", 
+             RowBox[{"idx", "+", "1"}], "]"}], "]"}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Return", "[", "selected", "]"}]}], "\[IndentingNewLine]", 
+        "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"ControlPicker", "[", 
+     RowBox[{
+      RowBox[{"Dynamic", "[", "pick_", "]"}], ",", "list_"}], "]"}], ":=", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Grid", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"ListPicker", "[", 
+          RowBox[{
+           RowBox[{"Dynamic", "[", "pick", "]"}], ",", "list", ",", 
+           RowBox[{"Multiselection", "\[Rule]", "False"}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Column", "[", "\[IndentingNewLine]", 
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Button", "[", 
+             RowBox[{"\"\<\[UpArrow]\>\"", ",", 
+              RowBox[{"pick", " ", "=", " ", 
+               RowBox[{"PickPrevious", "[", 
+                RowBox[{"list", ",", "pick"}], "]"}]}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Button", "[", 
+             RowBox[{"\"\<\[DownArrow]\>\"", ",", 
+              RowBox[{"pick", " ", "=", " ", 
+               RowBox[{"PickNext", "[", 
+                RowBox[{"list", ",", "pick"}], "]"}]}]}], "]"}]}], 
+           "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "]"}]}], 
+        "\[IndentingNewLine]", "}"}], "}"}], "\[IndentingNewLine]", ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Alignment", "\[Rule]", "Center"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PickAnother", "[", 
+    RowBox[{"list_", ",", "selected_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", "idx", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"idx", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"Position", "[", 
+         RowBox[{"list", ",", 
+          RowBox[{"selected", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"idx", " ", "<", " ", 
+         RowBox[{"Length", "[", "list", "]"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", 
+         RowBox[{"{", 
+          RowBox[{"list", "[", 
+           RowBox[{"[", 
+            RowBox[{"idx", "+", "1"}], "]"}], "]"}], "}"}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", 
+         RowBox[{"{", 
+          RowBox[{"list", "[", 
+           RowBox[{"[", 
+            RowBox[{"idx", "-", "1"}], "]"}], "]"}], "}"}], "]"}]}], 
+       "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{"ControlPickerRemove", ",", "HoldAll"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ControlPickerRemove", "[", 
+    RowBox[{
+     RowBox[{"Dynamic", "[", "pick_", "]"}], ",", "list_"}], "]"}], ":=", 
+   RowBox[{"DynamicModule", "[", 
+    RowBox[{
+     RowBox[{"{", "nextPick", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Grid", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"{", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Dynamic", "[", 
+           RowBox[{
+            RowBox[{"ListPicker", "[", 
+             RowBox[{
+              RowBox[{"Dynamic", "[", "pick", "]"}], ",", "list", ",", 
+              RowBox[{"Multiselection", "\[Rule]", "False"}], ",", 
+              RowBox[{"ImageSize", "\[Rule]", 
+               RowBox[{"{", 
+                RowBox[{"140", ",", "140"}], "}"}]}]}], "]"}], ",", 
+            RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+             RowBox[{"{", "list", "}"}]}]}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Column", "[", "\[IndentingNewLine]", 
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Button", "[", 
+              RowBox[{"\"\<\[UpArrow]\>\"", ",", 
+               RowBox[{"pick", " ", "=", " ", 
+                RowBox[{"PickPrevious", "[", 
+                 RowBox[{"list", ",", "pick"}], "]"}]}]}], "]"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Button", "[", 
+              RowBox[{"\"\<\[DownArrow]\>\"", ",", 
+               RowBox[{"pick", " ", "=", " ", 
+                RowBox[{"PickNext", "[", 
+                 RowBox[{"list", ",", "pick"}], "]"}]}]}], "]"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Button", "[", 
+              RowBox[{"\"\<-\>\"", ",", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"Length", "[", "list", "]"}], ">", "1"}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"nextPick", " ", "=", " ", 
+                    RowBox[{"PickAnother", "[", 
+                    RowBox[{"list", ",", "pick"}], "]"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"list", " ", "=", " ", 
+                    RowBox[{"DeleteCases", "[", 
+                    RowBox[{"list", ",", 
+                    RowBox[{"pick", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"pick", " ", "=", " ", "nextPick"}], ";"}]}], 
+                 "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]",
+               "]"}]}], "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", 
+           "]"}]}], "\[IndentingNewLine]", "}"}], "}"}], 
+       "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+       RowBox[{"Alignment", "\[Rule]", "Center"}]}], "\[IndentingNewLine]", 
+      "]"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.737752383855846*^9, 3.7377523860011663`*^9}, {
+   3.737754113316947*^9, 3.7377541137200527`*^9}, 3.737754204932467*^9, {
+   3.7378091715794563`*^9, 3.737809172419433*^9}, {3.737809466443993*^9, 
+   3.73780947064603*^9}, 3.737809632883953*^9, {3.7378100518007803`*^9, 
+   3.7378100565607023`*^9}, {3.737811229262601*^9, 3.737811229778811*^9}, {
+   3.737811560833474*^9, 3.737811561010723*^9}, 3.737811722865118*^9, {
+   3.737811763068543*^9, 3.737811839609642*^9}, {3.73781188215845*^9, 
+   3.73781188238069*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"53dd67b3-a83b-4d01-bdfd-5c98c8eb3089"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DatabaseBuilderPanel", "[", "]"}], " ", ":=", " ", 
+   RowBox[{"DynamicModule", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"pick", " ", "=", " ", 
+        RowBox[{"{", "\"\<NYSE:UN\>\"", "}"}]}], ",", 
+       RowBox[{"name", " ", "=", "\"\<NYSE:UN\>\""}], ",", 
+       RowBox[{"selected", " ", "=", " ", 
+        RowBox[{"{", "\"\<NYSE:UN\>\"", "}"}]}], ",", 
+       RowBox[{"databasePick", " ", "=", " ", 
+        RowBox[{"{", "\"\<NYSE:UN\>\"", "}"}]}], ",", "searchPanel", ",", 
+       "marketPanel", ",", "databasePanel", ",", "databaseCtrlPanel", ",", 
+       "indOpt", ",", "dateOpt", ",", "\[IndentingNewLine]", 
+       RowBox[{"indicatorOptions", " ", "=", " ", 
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<Prices\>\"", ",", "\"\<Returns\>\"", ",", "\"\<Volume\>\""}], 
+         "}"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"dateOptions", " ", "=", " ", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Sin fecha\>\"", ",", "\"\<Con fechas\>\""}], "}"}]}]}], 
+      "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"searchPanel", " ", "=", " ", 
+       RowBox[{"Panel", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Grid", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Style", "[", 
+                RowBox[{"\"\<Nombre\>\"", ",", "Bold"}], "]"}], ",", 
+               "SpanFromLeft"}], "}"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"InputField", "[", 
+                RowBox[{
+                 RowBox[{"Dynamic", "[", "name", "]"}], ",", "String", ",", 
+                 RowBox[{"FieldSize", "\[Rule]", "Small"}]}], "]"}], ",", 
+               RowBox[{"Button", "[", "\"\<Buscar\>\"", "]"}]}], "}"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Style", "[", 
+                RowBox[{"\"\<Resultados\>\"", ",", "Bold"}], "]"}], ",", 
+               "SpanFromLeft"}], "}"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Dynamic", "[", 
+                RowBox[{"ControlPicker", "[", 
+                 RowBox[{
+                  RowBox[{"Dynamic", "[", "pick", "]"}], ",", 
+                  RowBox[{"MarketSearch", "[", "name", "]"}]}], "]"}], "]"}], 
+               ",", "SpanFromLeft"}], "}"}]}], "\[IndentingNewLine]", "}"}], 
+           ",", "\[IndentingNewLine]", 
+           RowBox[{"Alignment", "\[Rule]", "Left"}]}], "\[IndentingNewLine]", 
+          "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Style", "[", 
+          RowBox[{"\"\<B\[UAcute]squeda\>\"", ",", "Bold"}], "]"}]}], 
+        "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"marketPanel", " ", "=", " ", 
+       RowBox[{"Grid", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"Dynamic", "[", 
+            RowBox[{"ShowMarketInfo", "[", 
+             RowBox[{"First", "[", "pick", "]"}], "]"}], "]"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"Button", "[", 
+            RowBox[{"\"\<Agregar >\>\"", ",", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"!", 
+                RowBox[{"MemberQ", "[", 
+                 RowBox[{"selected", ",", 
+                  RowBox[{"First", "[", "pick", "]"}]}], "]"}]}], ",", 
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"selected", ",", 
+                 RowBox[{"First", "[", "pick", "]"}]}], "]"}]}], "]"}], ",", 
+             RowBox[{"ImageSize", "\[Rule]", "Automatic"}]}], "]"}], "}"}]}], 
+         "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"databaseCtrlPanel", " ", "=", 
+       RowBox[{"Panel", "[", 
+        RowBox[{
+         RowBox[{"ControlPickerRemove", "[", 
+          RowBox[{
+           RowBox[{"Dynamic", "[", "databasePick", "]"}], ",", "selected"}], 
+          "]"}], ",", 
+         RowBox[{"Style", "[", 
+          RowBox[{"\"\<Base de datos\>\"", ",", " ", "Bold"}], "]"}]}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"databasePanel", " ", "=", " ", 
+       RowBox[{"Grid", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", "databaseCtrlPanel", "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"Button", "[", 
+            RowBox[{"\"\<Generar\>\"", ",", 
+             RowBox[{"DialogReturn", "[", "selected", "]"}]}], "]"}], "}"}]}],
+          "}"}], "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Panel", "[", 
+       RowBox[{"Grid", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"{", 
+           RowBox[{"searchPanel", ",", "marketPanel", ",", "databasePanel"}], 
+           "}"}], "}"}], ",", 
+         RowBox[{"Alignment", "\[Rule]", "Top"}]}], "]"}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.73773074308107*^9, 3.7377307450358887`*^9}, {
+   3.7377307927051983`*^9, 3.7377307940228567`*^9}, {3.73773083990107*^9, 
+   3.7377308436828737`*^9}, {3.737749718177738*^9, 3.737749783070827*^9}, {
+   3.737749813879712*^9, 3.737749865845551*^9}, {3.7377501950535088`*^9, 
+   3.737750261013177*^9}, {3.73775029326309*^9, 3.737750309572155*^9}, 
+   3.737751712087182*^9, {3.737752068561672*^9, 3.7377520982048273`*^9}, {
+   3.737752249834467*^9, 3.737752395699408*^9}, {3.737754212663622*^9, 
+   3.737754214465406*^9}, {3.737809861190421*^9, 3.737809926183907*^9}, {
+   3.737809991627015*^9, 3.737809993857532*^9}, {3.737811259013854*^9, 
+   3.737811347929555*^9}, {3.737811380134521*^9, 3.737811478804139*^9}, {
+   3.737811678880765*^9, 3.7378116805347023`*^9}, {3.73781197910429*^9, 
+   3.737812019817938*^9}, {3.7378123627071247`*^9, 3.737812388898679*^9}, {
+   3.737814244468137*^9, 3.73781444810244*^9}, {3.73783242825881*^9, 
+   3.737832435103285*^9}, {3.737833766931418*^9, 3.7378337798563004`*^9}, {
+   3.73783818308327*^9, 3.737838222016612*^9}, {3.7378385878680696`*^9, 
+   3.7378386174252043`*^9}, {3.7378393758009577`*^9, 3.737839385892734*^9}, {
+   3.737839538124201*^9, 3.737839538936235*^9}, {3.737839613997368*^9, 
+   3.7378396186369667`*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"06f38078-f2af-4399-8f4c-00ed0a233ce5"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Needs", "[", "\"\<AdvancedMapping`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SaveDatabase", "[", "selected_", "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"filepath", ",", "database"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"filepath", " ", "=", " ", 
+       RowBox[{"SystemDialogInput", "[", 
+        RowBox[{"\"\<FileSave\>\"", ",", 
+         RowBox[{"{", 
+          RowBox[{"\"\<database\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"\"\<Mathematica binary (*.mx)\>\"", "\[Rule]", 
+              RowBox[{"{", "\"\<*.mx\>\"", "}"}]}], ",", 
+             RowBox[{"\"\<Plain Text Document (*.txt)\>\"", "\[Rule]", 
+              RowBox[{"{", "\"\<*.txt\>\"", "}"}]}]}], "}"}]}], "}"}]}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"filepath", "=!=", " ", "$Canceled"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"database", " ", "=", " ", 
+          RowBox[{"ProgressMap", "[", 
+           RowBox[{"CreateMarketDataset", ",", "selected", ",", 
+            RowBox[{
+            "\"\<Label\>\"", "\[Rule]", 
+             "\"\<Downloading market data...\>\""}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Export", "[", 
+          RowBox[{"filepath", ",", "database"}], "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CreateMarketDataset", "[", "market_", "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "marketname", ",", "data", ",", "dates", ",", "prices", ",", "returns", 
+       ",", "volume", ",", "datedreturns", ",", "database"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"marketname", " ", "=", " ", 
+       RowBox[{"FinancialData", "[", 
+        RowBox[{"market", ",", "\"\<Name\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"data", " ", "=", " ", 
+       RowBox[{"FinancialData", "[", 
+        RowBox[{"market", ",", "\"\<OHLCV\>\"", ",", 
+         RowBox[{"{", 
+          RowBox[{"1900", ",", "1", ",", "1"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"dates", " ", "=", " ", 
+       RowBox[{"Map", "[", 
+        RowBox[{"DateObject", ",", 
+         RowBox[{"data", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "1"}], "]"}], "]"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"prices", " ", "=", " ", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "2", ",", "4"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"volume", " ", "=", " ", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "2", ",", "5"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"returns", " ", "=", " ", 
+       RowBox[{"Returns", "[", "prices", "]"}]}], ";", "\[IndentingNewLine]", 
+      
+      RowBox[{"datedreturns", " ", "=", " ", 
+       RowBox[{"Transpose", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Drop", "[", 
+           RowBox[{"dates", ",", 
+            RowBox[{"-", "1"}]}], "]"}], ",", "returns"}], "}"}], "]"}]}], 
+      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"database", " ", "=", " ", 
+       RowBox[{"<|", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"\"\<Name\>\"", "\[Rule]", "marketname"}], " ", ",", 
+         RowBox[{"\"\<Symbol\>\"", "\[Rule]", "market"}], ",", 
+         RowBox[{"\"\<FirstDate\>\"", "\[Rule]", 
+          RowBox[{"First", "[", "dates", "]"}]}], ",", 
+         RowBox[{"\"\<LastDate\>\"", "\[Rule]", 
+          RowBox[{"Last", "[", "dates", "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"\"\<Dates\>\"", "\[Rule]", "dates"}], ",", 
+         RowBox[{"\"\<Prices\>\"", "\[Rule]", "prices"}], ",", " ", 
+         RowBox[{"\"\<Returns\>\"", "\[Rule]", "returns"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"\"\<DatedPrices\>\"", "\[Rule]", 
+          RowBox[{"Transpose", "[", 
+           RowBox[{"{", 
+            RowBox[{"dates", ",", "prices"}], "}"}], "]"}]}], ",", " ", 
+         RowBox[{"\"\<DatedReturns\>\"", "\[Rule]", "datedreturns"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"\"\<Volume\>\"", "\[Rule]", "volume"}]}], 
+        "\[IndentingNewLine]", "|>"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "database", "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.7378324940984697`*^9, 3.7378324944284773`*^9}, {
+  3.73783294755952*^9, 3.7378330548845863`*^9}, {3.737833131716031*^9, 
+  3.737833212418448*^9}, {3.737833256671351*^9, 3.737833263720093*^9}, {
+  3.737833510627495*^9, 3.7378336724699306`*^9}, {3.737833732751144*^9, 
+  3.737833737261525*^9}, {3.737839325173335*^9, 3.7378393256658583`*^9}, {
+  3.737840488510518*^9, 3.737840498949494*^9}, {3.737840701681303*^9, 
+  3.737840714706005*^9}},
+ CellLabel->"In[30]:=",ExpressionUUID->"47d551a5-7868-48da-93ff-dfd0b6d5c313"],
+
+Cell[CellGroupData[{
+
+Cell["Launch dialog", "Subsection",
+ CellChangeTimes->{{3.737840788555442*^9, 
+  3.737840790819072*^9}},ExpressionUUID->"44085153-112c-401e-be6c-\
+fc98fc7a5473"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"selected", " ", "=", " ", 
+   RowBox[{"DialogInput", "[", 
+    RowBox[{"DialogNotebook", "[", 
+     RowBox[{"DatabaseBuilderPanel", "[", "]"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SaveDatabase", "[", "selected", "]"}], ";"}]}], "Input",
+ CellLabel->"In[33]:=",ExpressionUUID->"8212ca55-bde1-4ee6-a3b2-fe760bc64c1a"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1198, 845},
+WindowMargins->{{298, Automatic}, {Automatic, 72}},
+WindowStatusArea->None,
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 158, 3, 99, "Title",ExpressionUUID->"71a2b764-d408-4766-a365-157d60a11e61"],
+Cell[CellGroupData[{
+Cell[763, 29, 154, 3, 65, "Subchapter",ExpressionUUID->"cc5bca84-92b2-42ca-810c-b63ca610e62a"],
+Cell[920, 34, 554, 16, 47, "Input",ExpressionUUID->"0118255c-ae99-468d-a3dd-7c56b5e3508e",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1511, 55, 172, 3, 65, "Subchapter",ExpressionUUID->"b5865ee9-dca7-4b0f-961d-f19c1a212382"],
+Cell[1686, 60, 4314, 104, 439, "Input",ExpressionUUID->"8a3149f4-3b54-4acd-b37f-052f1e961b10",
+ InitializationCell->True],
+Cell[6003, 166, 599, 15, 78, "Input",ExpressionUUID->"987d36f5-9d77-434c-870d-e9232d849908"],
+Cell[6605, 183, 310, 6, 31, "Input",ExpressionUUID->"0a5c31e2-21d5-4981-bc18-e6e7ab17a42b"],
+Cell[6918, 191, 394, 9, 31, "Input",ExpressionUUID->"62544e2a-e69c-4498-8a76-1c876418d913"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7349, 205, 168, 3, 65, "Subchapter",ExpressionUUID->"5bffc729-4b13-4b92-b9de-72e67e209065"],
+Cell[7520, 210, 12502, 296, 1990, "Input",ExpressionUUID->"53dd67b3-a83b-4d01-bdfd-5c98c8eb3089",
+ InitializationCell->True],
+Cell[20025, 508, 6555, 138, 679, "Input",ExpressionUUID->"06f38078-f2af-4399-8f4c-00ed0a233ce5",
+ InitializationCell->True],
+Cell[26583, 648, 5263, 121, 625, "Input",ExpressionUUID->"47d551a5-7868-48da-93ff-dfd0b6d5c313",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[31871, 773, 161, 3, 55, "Subsection",ExpressionUUID->"44085153-112c-401e-be6c-fc98fc7a5473"],
+Cell[32035, 778, 386, 9, 55, "Input",ExpressionUUID->"8212ca55-bde1-4ee6-a3b2-fe760bc64c1a"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
