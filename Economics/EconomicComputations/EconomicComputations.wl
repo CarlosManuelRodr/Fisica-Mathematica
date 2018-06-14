@@ -464,7 +464,7 @@ DownwardTrendDuration[prices_] := Module[{splitted,negTrends},
 ];
 
 
-(* ::Section:: *)
+(* ::Section::Closed:: *)
 (*Kullback-Leiber Divergence*)
 
 
