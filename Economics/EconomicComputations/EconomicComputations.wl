@@ -59,6 +59,7 @@ MeasureHeightRatio::usage = "Measure height ratio of a bimodal distribution";
 
 
 DatasetBuilderDialog::usage = "Launch dialog to create the database";
+AddToDatabase::usage = "Adds entry to the database using the selected function";
 
 
 (* ::Text:: *)
@@ -113,12 +114,24 @@ TrendReturns[prices_] := Block[{endpoints},
 	Return[Returns[endpoints]];
 ];
 
+DatedTrendReturns[dates_, prices_] := Block[{endpoints},
+	endpoints = Map[First, TakeList[Transpose[{dates, prices}], Append[TrendDuration[prices], All]]];
+	Return[Transpose[{Drop[endpoints[[All,1]], -1], Returns[endpoints[[All, 2]]]}]];
+];
+
 DatedTrendReturns[datedprices_] := Block[{endpoints},
 	endpoints = Map[First, TakeList[datedprices, Append[TrendDuration[datedprices[[All, 2]]], All]]];
 	Return[Transpose[{Drop[endpoints[[All, 1]], -1], Returns[endpoints[[All, 2]]]}]];
 ];
 
 VelocityTrendReturns[prices_] := TrendReturns[prices] / TrendDuration[prices];
+
+DatedVelocityTrendReturns[dates_, prices_] := Block[{tr},
+	tr = DatedTrendReturns[dates, prices];
+	tr[[All, 2]] = tr[[All, 2]] / TrendDuration[prices];
+	Return[tr];
+];
+
 
 DatedVelocityTrendReturns[datedprices_] := Block[{tr},
 	tr = DatedTrendReturns[datedprices];
@@ -211,7 +224,7 @@ EventProbability[returns_, event_] := Module[{selection, \[Gamma], nonExtremeRet
 ]
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (*Symmetry analysis*)
 
 
@@ -242,11 +255,13 @@ Tn[v_Real64List, c_Integer]:= Tn[v,N[c]];
 Tn[v_]:= Tn[v, 0.0];
 
 MeasureTn[returns_, CL_: 0.05, symmetryPoints_: 50] := Module[
-{standardError, c, cmin, cmax, \[CapitalDelta]c, test, cSymm, plausiblePoints, plausibleMin = Nothing, plausibleMax = Nothing, testResult},
-
+{standardError, c, cmin, cmax, \[CapitalDelta]c, test, cSymm, plausiblePoints, mean, 
+plausibleMin = Nothing, plausibleMax = Nothing, testResult},
+	
+	mean = Mean[returns];
 	standardError = StandardDeviation[returns] / Sqrt[Length[returns]];
-	cmin = Mean[returns] - 3*standardError;
-	cmax = Mean[returns] + 3*standardError;
+	cmin = mean - 3*standardError;
+	cmax = mean + 3*standardError;
 	\[CapitalDelta]c = (cmax-cmin)/symmetryPoints;
 	test = Table[{c, Tn[N[returns], c]}, {c, cmin, cmax, \[CapitalDelta]c}];
 	cSymm = NestedFirst[MinimalBy[test, Last]];
@@ -258,7 +273,8 @@ MeasureTn[returns_, CL_: 0.05, symmetryPoints_: 50] := Module[
 	
 	testResult = <|
 	"TnValues"->test, "BestSymmetry"->cSymm, "MinimumC"->cmin, 
-	"MaximumC"->cmax, "PlausibleSymmMin"->plausibleMin, "PlausibleSymmMax"->plausibleMax
+	"MaximumC"->cmax, "PlausibleSymmMin"->plausibleMin, "PlausibleSymmMax"->plausibleMax,
+	"Mean"->mean
 	|>;
 	
 	Return[testResult];
@@ -279,7 +295,7 @@ MeasureHeightRatio[vtret_]:=Quiet[
 ];
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (*Dataset builder*)
 
 
@@ -445,6 +461,17 @@ DatabaseBuilderPanel[] := DynamicModule[
 DatasetBuilderDialog[] := Block[{selected},
 	selected = DialogInput[DialogNotebook[DatabaseBuilderPanel[], WindowTitle->"Construir base de datos"]];
 	If[selected =!= $Canceled, SaveDatabase[selected]];
+];
+
+
+(* ::Subsection:: *)
+(*Database management*)
+
+
+AddToDatabase[newkey_, f_, argkeys_, database_]:=
+If[!MemberQ[Keys[First[database]], newkey],
+	Map[Append[#, newkey->Apply[f, Map[#, argkeys]]]&, database],
+	database
 ];
 
 
