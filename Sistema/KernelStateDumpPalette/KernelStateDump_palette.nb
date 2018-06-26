@@ -10,56 +10,84 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      3170,         93]
-NotebookOptionsPosition[      2780,         76]
-NotebookOutlinePosition[      3160,         93]
-CellTagsIndexPosition[      3117,         90]
+NotebookDataLength[      4631,        121]
+NotebookOptionsPosition[      4240,        104]
+NotebookOutlinePosition[      4621,        121]
+CellTagsIndexPosition[      4578,        118]
 WindowTitle->Kernel state dump
 WindowFrame->Palette*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[
- TemplateBox[{PanelBox[
-    TagBox[
-     GridBox[{{
-        ButtonBox[
-        "\"Load kernel state\"", 
-         ButtonFunction :> $CellContext`LoadKernelState[], Appearance -> 
-         Automatic, Evaluator -> Automatic, Method -> "Preemptive"]}, {
-        ButtonBox[
-        "\"Save kernel state\"", 
-         ButtonFunction :> $CellContext`SaveKernelState[], Appearance -> 
-         Automatic, Evaluator -> Automatic, Method -> "Preemptive"]}}, 
-      AutoDelete -> False, 
-      GridBoxItemSize -> {
-       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Grid"]],
-   StyleBox["\"Kernel state dump palette\"", Bold, StripOnInput -> False]},
-  "Labeled",
-  DisplayFunction->(GridBox[{{
-      ItemBox[#2, Alignment -> {Left, Inherited}, DefaultBaseStyle -> 
-       "PanelLabel"]}, {
-      TagBox[
-       ItemBox[
-        PaneBox[
-         TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
-         BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
-       "SkipImageSizeLevel"]}}, 
-    GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
-    AutoDelete -> False, 
-    GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
-    BaselinePosition -> {2, 1}]& ),
-  InterpretationFunction->(RowBox[{"Labeled", "[", 
-     RowBox[{#, ",", 
-       RowBox[{"{", #2, "}"}], ",", 
-       RowBox[{"{", 
-         RowBox[{"{", 
-           RowBox[{"Top", ",", "Left"}], "}"}], "}"}], ",", 
-       RowBox[{"DefaultLabelStyle", "\[Rule]", "\"PanelLabel\""}], ",", 
-       RowBox[{"LabelStyle", "\[Rule]", 
-         RowBox[{"{", "}"}]}], ",", 
-       RowBox[{"RotateLabel", "\[Rule]", "False"}], ",", 
-       RowBox[{"Spacings", "\[Rule]", "Automatic"}]}], "]"}]& )]],
+ DynamicModuleBox[{}, 
+  TemplateBox[{PanelBox[
+     TagBox[
+      GridBox[{{
+         ButtonBox[
+         "\"Load kernel state\"", 
+          ButtonFunction :> $CellContext`LoadKernelState[], Appearance -> 
+          Automatic, Evaluator -> Automatic, Method -> "Preemptive"]}, {
+         ButtonBox[
+         "\"Save kernel state\"", 
+          ButtonFunction :> $CellContext`SaveKernelState[], Appearance -> 
+          Automatic, Evaluator -> Automatic, Method -> "Preemptive"]}}, 
+       AutoDelete -> False, 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Grid"]],
+    StyleBox["\"Kernel state dump palette\"", Bold, StripOnInput -> False]},
+   "Labeled",
+   DisplayFunction->(GridBox[{{
+       ItemBox[#2, Alignment -> {Left, Inherited}, DefaultBaseStyle -> 
+        "PanelLabel"]}, {
+       TagBox[
+        ItemBox[
+         PaneBox[
+          TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+          BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+        "SkipImageSizeLevel"]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+     AutoDelete -> False, 
+     GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      BaselinePosition -> {2, 1}]& ),
+   InterpretationFunction->(RowBox[{"Labeled", "[", 
+      RowBox[{#, ",", 
+        RowBox[{"{", #2, "}"}], ",", 
+        RowBox[{"{", 
+          RowBox[{"{", 
+            RowBox[{"Top", ",", "Left"}], "}"}], "}"}], ",", 
+        RowBox[{"DefaultLabelStyle", "\[Rule]", "\"PanelLabel\""}], ",", 
+        RowBox[{"LabelStyle", "\[Rule]", 
+          RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"RotateLabel", "\[Rule]", "False"}], ",", 
+        RowBox[{"Spacings", "\[Rule]", "Automatic"}]}], "]"}]& )],
+  DynamicModuleValues:>{},
+  Initialization:>($CellContext`GetStateFile[] := 
+    Block[{$CellContext`path, $CellContext`nbName, $CellContext`fileName}, \
+$CellContext`path = Quiet[
+         NotebookDirectory[
+          FrontEndExecute[
+           FrontEnd`InputNotebook[]]]]; 
+      If[$CellContext`path =!= $Failed, $CellContext`nbName = FileBaseName[
+           NotebookFileName[
+            FrontEndExecute[
+             FrontEnd`InputNotebook[]]]]; $CellContext`fileName = 
+         FileNameJoin[{$CellContext`path, 
+            StringJoin[$CellContext`nbName, "_state.mx"]}]; 
+        Return[$CellContext`fileName], 
+        Return[$Failed]]]; $CellContext`SaveKernelState[] := 
+    Block[{$CellContext`fileName}, $CellContext`fileName = \
+$CellContext`GetStateFile[]; 
+      If[$CellContext`fileName =!= $Failed, 
+        DumpSave[$CellContext`fileName, "Global`"]; Null, 
+        MessageDialog["Warning: Save the notebook first"]; 
+        Null]]; $CellContext`LoadKernelState[] := 
+    Block[{$CellContext`fileName, $CellContext`status}, $CellContext`fileName = \
+$CellContext`GetStateFile[]; 
+      If[$CellContext`fileName =!= $Failed, $CellContext`status = Quiet[
+           Get[$CellContext`fileName]]; If[$CellContext`status === $Failed, 
+          MessageDialog["Warning: There is no saved state"]]; Null, 
+        MessageDialog["Warning: Save the notebook first"]; Null]]; Null)]],
  CellMargins->{{0, 0}, {0, 0}},
  CellBracketOptions->{"Color"->RGBColor[0.269993, 0.308507, 0.6]},
  CellHorizontalScrolling->True,
@@ -72,10 +100,10 @@ Cell[BoxData[
  ShowStringCharacters->False,
  FontFamily:>CurrentValue["PanelFontFamily"],
  FontSize:>CurrentValue[
-  "PanelFontSize"],ExpressionUUID->"05c76b6c-2d50-4ea3-87c6-012033123771"]
+  "PanelFontSize"],ExpressionUUID->"7b55ca60-77ee-418a-b11e-406f7eda315d"]
 },
 WindowSize->All,
-WindowMargins->{{Automatic, 0}, {Automatic, 58}},
+WindowMargins->{{Automatic, 25}, {Automatic, 71}},
 WindowElements->{},
 WindowTitle->"Kernel state dump",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
@@ -92,10 +120,12 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[590, 21, 2186, 53, 86, InheritFromParent,ExpressionUUID->"05c76b6c-2d50-4ea3-87c6-012033123771",
+Cell[590, 21, 3646, 81, 86, InheritFromParent,ExpressionUUID->"7b55ca60-77ee-418a-b11e-406f7eda315d",
  PageBreakAbove->True,
  PageBreakWithin->False]
 }
 ]
 *)
+
+(* End of internal cache information *)
 
