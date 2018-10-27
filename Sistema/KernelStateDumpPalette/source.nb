@@ -10,15 +10,115 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6999,        167]
-NotebookOptionsPosition[      6708,        154]
-NotebookOutlinePosition[      7044,        169]
-CellTagsIndexPosition[      7001,        166]
+NotebookDataLength[      6872,        174]
+NotebookOptionsPosition[      6581,        161]
+NotebookOutlinePosition[      6917,        176]
+CellTagsIndexPosition[      6874,        173]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"GetStateFile", "[", "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"path", ",", "nbName", ",", "fileName"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"path", " ", "=", " ", 
+       RowBox[{"Quiet", "[", 
+        RowBox[{"NotebookDirectory", "[", 
+         RowBox[{"FrontEndExecute", "[", 
+          RowBox[{"FrontEnd`InputNotebook", "[", "]"}], "]"}], "]"}], "]"}]}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"path", " ", "=!=", " ", "$Failed"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"nbName", " ", "=", " ", 
+          RowBox[{"FileBaseName", "[", 
+           RowBox[{"NotebookFileName", "[", 
+            RowBox[{"FrontEndExecute", "[", 
+             RowBox[{"FrontEnd`InputNotebook", "[", "]"}], "]"}], "]"}], 
+           "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"fileName", " ", "=", " ", 
+          RowBox[{"FileNameJoin", "[", 
+           RowBox[{"{", 
+            RowBox[{"path", ",", 
+             RowBox[{"StringJoin", "[", 
+              RowBox[{"nbName", ",", "\"\<_state.mx\>\""}], "]"}]}], "}"}], 
+           "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"Return", "[", "fileName", "]"}]}], "\[IndentingNewLine]", 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", "$Failed", "]"}]}], "\[IndentingNewLine]", 
+       "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SaveKernelState", "[", "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", "fileName", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"fileName", " ", "=", " ", 
+       RowBox[{"GetStateFile", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"fileName", " ", "=!=", " ", "$Failed"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"DumpSave", "[", 
+          RowBox[{"fileName", ",", "\"\<Global`\>\""}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"MessageDialog", "[", "\"\<Saved succesfully\>\"", "]"}], 
+         ";"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+         "MessageDialog", "[", "\"\<Warning: Save the notebook first\>\"", 
+          "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"LoadKernelState", "[", "]"}], ":=", 
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"fileName", ",", "status"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"fileName", " ", "=", " ", 
+        RowBox[{"GetStateFile", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"fileName", " ", "=!=", " ", "$Failed"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"status", " ", "=", " ", 
+           RowBox[{"Quiet", "[", 
+            RowBox[{"Get", "[", "fileName", "]"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"status", " ", "===", "$Failed"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+            "MessageDialog", "[", "\"\<Warning: There is no saved state\>\"", 
+             "]"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+             "MessageDialog", "[", "\"\<Loaded succesfully\>\"", "]"}], 
+             ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+         "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+          "MessageDialog", "[", "\"\<Warning: Save the notebook first\>\"", 
+           "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"CreatePalette", "[", "\[IndentingNewLine]", 
    RowBox[{
@@ -43,117 +143,24 @@ Cell[BoxData[
         "\[IndentingNewLine]", 
         RowBox[{"Style", "[", 
          RowBox[{"\"\<Kernel state dump palette\>\"", ",", "Bold"}], "]"}]}], 
-       "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ",", 
-      "\[IndentingNewLine]", 
-      RowBox[{"Initialization", "\[RuleDelayed]", 
-       RowBox[{"(", "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"GetStateFile", "[", "]"}], ":=", 
-          RowBox[{"Block", "[", 
-           RowBox[{
-            RowBox[{"{", 
-             RowBox[{"path", ",", "nbName", ",", "fileName"}], "}"}], ",", 
-            "\[IndentingNewLine]", 
-            RowBox[{
-             RowBox[{"path", " ", "=", " ", 
-              RowBox[{"Quiet", "[", 
-               RowBox[{"NotebookDirectory", "[", 
-                RowBox[{"FrontEndExecute", "[", 
-                 RowBox[{"FrontEnd`InputNotebook", "[", "]"}], "]"}], "]"}], 
-               "]"}]}], ";", "\[IndentingNewLine]", 
-             RowBox[{"If", "[", 
-              RowBox[{
-               RowBox[{"path", " ", "=!=", " ", "$Failed"}], ",", 
-               "\[IndentingNewLine]", 
-               RowBox[{
-                RowBox[{"nbName", " ", "=", " ", 
-                 RowBox[{"FileBaseName", "[", 
-                  RowBox[{"NotebookFileName", "[", 
-                   RowBox[{"FrontEndExecute", "[", 
-                    RowBox[{"FrontEnd`InputNotebook", "[", "]"}], "]"}], 
-                   "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-                RowBox[{"fileName", " ", "=", " ", 
-                 RowBox[{"FileNameJoin", "[", 
-                  RowBox[{"{", 
-                   RowBox[{"path", ",", 
-                    RowBox[{"StringJoin", "[", 
-                    RowBox[{"nbName", ",", "\"\<_state.mx\>\""}], "]"}]}], 
-                   "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
-                RowBox[{"Return", "[", "fileName", "]"}]}], 
-               "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
-               RowBox[{"Return", "[", "$Failed", "]"}]}], 
-              "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
-           "]"}]}], ";", "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"SaveKernelState", "[", "]"}], ":=", 
-          RowBox[{"Block", "[", 
-           RowBox[{
-            RowBox[{"{", "fileName", "}"}], ",", "\[IndentingNewLine]", 
-            RowBox[{
-             RowBox[{"fileName", " ", "=", " ", 
-              RowBox[{"GetStateFile", "[", "]"}]}], ";", 
-             "\[IndentingNewLine]", 
-             RowBox[{"If", "[", 
-              RowBox[{
-               RowBox[{"fileName", " ", "=!=", " ", "$Failed"}], ",", 
-               "\[IndentingNewLine]", 
-               RowBox[{
-                RowBox[{"DumpSave", "[", 
-                 RowBox[{"fileName", ",", "\"\<Global`\>\""}], "]"}], ";"}], 
-               "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
-               RowBox[{
-                RowBox[{
-                "MessageDialog", "[", 
-                 "\"\<Warning: Save the notebook first\>\"", "]"}], ";"}]}], 
-              "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
-           "]"}]}], ";", "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"LoadKernelState", "[", "]"}], ":=", 
-          RowBox[{"Block", "[", 
-           RowBox[{
-            RowBox[{"{", 
-             RowBox[{"fileName", ",", "status"}], "}"}], ",", 
-            "\[IndentingNewLine]", 
-            RowBox[{
-             RowBox[{"fileName", " ", "=", " ", 
-              RowBox[{"GetStateFile", "[", "]"}]}], ";", 
-             "\[IndentingNewLine]", 
-             RowBox[{"If", "[", 
-              RowBox[{
-               RowBox[{"fileName", " ", "=!=", " ", "$Failed"}], ",", 
-               "\[IndentingNewLine]", 
-               RowBox[{
-                RowBox[{"status", " ", "=", " ", 
-                 RowBox[{"Quiet", "[", 
-                  RowBox[{"Get", "[", "fileName", "]"}], "]"}]}], ";", 
-                "\[IndentingNewLine]", 
-                RowBox[{"If", "[", 
-                 RowBox[{
-                  RowBox[{"status", " ", "===", "$Failed"}], ",", 
-                  RowBox[{
-                  "MessageDialog", "[", 
-                   "\"\<Warning: There is no saved state\>\"", "]"}]}], "]"}],
-                 ";"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
-               RowBox[{
-                RowBox[{
-                "MessageDialog", "[", 
-                 "\"\<Warning: Save the notebook first\>\"", "]"}], ";"}]}], 
-              "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
-           "]"}]}], ";"}], "\[IndentingNewLine]", ")"}]}]}], 
-     "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ",", 
-    "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "\[IndentingNewLine]",
+      "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
     RowBox[{"WindowTitle", "\[Rule]", "\"\<Kernel state dump\>\""}]}], 
-   "\[IndentingNewLine]", "]"}], ";"}]], "Input",
+   "\[IndentingNewLine]", "]"}], ";"}]}], "Input",
  CellChangeTimes->{{3.738967747350905*^9, 3.738967863160104*^9}, {
   3.738968122370666*^9, 3.738968123234888*^9}, {3.7389683972837048`*^9, 
   3.738968397859468*^9}, {3.73896849047302*^9, 3.738968578309022*^9}, {
   3.738968616491309*^9, 3.738968619706761*^9}, {3.738968721344253*^9, 
-  3.7389687274634*^9}, {3.739042306494268*^9, 3.739042409912006*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"4c3751f3-0bc9-46bc-9008-980bb59a2723"]
+  3.7389687274634*^9}, {3.739042306494268*^9, 3.739042409912006*^9}, {
+  3.7391090166618147`*^9, 3.73910901910221*^9}, {3.7391093202729177`*^9, 
+  3.739109321053969*^9}, {3.739109465392372*^9, 3.739109477858429*^9}, {
+  3.73910951932734*^9, 3.739109520977771*^9}, {3.739109560268765*^9, 
+  3.739109613371684*^9}},ExpressionUUID->"4c3751f3-0bc9-46bc-9008-\
+980bb59a2723"]
 },
 WindowSize->{1076, 911},
-WindowMargins->{{360, Automatic}, {Automatic, 56}},
+WindowMargins->{{186, Automatic}, {Automatic, 69}},
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->"Default.nb"
 ]
@@ -168,7 +175,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 6146, 132, 1078, "Input",ExpressionUUID->"4c3751f3-0bc9-46bc-9008-980bb59a2723"]
+Cell[558, 20, 6019, 139, 1135, "Input",ExpressionUUID->"4c3751f3-0bc9-46bc-9008-980bb59a2723"]
 }
 ]
 *)

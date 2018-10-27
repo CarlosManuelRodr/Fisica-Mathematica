@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8610,        265]
-NotebookOptionsPosition[      7034,        225]
-NotebookOutlinePosition[      7368,        240]
-CellTagsIndexPosition[      7325,        237]
+NotebookDataLength[     12592,        356]
+NotebookOptionsPosition[     10760,        311]
+NotebookOutlinePosition[     11095,        326]
+CellTagsIndexPosition[     11052,        323]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -167,9 +167,22 @@ Cell[BoxData[{
     RowBox[{"First", ",", "list", ",", 
      RowBox[{
       RowBox[{"Depth", "[", "list", "]"}], "-", "1"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DeleteInstances", "[", 
+    RowBox[{"list_List", ",", "expr_"}], "]"}], ":=", 
+   RowBox[{"Select", "[", 
+    RowBox[{"expr", ",", 
+     RowBox[{
+      RowBox[{"!", 
+       RowBox[{"MemberQ", "[", 
+        RowBox[{"list", ",", "#"}], "]"}]}], "&"}]}], "]"}]}], 
   ";"}]}], "Input",
- InitializationCell->
-  True,ExpressionUUID->"124efce8-d46c-4f24-9835-2e310fda9169"]
+ InitializationCell->True,
+ CellChangeTimes->{{3.7391103675694733`*^9, 
+  3.739110377857319*^9}},ExpressionUUID->"124efce8-d46c-4f24-9835-\
+2e310fda9169"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -220,11 +233,84 @@ Cell[BoxData[{
      RowBox[{"1", ",", " ", "1"}], "]"}], "]"}]}], ";"}]}], "Input",
  InitializationCell->
   True,ExpressionUUID->"69af48e5-42dd-4ca8-af73-f9736019e1df"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Exportar lista de gr\[AAcute]ficas y crear v\[IAcute]deo", "Subchapter",
+ CellChangeTimes->{{3.749655426656111*^9, 
+  3.749655449062901*^9}},ExpressionUUID->"8b73cc83-33dd-4c41-9ee7-\
+c1a7bd66c121"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ExportAnimation", "[", 
+    RowBox[{"file_", ",", "frames_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"indexLength", ",", "directory", ",", "name"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"indexLength", " ", "=", " ", 
+       RowBox[{"Length", "[", 
+        RowBox[{"IntegerDigits", "[", 
+         RowBox[{"Length", "[", "frames", "]"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"directory", " ", "=", " ", 
+       RowBox[{"DirectoryName", "[", "file", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"name", " ", "=", " ", 
+       RowBox[{"FileBaseName", "[", "file", "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"MapIndexed", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Export", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"FileNameJoin", "[", 
+            RowBox[{"{", 
+             RowBox[{"directory", ",", 
+              RowBox[{"StringJoin", "[", 
+               RowBox[{"name", ",", 
+                RowBox[{"IntegerString", "[", 
+                 RowBox[{"#2", ",", "10", ",", "indexLength"}], "]"}], ",", 
+                "\"\<.png\>\""}], "]"}]}], "}"}], "]"}], ",", 
+           "\[IndentingNewLine]", "#1"}], "\[IndentingNewLine]", "]"}], "&"}],
+         ",", "\[IndentingNewLine]", "frames"}], "\[IndentingNewLine]", "]"}],
+       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"RunProcess", "[", "\[IndentingNewLine]", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+        "\"\<ffmpeg\>\"", ",", "\[IndentingNewLine]", "\"\<-r\>\"", ",", "3", 
+         ",", "\[IndentingNewLine]", "\"\<-f\>\"", ",", "\"\<image2\>\"", ",",
+          "\[IndentingNewLine]", "\"\<-s\>\"", ",", "\"\<1920x1080\>\"", ",", 
+         "\[IndentingNewLine]", "\"\<-i\>\"", ",", 
+         RowBox[{"FileNameJoin", "[", 
+          RowBox[{"{", 
+           RowBox[{"directory", ",", 
+            RowBox[{"StringJoin", "[", 
+             RowBox[{"name", ",", "\"\<%0\>\"", ",", 
+              RowBox[{"ToString", "[", "indexLength", "]"}], ",", 
+              "\"\<d.png\>\""}], "]"}]}], "}"}], "]"}], ",", 
+         "\[IndentingNewLine]", "\"\<-vcodec\>\"", ",", "\"\<libx264\>\"", 
+         ",", "\[IndentingNewLine]", "\"\<-crf\>\"", ",", "15", ",", 
+         "\[IndentingNewLine]", "\"\<-pix_fmt\>\"", ",", " ", 
+         "\"\<yuv420p\>\"", ",", "\[IndentingNewLine]", "file"}], 
+        "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.7496544143784847`*^9, 3.7496544263521433`*^9}, {
+   3.749654497391082*^9, 3.749654543288371*^9}, {3.749654636926*^9, 
+   3.749654733340889*^9}, {3.7496548352926702`*^9, 3.749654865060302*^9}, 
+   3.749655237089201*^9, {3.749655299412121*^9, 3.749655301881145*^9}},
+ CellLabel->"In[60]:=",ExpressionUUID->"f2c44c26-0506-4da1-9374-41ae4ada4133"]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{1189, 767},
-WindowMargins->{{Automatic, 0}, {Automatic, 89}},
+WindowMargins->{{Automatic, 0}, {138, Automatic}},
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->"Default.nb"
 ]
@@ -258,12 +344,17 @@ Cell[3335, 107, 1265, 35, 119, "Input",ExpressionUUID->"48f3a8d4-0935-40e2-bf88-
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[4637, 147, 168, 3, 65, "Subchapter",ExpressionUUID->"016b0c81-aa5f-40db-babc-e0a6cf87c132"],
-Cell[4808, 152, 608, 19, 71, "Input",ExpressionUUID->"124efce8-d46c-4f24-9835-2e310fda9169",
+Cell[4808, 152, 1006, 32, 94, "Input",ExpressionUUID->"124efce8-d46c-4f24-9835-2e310fda9169",
  InitializationCell->True]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5453, 176, 161, 3, 65, "Subchapter",ExpressionUUID->"70295dd1-86de-4968-91bf-c7e653292784"],
-Cell[5617, 181, 1389, 40, 94, "Input",ExpressionUUID->"69af48e5-42dd-4ca8-af73-f9736019e1df",
+Cell[5851, 189, 161, 3, 65, "Subchapter",ExpressionUUID->"70295dd1-86de-4968-91bf-c7e653292784"],
+Cell[6015, 194, 1389, 40, 94, "Input",ExpressionUUID->"69af48e5-42dd-4ca8-af73-f9736019e1df",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7441, 239, 204, 3, 65, "Subchapter",ExpressionUUID->"8b73cc83-33dd-4c41-9ee7-c1a7bd66c121"],
+Cell[7648, 244, 3084, 63, 646, "Input",ExpressionUUID->"f2c44c26-0506-4da1-9374-41ae4ada4133",
  InitializationCell->True]
 }, Open  ]]
 }, Open  ]]

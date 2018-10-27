@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      4631,        121]
-NotebookOptionsPosition[      4240,        104]
-NotebookOutlinePosition[      4621,        121]
-CellTagsIndexPosition[      4578,        118]
+NotebookDataLength[      4723,        123]
+NotebookOptionsPosition[      4333,        106]
+NotebookOutlinePosition[      4713,        123]
+CellTagsIndexPosition[      4670,        120]
 WindowTitle->Kernel state dump
 WindowFrame->Palette*)
 
@@ -62,7 +62,15 @@ Cell[BoxData[
         RowBox[{"RotateLabel", "\[Rule]", "False"}], ",", 
         RowBox[{"Spacings", "\[Rule]", "Automatic"}]}], "]"}]& )],
   DynamicModuleValues:>{},
-  Initialization:>($CellContext`GetStateFile[] := 
+  Initialization:>{$CellContext`LoadKernelState[] := 
+    Block[{$CellContext`fileName, $CellContext`status}, $CellContext`fileName = \
+$CellContext`GetStateFile[]; 
+      If[$CellContext`fileName =!= $Failed, $CellContext`status = Quiet[
+           Get[$CellContext`fileName]]; If[$CellContext`status === $Failed, 
+          MessageDialog["Warning: There is no saved state"], 
+          MessageDialog["Loaded succesfully"]; Null]; Null, 
+        MessageDialog["Warning: Save the notebook first"]; 
+        Null]], $CellContext`GetStateFile[] := 
     Block[{$CellContext`path, $CellContext`nbName, $CellContext`fileName}, \
 $CellContext`path = Quiet[
          NotebookDirectory[
@@ -75,19 +83,13 @@ $CellContext`path = Quiet[
          FileNameJoin[{$CellContext`path, 
             StringJoin[$CellContext`nbName, "_state.mx"]}]; 
         Return[$CellContext`fileName], 
-        Return[$Failed]]]; $CellContext`SaveKernelState[] := 
+        Return[$Failed]]], $CellContext`SaveKernelState[] := 
     Block[{$CellContext`fileName}, $CellContext`fileName = \
 $CellContext`GetStateFile[]; 
       If[$CellContext`fileName =!= $Failed, 
-        DumpSave[$CellContext`fileName, "Global`"]; Null, 
-        MessageDialog["Warning: Save the notebook first"]; 
-        Null]]; $CellContext`LoadKernelState[] := 
-    Block[{$CellContext`fileName, $CellContext`status}, $CellContext`fileName = \
-$CellContext`GetStateFile[]; 
-      If[$CellContext`fileName =!= $Failed, $CellContext`status = Quiet[
-           Get[$CellContext`fileName]]; If[$CellContext`status === $Failed, 
-          MessageDialog["Warning: There is no saved state"]]; Null, 
-        MessageDialog["Warning: Save the notebook first"]; Null]]; Null)]],
+        DumpSave[$CellContext`fileName, "Global`"]; 
+        MessageDialog["Saved succesfully"]; Null, 
+        MessageDialog["Warning: Save the notebook first"]; Null]]}]],
  CellMargins->{{0, 0}, {0, 0}},
  CellBracketOptions->{"Color"->RGBColor[0.269993, 0.308507, 0.6]},
  CellHorizontalScrolling->True,
@@ -100,10 +102,10 @@ $CellContext`GetStateFile[];
  ShowStringCharacters->False,
  FontFamily:>CurrentValue["PanelFontFamily"],
  FontSize:>CurrentValue[
-  "PanelFontSize"],ExpressionUUID->"7b55ca60-77ee-418a-b11e-406f7eda315d"]
+  "PanelFontSize"],ExpressionUUID->"cd16b989-3908-4200-9087-0773ac40158b"]
 },
 WindowSize->All,
-WindowMargins->{{Automatic, 25}, {Automatic, 71}},
+WindowMargins->{{Automatic, 0}, {Automatic, 58}},
 WindowElements->{},
 WindowTitle->"Kernel state dump",
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
@@ -120,12 +122,10 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[590, 21, 3646, 81, 86, InheritFromParent,ExpressionUUID->"7b55ca60-77ee-418a-b11e-406f7eda315d",
+Cell[590, 21, 3739, 83, 86, InheritFromParent,ExpressionUUID->"cd16b989-3908-4200-9087-0773ac40158b",
  PageBreakAbove->True,
  PageBreakWithin->False]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
