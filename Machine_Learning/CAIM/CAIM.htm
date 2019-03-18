@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created with the Wolfram Language : www.wolfram.com -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  CAIM
+ </title>
+ <link href="HTMLFiles/CAIM.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<p class="Title">
+ Implementaci&oacute;n del algoritmo CAIM
+</p>
+
+
+
+<p class="Subsection">
+ Autor: Carlos Manuel Rodr&iacute;guez Mart&iacute;nez
+</p>
+
+
+
+<p class="Text">
+ Referencia: CAIM discretization algorithm, L.A. Kurgan ; K.J. Cios<br />DOI: 10.1109/TKDE.2004.1269594<br /><br />El objetivo del algoritmo CAIM es encontrar el m&iacute;nimo n&uacute;mero de intervalos discretos que minimiza la p&eacute;rdida de interdependencia entre atributo y clase.
+</p>
+
+
+
+<p class="Subchapter">
+ Importar base de datos
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_1.png" alt="CAIM_1.png" width="588" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_2.png" alt="CAIM_2.png" width="507" height="591" style="vertical-align:middle" />
+</p>
+
+<p class="Subchapter">
+ C&aacute;lculo de matriz quanta
+</p>
+
+
+
+<p class="Text">
+ El algoritmo hace uso de un esquema de discretizaci&oacute;n D, con el cual se calcular la matriz Quanta, que es necesaria para obtener el valor CAIM que es la m&eacute;trica que usa el algoritmo para determinar la interdependencia entre los atributos y la clase.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_3.gif" alt="CAIM_3.gif" width="389" height="67" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_4.gif" alt="CAIM_4.gif" width="555" height="232" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_5.gif" alt="CAIM_5.gif" width="1176" height="525" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ El puntaje CAIM se determina a partir del m&aacute;ximo valor de la columna r de la matriz Quanta dividido por el n&uacute;mero total de casos que pertenecen al intervalo de discretizaci&oacute;n entre <span><span><img src="HTMLFiles/CAIM_6.png" alt="CAIM_6.png" width="63" height="21" style="vertical-align:middle" /></span></span>.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_7.gif" alt="CAIM_7.gif" width="312" height="115" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_8.gif" alt="CAIM_8.gif" width="1008" height="463" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ Ejemplo:
+</p>
+
+
+
+<p class="Text">
+ A continuaci&oacute;n se seleccionan como valores todas las entradas de la base de datos correspondientes a la longitud del s&eacute;palo.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_9.png" alt="CAIM_9.png" width="349" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_10.png" alt="CAIM_10.png" width="283" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Se comienza con un esquema de discretizaci&oacute;n en el intervalo entre el m&iacute;nimo y m&aacute;ximo valor del atributo a discretizar. Esto es un esq&nbsp;&nbsp;&nbsp;&nbsp;uema de discretizaci&oacute;n donde todos los valores caen dentro del mismo intervalo.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_11.png" alt="CAIM_11.png" width="190" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_12.png" alt="CAIM_12.png" width="79" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Visualizaci&oacute;n del esquema de discretizaci&oacute;n. Las l&iacute;neas verticales representan el m&iacute;nimo y m&aacute;ximo valor del atributo.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_13.png" alt="CAIM_13.png" width="432" height="249" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_14.gif" alt="CAIM_14.gif" width="500" height="326" style="vertical-align:middle;" usemap="#map_14" />
+<map name="map_14">
+<area shape="rect" coords="435,280,490,230" title="6" nohref="" />
+<area shape="rect" coords="381,280,435,222" title="7" nohref="" />
+<area shape="rect" coords="326,280,381,97" title="22" nohref="" />
+<area shape="rect" coords="272,280,327,14" title="32" nohref="" />
+<area shape="rect" coords="218,280,272,23" title="31" nohref="" />
+<area shape="rect" coords="163,280,218,31" title="30" nohref="" />
+<area shape="rect" coords="109,280,164,130" title="18" nohref="" />
+<area shape="rect" coords="55,280,110,247" title="4" nohref="" />
+</map>
+</p>
+
+<p class="Text">
+ Inicialmente todos los valores caen dentro del mismo intervalo
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_15.png" alt="CAIM_15.png" width="335" height="21" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_16.png" alt="CAIM_16.png" width="41" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ El algoritmo CAIM selecciona de entre la lista de posibles particiones del esquema de discretizaci&oacute;n.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_17.png" alt="CAIM_17.png" width="960" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_18.png" alt="CAIM_18.png" width="1027" height="65" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Con esto es capaz de construir una tabla de posibles valores del esquema de discretizaci&oacute;n
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_19.png" alt="CAIM_19.png" width="263" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_20.png" alt="CAIM_20.png" width="1209" height="203" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ De esta lista selecciona el valor que maximiza el puntaje de CAIM
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_21.png" alt="CAIM_21.png" width="251" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_22.png" alt="CAIM_22.png" width="205" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Esto da como resultado un esquema donde 59 ejemplos caen en el intervalo [4.3, 5.5], y 91 en el intervalo (5.5,7.9].
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_23.png" alt="CAIM_23.png" width="382" height="21" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_24.png" alt="CAIM_24.png" width="63" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ y que da la siguiente matriz Quanta
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_25.png" alt="CAIM_25.png" width="379" height="21" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_26.png" alt="CAIM_26.png" width="756" height="42" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_27.png" alt="CAIM_27.png" width="561" height="21" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_28.png" alt="CAIM_28.png" width="65" height="51" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Este proceso se puede repetir varias veces.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_29.png" alt="CAIM_29.png" width="345" height="21" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_30.png" alt="CAIM_30.png" width="243" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_31.png" alt="CAIM_31.png" width="392" height="21" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_32.png" alt="CAIM_32.png" width="281" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Subchapter">
+ Algoritmo principal
+</p>
+
+
+
+<p class="Text">
+ A continuaci&oacute;n se implementa el algoritmo principal tal como se describe en el art&iacute;culo. Asimismo se implementa una funci&oacute;n que aplica la discretizaci&oacute;n a toda la base de datos.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_33.gif" alt="CAIM_33.gif" width="558" height="195" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_34.gif" alt="CAIM_34.gif" width="541" height="418" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_35.gif" alt="CAIM_35.gif" width="982" height="1008" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ Ejemplo:
+</p>
+
+
+
+<p class="Text">
+ CAIMAlgorithm ejecuta el algoritmo CAIM mostrando el puntaje en cada iteraci&oacute;n.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_36.png" alt="CAIM_36.png" width="230" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_37.png" alt="CAIM_37.png" width="477" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_38.png" alt="CAIM_38.png" width="392" height="21" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_39.png" alt="CAIM_39.png" width="281" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_40.png" alt="CAIM_40.png" width="379" height="21" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_41.png" alt="CAIM_41.png" width="756" height="42" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_42.png" alt="CAIM_42.png" width="426" height="21" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_43.png" alt="CAIM_43.png" width="842" height="42" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ CAIMDiscretize discretiza un solo atributo.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_44.png" alt="CAIM_44.png" width="238" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_45.png" alt="CAIM_45.png" width="1075" height="65" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ CAIMDatabaseDiscretize discretiza toda la base de datos.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/CAIM_46.png" alt="CAIM_46.png" width="235" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/CAIM_47.png" alt="CAIM_47.png" width="507" height="591" style="vertical-align:middle" />
+</p>
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div>
+</body>
+
+</html>
