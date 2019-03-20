@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    539899,      10107]
-NotebookOptionsPosition[    531969,       9971]
-NotebookOutlinePosition[    532305,       9986]
-CellTagsIndexPosition[    532262,       9983]
+NotebookDataLength[    571675,      10912]
+NotebookOptionsPosition[    562460,      10753]
+NotebookOutlinePosition[    562794,      10768]
+CellTagsIndexPosition[    562751,      10765]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -62,13 +62,13 @@ Cell[BoxData[
    RowBox[{"FileNameJoin", "[", 
     RowBox[{"{", 
      RowBox[{
-      RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<iris.data\>\""}], 
+      RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<iris.csv\>\""}], 
      "}"}], "]"}], "]"}]}]], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.760190296316847*^9, 3.760190308042815*^9}, {
   3.760190344862956*^9, 3.760190362545817*^9}, {3.7601904970498877`*^9, 
-  3.760190501730982*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"0a27381d-33a1-4073-a16b-29d3728120dd"],
+  3.760190501730982*^9}, {3.761658575115655*^9, 3.7616585754495087`*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"0a27381d-33a1-4073-a16b-29d3728120dd"],
 
 Cell[BoxData[
  TemplateBox[{TagBox[
@@ -101,7 +101,7 @@ Cell[BoxData[
               "Petal length" -> TypeSystem`PackageScope`AtomShape[60], 
               "Petal width" -> TypeSystem`PackageScope`AtomShape[60], "Class" -> 
               TypeSystem`PackageScope`AtomShape[135.]]]], 20, {}]], 
-        "InitialData" -> TypeSystem`PackageScope`CacheHandle[1770132256], 
+        "InitialData" -> TypeSystem`PackageScope`CacheHandle[2022322153], 
         "Type" -> TypeSystem`Vector[
           
           TypeSystem`Struct[{
@@ -115,7 +115,7 @@ Cell[BoxData[
              TypeSystem`Enumeration[
              "Iris-setosa", "Iris-versicolor", "Iris-virginica"]]}], 150], 
         "HandleQ" -> True, "RowTarget" -> 20, "Data" -> 
-        TypeSystem`PackageScope`CacheHandle[1770132256]], 
+        TypeSystem`PackageScope`CacheHandle[2022322153]], 
       TypeSystem`NestedGrid`PackagePrivate`$path$$ = {}, 
       TypeSystem`NestedGrid`PackagePrivate`$pos$$ = 1, 
       TypeSystem`NestedGrid`PackagePrivate`$grid$$ = 
@@ -149,8 +149,8 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
-                    1013242209][{All, "Sepal length"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                    1933690747][{All, "Sepal length"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[All, "Sepal length"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -179,8 +179,8 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
-                    1013242209][{All, "Sepal width"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                    1933690747][{All, "Sepal width"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[All, "Sepal width"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -209,8 +209,8 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
-                    1013242209][{All, "Petal length"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                    1933690747][{All, "Petal length"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[All, "Petal length"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -239,8 +239,8 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
-                    1013242209][{All, "Petal width"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                    1933690747][{All, "Petal width"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[All, "Petal width"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -268,14 +268,14 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
-                    1013242209][{All, "Class"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                    1933690747][{All, "Class"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[All, "Class"]], "Mouse"], Background -> 
                 GrayLevel[0.95], Alignment -> {Left, Baseline}]}, {
                Pane[
                 Annotation[
                  RawBoxes["5.1"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[1, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -283,7 +283,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3.5"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[1, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -291,7 +291,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[1, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -299,14 +299,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[1, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[1, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -314,7 +314,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["4.9"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[2, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -322,7 +322,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3."], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[2, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -330,7 +330,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[2, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -338,14 +338,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[2, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[2, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -353,7 +353,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["4.7"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[3, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -361,7 +361,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3.2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[3, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -369,7 +369,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.3"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[3, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -377,14 +377,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[3, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[3, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -392,7 +392,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["4.6"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[4, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -400,7 +400,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3.1"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[4, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -408,7 +408,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.5"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[4, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -416,14 +416,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[4, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[4, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -431,7 +431,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["5."], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[5, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -439,7 +439,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3.6"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[5, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -447,7 +447,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[5, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -455,14 +455,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[5, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[5, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -470,7 +470,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["5.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[6, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -478,7 +478,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3.9"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[6, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -486,7 +486,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.7"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[6, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -494,14 +494,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[6, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[6, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -509,7 +509,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["4.6"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[7, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -517,7 +517,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[7, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -525,7 +525,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[7, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -533,14 +533,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.3"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[7, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[7, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -548,7 +548,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["5."], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[8, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -556,7 +556,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[8, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -564,7 +564,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.5"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[8, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -572,14 +572,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[8, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[8, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -587,7 +587,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["4.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[9, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -595,7 +595,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2.9"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[9, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -603,7 +603,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[9, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -611,14 +611,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[9, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[9, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -626,7 +626,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["4.9"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[10, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -634,7 +634,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3.1"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[10, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -642,7 +642,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.5"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[10, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -650,14 +650,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.1"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[10, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[10, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -665,7 +665,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["5.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[11, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -673,7 +673,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3.7"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[11, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -681,7 +681,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.5"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[11, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -689,14 +689,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[11, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[11, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -704,7 +704,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["4.8"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[12, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -712,7 +712,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209]
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747]
                  [
                   GeneralUtilities`Slice[12, 
                    Key["Sepal width"]]], "Mouse"], 
@@ -721,7 +721,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.6"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[12, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -729,14 +729,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[12, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[12, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -744,7 +744,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["4.8"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[13, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -752,7 +752,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3."], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[13, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -760,7 +760,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[13, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -768,14 +768,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.1"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[13, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[13, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -783,7 +783,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["4.3"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[14, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -791,7 +791,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3."], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[14, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -799,7 +799,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.1"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[14, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -807,14 +807,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.1"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[14, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[14, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -822,7 +822,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["5.8"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[15, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -830,7 +830,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["4."], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[15, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -838,7 +838,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[15, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -846,14 +846,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[15, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[15, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -861,7 +861,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["5.7"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[16, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -869,7 +869,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["4.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[16, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -877,7 +877,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.5"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[16, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -885,14 +885,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[16, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[16, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -900,7 +900,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["5.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[17, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -908,7 +908,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3.9"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[17, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -916,7 +916,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.3"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[17, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -924,14 +924,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[17, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[17, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -939,7 +939,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["5.1"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[18, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -947,7 +947,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3.5"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[18, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -955,7 +955,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.4"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[18, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -963,14 +963,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.3"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[18, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[18, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -978,7 +978,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["5.7"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[19, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -986,7 +986,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3.8"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[19, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -994,7 +994,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.7"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[19, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -1002,14 +1002,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.3"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[19, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[19, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -1017,7 +1017,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["5.1"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[20, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -1025,7 +1025,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["3.8"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209]
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747]
                  [
                   GeneralUtilities`Slice[20, 
                    Key["Sepal width"]]], "Mouse"], 
@@ -1034,7 +1034,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1.5"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[20, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
@@ -1042,14 +1042,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0.3"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[20, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{60, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
                   GeneralUtilities`Slice[20, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -1500,7 +1500,7 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1013242209},
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1933690747},
                      1, {}]], MenuEvaluator -> Automatic], 
                     MenuItem["Show up to 10 rows", 
                     KernelExecute[
@@ -1509,7 +1509,7 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1013242209},
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1933690747},
                      10, {}]], MenuEvaluator -> Automatic], 
                     MenuItem["Show up to 30 rows", 
                     KernelExecute[
@@ -1518,7 +1518,7 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1013242209},
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1933690747},
                      30, {}]], MenuEvaluator -> Automatic], 
                     MenuItem["Show up to 100 rows", 
                     KernelExecute[
@@ -1527,7 +1527,7 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1013242209},
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1933690747},
                      100, {}]], MenuEvaluator -> Automatic], 
                     MenuItem["Show all", 
                     KernelExecute[
@@ -1536,7 +1536,7 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1013242209},
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1933690747},
                      100000000, {}]], MenuEvaluator -> Automatic]}}], 
                SpanFromLeft, SpanFromLeft, SpanFromLeft, SpanFromLeft}}, 
              BaseStyle -> {ContextMenu -> {
@@ -1586,7 +1586,7 @@ Cell[BoxData[
                 TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                  TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                  TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                 TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1013242209][
+                 TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1933690747][
                 TypeSystem`NestedGrid`PackagePrivate`tmpData$]]; If[
                Not[
                 FailureQ[TypeSystem`NestedGrid`PackagePrivate`tmpGrid$]], 
@@ -1617,14 +1617,14 @@ Cell[BoxData[
            TypeSystem`NestedGrid`PackagePrivate`$state$$, 
             TypeSystem`NestedGrid`PackagePrivate`$path$$, 
             TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-            TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1013242209]]]], 
+            TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1933690747]]]], 
         TrackedSymbols :> {TypeSystem`NestedGrid`PackagePrivate`$path$$}], 
       TypeSystem`NestedGrid`PackagePrivate`$bottomBar$$ = Framed[
         Dynamic[
          Replace[
           MouseAnnotation[Null], {
-          TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][Null] -> 
-           "", TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1013242209][
+          TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][Null] -> 
+           "", TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1933690747][
              Pattern[TypeSystem`NestedGrid`PackagePrivate`path, 
               Blank[]]] :> (
             TypeSystem`NestedGrid`PackagePrivate`$lastPath = 
@@ -1673,8 +1673,10 @@ Cell[BoxData[
   InterpretationFunction->("Dataset[<>]"& )]], "Output",
  CellChangeTimes->{{3.7601905021741657`*^9, 3.760190564042327*^9}, 
    3.7602304774954033`*^9, 3.760395806331423*^9, 3.7604463038429213`*^9, 
-   3.7604512485727663`*^9, 3.760879684510954*^9, 3.7615104568422422`*^9},
- CellLabel->"Out[1]=",ExpressionUUID->"90c13f27-97af-4fff-ad10-b04e0912a226"]
+   3.7604512485727663`*^9, 3.760879684510954*^9, 3.7615104568422422`*^9, {
+   3.7616553627561207`*^9, 3.761655363437662*^9}, {3.761658579298408*^9, 
+   3.7616585797992*^9}, {3.762087214828971*^9, 3.7620872151785803`*^9}},
+ CellLabel->"Out[10]=",ExpressionUUID->"5640e947-4972-4268-95fe-42649946efeb"]
 }, Open  ]]
 }, Open  ]],
 
@@ -3983,9 +3985,8 @@ Cell[BoxData[{
         RowBox[{"candidateDiscretizations", ",", "Last"}], "]"}], "]"}]}]}], 
     "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
  InitializationCell->True,
- CellChangeTimes->{{3.761607284738703*^9, 
-  3.761607305930736*^9}},ExpressionUUID->"ddc971fb-fec0-4418-912c-\
-96c60c8c1434"],
+ CellChangeTimes->{{3.761607284738703*^9, 3.761607305930736*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"ddc971fb-fec0-4418-912c-96c60c8c1434"],
 
 Cell[CellGroupData[{
 
@@ -4002,23 +4003,142 @@ base de datos correspondientes a la longitud del s\[EAcute]palo.\
   3.7616069781618357`*^9}},ExpressionUUID->"d353e0b5-8e95-4391-92d3-\
 b95e163a31e2"],
 
-Cell[BoxData[
- RowBox[{
-  RowBox[{"values", " ", "=", " ", 
-   RowBox[{"Normal", "@", 
-    RowBox[{"data", "[", 
-     RowBox[{"All", ",", "\"\<Sepal length\>\""}], "]"}]}]}], ";"}]], "Input",\
-
- CellChangeTimes->{3.760195160664201*^9},
- CellLabel->"In[13]:=",ExpressionUUID->"4196c346-a7d5-416b-ac67-eedb17f96b49"],
+Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"class", " ", "=", " ", 
-   RowBox[{"Normal", "@", 
-    RowBox[{"data", "[", 
-     RowBox[{"All", ",", "\"\<Class\>\""}], "]"}]}]}], ";"}]], "Input",
- CellLabel->"In[8]:=",ExpressionUUID->"82e3babe-4047-4e3b-8030-e3db71d67401"],
+ RowBox[{"values", " ", "=", " ", 
+  RowBox[{"Normal", "@", 
+   RowBox[{"data", "[", 
+    RowBox[{"All", ",", "\"\<Sepal length\>\""}], "]"}]}]}]], "Input",
+ CellChangeTimes->{3.760195160664201*^9, 3.761655464112447*^9},
+ CellLabel->"In[12]:=",ExpressionUUID->"4196c346-a7d5-416b-ac67-eedb17f96b49"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "5.1`", ",", "4.9`", ",", "4.7`", ",", "4.6`", ",", "5.`", ",", "5.4`", ",",
+    "4.6`", ",", "5.`", ",", "4.4`", ",", "4.9`", ",", "5.4`", ",", "4.8`", 
+   ",", "4.8`", ",", "4.3`", ",", "5.8`", ",", "5.7`", ",", "5.4`", ",", 
+   "5.1`", ",", "5.7`", ",", "5.1`", ",", "5.4`", ",", "5.1`", ",", "4.6`", 
+   ",", "5.1`", ",", "4.8`", ",", "5.`", ",", "5.`", ",", "5.2`", ",", "5.2`",
+    ",", "4.7`", ",", "4.8`", ",", "5.4`", ",", "5.2`", ",", "5.5`", ",", 
+   "4.9`", ",", "5.`", ",", "5.5`", ",", "4.9`", ",", "4.4`", ",", "5.1`", 
+   ",", "5.`", ",", "4.5`", ",", "4.4`", ",", "5.`", ",", "5.1`", ",", "4.8`",
+    ",", "5.1`", ",", "4.6`", ",", "5.3`", ",", "5.`", ",", "7.`", ",", 
+   "6.4`", ",", "6.9`", ",", "5.5`", ",", "6.5`", ",", "5.7`", ",", "6.3`", 
+   ",", "4.9`", ",", "6.6`", ",", "5.2`", ",", "5.`", ",", "5.9`", ",", "6.`",
+    ",", "6.1`", ",", "5.6`", ",", "6.7`", ",", "5.6`", ",", "5.8`", ",", 
+   "6.2`", ",", "5.6`", ",", "5.9`", ",", "6.1`", ",", "6.3`", ",", "6.1`", 
+   ",", "6.4`", ",", "6.6`", ",", "6.8`", ",", "6.7`", ",", "6.`", ",", 
+   "5.7`", ",", "5.5`", ",", "5.5`", ",", "5.8`", ",", "6.`", ",", "5.4`", 
+   ",", "6.`", ",", "6.7`", ",", "6.3`", ",", "5.6`", ",", "5.5`", ",", 
+   "5.5`", ",", "6.1`", ",", "5.8`", ",", "5.`", ",", "5.6`", ",", "5.7`", 
+   ",", "5.7`", ",", "6.2`", ",", "5.1`", ",", "5.7`", ",", "6.3`", ",", 
+   "5.8`", ",", "7.1`", ",", "6.3`", ",", "6.5`", ",", "7.6`", ",", "4.9`", 
+   ",", "7.3`", ",", "6.7`", ",", "7.2`", ",", "6.5`", ",", "6.4`", ",", 
+   "6.8`", ",", "5.7`", ",", "5.8`", ",", "6.4`", ",", "6.5`", ",", "7.7`", 
+   ",", "7.7`", ",", "6.`", ",", "6.9`", ",", "5.6`", ",", "7.7`", ",", 
+   "6.3`", ",", "6.7`", ",", "7.2`", ",", "6.2`", ",", "6.1`", ",", "6.4`", 
+   ",", "7.2`", ",", "7.4`", ",", "7.9`", ",", "6.4`", ",", "6.3`", ",", 
+   "6.1`", ",", "7.7`", ",", "6.3`", ",", "6.4`", ",", "6.`", ",", "6.9`", 
+   ",", "6.7`", ",", "6.9`", ",", "5.8`", ",", "6.8`", ",", "6.7`", ",", 
+   "6.7`", ",", "6.3`", ",", "6.5`", ",", "6.2`", ",", "5.9`"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.7616554643530693`*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"d225f8fe-e151-47a8-ba98-13a2e3a86038"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"class", " ", "=", " ", 
+  RowBox[{"Normal", "@", 
+   RowBox[{"data", "[", 
+    RowBox[{"All", ",", "\"\<Class\>\""}], "]"}]}]}]], "Input",
+ CellChangeTimes->{3.761655467875929*^9},
+ CellLabel->"In[13]:=",ExpressionUUID->"82e3babe-4047-4e3b-8030-e3db71d67401"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-setosa\"\>", ",", "\<\"Iris-setosa\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-versicolor\"\>", ",", "\<\"Iris-versicolor\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>", 
+   ",", "\<\"Iris-virginica\"\>", ",", "\<\"Iris-virginica\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.761655468400868*^9},
+ CellLabel->"Out[13]=",ExpressionUUID->"e91fda74-e8e0-488d-b001-5c226f15d03d"]
+}, Open  ]],
 
 Cell["\<\
 Se comienza con un esquema de discretizaci\[OAcute]n en el intervalo entre el \
@@ -4036,15 +4156,16 @@ Cell[BoxData[
  RowBox[{"scheme", " ", "=", " ", 
   RowBox[{"MinMax", "[", "values", "]"}]}]], "Input",
  CellChangeTimes->{3.7601951755121202`*^9, 3.7601969050327997`*^9},
- CellLabel->"In[9]:=",ExpressionUUID->"64b207ab-16a2-4309-ad32-fd296f50167e"],
+ CellLabel->"In[14]:=",ExpressionUUID->"64b207ab-16a2-4309-ad32-fd296f50167e"],
 
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{"4.3`", ",", "7.9`"}], "}"}]], "Output",
  CellChangeTimes->{3.760196912405512*^9, 3.760230497160535*^9, 
   3.760395818115844*^9, 3.760446321165061*^9, 3.7604473080117683`*^9, 
-  3.760451249048038*^9, 3.7608797003061857`*^9, 3.761510457265328*^9},
- CellLabel->"Out[9]=",ExpressionUUID->"3b4c1986-e4f4-4b1c-b5ba-bdac38648156"]
+  3.760451249048038*^9, 3.7608797003061857`*^9, 3.761510457265328*^9, 
+  3.761655502999865*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"c77153d6-1607-402d-b540-ab442cd9bbda"]
 }, Open  ]],
 
 Cell["\<\
@@ -4317,6 +4438,28 @@ Cell[BoxData[
  CellLabel->"Out[19]=",ExpressionUUID->"41ff432e-da02-46da-b043-ce9b46d696a9"]
 }, Open  ]],
 
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DeleteDuplicates", "[", 
+  RowBox[{"Sort", "[", "values", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.761655569363694*^9, 3.76165558241803*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"4b15b4fb-8156-4d23-a43c-25f3b35ee935"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "4.3`", ",", "4.4`", ",", "4.5`", ",", "4.6`", ",", "4.7`", ",", "4.8`", 
+   ",", "4.9`", ",", "5.`", ",", "5.1`", ",", "5.2`", ",", "5.3`", ",", 
+   "5.4`", ",", "5.5`", ",", "5.6`", ",", "5.7`", ",", "5.8`", ",", "5.9`", 
+   ",", "6.`", ",", "6.1`", ",", "6.2`", ",", "6.3`", ",", "6.4`", ",", 
+   "6.5`", ",", "6.6`", ",", "6.7`", ",", "6.8`", ",", "6.9`", ",", "7.`", 
+   ",", "7.1`", ",", "7.2`", ",", "7.3`", ",", "7.4`", ",", "7.6`", ",", 
+   "7.7`", ",", "7.9`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.76165557145575*^9, 3.761655582618025*^9}},
+ CellLabel->"Out[17]=",ExpressionUUID->"7ae6c17a-adb7-4c5e-92ff-5c18279372c0"]
+}, Open  ]],
+
 Cell["\<\
 El algoritmo CAIM selecciona de entre la lista de posibles particiones del \
 esquema de discretizaci\[OAcute]n.\
@@ -4344,7 +4487,7 @@ Cell[BoxData[
      RowBox[{"Alternatives", ",", "scheme"}], "]"}]}], "]"}]}]], "Input",
  CellChangeTimes->{
   3.761607380960835*^9, {3.7616074166671133`*^9, 3.761607418014308*^9}},
- CellLabel->"In[25]:=",ExpressionUUID->"61335098-e9ec-411a-ba86-9d5b930ba4f2"],
+ CellLabel->"In[18]:=",ExpressionUUID->"61335098-e9ec-411a-ba86-9d5b930ba4f2"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -4365,8 +4508,9 @@ Cell[BoxData[
     ",", "6.95`", ",", "7.`", ",", "7.05`", ",", "7.1`", ",", "7.15`", ",", 
    "7.2`", ",", "7.3`", ",", "7.300000000000001`", ",", "7.4`", ",", "7.6`", 
    ",", "7.65`", ",", "7.7`"}], "}"}]], "Output",
- CellChangeTimes->{3.761607381612031*^9, 3.761607419851137*^9},
- CellLabel->"Out[25]=",ExpressionUUID->"7f61ce2c-ae7f-4144-aae3-fc0d27559fdd"]
+ CellChangeTimes->{3.761607381612031*^9, 3.761607419851137*^9, 
+  3.761655620158955*^9},
+ CellLabel->"Out[18]=",ExpressionUUID->"8525b4c4-2f45-4b52-a159-20fba570aec4"]
 }, Open  ]],
 
 Cell["\<\
@@ -8145,7 +8289,7 @@ Cell[BoxData[{
   3.760448088969956*^9}, {3.7608807931011553`*^9, 3.7608808710051928`*^9}, {
   3.760881582642002*^9, 3.7608816300198107`*^9}, {3.760881674696254*^9, 
   3.760881709718622*^9}},
- CellLabel->"In[10]:=",ExpressionUUID->"72e8a4e0-d4a1-4bab-82a2-cff1a2847e4a"],
+ CellLabel->"In[7]:=",ExpressionUUID->"72e8a4e0-d4a1-4bab-82a2-cff1a2847e4a"],
 
 Cell[CellGroupData[{
 
@@ -8317,6 +8461,47 @@ Cell["CAIMDiscretize discretiza un solo atributo.", "Text",
 
 Cell[CellGroupData[{
 
+Cell[BoxData["values"], "Input",
+ CellChangeTimes->{{3.7616559511469097`*^9, 3.761655951816189*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"d1d8a8af-3dd8-4832-ab53-e89cca749627"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "5.1`", ",", "4.9`", ",", "4.7`", ",", "4.6`", ",", "5.`", ",", "5.4`", ",",
+    "4.6`", ",", "5.`", ",", "4.4`", ",", "4.9`", ",", "5.4`", ",", "4.8`", 
+   ",", "4.8`", ",", "4.3`", ",", "5.8`", ",", "5.7`", ",", "5.4`", ",", 
+   "5.1`", ",", "5.7`", ",", "5.1`", ",", "5.4`", ",", "5.1`", ",", "4.6`", 
+   ",", "5.1`", ",", "4.8`", ",", "5.`", ",", "5.`", ",", "5.2`", ",", "5.2`",
+    ",", "4.7`", ",", "4.8`", ",", "5.4`", ",", "5.2`", ",", "5.5`", ",", 
+   "4.9`", ",", "5.`", ",", "5.5`", ",", "4.9`", ",", "4.4`", ",", "5.1`", 
+   ",", "5.`", ",", "4.5`", ",", "4.4`", ",", "5.`", ",", "5.1`", ",", "4.8`",
+    ",", "5.1`", ",", "4.6`", ",", "5.3`", ",", "5.`", ",", "7.`", ",", 
+   "6.4`", ",", "6.9`", ",", "5.5`", ",", "6.5`", ",", "5.7`", ",", "6.3`", 
+   ",", "4.9`", ",", "6.6`", ",", "5.2`", ",", "5.`", ",", "5.9`", ",", "6.`",
+    ",", "6.1`", ",", "5.6`", ",", "6.7`", ",", "5.6`", ",", "5.8`", ",", 
+   "6.2`", ",", "5.6`", ",", "5.9`", ",", "6.1`", ",", "6.3`", ",", "6.1`", 
+   ",", "6.4`", ",", "6.6`", ",", "6.8`", ",", "6.7`", ",", "6.`", ",", 
+   "5.7`", ",", "5.5`", ",", "5.5`", ",", "5.8`", ",", "6.`", ",", "5.4`", 
+   ",", "6.`", ",", "6.7`", ",", "6.3`", ",", "5.6`", ",", "5.5`", ",", 
+   "5.5`", ",", "6.1`", ",", "5.8`", ",", "5.`", ",", "5.6`", ",", "5.7`", 
+   ",", "5.7`", ",", "6.2`", ",", "5.1`", ",", "5.7`", ",", "6.3`", ",", 
+   "5.8`", ",", "7.1`", ",", "6.3`", ",", "6.5`", ",", "7.6`", ",", "4.9`", 
+   ",", "7.3`", ",", "6.7`", ",", "7.2`", ",", "6.5`", ",", "6.4`", ",", 
+   "6.8`", ",", "5.7`", ",", "5.8`", ",", "6.4`", ",", "6.5`", ",", "7.7`", 
+   ",", "7.7`", ",", "6.`", ",", "6.9`", ",", "5.6`", ",", "7.7`", ",", 
+   "6.3`", ",", "6.7`", ",", "7.2`", ",", "6.2`", ",", "6.1`", ",", "6.4`", 
+   ",", "7.2`", ",", "7.4`", ",", "7.9`", ",", "6.4`", ",", "6.3`", ",", 
+   "6.1`", ",", "7.7`", ",", "6.3`", ",", "6.4`", ",", "6.`", ",", "6.9`", 
+   ",", "6.7`", ",", "6.9`", ",", "5.8`", ",", "6.8`", ",", "6.7`", ",", 
+   "6.7`", ",", "6.3`", ",", "6.5`", ",", "6.2`", ",", "5.9`"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.761655952148629*^9},
+ CellLabel->"Out[19]=",ExpressionUUID->"ee50d739-b04b-45e3-83ae-41761eb45ee9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{"CAIMDiscretize", "[", 
   RowBox[{"values", ",", "class"}], "]"}]], "Input",
@@ -8360,8 +8545,7 @@ Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"CAIMDatabaseDiscretize", "[", "data", "]"}]], "Input",
- CellChangeTimes->{{3.7608817191751757`*^9, 3.760881722094055*^9}},
- CellLabel->"In[81]:=",ExpressionUUID->"933618d5-679e-4c6d-8068-39cc5fac2f46"],
+ CellLabel->"In[25]:=",ExpressionUUID->"c0022745-795c-4538-90ee-cc6d54c6f363"],
 
 Cell[BoxData[
  TemplateBox[{TagBox[
@@ -8394,7 +8578,7 @@ Cell[BoxData[
               "Petal length" -> TypeSystem`PackageScope`AtomShape[34], 
               "Petal width" -> TypeSystem`PackageScope`AtomShape[34], "Class" -> 
               TypeSystem`PackageScope`AtomShape[135.]]]], 20, {}]], 
-        "InitialData" -> TypeSystem`PackageScope`CacheHandle[56485819], 
+        "InitialData" -> TypeSystem`PackageScope`CacheHandle[1699561658], 
         "Type" -> TypeSystem`Vector[
           
           TypeSystem`Struct[{
@@ -8408,7 +8592,7 @@ Cell[BoxData[
              TypeSystem`Enumeration[
              "Iris-setosa", "Iris-versicolor", "Iris-virginica"]]}], 150], 
         "HandleQ" -> True, "RowTarget" -> 20, "Data" -> 
-        TypeSystem`PackageScope`CacheHandle[56485819]], 
+        TypeSystem`PackageScope`CacheHandle[1699561658]], 
       TypeSystem`NestedGrid`PackagePrivate`$path$$ = {}, 
       TypeSystem`NestedGrid`PackagePrivate`$pos$$ = 1, 
       TypeSystem`NestedGrid`PackagePrivate`$grid$$ = 
@@ -8441,9 +8625,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 87632552][{
-                    All, "Sepal length"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                    1942289832][{All, "Sepal length"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[All, "Sepal length"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -8471,9 +8655,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 87632552][{
-                    All, "Sepal width"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                    1942289832][{All, "Sepal width"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[All, "Sepal width"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -8501,9 +8685,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 87632552][{
-                    All, "Petal length"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                    1942289832][{All, "Petal length"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[All, "Petal length"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -8531,9 +8715,9 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 87632552][{
-                    All, "Petal width"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                    1942289832][{All, "Petal width"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[All, "Petal width"]], "Mouse"], 
                 Background -> GrayLevel[0.95], Alignment -> {Left, Baseline}], 
                Item[
@@ -8560,15 +8744,15 @@ Cell[BoxData[
                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 87632552][{
-                    All, "Class"}]], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                    1942289832][{All, "Class"}]], 
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[All, "Class"]], "Mouse"], Background -> 
                 GrayLevel[0.95], Alignment -> {Left, Baseline}]}, {
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[1, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8576,7 +8760,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[1, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8584,7 +8768,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[1, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8592,14 +8776,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[1, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[1, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -8607,7 +8791,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[2, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8615,7 +8799,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[2, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8623,7 +8807,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[2, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8631,14 +8815,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[2, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[2, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -8646,7 +8830,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[3, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8654,7 +8838,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[3, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8662,7 +8846,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[3, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8670,14 +8854,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[3, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[3, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -8685,7 +8869,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[4, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8693,7 +8877,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[4, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8701,7 +8885,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[4, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8709,14 +8893,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[4, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[4, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -8724,7 +8908,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[5, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8732,7 +8916,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[5, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8740,7 +8924,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[5, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8748,14 +8932,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[5, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[5, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -8763,7 +8947,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[6, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8771,7 +8955,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[6, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8779,7 +8963,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[6, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8787,14 +8971,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[6, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[6, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -8802,7 +8986,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[7, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8810,7 +8994,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[7, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8818,7 +9002,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[7, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8826,14 +9010,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[7, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[7, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -8841,7 +9025,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[8, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8849,7 +9033,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[8, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8857,7 +9041,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[8, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8865,14 +9049,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[8, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[8, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -8880,7 +9064,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[9, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8888,7 +9072,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[9, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8896,7 +9080,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[9, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8904,14 +9088,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[9, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[9, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -8919,7 +9103,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[10, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8927,7 +9111,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[10, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8935,7 +9119,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[10, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8943,14 +9127,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[10, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[10, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -8958,7 +9142,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[11, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8966,7 +9150,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[11, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8974,7 +9158,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[11, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -8982,14 +9166,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[11, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[11, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -8997,7 +9181,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[12, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9005,7 +9189,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[12, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9013,7 +9197,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[12, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9021,14 +9205,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[12, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[12, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -9036,7 +9220,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[13, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9044,7 +9228,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[13, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9052,7 +9236,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[13, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9060,14 +9244,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[13, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[13, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -9075,7 +9259,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[14, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9083,7 +9267,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[14, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9091,7 +9275,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[14, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9099,14 +9283,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[14, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[14, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -9114,7 +9298,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[15, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9122,7 +9306,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[15, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9130,7 +9314,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[15, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9138,14 +9322,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[15, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[15, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -9153,7 +9337,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[16, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9161,7 +9345,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[16, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9169,7 +9353,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[16, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9177,14 +9361,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[16, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[16, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -9192,7 +9376,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[17, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9200,7 +9384,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[17, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9208,7 +9392,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[17, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9216,14 +9400,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[17, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[17, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -9231,7 +9415,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[18, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9239,7 +9423,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[18, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9247,7 +9431,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[18, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9255,14 +9439,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[18, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[18, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -9270,7 +9454,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["1"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[19, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9278,7 +9462,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[19, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9286,7 +9470,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[19, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9294,14 +9478,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[19, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[19, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -9309,7 +9493,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[20, 
                    Key["Sepal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9317,7 +9501,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["2"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[20, 
                    Key["Sepal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9325,7 +9509,7 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[20, 
                    Key["Petal length"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
@@ -9333,14 +9517,14 @@ Cell[BoxData[
                Pane[
                 Annotation[
                  RawBoxes["0"], 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[20, 
                    Key["Petal width"]]], "Mouse"], 
                 ImageSize -> {{34, Full}, Automatic}, 
                 Alignment -> {Left, Baseline}], 
                Pane[
                 Annotation["Iris-setosa", 
-                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
                   GeneralUtilities`Slice[20, 
                    Key["Class"]]], "Mouse"], 
                 ImageSize -> {{135., Full}, Automatic}, 
@@ -9791,8 +9975,8 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 87632552}, 
-                    1, {}]], MenuEvaluator -> Automatic], 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1942289832},
+                     1, {}]], MenuEvaluator -> Automatic], 
                     MenuItem["Show up to 10 rows", 
                     KernelExecute[
                     
@@ -9800,8 +9984,8 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 87632552}, 
-                    10, {}]], MenuEvaluator -> Automatic], 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1942289832},
+                     10, {}]], MenuEvaluator -> Automatic], 
                     MenuItem["Show up to 30 rows", 
                     KernelExecute[
                     
@@ -9809,8 +9993,8 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 87632552}, 
-                    30, {}]], MenuEvaluator -> Automatic], 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1942289832},
+                     30, {}]], MenuEvaluator -> Automatic], 
                     MenuItem["Show up to 100 rows", 
                     KernelExecute[
                     
@@ -9818,8 +10002,8 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 87632552}, 
-                    100, {}]], MenuEvaluator -> Automatic], 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1942289832},
+                     100, {}]], MenuEvaluator -> Automatic], 
                     MenuItem["Show all", 
                     KernelExecute[
                     
@@ -9827,8 +10011,8 @@ Cell[BoxData[
                     TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                     TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 87632552}, 
-                    100000000, {}]], MenuEvaluator -> Automatic]}}], 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1942289832},
+                     100000000, {}]], MenuEvaluator -> Automatic]}}], 
                SpanFromLeft, SpanFromLeft, SpanFromLeft, SpanFromLeft}}, 
              BaseStyle -> {ContextMenu -> {
                  MenuItem["Copy position to clipboard", 
@@ -9877,7 +10061,7 @@ Cell[BoxData[
                 TypeSystem`NestedGrid`PackagePrivate`$state$$, 
                  TypeSystem`NestedGrid`PackagePrivate`$path$$, 
                  TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-                 TypeSystem`NestedGrid`PackagePrivate`$grid$$, 87632552][
+                 TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1942289832][
                 TypeSystem`NestedGrid`PackagePrivate`tmpData$]]; If[
                Not[
                 FailureQ[TypeSystem`NestedGrid`PackagePrivate`tmpGrid$]], 
@@ -9908,14 +10092,14 @@ Cell[BoxData[
            TypeSystem`NestedGrid`PackagePrivate`$state$$, 
             TypeSystem`NestedGrid`PackagePrivate`$path$$, 
             TypeSystem`NestedGrid`PackagePrivate`$pos$$, 
-            TypeSystem`NestedGrid`PackagePrivate`$grid$$, 87632552]]]], 
+            TypeSystem`NestedGrid`PackagePrivate`$grid$$, 1942289832]]]], 
         TrackedSymbols :> {TypeSystem`NestedGrid`PackagePrivate`$path$$}], 
       TypeSystem`NestedGrid`PackagePrivate`$bottomBar$$ = Framed[
         Dynamic[
          Replace[
           MouseAnnotation[Null], {
-          TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][Null] -> 
-           "", TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[87632552][
+          TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][Null] -> 
+           "", TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[1942289832][
              Pattern[TypeSystem`NestedGrid`PackagePrivate`path, 
               Blank[]]] :> (
             TypeSystem`NestedGrid`PackagePrivate`$lastPath = 
@@ -9962,15 +10146,613 @@ Cell[BoxData[
   "CopyTag",
   DisplayFunction->(#& ),
   InterpretationFunction->("Dataset[<>]"& )]], "Output",
- CellChangeTimes->{3.760880906174593*^9, 3.760881722876992*^9},
- CellLabel->"Out[81]=",ExpressionUUID->"7ced6457-758f-4f0c-b72b-7d96749a1ee1"]
+ CellChangeTimes->{3.761656157182023*^9},
+ CellLabel->"Out[25]=",ExpressionUUID->"59ee44b7-0c86-49ef-9888-aec941b442d1"]
+}, Open  ]],
+
+Cell["Exportaci\[OAcute]n de base de datos discretizada", "Text",
+ CellChangeTimes->{{3.762087245146243*^9, 
+  3.7620872562489357`*^9}},ExpressionUUID->"a276b56e-4816-4654-a39b-\
+df3fba043b20"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Values", "@", 
+  RowBox[{"Normal", "[", 
+   RowBox[{"CAIMDatabaseDiscretize", "[", "data", "]"}], "]"}]}]], "Input",
+ CellLabel->"In[28]:=",ExpressionUUID->"7d7b957d-e054-4f61-87b6-014947a1c372"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "0", ",", "0", ",", "\<\"Iris-setosa\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "1", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "1", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "2", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "1", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "2", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "1", ",", "2", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "2", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "1", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "2", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "1", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "1", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "1", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-versicolor\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "1", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "1", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "1", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "0", ",", "1", ",", "1", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "1", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "1", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "2", ",", "1", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "1", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "1", ",", "2", ",", "1", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "2", ",", "1", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "2", ",", "1", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "1", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "1", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "1", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "0", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "1", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "2", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "1", ",", "2", ",", "2", ",", "\<\"Iris-virginica\"\>"}], 
+    "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.761656421152629*^9},
+ CellLabel->"Out[28]=",ExpressionUUID->"31c7778f-26bb-4257-90da-3396717fb3d3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+      "\"\<discretizada.csv\>\""}], "}"}], "]"}], ",", 
+   RowBox[{"Values", "@", 
+    RowBox[{"Normal", "[", 
+     RowBox[{"CAIMDatabaseDiscretize", "[", "data", "]"}], "]"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7608817191751757`*^9, 3.760881722094055*^9}, {
+  3.7616560088750896`*^9, 3.761656023540963*^9}, {3.761656142228726*^9, 
+  3.761656149900185*^9}, {3.761656182429583*^9, 3.7616561862757683`*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"933618d5-679e-4c6d-8068-39cc5fac2f46"],
+
+Cell[BoxData["\<\"/home/carlos/Documentos/Programacion/Fisica-Mathematica/\
+Machine_Learning/CAIM/discretizada.csv\"\>"], "Output",
+ CellChangeTimes->{
+  3.760880906174593*^9, 3.760881722876992*^9, 3.7616559755902233`*^9, 
+   3.761656012330864*^9, {3.76165614406423*^9, 3.7616561508505363`*^9}, 
+   3.7616561880383673`*^9},
+ CellLabel->"Out[27]=",ExpressionUUID->"28748499-e8ad-403d-95d8-b3ae431d68de"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1379, 962},
-WindowMargins->{{141, Automatic}, {Automatic, 43}},
+WindowSize->{1920, 1019},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->"Default.nb"
 ]
@@ -9994,117 +10776,140 @@ Cell[1042, 35, 478, 11, 108, "Text",ExpressionUUID->"08dca9f4-81dc-4c48-a1af-5fe
 Cell[CellGroupData[{
 Cell[1557, 51, 170, 3, 65, "Subchapter",ExpressionUUID->"2e700662-c47e-4335-ade0-f14fe57efaad"],
 Cell[CellGroupData[{
-Cell[1752, 58, 530, 12, 47, "Input",ExpressionUUID->"0a27381d-33a1-4073-a16b-29d3728120dd",
+Cell[1752, 58, 578, 12, 47, "Input",ExpressionUUID->"0a27381d-33a1-4073-a16b-29d3728120dd",
  InitializationCell->True],
-Cell[2285, 72, 78388, 1604, 608, "Output",ExpressionUUID->"90c13f27-97af-4fff-ad10-b04e0912a226"]
+Cell[2333, 72, 78537, 1606, 608, "Output",ExpressionUUID->"5640e947-4972-4268-95fe-42649946efeb"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[80722, 1682, 177, 2, 65, "Subchapter",ExpressionUUID->"74658926-3095-4944-86f3-0713684202c0"],
-Cell[80902, 1686, 421, 8, 60, "Text",ExpressionUUID->"40530c0d-7595-4abc-b19c-7dc004cfe309"],
-Cell[81326, 1696, 9606, 162, 80, "Input",ExpressionUUID->"009e2ed6-46e5-4fad-b648-eb5990b3eccd"],
-Cell[90935, 1860, 99279, 1632, 245, "Input",ExpressionUUID->"3f7bbb7e-1184-415c-b4c7-711fbd344bc8"],
-Cell[190217, 3494, 4636, 105, 554, "Input",ExpressionUUID->"026175b0-253a-4890-bd94-a32a4da54e63",
+Cell[80919, 1684, 177, 2, 65, "Subchapter",ExpressionUUID->"74658926-3095-4944-86f3-0713684202c0"],
+Cell[81099, 1688, 421, 8, 36, "Text",ExpressionUUID->"40530c0d-7595-4abc-b19c-7dc004cfe309"],
+Cell[81523, 1698, 9606, 162, 80, "Input",ExpressionUUID->"009e2ed6-46e5-4fad-b648-eb5990b3eccd"],
+Cell[91132, 1862, 99279, 1632, 245, "Input",ExpressionUUID->"3f7bbb7e-1184-415c-b4c7-711fbd344bc8"],
+Cell[190414, 3496, 4636, 105, 554, "Input",ExpressionUUID->"026175b0-253a-4890-bd94-a32a4da54e63",
  InitializationCell->True],
-Cell[194856, 3601, 663, 18, 60, "Text",ExpressionUUID->"b0bca2f2-4201-4d9a-90a9-fdb84e239876"],
-Cell[195522, 3621, 15494, 259, 128, "Input",ExpressionUUID->"e93902a5-a53b-43e2-a675-f0f09c9e425a"],
-Cell[211019, 3882, 4050, 105, 492, "Input",ExpressionUUID->"ddc971fb-fec0-4418-912c-96c60c8c1434",
+Cell[195053, 3603, 663, 18, 36, "Text",ExpressionUUID->"b0bca2f2-4201-4d9a-90a9-fdb84e239876"],
+Cell[195719, 3623, 15494, 259, 128, "Input",ExpressionUUID->"e93902a5-a53b-43e2-a675-f0f09c9e425a"],
+Cell[211216, 3884, 4068, 104, 493, "Input",ExpressionUUID->"ddc971fb-fec0-4418-912c-96c60c8c1434",
  InitializationCell->True],
 Cell[CellGroupData[{
-Cell[215094, 3991, 160, 3, 55, "Subsection",ExpressionUUID->"0a1098cb-78a1-4f53-87c5-5379c8054ec1"],
-Cell[215257, 3996, 294, 6, 36, "Text",ExpressionUUID->"d353e0b5-8e95-4391-92d3-b95e163a31e2"],
-Cell[215554, 4004, 314, 8, 31, "Input",ExpressionUUID->"4196c346-a7d5-416b-ac67-eedb17f96b49"],
-Cell[215871, 4014, 261, 6, 31, "Input",ExpressionUUID->"82e3babe-4047-4e3b-8030-e3db71d67401"],
-Cell[216135, 4022, 403, 8, 60, "Text",ExpressionUUID->"b4a57f83-1c2e-42ef-bfd3-88dc3257eee8"],
+Cell[215309, 3992, 160, 3, 55, "Subsection",ExpressionUUID->"0a1098cb-78a1-4f53-87c5-5379c8054ec1"],
+Cell[215472, 3997, 294, 6, 36, "Text",ExpressionUUID->"d353e0b5-8e95-4391-92d3-b95e163a31e2"],
 Cell[CellGroupData[{
-Cell[216563, 4034, 248, 4, 31, "Input",ExpressionUUID->"64b207ab-16a2-4309-ad32-fd296f50167e"],
-Cell[216814, 4040, 363, 6, 35, "Output",ExpressionUUID->"3b4c1986-e4f4-4b1c-b5ba-bdac38648156"]
-}, Open  ]],
-Cell[217192, 4049, 311, 7, 36, "Text",ExpressionUUID->"184cad6b-5b7b-4444-a900-17d73990bd2e"],
-Cell[CellGroupData[{
-Cell[217528, 4060, 1316, 27, 262, "Input",ExpressionUUID->"41c9b673-1036-403d-9c90-2fa42fc057fb"],
-Cell[218847, 4089, 7163, 202, 343, "Output",ExpressionUUID->"08c3069a-dd05-40fe-ab41-df1423c76661"]
-}, Open  ]],
-Cell[226025, 4294, 212, 5, 36, "Text",ExpressionUUID->"4b7c1e95-9911-4984-a530-3a8b9decd06e"],
-Cell[CellGroupData[{
-Cell[226262, 4303, 373, 7, 34, "Input",ExpressionUUID->"2a150213-98e5-468e-8d4d-2bd774e9b292"],
-Cell[226638, 4312, 244, 4, 35, "Output",ExpressionUUID->"41ff432e-da02-46da-b043-ce9b46d696a9"]
-}, Open  ]],
-Cell[226897, 4319, 263, 6, 36, "Text",ExpressionUUID->"6fd35f3d-5955-42da-8920-7819119d9a54"],
-Cell[CellGroupData[{
-Cell[227185, 4329, 683, 17, 31, "Input",ExpressionUUID->"61335098-e9ec-411a-ba86-9d5b930ba4f2"],
-Cell[227871, 4348, 1401, 20, 82, "Output",ExpressionUUID->"7f61ce2c-ae7f-4144-aae3-fc0d27559fdd"]
-}, Open  ]],
-Cell[229287, 4371, 250, 6, 36, "Text",ExpressionUUID->"ffc6ab21-fcbe-41bd-9ede-11a44b3dfb64"],
-Cell[CellGroupData[{
-Cell[229562, 4381, 281, 8, 31, "Input",ExpressionUUID->"37e3c534-21b6-46a5-97d2-3a27ee8dca68"],
-Cell[229846, 4391, 6063, 150, 220, "Output",ExpressionUUID->"9014e011-8352-4d26-8dd3-c720c62af5da"]
-}, Open  ]],
-Cell[235924, 4544, 219, 5, 36, "Text",ExpressionUUID->"ca212350-a66c-4a8e-8927-eb815fd5e565"],
-Cell[CellGroupData[{
-Cell[236168, 4553, 281, 5, 31, "Input",ExpressionUUID->"90a64fed-8f22-4d47-8440-3b888f153b80"],
-Cell[236452, 4560, 478, 10, 35, "Output",ExpressionUUID->"a88135a3-b50d-487f-b641-33ff6a606955"]
-}, Open  ]],
-Cell[236945, 4573, 270, 6, 36, "Text",ExpressionUUID->"5dab6eb2-ae54-4c38-87f5-cc18f79c591d"],
-Cell[CellGroupData[{
-Cell[237240, 4583, 289, 6, 34, "Input",ExpressionUUID->"64ef1e32-cab6-4535-8ebf-4dfcfe3f40be"],
-Cell[237532, 4591, 196, 4, 35, "Output",ExpressionUUID->"067f396f-8d53-4f32-aa5c-933b9bc91fc9"]
-}, Open  ]],
-Cell[237743, 4598, 179, 3, 36, "Text",ExpressionUUID->"321fc543-bb61-4074-b4bd-c9594cbd1748"],
-Cell[CellGroupData[{
-Cell[237947, 4605, 324, 6, 34, "Input",ExpressionUUID->"4d15fd06-d6d4-4aa3-8775-47da5eae7cb9"],
-Cell[238274, 4613, 1220, 32, 59, "Output",ExpressionUUID->"5061cb25-2b26-4c0b-aa84-e498a7281a39"]
+Cell[215791, 4007, 313, 6, 31, "Input",ExpressionUUID->"4196c346-a7d5-416b-ac67-eedb17f96b49"],
+Cell[216107, 4015, 2219, 32, 105, "Output",ExpressionUUID->"d225f8fe-e151-47a8-ba98-13a2e3a86038"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[239531, 4650, 409, 9, 34, "Input",ExpressionUUID->"002fc099-5e62-4d83-bf07-c9a0045f5744"],
-Cell[239943, 4661, 768, 22, 68, "Output",ExpressionUUID->"192fb164-2810-4bb7-868e-bb54849bd2e8"]
+Cell[218363, 4052, 283, 6, 31, "Input",ExpressionUUID->"82e3babe-4047-4e3b-8030-e3db71d67401"],
+Cell[218649, 4060, 5023, 79, 289, "Output",ExpressionUUID->"e91fda74-e8e0-488d-b001-5c226f15d03d"]
 }, Open  ]],
-Cell[240726, 4686, 185, 3, 36, "Text",ExpressionUUID->"8e589f94-3eda-4a14-90cc-de2fb784877e"],
+Cell[223687, 4142, 403, 8, 36, "Text",ExpressionUUID->"b4a57f83-1c2e-42ef-bfd3-88dc3257eee8"],
 Cell[CellGroupData[{
-Cell[240936, 4693, 325, 7, 34, "Input",ExpressionUUID->"4f017426-d843-4c2d-83cb-0657691c0e04"],
-Cell[241264, 4702, 499, 11, 35, "Output",ExpressionUUID->"3b172f71-2f96-4719-b1d7-0da714bbbabb"]
+Cell[224115, 4154, 249, 4, 31, "Input",ExpressionUUID->"64b207ab-16a2-4309-ad32-fd296f50167e"],
+Cell[224367, 4160, 389, 7, 35, "Output",ExpressionUUID->"c77153d6-1607-402d-b540-ab442cd9bbda"]
+}, Open  ]],
+Cell[224771, 4170, 311, 7, 36, "Text",ExpressionUUID->"184cad6b-5b7b-4444-a900-17d73990bd2e"],
+Cell[CellGroupData[{
+Cell[225107, 4181, 1316, 27, 262, "Input",ExpressionUUID->"41c9b673-1036-403d-9c90-2fa42fc057fb"],
+Cell[226426, 4210, 7163, 202, 343, "Output",ExpressionUUID->"08c3069a-dd05-40fe-ab41-df1423c76661"]
+}, Open  ]],
+Cell[233604, 4415, 212, 5, 36, "Text",ExpressionUUID->"4b7c1e95-9911-4984-a530-3a8b9decd06e"],
+Cell[CellGroupData[{
+Cell[233841, 4424, 373, 7, 34, "Input",ExpressionUUID->"2a150213-98e5-468e-8d4d-2bd774e9b292"],
+Cell[234217, 4433, 244, 4, 35, "Output",ExpressionUUID->"41ff432e-da02-46da-b043-ce9b46d696a9"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[241800, 4718, 319, 8, 34, "Input",ExpressionUUID->"93064671-e59d-455e-b533-3a59251f7f35"],
-Cell[242122, 4728, 413, 9, 35, "Output",ExpressionUUID->"a1b3b4fb-1b17-431f-8d81-051b8f2cfaa3"]
+Cell[234498, 4442, 249, 4, 31, "Input",ExpressionUUID->"4b15b4fb-8156-4d23-a43c-25f3b35ee935"],
+Cell[234750, 4448, 676, 11, 35, "Output",ExpressionUUID->"7ae6c17a-adb7-4c5e-92ff-5c18279372c0"]
+}, Open  ]],
+Cell[235441, 4462, 263, 6, 36, "Text",ExpressionUUID->"6fd35f3d-5955-42da-8920-7819119d9a54"],
+Cell[CellGroupData[{
+Cell[235729, 4472, 683, 17, 31, "Input",ExpressionUUID->"61335098-e9ec-411a-ba86-9d5b930ba4f2"],
+Cell[236415, 4491, 1426, 21, 59, "Output",ExpressionUUID->"8525b4c4-2f45-4b52-a159-20fba570aec4"]
+}, Open  ]],
+Cell[237856, 4515, 250, 6, 36, "Text",ExpressionUUID->"ffc6ab21-fcbe-41bd-9ede-11a44b3dfb64"],
+Cell[CellGroupData[{
+Cell[238131, 4525, 281, 8, 31, "Input",ExpressionUUID->"37e3c534-21b6-46a5-97d2-3a27ee8dca68"],
+Cell[238415, 4535, 6063, 150, 151, "Output",ExpressionUUID->"9014e011-8352-4d26-8dd3-c720c62af5da"]
+}, Open  ]],
+Cell[244493, 4688, 219, 5, 36, "Text",ExpressionUUID->"ca212350-a66c-4a8e-8927-eb815fd5e565"],
+Cell[CellGroupData[{
+Cell[244737, 4697, 281, 5, 31, "Input",ExpressionUUID->"90a64fed-8f22-4d47-8440-3b888f153b80"],
+Cell[245021, 4704, 478, 10, 35, "Output",ExpressionUUID->"a88135a3-b50d-487f-b641-33ff6a606955"]
+}, Open  ]],
+Cell[245514, 4717, 270, 6, 36, "Text",ExpressionUUID->"5dab6eb2-ae54-4c38-87f5-cc18f79c591d"],
+Cell[CellGroupData[{
+Cell[245809, 4727, 289, 6, 34, "Input",ExpressionUUID->"64ef1e32-cab6-4535-8ebf-4dfcfe3f40be"],
+Cell[246101, 4735, 196, 4, 35, "Output",ExpressionUUID->"067f396f-8d53-4f32-aa5c-933b9bc91fc9"]
+}, Open  ]],
+Cell[246312, 4742, 179, 3, 36, "Text",ExpressionUUID->"321fc543-bb61-4074-b4bd-c9594cbd1748"],
+Cell[CellGroupData[{
+Cell[246516, 4749, 324, 6, 34, "Input",ExpressionUUID->"4d15fd06-d6d4-4aa3-8775-47da5eae7cb9"],
+Cell[246843, 4757, 1220, 32, 35, "Output",ExpressionUUID->"5061cb25-2b26-4c0b-aa84-e498a7281a39"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[248100, 4794, 409, 9, 34, "Input",ExpressionUUID->"002fc099-5e62-4d83-bf07-c9a0045f5744"],
+Cell[248512, 4805, 768, 22, 68, "Output",ExpressionUUID->"192fb164-2810-4bb7-868e-bb54849bd2e8"]
+}, Open  ]],
+Cell[249295, 4830, 185, 3, 36, "Text",ExpressionUUID->"8e589f94-3eda-4a14-90cc-de2fb784877e"],
+Cell[CellGroupData[{
+Cell[249505, 4837, 325, 7, 171, "Input",ExpressionUUID->"4f017426-d843-4c2d-83cb-0657691c0e04"],
+Cell[249833, 4846, 499, 11, 178, "Output",ExpressionUUID->"3b172f71-2f96-4719-b1d7-0da714bbbabb"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[250369, 4862, 319, 8, 171, "Input",ExpressionUUID->"93064671-e59d-455e-b533-3a59251f7f35"],
+Cell[250691, 4872, 413, 9, 178, "Output",ExpressionUUID->"a1b3b4fb-1b17-431f-8d81-051b8f2cfaa3"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[242596, 4744, 168, 3, 65, "Subchapter",ExpressionUUID->"c293a061-7809-457c-98ce-a7e2a986e53b"],
-Cell[242767, 4749, 414, 8, 36, "Text",ExpressionUUID->"c94c9b2a-4996-43f6-91a7-cd9196e07373"],
-Cell[243184, 4759, 58182, 959, 208, "Input",ExpressionUUID->"adb95b1d-2fae-42de-9bc1-9c9a75cc0108"],
-Cell[301369, 5720, 136819, 2248, 431, "Input",ExpressionUUID->"b063998d-66de-47a7-bb11-0cd2f27cfca2"],
-Cell[438191, 7970, 7724, 177, 1037, "Input",ExpressionUUID->"72e8a4e0-d4a1-4bab-82a2-cff1a2847e4a",
+Cell[251165, 4888, 168, 3, 327, "Subchapter",ExpressionUUID->"c293a061-7809-457c-98ce-a7e2a986e53b"],
+Cell[251336, 4893, 414, 8, 303, "Text",ExpressionUUID->"c94c9b2a-4996-43f6-91a7-cd9196e07373"],
+Cell[251753, 4903, 58182, 959, 1056, "Input",ExpressionUUID->"adb95b1d-2fae-42de-9bc1-9c9a75cc0108"],
+Cell[309938, 5864, 136819, 2248, 431, "Input",ExpressionUUID->"b063998d-66de-47a7-bb11-0cd2f27cfca2"],
+Cell[446760, 8114, 7723, 177, 1037, "Input",ExpressionUUID->"72e8a4e0-d4a1-4bab-82a2-cff1a2847e4a",
  InitializationCell->True],
 Cell[CellGroupData[{
-Cell[445940, 8151, 160, 3, 55, "Subsection",ExpressionUUID->"61801898-fe8d-4795-b42f-8a17d0c19502"],
-Cell[446103, 8156, 239, 6, 36, "Text",ExpressionUUID->"4afd560a-c83b-4929-a81f-41b213116911"],
+Cell[454508, 8295, 160, 3, 55, "Subsection",ExpressionUUID->"61801898-fe8d-4795-b42f-8a17d0c19502"],
+Cell[454671, 8300, 239, 6, 36, "Text",ExpressionUUID->"4afd560a-c83b-4929-a81f-41b213116911"],
 Cell[CellGroupData[{
-Cell[446367, 8166, 243, 4, 31, "Input",ExpressionUUID->"8f643a0f-e328-4c7b-9648-723e698f731e"],
-Cell[446613, 8172, 738, 18, 35, "Output",ExpressionUUID->"0a4a127e-3f76-4de1-a5dc-83950f5a947d"]
+Cell[454935, 8310, 243, 4, 31, "Input",ExpressionUUID->"8f643a0f-e328-4c7b-9648-723e698f731e"],
+Cell[455181, 8316, 738, 18, 35, "Output",ExpressionUUID->"0a4a127e-3f76-4de1-a5dc-83950f5a947d"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[447388, 8195, 277, 7, 34, "Input",ExpressionUUID->"8ad2059b-103d-473e-a748-2c4c21d2f00e"],
-Cell[447668, 8204, 397, 9, 35, "Output",ExpressionUUID->"9e707284-58a5-47dd-a92a-a439ed79fe8a"]
+Cell[455956, 8339, 277, 7, 34, "Input",ExpressionUUID->"8ad2059b-103d-473e-a748-2c4c21d2f00e"],
+Cell[456236, 8348, 397, 9, 35, "Output",ExpressionUUID->"9e707284-58a5-47dd-a92a-a439ed79fe8a"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[448102, 8218, 330, 7, 34, "Input",ExpressionUUID->"36c880f3-e03e-48e7-96b3-aec9919976f9"],
-Cell[448435, 8227, 1255, 33, 59, "Output",ExpressionUUID->"c144aaab-b3d2-4d15-ac55-2cc51a4cdb9d"]
+Cell[456670, 8362, 330, 7, 34, "Input",ExpressionUUID->"36c880f3-e03e-48e7-96b3-aec9919976f9"],
+Cell[457003, 8371, 1255, 33, 35, "Output",ExpressionUUID->"c144aaab-b3d2-4d15-ac55-2cc51a4cdb9d"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[449727, 8265, 325, 8, 34, "Input",ExpressionUUID->"dead36ca-b861-46de-afe1-f30653491522"],
-Cell[450055, 8275, 1339, 34, 59, "Output",ExpressionUUID->"28e9753b-f69d-409f-b5e4-bcfff8bbdc5c"]
+Cell[458295, 8409, 325, 8, 34, "Input",ExpressionUUID->"dead36ca-b861-46de-afe1-f30653491522"],
+Cell[458623, 8419, 1339, 34, 35, "Output",ExpressionUUID->"28e9753b-f69d-409f-b5e4-bcfff8bbdc5c"]
 }, Open  ]],
-Cell[451409, 8312, 185, 3, 36, "Text",ExpressionUUID->"c0ef403c-6a66-4603-89ca-5f2e621534cc"],
+Cell[459977, 8456, 185, 3, 36, "Text",ExpressionUUID->"c0ef403c-6a66-4603-89ca-5f2e621534cc"],
 Cell[CellGroupData[{
-Cell[451619, 8319, 244, 4, 31, "Input",ExpressionUUID->"7ece168d-ab4d-4782-ac5b-f76a1fab361b"],
-Cell[451866, 8325, 1756, 25, 82, "Output",ExpressionUUID->"b41dc6ed-71d7-4a23-9506-f4a89f872c94"]
+Cell[460187, 8463, 179, 2, 31, "Input",ExpressionUUID->"d1d8a8af-3dd8-4832-ab53-e89cca749627"],
+Cell[460369, 8467, 2217, 32, 105, "Output",ExpressionUUID->"ee50d739-b04b-45e3-83ae-41761eb45ee9"]
 }, Open  ]],
-Cell[453637, 8353, 198, 3, 36, "Text",ExpressionUUID->"524adf3b-087a-4283-9fe7-81eda975eedb"],
 Cell[CellGroupData[{
-Cell[453860, 8360, 225, 3, 31, "Input",ExpressionUUID->"933618d5-679e-4c6d-8068-39cc5fac2f46"],
-Cell[454088, 8365, 77829, 1600, 608, "Output",ExpressionUUID->"7ced6457-758f-4f0c-b72b-7d96749a1ee1"]
+Cell[462623, 8504, 244, 4, 31, "Input",ExpressionUUID->"7ece168d-ab4d-4782-ac5b-f76a1fab361b"],
+Cell[462870, 8510, 1756, 25, 59, "Output",ExpressionUUID->"b41dc6ed-71d7-4a23-9506-f4a89f872c94"]
+}, Open  ]],
+Cell[464641, 8538, 198, 3, 36, "Text",ExpressionUUID->"524adf3b-087a-4283-9fe7-81eda975eedb"],
+Cell[CellGroupData[{
+Cell[464864, 8545, 157, 2, 31, "Input",ExpressionUUID->"c0022745-795c-4538-90ee-cc6d54c6f363"],
+Cell[465024, 8549, 78049, 1600, 608, "Output",ExpressionUUID->"59ee44b7-0c86-49ef-9888-aec941b442d1"]
+}, Open  ]],
+Cell[543088, 10152, 193, 3, 36, "Text",ExpressionUUID->"a276b56e-4816-4654-a39b-df3fba043b20"],
+Cell[CellGroupData[{
+Cell[543306, 10159, 219, 4, 31, "Input",ExpressionUUID->"7d7b957d-e054-4f61-87b6-014947a1c372"],
+Cell[543528, 10165, 17775, 554, 496, "Output",ExpressionUUID->"31c7778f-26bb-4257-90da-3396717fb3d3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[561340, 10724, 663, 15, 31, "Input",ExpressionUUID->"933618d5-679e-4c6d-8068-39cc5fac2f46"],
+Cell[562006, 10741, 402, 6, 35, "Output",ExpressionUUID->"28748499-e8ad-403d-95d8-b3ae431d68de"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
