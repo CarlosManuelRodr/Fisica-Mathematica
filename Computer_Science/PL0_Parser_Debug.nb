@@ -1,0 +1,849 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     32103,        841]
+NotebookOptionsPosition[     31396,        822]
+NotebookOutlinePosition[     31732,        837]
+CellTagsIndexPosition[     31689,        834]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[GraphicsComplexBox[CompressedData["
+1:eJxlkg0s1HEYxy/kOMTdce68nDtKR6rRFdL6/7xWstjV3OVlk9Ii5W1LNCY3
+WkyvMmY0L0nrdI1s1ghrbSxuh3UhF6V1ZlONXobpqrnnafhv//33+X+/z/N7
+fs/zCBPTJElGNBot5u/77+vOWOjxHTUjtIjW/NRwW9LvLZXp9aakIYvDEWey
+iPzjDY/0pwxkmuEJq85tWa6yMfyfp9ayEQFezcdBhvjhoq7rxXIrsvrVUmt5
+Djl+6zFdo+vPdfrKBt3+TVGH3Yg5nr9WN0XmGnzA8s69s/6lAuTWZjk/Olu4
+IR7yQzzwnGJ0wjycSTSh46IxGYP8UNdmJFmbbDgXWOb8RT1yhY0MfqhbeVUT
+pOmmIy+FSM5VNzCRwa829KF/19sUVTadnBm+cKnfd4mSxVqkqmotSfXo+N1g
+y00k7ESB5eCQnooz9Gl/G7vnZsZmAhwwlqp/VWGNDH61YQ7a8WyptMqYAFeW
+KkV9R+jIyW2m+oa6FcrMSLVo8X5kna6lJAd0i35LDPR/SBa4+VhuId9jMkVP
+bukoVkBO4SMeC3V1y7XM+hkGEWhELtNNaqo9UcvLCLTBfAMvy8ZjE8xIQWTu
+7OBRBeqwV2vzafF+0C/oJ7Byy+yUkZcdmZJ5t0rjaWTn/eMdpWwmiYha6B08
+uUjBvKA/Ct5c+aSOTbi32Z1xriaEdWq4d/KgE+5Dmv9FT649HznvcOGC8S9X
+5Jo71lTVNx7Ofznl8cOhPsf/+xF8yIZR54wsSP9c8povRCbPszQJXC7uA+QD
+bnecvhyU44IMfrivhFsS2BhqRzLpv/MabRco0OF+A/nxWe0TDshWMyUZ4q+2
+xIbpdl5M/0SxVNvqQ7zscV5pTb2MPBMecr2DyDPel0OiChSnaziqdboW84Mf
+6of6oH5gD+niu7lnTlgP6MDQH2DwQ/7i3fdC3Mv4yPPyymiljwB5x56KAgch
+nxD/fRKPyhfrdC3mB795bnd6V7MA++t31urBWLkQOTJO3K1juOK8YP7ACrF6
+u2DabYMO8aAD/wGja3HY
+    "], {
+     {RGBColor[0.5, 0., 0.], 
+      LineBox[{{1, 2}, {1, 3}, {2, 4}, {2, 5}, {2, 6}, {2, 7}, {4, 8}, {5, 
+       9}, {5, 10}, {5, 11}, {5, 12}, {6, 14}, {7, 15}, {7, 16}, {7, 17}, {7, 
+       18}, {11, 13}, {16, 19}, {16, 20}, {16, 21}, {17, 53}, {17, 54}, {17, 
+       55}, {21, 22}, {21, 23}, {21, 24}, {22, 25}, {23, 26}, {23, 27}, {24, 
+       52}, {26, 28}, {26, 29}, {26, 30}, {27, 47}, {27, 48}, {27, 49}, {29, 
+       31}, {29, 32}, {29, 33}, {31, 34}, {32, 35}, {32, 36}, {33, 39}, {33, 
+       40}, {33, 41}, {35, 37}, {36, 38}, {40, 42}, {40, 43}, {41, 46}, {42, 
+       44}, {43, 45}, {48, 50}, {49, 51}, {54, 56}, {54, 57}, {54, 58}, {54, 
+       59}, {55, 86}, {55, 87}, {55, 88}, {57, 60}, {57, 61}, {57, 62}, {59, 
+       84}, {59, 85}, {60, 63}, {61, 73}, {62, 74}, {63, 64}, {63, 65}, {63, 
+       66}, {64, 67}, {65, 68}, {65, 69}, {66, 72}, {68, 70}, {69, 71}, {74, 
+       75}, {74, 76}, {74, 77}, {75, 78}, {76, 79}, {76, 80}, {77, 83}, {79, 
+       81}, {80, 82}, {87, 89}, {88, 90}}]}, {InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Program\"\>", ")"}], ",", "1"}], "}"}],
+        
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 1], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Block\"\>", ")"}], ",", "2"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 2], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"Dot\"\>", ")"}], ",", "3"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 3], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"ConstOpt\"\>", ")"}], ",", "4"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 4], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"VarOpt\"\>", ")"}], ",", "5"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 5], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"ProcRep\"\>", ")"}], ",", "6"}], "}"}],
+        
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 6], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Statement\"\>", ")"}], ",", "7"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 7], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "8"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 8], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"Var\"\>", ")"}], ",", "9", 
+          ",", "\<\"var\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 9], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"Identifier\"\>", ")"}], ",", "10", 
+          ",", "\<\"n\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 10], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"VarOptRep\"\>", ")"}], ",", "11"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 11], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"Semicolon\"\>", ")"}], ",", "12"}], "}"}],
+        
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 12], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "13"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 13], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "14"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 14], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"Begin\"\>", ")"}], ",", "15", 
+          ",", "\<\"begin\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 15], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Statement\"\>", ")"}], ",", "16"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 16], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"StatementRep\"\>", ")"}], ",", "17"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 17], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"End\"\>", ")"}], ",", "18"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 18], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"Identifier\"\>", ")"}], ",", "19", 
+          ",", "\<\"n\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 19], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"Assign\"\>", ")"}], ",", "20", 
+          ",", "\<\":=\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 20], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Expression\"\>", ")"}], ",", "21"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 21], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"SignOpt\"\>", ")"}], ",", "22"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 22], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Term\"\>", ")"}], ",", "23"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 23], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"AddRep\"\>", ")"}], ",", "24"}], "}"}],
+        
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 24], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "25"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 25], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Factor\"\>", ")"}], ",", "26"}], "}"}],
+        
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 26], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"MultRep\"\>", ")"}], ",", "27"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 27], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"LeftParenthesis\"\>", ")"}], ",", "28", 
+          ",", "\<\"(\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 28], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Expression\"\>", ")"}], ",", "29"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 29], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"RightParenthesis\"\>", ")"}], ",", "30"}],
+          "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 30], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"SignOpt\"\>", ")"}], ",", "31"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 31], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Term\"\>", ")"}], ",", "32"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 32], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"AddRep\"\>", ")"}], ",", "33"}], "}"}],
+        
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 33], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "34"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 34], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Factor\"\>", ")"}], ",", "35"}], "}"}],
+        
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 35], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"MultRep\"\>", ")"}], ",", "36"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 36], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"NumberLiteral\"\>", ")"}], ",", "37", 
+          ",", "\<\"1\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 37], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "38"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 38], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"Plus\"\>", ")"}], ",", "39", 
+          ",", "\<\"+\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 39], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Term\"\>", ")"}], ",", "40"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 40], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"AddRep\"\>", ")"}], ",", "41"}], "}"}],
+        
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 41], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Factor\"\>", ")"}], ",", "42"}], "}"}],
+        
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 42], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"MultRep\"\>", ")"}], ",", "43"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 43], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"NumberLiteral\"\>", ")"}], ",", "44", 
+          ",", "\<\"4\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 44], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "45"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 45], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "46"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 46], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"Times\"\>", ")"}], ",", "47", 
+          ",", "\<\"*\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 47], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Factor\"\>", ")"}], ",", "48"}], "}"}],
+        
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 48], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"MultRep\"\>", ")"}], ",", "49"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 49], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"NumberLiteral\"\>", ")"}], ",", "50", 
+          ",", "\<\"5\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 50], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "51"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 51], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "52"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 52], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"Semicolon\"\>", ")"}], ",", "53", 
+          ",", "\<\";\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 53], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Statement\"\>", ")"}], ",", "54"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 54], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"StatementRep\"\>", ")"}], ",", "55"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 55], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"If\"\>", ")"}], ",", "56", 
+          ",", "\<\"if\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 56], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Condition\"\>", ")"}], ",", "57"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 57], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"Then\"\>", ")"}], ",", "58"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 58], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Statement\"\>", ")"}], ",", "59"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 59], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Expression1\"\>", ")"}], ",", "60"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 60], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Op\"\>", ")"}], ",", "61"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 61], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Expression2\"\>", ")"}], ",", "62"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 62], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Expression\"\>", ")"}], ",", "63"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 63], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"SignOpt\"\>", ")"}], ",", "64"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 64], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Term\"\>", ")"}], ",", "65"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 65], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"AddRep\"\>", ")"}], ",", "66"}], "}"}],
+        
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 66], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "67"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 67], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Factor\"\>", ")"}], ",", "68"}], "}"}],
+        
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 68], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"MultRep\"\>", ")"}], ",", "69"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 69], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"Identifier\"\>", ")"}], ",", "70", 
+          ",", "\<\"n\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 70], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "71"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 71], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "72"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 72], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"NotEqual\"\>", ")"}], ",", "73", 
+          ",", "\<\"#\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 73], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Expression\"\>", ")"}], ",", "74"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 74], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"SignOpt\"\>", ")"}], ",", "75"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 75], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Term\"\>", ")"}], ",", "76"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 76], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"AddRep\"\>", ")"}], ",", "77"}], "}"}],
+        
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 77], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "78"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 78], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Factor\"\>", ")"}], ",", "79"}], "}"}],
+        
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 79], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"MultRep\"\>", ")"}], ",", "80"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 80], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"NumberLiteral\"\>", ")"}], ",", "81", 
+          ",", "\<\"16\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 81], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "82"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 82], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "83"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 83], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"Print\"\>", ")"}], ",", "84", 
+          ",", "\<\"print\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 84], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"Identifier\"\>", ")"}], ",", "85", 
+          ",", "\<\"n\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 85], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Term", "(", "\<\"Semicolon\"\>", ")"}], ",", "86", 
+          ",", "\<\";\"\>"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 86], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"Statement\"\>", ")"}], ",", "87"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 87], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NonTerm", "(", "\<\"StatementRep\"\>", ")"}], ",", "88"}], 
+         "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 88], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "89"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 89], InsetBox[
+       FrameBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EmptyString", "(", ")"}], ",", "90"}], "}"}],
+        Background->RGBColor[1, 1, 0.8],
+        FrameStyle->RGBColor[0.94, 0.85, 0.36],
+        StripOnInput->False], 90]}}],
+   Annotation[#, VertexCoordinateRules -> CompressedData["
+1:eJxTTMoPSmViYGCIAmIQrcb1+YD5DQ4HBp9NdTleIg4nDcMj/v9nc1hcLCZm
+UiTk0PyoT7NgAxeczwAFbrOr1v6eKQAV/2SPymdygPEh5onB+TD9l1r3drY1
+8zpA6Lv2qPy3cH6sit/zJUrf0OT/YsiLX23dIXqZE24/qjwbnC8BVQfjN+8x
+fWXZrQDnb1rRLBdWroihH2Y+TL84mjkw/tcL8wpT+Vkw7IXxI2TfXbhcLQzn
+w9TD3L2+8ZrTtf3scP4vl6CM2YsF4XyY+gvQcICph/EzjfhE3Au44Xy3kAae
+sxf/28dAw8lqs/CB/kJWBxjf+mbO/6PT+OF8mPoL0Hi4e6s8PHwmswOMP6N7
+vcYJT3YH7PJ30eTv2gfZPP9p8YsLrp7nrdzplav44Hwh68qmlZJCcP56keak
+wks8cP1bk+5KFjoKwPkweVg6gsnD+Kjm3YX7DxYesPCE8WHxgS4PCw+YPDof
+Fh9CiZcO3reTgcd/vmWeloS4HJxf69H0mfm7Epw/dxK//cwPkvD4/521evnF
+E9KI9OHsLsC1UBbOVyh41nVaThHOd9hVfC1BQgJuP8w8GH+r9OMKp0p5OB+m
+Hua/rV87LXlCROH+gcnD+GfqYou33pGC82Hq4fF1TnWRi444nJ+/7CBXLYsk
+Dvm7aPJ34ebD1MPcD3cf1P0wvmb4z9tvt8gg3AOVh/Fh4QPjw9TDzG/Tn+qi
+1isH539qnhG23kgBh/xdNPm7cPNh6jmr9hfsXaEAD1+LNN6lN6cowvn+MSb7
+n3MpweMLFv8w/hqTC+oKj5Ux5GH6YfIwPgBcG3ia
+     "]]& ],
+  AspectRatio->0.7142443052179218,
+  FrameTicks->None,
+  ImagePadding->{{0., 1.}, {1., 0.}},
+  ImageSize->{1768., Automatic},
+  PlotRange->{{-1.242950587769239, 11.186555289923152`}, {-0.6340849375286552,
+    5.706764437757897}},
+  PlotRangePadding->Automatic]], "Input",
+ CellChangeTimes->{{3.762806630112782*^9, 3.7628066688707037`*^9}, 
+   3.762806704600204*^9},ExpressionUUID->"6514d2cb-1a9b-4c98-a4cc-\
+ba2c7a03f4ca"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "tinyProgram", " ", "=", "\[IndentingNewLine]", 
+   "\"\<var n;\nbegin\n   n := (1+4)*5;\n   if n # 16 then\n      print n;\n\
+end.\>\""}], ";"}]], "Input",
+ CellLabel->
+  "In[169]:=",ExpressionUUID->"e4927242-6fa0-44b2-9f9d-9fc2d2b5826b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"tokens", " ", "=", " ", 
+   RowBox[{"Tokenize", "[", 
+    RowBox[{"tinyProgram", ",", "symbolTokens", ",", "keywordDFA"}], "]"}]}], 
+  ";"}]], "Input",
+ CellLabel->
+  "In[170]:=",ExpressionUUID->"79094b57-13e0-44c7-b454-13f0f7720f03"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"parseTree", " ", "=", " ", 
+   RowBox[{"Parse", "[", 
+    RowBox[{"tokens", ",", "grammar"}], "]"}]}], " ", 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"NonTerm", "[", "\"\<Program\>\"", "]"}], ",", "1"}], "}"}], 
+   "[", "\"\<TACode\>\"", "]"}], "/.", 
+  RowBox[{"SynthesizeTree", "[", "parseTree", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.762631927766341*^9, 3.762631928371202*^9}, {
+  3.762811530986148*^9, 3.7628115325050297`*^9}},
+ CellLabel->
+  "In[230]:=",ExpressionUUID->"132de1f8-749c-4e28-a399-651474ac8966"],
+
+Cell[BoxData["\<\"declare n\\nadd 1 4 $0\\nmultiply $0 5 $1\\nset n \
+$1\\nnot_equal n 16 $2\\nif_false $2 goto L$3\\nprint n\\nlabel \
+L$3\\nhalt\"\>"], "Output",
+ CellChangeTimes->{
+  3.7626319295382957`*^9, 3.7626326632168922`*^9, 3.7628035571723833`*^9, 
+   3.7628035953587303`*^9, 3.762803626357108*^9, {3.762803808481392*^9, 
+   3.7628038433502607`*^9}, {3.762804174651762*^9, 3.7628041919342833`*^9}, 
+   3.7628042560699463`*^9, {3.762804315849646*^9, 3.762804344119197*^9}, 
+   3.762804395019828*^9, {3.762804499600974*^9, 3.762804509518992*^9}, 
+   3.762804599293714*^9, 3.762804643755589*^9, {3.762805008067285*^9, 
+   3.762805021319665*^9}, 3.762805329743877*^9, 3.76280549253946*^9, 
+   3.7628056672686577`*^9, 3.762805762442534*^9, 3.762806252008589*^9, 
+   3.762806382440585*^9, 3.7628067844576807`*^9, 3.762810678520612*^9, {
+   3.762810829949827*^9, 3.762810858416333*^9}, 3.762811206758341*^9, 
+   3.7628112910194683`*^9, 3.762811329151188*^9, {3.762811508738105*^9, 
+   3.7628115331717157`*^9}, 3.762811607948154*^9, 3.76281164983984*^9, 
+   3.762811712003854*^9, 3.762811875255015*^9, 3.7628120821998987`*^9},
+ CellLabel->
+  "Out[231]=",ExpressionUUID->"dfca5ec3-40d4-431b-bd40-4a40c3e1a04e"]
+}, Open  ]]
+},
+WindowSize->{1440, 757},
+WindowMargins->{{Automatic, 239}, {Automatic, 97}},
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 28423, 741, 1276, "Input",ExpressionUUID->"6514d2cb-1a9b-4c98-a4cc-ba2c7a03f4ca"],
+Cell[28984, 763, 276, 7, 170, "Input",ExpressionUUID->"e4927242-6fa0-44b2-9f9d-9fc2d2b5826b"],
+Cell[29263, 772, 269, 7, 31, "Input",ExpressionUUID->"79094b57-13e0-44c7-b454-13f0f7720f03"],
+Cell[CellGroupData[{
+Cell[29557, 783, 609, 16, 55, "Input",ExpressionUUID->"132de1f8-749c-4e28-a399-651474ac8966"],
+Cell[30169, 801, 1211, 18, 253, "Output",ExpressionUUID->"dfca5ec3-40d4-431b-bd40-4a40c3e1a04e"]
+}, Open  ]]
+}
+]
+*)
+
