@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     32103,        841]
-NotebookOptionsPosition[     31396,        822]
-NotebookOutlinePosition[     31732,        837]
-CellTagsIndexPosition[     31689,        834]
+NotebookDataLength[     33336,        858]
+NotebookOptionsPosition[     32631,        839]
+NotebookOutlinePosition[     32964,        854]
+CellTagsIndexPosition[     32921,        851]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -765,10 +765,19 @@ Cell[BoxData[
  RowBox[{
   RowBox[{
   "tinyProgram", " ", "=", "\[IndentingNewLine]", 
-   "\"\<var n;\nbegin\n   n := (1+4)*5;\n   if n # 16 then\n      print n;\n\
-end.\>\""}], ";"}]], "Input",
+   "\"\<procedure p1;\nvar n, f;\nbegin\n   n := 0;\n   f := 1;\n   while n # \
+16 do\n   begin\n      n := n + 1;\n      f := f * n;\n   end;\nend;\n\n\
+procedure p2;\nvar n;\nbegin\n   n := (1+4)*5;\n   if n # 16 then\n   begin\n \
+     print n;\n   end;\nend;\n\nbegin\n    call p1;\n    call p2;\nend.\n\
+\>\""}], ";"}]], "Input",
+ CellChangeTimes->{{3.762879625157434*^9, 3.762879625712891*^9}, {
+  3.762880229673356*^9, 3.762880245074987*^9}, {3.762880505754677*^9, 
+  3.762880511739397*^9}, {3.762881038727006*^9, 3.7628810427036963`*^9}, {
+  3.76288107958526*^9, 3.762881142005239*^9}, {3.7628813489797497`*^9, 
+  3.762881371818245*^9}, {3.7628814025249157`*^9, 3.762881404495764*^9}, {
+  3.762881495758635*^9, 3.7628815109545383`*^9}},
  CellLabel->
-  "In[169]:=",ExpressionUUID->"e4927242-6fa0-44b2-9f9d-9fc2d2b5826b"],
+  "In[216]:=",ExpressionUUID->"e4927242-6fa0-44b2-9f9d-9fc2d2b5826b"],
 
 Cell[BoxData[
  RowBox[{
@@ -777,7 +786,7 @@ Cell[BoxData[
     RowBox[{"tinyProgram", ",", "symbolTokens", ",", "keywordDFA"}], "]"}]}], 
   ";"}]], "Input",
  CellLabel->
-  "In[170]:=",ExpressionUUID->"79094b57-13e0-44c7-b454-13f0f7720f03"],
+  "In[217]:=",ExpressionUUID->"79094b57-13e0-44c7-b454-13f0f7720f03"],
 
 Cell[CellGroupData[{
 
@@ -797,11 +806,14 @@ Cell[BoxData[{
  CellChangeTimes->{{3.762631927766341*^9, 3.762631928371202*^9}, {
   3.762811530986148*^9, 3.7628115325050297`*^9}},
  CellLabel->
-  "In[230]:=",ExpressionUUID->"132de1f8-749c-4e28-a399-651474ac8966"],
+  "In[218]:=",ExpressionUUID->"132de1f8-749c-4e28-a399-651474ac8966"],
 
-Cell[BoxData["\<\"declare n\\nadd 1 4 $0\\nmultiply $0 5 $1\\nset n \
-$1\\nnot_equal n 16 $2\\nif_false $2 goto L$3\\nprint n\\nlabel \
-L$3\\nhalt\"\>"], "Output",
+Cell[BoxData["\<\"begin_proc p1\\ndeclare_var n\\ndeclare_var f\\nset n \
+0\\nset f 1\\nlabel L1$3\\nnot_equal n 16 $0\\nif_false $0 goto L2$3\\nadd n \
+1 $1\\nset n $1\\nmultiply f n $2\\nset f $2\\ngoto L1$3\\nlabel \
+L2$3\\nend_proc p1\\nbegin_proc p2\\ndeclare_var n\\nadd 1 4 $4\\nmultiply $4 \
+5 $5\\nset n $5\\nnot_equal n 16 $6\\nif_false $6 goto L$7\\nprint n\\nlabel \
+L$7\\nend_proc p2\\ncall p1\\ncall p2\\nhalt\"\>"], "Output",
  CellChangeTimes->{
   3.7626319295382957`*^9, 3.7626326632168922`*^9, 3.7628035571723833`*^9, 
    3.7628035953587303`*^9, 3.762803626357108*^9, {3.762803808481392*^9, 
@@ -815,13 +827,18 @@ L$3\\nhalt\"\>"], "Output",
    3.762810829949827*^9, 3.762810858416333*^9}, 3.762811206758341*^9, 
    3.7628112910194683`*^9, 3.762811329151188*^9, {3.762811508738105*^9, 
    3.7628115331717157`*^9}, 3.762811607948154*^9, 3.76281164983984*^9, 
-   3.762811712003854*^9, 3.762811875255015*^9, 3.7628120821998987`*^9},
+   3.762811712003854*^9, 3.762811875255015*^9, 3.7628120821998987`*^9, {
+   3.762879619848708*^9, 3.762879637907662*^9}, 3.7628797006158257`*^9, 
+   3.762879930357194*^9, 3.7628802676164207`*^9, 3.7628803154601583`*^9, 
+   3.762880516736339*^9, 3.7628810548738613`*^9, 3.76288115023929*^9, {
+   3.762881365941778*^9, 3.762881384700016*^9}, 3.7628814193248997`*^9, 
+   3.7628815180242653`*^9},
  CellLabel->
-  "Out[231]=",ExpressionUUID->"dfca5ec3-40d4-431b-bd40-4a40c3e1a04e"]
+  "Out[219]=",ExpressionUUID->"ca150c26-fca4-4bd2-9809-6517dbcb9be7"]
 }, Open  ]]
 },
-WindowSize->{1440, 757},
-WindowMargins->{{Automatic, 239}, {Automatic, 97}},
+WindowSize->{960, 1021},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->"Default.nb"
 ]
@@ -837,11 +854,11 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[558, 20, 28423, 741, 1276, "Input",ExpressionUUID->"6514d2cb-1a9b-4c98-a4cc-ba2c7a03f4ca"],
-Cell[28984, 763, 276, 7, 170, "Input",ExpressionUUID->"e4927242-6fa0-44b2-9f9d-9fc2d2b5826b"],
-Cell[29263, 772, 269, 7, 31, "Input",ExpressionUUID->"79094b57-13e0-44c7-b454-13f0f7720f03"],
+Cell[28984, 763, 913, 16, 653, "Input",ExpressionUUID->"e4927242-6fa0-44b2-9f9d-9fc2d2b5826b"],
+Cell[29900, 781, 269, 7, 31, "Input",ExpressionUUID->"79094b57-13e0-44c7-b454-13f0f7720f03"],
 Cell[CellGroupData[{
-Cell[29557, 783, 609, 16, 55, "Input",ExpressionUUID->"132de1f8-749c-4e28-a399-651474ac8966"],
-Cell[30169, 801, 1211, 18, 253, "Output",ExpressionUUID->"dfca5ec3-40d4-431b-bd40-4a40c3e1a04e"]
+Cell[30194, 792, 609, 16, 55, "Input",ExpressionUUID->"132de1f8-749c-4e28-a399-651474ac8966"],
+Cell[30806, 810, 1809, 26, 657, "Output",ExpressionUUID->"ca150c26-fca4-4bd2-9809-6517dbcb9be7"]
 }, Open  ]]
 }
 ]
