@@ -1,0 +1,2454 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    105627,       2446]
+NotebookOptionsPosition[    103553,       2400]
+NotebookOutlinePosition[    103888,       2415]
+CellTagsIndexPosition[    103845,       2412]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Generaci\[OAcute]n de DAGs", "Title",
+ CellChangeTimes->{{3.744906841697904*^9, 3.744906842581829*^9}, {
+  3.769793967030916*^9, 
+  3.769793972276843*^9}},ExpressionUUID->"72aec525-4ce0-4a03-abc3-\
+918611a4a29e"],
+
+Cell["\<\
+Tarea del curso: Aut\[OAcute]matas y lenguajes formales
+Carlos Manuel Rodr\[IAcute]guez Mart\[IAcute]nez
+3 / Sep / 2018\
+\>", "Subsection",
+ CellChangeTimes->{{3.7449070236124*^9, 3.744907053334597*^9}, {
+  3.76979397619374*^9, 
+  3.769793985795472*^9}},ExpressionUUID->"258f5fad-de28-448b-8e30-\
+8fbe1a00c528"],
+
+Cell[CellGroupData[{
+
+Cell["Implementaci\[OAcute]n de la f\[OAcute]rmula de Robinson", "Chapter",
+ CellChangeTimes->{{3.744906845080274*^9, 
+  3.744906855094795*^9}},ExpressionUUID->"3bb8b6f0-5003-4fc3-8c50-\
+95584c865556"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "0", "]"}], "=", " ", "1"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "1", "]"}], "=", " ", "1"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "2", "]"}], "=", "3"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "n_", "]"}], ":=", 
+   RowBox[{"Sum", "[", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], 
+       RowBox[{"i", "+", "1"}]], " ", 
+      RowBox[{"Binomial", "[", 
+       RowBox[{"n", ",", "i"}], "]"}], " ", 
+      SuperscriptBox["2", 
+       RowBox[{"i", 
+        RowBox[{"(", 
+         RowBox[{"n", "-", "i"}], ")"}]}]], 
+      RowBox[{"f", "[", 
+       RowBox[{"n", "-", "i"}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellLabel->"In[12]:=",ExpressionUUID->"b50d1c74-36ae-4c46-bec6-5cb8a5f470a5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Map", "[", 
+  RowBox[{"f", ",", 
+   RowBox[{"Range", "[", "8", "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.74490691534553*^9, 3.744906936665104*^9}},
+ CellLabel->"In[83]:=",ExpressionUUID->"e001e126-3e72-4900-b42a-10807181604d"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "3", ",", "25", ",", "543", ",", "29281", ",", "3781503", ",", 
+   "1138779265", ",", "783702329343"}], "}"}]], "Output",
+ CellChangeTimes->{3.744906936961063*^9},
+ CellLabel->"Out[83]=",ExpressionUUID->"c3f63a46-e70a-489f-9a61-9556c10faed9"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Generaci\[OAcute]n de todos los posibles DAG de orden n", "Chapter",
+ CellChangeTimes->{{3.7449068656182327`*^9, 
+  3.744906873405138*^9}},ExpressionUUID->"445972f1-2ffe-4c9a-a077-\
+45ed38dd04ac"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"BuildMatrix", "[", 
+    RowBox[{"paramList_", ",", "n_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", "parts", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"parts", " ", "=", " ", 
+       RowBox[{"Partition", "[", 
+        RowBox[{"paramList", ",", 
+         RowBox[{"n", "-", "1"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Insert", "[", 
+         RowBox[{
+          RowBox[{"parts", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], ",", "1", ",", "i"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellLabel->"In[5]:=",ExpressionUUID->"166e090b-224c-4e77-af77-8de99bb6d58e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"GeneratePossible", "[", "n_", "]"}], ":=", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"BuildMatrix", "[", 
+       RowBox[{"#", ",", "n"}], "]"}], "&"}], ",", 
+     RowBox[{"Tuples", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1"}], "}"}], ",", 
+       RowBox[{"n", 
+        RowBox[{"(", 
+         RowBox[{"n", "-", "1"}], ")"}]}]}], "]"}]}], "]"}]}], ";"}]], "Input",\
+
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.7697940020085783`*^9},ExpressionUUID->"d7522e3c-6067-45fa-83e2-\
+b63622d3ad49"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"CheckComplex", "[", "l_", "]"}], ":=", 
+   RowBox[{"Apply", "[", 
+    RowBox[{"Or", ",", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"MatchQ", "[", 
+         RowBox[{"#", ",", "_Complex"}], "]"}], "&"}], ",", "l"}], "]"}]}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"CheckNegative", "[", "l_", "]"}], ":=", 
+    RowBox[{"Apply", "[", 
+     RowBox[{"Or", ",", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Re", "[", "#", "]"}], "\[LessEqual]", "0"}], "&"}], ",", 
+        "l"}], "]"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SelectDAG", "[", 
+    RowBox[{"matrices_", ",", "n_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"eigenvalues", ",", "badPos", ",", "goodPos", ",", "output"}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"eigenvalues", " ", "=", " ", 
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"N", "[", 
+           RowBox[{"Eigenvalues", "[", "#", "]"}], "]"}], "&"}], ",", 
+         "matrices"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"badPos", " ", "=", " ", 
+       RowBox[{"Position", "[", 
+        RowBox[{"eigenvalues", ",", 
+         RowBox[{
+          RowBox[{"_", "?", "CheckNegative"}], "|", 
+          RowBox[{"_", "?", "CheckComplex"}]}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"goodPos", " ", "=", " ", 
+       RowBox[{"Delete", "[", 
+        RowBox[{
+         RowBox[{"Range", "[", 
+          RowBox[{"Length", "[", "eigenvalues", "]"}], "]"}], ",", "badPos"}],
+         "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"output", " ", "=", " ", 
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#", "-", 
+           RowBox[{"IdentityMatrix", "[", "n", "]"}]}], "&"}], ",", 
+         RowBox[{"matrices", "[", 
+          RowBox[{"[", "goodPos", "]"}], "]"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "output", "]"}], ";"}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.7438878382934513`*^9, 3.7438879823699207`*^9}, 
+   3.743889948315284*^9},
+ CellLabel->"In[7]:=",ExpressionUUID->"23791d39-134f-492f-a13f-35afec927653"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ListDAG", "[", "n_", "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"possibleMatrices", ",", "dag"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"possibleMatrices", " ", "=", " ", 
+       RowBox[{"GeneratePossible", "[", "n", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"dag", " ", "=", " ", 
+       RowBox[{"SelectDAG", "[", 
+        RowBox[{"possibleMatrices", ",", "n"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "dag", "]"}], ";"}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.743888071844055*^9, 3.7438881177675*^9}, {
+  3.7438881822109423`*^9, 3.7438882138097973`*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"d8b1bdb9-9d02-47b6-a225-fd4b60ae66bb"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"PlotGraphs", "[", "n_", "]"}], ":=", 
+   RowBox[{"MapThread", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"AdjacencyGraph", "[", 
+       RowBox[{"#1", ",", "\[IndentingNewLine]", 
+        RowBox[{"VertexLabels", "\[Rule]", "\"\<Name\>\""}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"VertexShapeFunction", "\[Rule]", "\"\<Circle\>\""}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"VertexSize", "\[Rule]", "Small"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"EdgeStyle", "\[Rule]", "Thick"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"PlotTheme", "\[Rule]", "\"\<LargeGraph\>\""}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"PlotLabel", "\[Rule]", 
+         RowBox[{"Style", "[", 
+          RowBox[{"Framed", "[", 
+           RowBox[{"ToString", "[", "#2", "]"}], "]"}], "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ImageSize", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"200", ",", "200"}], "}"}]}]}], "\[IndentingNewLine]", 
+       "]"}], "&"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"ListDAG", "[", "n", "]"}], ",", 
+       RowBox[{"Range", "[", 
+        RowBox[{"f", "[", "n", "]"}], "]"}]}], "}"}]}], "\[IndentingNewLine]",
+     "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.743889807256113*^9, 3.743889850313315*^9}, {
+   3.743946591498019*^9, 3.74394659176545*^9}, {3.743948894709333*^9, 
+   3.743948943729274*^9}, 3.743949113708927*^9, {3.7439491533910637`*^9, 
+   3.743949173612527*^9}, {3.743949207804801*^9, 3.743949239173974*^9}, {
+   3.7439493581726294`*^9, 3.743949411079994*^9}, {3.7439495424167023`*^9, 
+   3.743949605958438*^9}, {3.7449068930212927`*^9, 3.744906893273793*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"80e29bb2-c52c-40a7-b3b1-a2932061d21b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PlotGraphs", "[", "2", "]"}]], "Input",
+ CellChangeTimes->{{3.743890227026105*^9, 3.743890227121622*^9}},
+ CellLabel->
+  "In[148]:=",ExpressionUUID->"5a2dbc6f-0707-4f41-8261-f91daef739d5"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2}, {}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["1"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"}, 
+         VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.00001, -0.00001}, {1.0000000000000004`*^-6, 
+             1.0000000000000004`*^-6}], "DynamicName", BoxID -> "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.00001, -0.000030000000000000004`}, {
+             1.0000000000000004`*^-6, 1.0000000000000004`*^-6}], 
+            "DynamicName", BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{89.91494465223798, 
+         111.0036535985774}, {-74.0000000000004, 95.71674393003264}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"1\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2}, {
+         SparseArray[Automatic, {2, 2}, 0, {1, {{0, 0, 1}, {{1}}}, Pattern}], 
+         Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["2"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"}, 
+         VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{
+           DynamicLocation["VertexID$2", Automatic, Center], 
+           DynamicLocation["VertexID$1", Automatic, Center]}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 1.2246467991473532`*^-16}, {0.05, 0.05}], 
+            "DynamicName", BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{3.928788820948691, 
+         199.00000000000009`}, {-6.202395402882477, 24.430758134771615`}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"2\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2}, {
+         SparseArray[Automatic, {2, 2}, 0, {1, {{0, 1, 1}, {{2}}}, Pattern}], 
+         Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["3"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"}, 
+         VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{
+           DynamicLocation["VertexID$1", Automatic, Center], 
+           DynamicLocation["VertexID$2", Automatic, Center]}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 1.2246467991473532`*^-16}, {0.05, 0.05}], 
+            "DynamicName", BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{3.9287888209486894`, 
+         199.00000000000003`}, {-6.202395402882477, 24.430758134771615`}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"3\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.743890227486704*^9, 3.74393937060806*^9, 3.743948780657188*^9, {
+   3.743948933210511*^9, 3.743948946277897*^9}, 3.7439491153347893`*^9, {
+   3.7439491563138*^9, 3.7439491687992*^9}, {3.743949223688751*^9, 
+   3.743949240399192*^9}, {3.7439493646349487`*^9, 3.743949412222746*^9}, {
+   3.74394956558867*^9, 3.743949607161335*^9}},
+ CellLabel->
+  "Out[148]=",ExpressionUUID->"21fbcf3b-e957-4d1a-b9d5-19f1a0b5bc63"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PlotGraphs", "[", "3", "]"}]], "Input",
+ CellChangeTimes->{{3.743890229592616*^9, 3.743890229649312*^9}},
+ CellLabel->
+  "In[149]:=",ExpressionUUID->"03b61add-435d-485e-8244-64669c8b32db"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["1"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"}, 
+         VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.00001, -0.00001}, {1.0000000000000004`*^-6, 
+             1.0000000000000004`*^-6}], "DynamicName", BoxID -> "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.00001, -0.000030000000000000004`}, {
+             1.0000000000000004`*^-6, 1.0000000000000004`*^-6}], 
+            "DynamicName", BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.000030000000000000004`, -0.00001}, {
+             1.0000000000000004`*^-6, 1.0000000000000004`*^-6}], 
+            "DynamicName", BoxID -> "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{21.123282302744236`, 
+         181.06374045515796`}, {-73.99999999999976, 92.94045815241383}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"1\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 0, 0, 1}, {{2}}}, Pattern}], Null}, {
+        EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["2"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"}, 
+         VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{
+           DynamicLocation["VertexID$3", Automatic, Center], 
+           DynamicLocation["VertexID$2", Automatic, Center]}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.18753000000000003`, -0.06251}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.06251000000000007, -1.06251}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.06251000000000007, -0.06251000000000007}, {
+             0.006250999999999999, 0.006250999999999999}], "DynamicName", 
+            BoxID -> "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{92.22895141798254, 
+         128.44567514653795`}, {-86.41421356237305, 107.93654715289225`}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{222., 222.},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"2\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 0, 0, 1}, {{1}}}, Pattern}], Null}, {
+        EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["3"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"}, 
+         VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{
+           DynamicLocation["VertexID$3", Automatic, Center], 
+           DynamicLocation["VertexID$1", Automatic, Center]}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.06251, -1.06251}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.18752999999999997`, -0.06251}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.06251, -0.06251000000000007}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{82.55472926295269, 
+         115.9417424485173}, {-75.41421356237312, 96.99625545407729}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"3\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 0, 0, 2}, {{1}, {2}}}, Pattern}], 
+         Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["4"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"}, 
+         VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{{
+            DynamicLocation["VertexID$3", Automatic, Center], 
+            DynamicLocation["VertexID$1", Automatic, Center]}, {
+            DynamicLocation["VertexID$3", Automatic, Center], 
+            DynamicLocation["VertexID$2", Automatic, Center]}}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 0.}, {0.044721359549995794`, 0.044721359549995794`}],
+             "DynamicName", BoxID -> "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.8944271909999159, 0.}, {0.044721359549995794`, 
+             0.044721359549995794`}], "DynamicName", BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.4472135954999579, 0.8944271909999159}, {
+             0.044721359549995794`, 0.044721359549995794`}], "DynamicName", 
+            BoxID -> "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{21.12328230274422, 
+         181.06374045515804`}, {-73.9999999999999, 92.94045815241383}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"4\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 0, 1, 1}, {{3}}}, Pattern}], Null}, {
+        EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["5"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"}, 
+         VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{
+           DynamicLocation["VertexID$2", Automatic, Center], 
+           DynamicLocation["VertexID$3", Automatic, Center]}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.18753000000000003`, -0.06251}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.06251000000000007, -0.06251000000000007}, {
+             0.006250999999999999, 0.006250999999999999}], "DynamicName", 
+            BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.06251000000000007, -1.06251}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{82.55472926295272, 
+         115.94174244851739`}, {-75.41421356237296, 96.99625545407736}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"5\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 0, 1, 2}, {{3}, {1}}}, Pattern}], 
+         Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["6"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"}, 
+         VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{{
+            DynamicLocation["VertexID$2", Automatic, Center], 
+            DynamicLocation["VertexID$3", Automatic, Center]}, {
+            DynamicLocation["VertexID$3", Automatic, Center], 
+            DynamicLocation["VertexID$1", Automatic, Center]}}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{2., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 3.6739403974420594`*^-16}, {0.05, 0.05}], 
+            "DynamicName", BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 2.4492935982947064`*^-16}, {0.05, 0.05}], 
+            "DynamicName", BoxID -> "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{3.90422204458545, 
+         198.99999999999997`}, {-2.682554540012429, 20.934501377210303`}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"6\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 0, 1, 1}, {{1}}}, Pattern}], Null}, {
+        EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["7"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"}, 
+         VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{
+           DynamicLocation["VertexID$2", Automatic, Center], 
+           DynamicLocation["VertexID$1", Automatic, Center]}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.06251, -1.06251}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.06251, -0.06251000000000007}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.18752999999999997`, -0.06251}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{82.55472926295273, 
+         115.94174244851732`}, {-75.4142135623729, 96.99625545407737}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"7\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 0, 1, 2}, {{1}, {2}}}, Pattern}], 
+         Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["8"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"}, 
+         VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{{
+            DynamicLocation["VertexID$2", Automatic, Center], 
+            DynamicLocation["VertexID$1", Automatic, Center]}, {
+            DynamicLocation["VertexID$3", Automatic, Center], 
+            DynamicLocation["VertexID$2", Automatic, Center]}}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{2., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 2.4492935982947064`*^-16}, {0.05, 0.05}], 
+            "DynamicName", BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 3.6739403974420594`*^-16}, {0.05, 0.05}], 
+            "DynamicName", BoxID -> "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{3.9042220445854463`, 
+         199.00000000000003`}, {-2.682554540012461, 20.934501377210402`}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"8\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 0, 1, 2}, {{1}, {1}}}, Pattern}], 
+         Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["9"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"}, 
+         VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{
+           DynamicLocation["VertexID$2", Automatic, Center], 
+           DynamicLocation["VertexID$1", Automatic, Center]}], 
+         ArrowBox[{
+           DynamicLocation["VertexID$3", Automatic, Center], 
+           DynamicLocation["VertexID$1", Automatic, Center]}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 1.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 1.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{21.123282302744222`, 
+         181.06374045515798`}, {-73.99999999999982, 92.9404581524138}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"9\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 0, 1, 3}, {{1}, {1}, {2}}}, Pattern}],
+          Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["10"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{
+           DynamicLocation["VertexID$2", Automatic, Center], 
+           DynamicLocation["VertexID$1", Automatic, Center]}], 
+         ArrowBox[
+          BezierCurveBox[{
+            DynamicLocation["VertexID$3", Automatic, Center], {1., 
+            1.7827160493827163`}, {1., 1.7160493827160495`}, {1., 
+            1.6444444444444444`}, {1., 1.567901234567901}, {1., 
+            1.4864197530864198`}, {1., 1.4}, {0.9965081146608071, 
+            1.3125574973768561`}, {0.9860324586432287, 1.2280077672852039`}, {
+            0.9685730319472647, 1.1463508097250426`}, {0.9441298345729148, 
+            1.0675866246963714`}, {0.9127028665201793, 0.9917152121991917}, {
+            0.8742921277890583, 0.9187365722335026}, {0.8288976183795514, 
+            0.8486507047993046}, {0.7765193382916591, 0.7814576098965974}, {
+            0.717157287525381, 0.717157287525381}, {0.6061489679212886, 
+            0.6061489679212886}, {0.5029716924536255, 0.5029716924536255}, {
+            0.4076254611223916, 0.4076254611223916}, {0.32011027392758673`, 
+            0.32011027392758673`}, {0.24042613086921102`, 
+            0.24042613086921102`}, 
+            DynamicLocation["VertexID$1", Automatic, Center]}]], 
+         ArrowBox[{
+           DynamicLocation["VertexID$3", Automatic, Center], 
+           DynamicLocation["VertexID$2", Automatic, Center]}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 1.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 2.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{54.68151755005651, 
+         145.9931723331607}, {-75.4983668966014, 95.89066460871305}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"10\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 0, 2, 2}, {{1}, {3}}}, Pattern}], 
+         Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["11"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{{
+            DynamicLocation["VertexID$2", Automatic, Center], 
+            DynamicLocation["VertexID$1", Automatic, Center]}, {
+            DynamicLocation["VertexID$2", Automatic, Center], 
+            DynamicLocation["VertexID$3", Automatic, Center]}}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 0.}, {0.044721359549995794`, 0.044721359549995794`}],
+             "DynamicName", BoxID -> "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.4472135954999579, 0.8944271909999159}, {
+             0.044721359549995794`, 0.044721359549995794`}], "DynamicName", 
+            BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.8944271909999159, 0.}, {0.044721359549995794`, 
+             0.044721359549995794`}], "DynamicName", BoxID -> "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{21.123282302744165`, 
+         181.06374045515796`}, {-73.99999999999976, 92.9404581524138}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"11\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 0, 2, 3}, {{1}, {3}, {1}}}, Pattern}],
+          Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["12"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[
+          BezierCurveBox[{
+            DynamicLocation[
+            "VertexID$2", Automatic, Center], {-0.759573869130789, 
+            1.7595738691307892`}, {-0.6798897260724134, 
+            1.6798897260724133`}, {-0.5923745388776085, 
+            1.5923745388776085`}, {-0.4970283075463745, 
+            1.4970283075463744`}, {-0.3938510320787114, 
+            1.3938510320787114`}, {-0.282842712474619, 
+            1.282842712474619}, {-0.2234806617083409, 
+            1.2185423901034025`}, {-0.17110238162044855`, 
+            1.1513492952006954`}, {-0.12570787221094182`, 
+            1.0812634277664974`}, {-0.0872971334798207, 
+            1.0082847878008083`}, {-0.05587016542708523, 
+            0.9324133753036284}, {-0.031426968052735454`, 
+            0.8536491902749577}, {-0.013967541356771307`, 
+            0.771992232714796}, {-0.0034918853391928306`, 
+            0.6874425026231434}, {0., 0.6}, {0., 0.5135802469135802}, {0., 
+            0.4320987654320988}, {0., 0.35555555555555557`}, {0., 
+            0.2839506172839506}, {0., 0.2172839506172839}, 
+            DynamicLocation["VertexID$1", Automatic, Center]}]], 
+         ArrowBox[{
+           DynamicLocation["VertexID$2", Automatic, Center], 
+           DynamicLocation["VertexID$3", Automatic, Center]}], 
+         ArrowBox[{
+           DynamicLocation["VertexID$3", Automatic, Center], 
+           DynamicLocation["VertexID$1", Automatic, Center]}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{-1., 2.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{-1., 1.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{54.68151755005671, 
+         145.99317233316089`}, {-75.49836689660135, 95.89066460871298}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"12\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 1, 1, 1}, {{3}}}, Pattern}], Null}, {
+        EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["13"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{
+           DynamicLocation["VertexID$1", Automatic, Center], 
+           DynamicLocation["VertexID$3", Automatic, Center]}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.06251, -0.06251000000000007}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.18752999999999997`, -0.06251}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.06251, -1.06251}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{83.86256639451877, 
+         117.24957958008339`}, {-75.41421356237277, 96.99625545407739}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"13\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 1, 1, 2}, {{3}, {2}}}, Pattern}], 
+         Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["14"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{{
+            DynamicLocation["VertexID$1", Automatic, Center], 
+            DynamicLocation["VertexID$3", Automatic, Center]}, {
+            DynamicLocation["VertexID$3", Automatic, Center], 
+            DynamicLocation["VertexID$2", Automatic, Center]}}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 3.6739403974420594`*^-16}, {0.05, 0.05}], 
+            "DynamicName", BoxID -> "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{2., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 2.4492935982947064`*^-16}, {0.05, 0.05}], 
+            "DynamicName", BoxID -> "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{3.904222044585447, 
+         199.00000000000003`}, {-2.6825545400119424`, 20.934501377210488`}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"14\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 1, 2, 2}, {{3}, {3}}}, Pattern}], 
+         Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["15"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{
+           DynamicLocation["VertexID$1", Automatic, Center], 
+           DynamicLocation["VertexID$3", Automatic, Center]}], 
+         ArrowBox[{
+           DynamicLocation["VertexID$2", Automatic, Center], 
+           DynamicLocation["VertexID$3", Automatic, Center]}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 1.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 1.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{21.123282302744133`, 
+         181.06374045515793`}, {-74.00000000000018, 92.94045815241383}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"15\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 1, 2, 2}, {{3}, {1}}}, Pattern}], 
+         Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["16"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{{
+            DynamicLocation["VertexID$1", Automatic, Center], 
+            DynamicLocation["VertexID$3", Automatic, Center]}, {
+            DynamicLocation["VertexID$2", Automatic, Center], 
+            DynamicLocation["VertexID$1", Automatic, Center]}}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 2.4492935982947064`*^-16}, {0.05, 0.05}], 
+            "DynamicName", BoxID -> "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 3.6739403974420594`*^-16}, {0.05, 0.05}], 
+            "DynamicName", BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{2., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{3.9042220445854516`, 
+         199.0000000000002}, {-2.6825545400119566`, 20.93450137721048}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"16\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 1, 3, 3}, {{3}, {1}, {3}}}, Pattern}],
+          Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["17"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{
+           DynamicLocation["VertexID$1", Automatic, Center], 
+           DynamicLocation["VertexID$3", Automatic, Center]}], 
+         ArrowBox[{
+           DynamicLocation["VertexID$2", Automatic, Center], 
+           DynamicLocation["VertexID$1", Automatic, Center]}], 
+         ArrowBox[
+          BezierCurveBox[{
+            DynamicLocation["VertexID$2", Automatic, Center], {
+            0.24042613086921105`, 1.7595738691307892`}, {0.32011027392758673`,
+             1.6798897260724133`}, {0.4076254611223915, 
+            1.5923745388776085`}, {0.5029716924536255, 1.4970283075463744`}, {
+            0.6061489679212887, 1.3938510320787114`}, {0.717157287525381, 
+            1.282842712474619}, {0.7765193382916591, 1.2185423901034025`}, {
+            0.8288976183795513, 1.1513492952006954`}, {0.8742921277890583, 
+            1.0812634277664974`}, {0.9127028665201794, 1.0082847878008083`}, {
+            0.9441298345729148, 0.9324133753036284}, {0.9685730319472646, 
+            0.8536491902749577}, {0.9860324586432287, 0.771992232714796}, {
+            0.9965081146608072, 0.6874425026231434}, {1., 0.6}, {1., 
+            0.5135802469135802}, {1., 0.4320987654320988}, {
+            1.0000000000000002`, 0.35555555555555557`}, {1., 
+            0.2839506172839506}, {1., 0.2172839506172839}, 
+            DynamicLocation["VertexID$3", Automatic, Center]}]]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 1.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 2.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{54.68151755005648, 
+         145.99317233316066`}, {-75.49836689660161, 95.89066460871307}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"17\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 1, 1, 1}, {{2}}}, Pattern}], Null}, {
+        EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["18"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{
+           DynamicLocation["VertexID$1", Automatic, Center], 
+           DynamicLocation["VertexID$2", Automatic, Center]}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.06251, -0.06251000000000007}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.06251, -1.06251}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.18752999999999997`, -0.06251}, {0.006250999999999999, 
+             0.006250999999999999}], "DynamicName", BoxID -> "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{83.86256639451882, 
+         117.2495795800833}, {-75.41421356237304, 96.99625545407737}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"18\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 1, 1, 2}, {{2}, {2}}}, Pattern}], 
+         Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["19"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{
+           DynamicLocation["VertexID$1", Automatic, Center], 
+           DynamicLocation["VertexID$2", Automatic, Center]}], 
+         ArrowBox[{
+           DynamicLocation["VertexID$3", Automatic, Center], 
+           DynamicLocation["VertexID$2", Automatic, Center]}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 1.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 1.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{21.123282302744222`, 
+         181.06374045515804`}, {-74.00000000000004, 92.9404581524138}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"19\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 1, 1, 2}, {{2}, {1}}}, Pattern}], 
+         Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["20"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{{
+            DynamicLocation["VertexID$1", Automatic, Center], 
+            DynamicLocation["VertexID$2", Automatic, Center]}, {
+            DynamicLocation["VertexID$3", Automatic, Center], 
+            DynamicLocation["VertexID$1", Automatic, Center]}}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 2.4492935982947064`*^-16}, {0.05, 0.05}], 
+            "DynamicName", BoxID -> "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{2., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 3.6739403974420594`*^-16}, {0.05, 0.05}], 
+            "DynamicName", BoxID -> "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{3.9042220445854463`, 
+         199.00000000000003`}, {-2.6825545400122195`, 20.93450137721021}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"20\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 1, 1, 3}, {{2}, {1}, {2}}}, Pattern}],
+          Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["21"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{
+           DynamicLocation["VertexID$1", Automatic, Center], 
+           DynamicLocation["VertexID$2", Automatic, Center]}], 
+         ArrowBox[{
+           DynamicLocation["VertexID$3", Automatic, Center], 
+           DynamicLocation["VertexID$1", Automatic, Center]}], 
+         ArrowBox[
+          BezierCurveBox[{
+            DynamicLocation["VertexID$3", Automatic, Center], {1., 
+            1.7827160493827163`}, {1., 1.7160493827160495`}, {1., 
+            1.6444444444444444`}, {1., 1.567901234567901}, {1., 
+            1.4864197530864198`}, {1., 1.4}, {1., 1.3111111111111107`}, {1., 
+            1.222222222222222}, {1.0000000000000002`, 1.1333333333333335`}, {
+            1., 1.0444444444444445`}, {1., 0.9555555555555556}, {1., 
+            0.8666666666666667}, {1., 0.7777777777777778}, {1., 
+            0.6888888888888889}, {1., 0.6}, {1., 0.5135802469135802}, {1., 
+            0.4320987654320988}, {1.0000000000000002`, 
+            0.35555555555555557`}, {1., 0.2839506172839506}, {1., 
+            0.2172839506172839}, 
+            DynamicLocation["VertexID$2", Automatic, Center]}]]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 1.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 2.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{56.17988444665818, 
+         144.49480543655918`}, {-74.00000000000001, 94.39229771211136}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"21\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 1, 2, 2}, {{2}, {3}}}, Pattern}], 
+         Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["22"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{{
+            DynamicLocation["VertexID$1", Automatic, Center], 
+            DynamicLocation["VertexID$2", Automatic, Center]}, {
+            DynamicLocation["VertexID$2", Automatic, Center], 
+            DynamicLocation["VertexID$3", Automatic, Center]}}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 3.6739403974420594`*^-16}, {0.05, 0.05}], 
+            "DynamicName", BoxID -> "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 2.4492935982947064`*^-16}, {0.05, 0.05}], 
+            "DynamicName", BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{2., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{3.90422204458545, 
+         199.0000000000002}, {-2.682554540012241, 20.934501377210196`}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"22\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 2, 2, 2}, {{2}, {3}}}, Pattern}], 
+         Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["23"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{{
+            DynamicLocation["VertexID$1", Automatic, Center], 
+            DynamicLocation["VertexID$2", Automatic, Center]}, {
+            DynamicLocation["VertexID$1", Automatic, Center], 
+            DynamicLocation["VertexID$3", Automatic, Center]}}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.4472135954999579, 0.8944271909999159}, {
+             0.044721359549995794`, 0.044721359549995794`}], "DynamicName", 
+            BoxID -> "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 0.}, {0.044721359549995794`, 0.044721359549995794`}],
+             "DynamicName", BoxID -> "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            
+            DiskBox[{0.8944271909999159, 0.}, {0.044721359549995794`, 
+             0.044721359549995794`}], "DynamicName", BoxID -> "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{21.12328230274409, 
+         181.06374045515798`}, {-74.00000000000003, 92.94045815241381}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"23\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 2, 2, 3}, {{2}, {3}, {2}}}, Pattern}],
+          Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["24"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[
+          BezierCurveBox[{
+            DynamicLocation["VertexID$1", Automatic, Center], {
+            0.24042613086921105`, 1.7595738691307892`}, {0.32011027392758673`,
+             1.6798897260724133`}, {0.4076254611223915, 
+            1.5923745388776085`}, {0.5029716924536255, 1.4970283075463744`}, {
+            0.6061489679212887, 1.3938510320787114`}, {0.717157287525381, 
+            1.282842712474619}, {0.7765193382916591, 1.2185423901034025`}, {
+            0.8288976183795513, 1.1513492952006954`}, {0.8742921277890583, 
+            1.0812634277664974`}, {0.9127028665201794, 1.0082847878008083`}, {
+            0.9441298345729148, 0.9324133753036284}, {0.9685730319472646, 
+            0.8536491902749577}, {0.9860324586432287, 0.771992232714796}, {
+            0.9965081146608072, 0.6874425026231434}, {1., 0.6}, {1., 
+            0.5135802469135802}, {1., 0.4320987654320988}, {
+            1.0000000000000002`, 0.35555555555555557`}, {1., 
+            0.2839506172839506}, {1., 0.2172839506172839}, 
+            DynamicLocation["VertexID$2", Automatic, Center]}]], 
+         ArrowBox[{
+           DynamicLocation["VertexID$1", Automatic, Center], 
+           DynamicLocation["VertexID$3", Automatic, Center]}], 
+         ArrowBox[{
+           DynamicLocation["VertexID$3", Automatic, Center], 
+           DynamicLocation["VertexID$2", Automatic, Center]}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 2.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 1.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{54.68151755005667, 
+         145.99317233316094`}, {-75.4983668966015, 95.89066460871281}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"24\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]], ",", 
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3}, {
+         SparseArray[
+         Automatic, {3, 3}, 0, {1, {{0, 2, 3, 3}, {{2}, {3}, {3}}}, Pattern}],
+          Null}, {EdgeStyle -> {
+           Thickness[Large]}, ImageSize -> {200, 200}, PlotLabel -> Style[
+           Framed["25"]], PlotTheme -> "LargeGraph", VertexLabels -> {"Name"},
+          VertexShapeFunction -> {"Circle"}, VertexSize -> {Small}}]], 
+      Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+         Arrowheads[Medium], 
+         Hue[0.08, 1, 1, 1], 
+         Thickness[Large], 
+         ArrowBox[{
+           DynamicLocation["VertexID$1", Automatic, Center], 
+           DynamicLocation["VertexID$2", Automatic, Center]}], 
+         ArrowBox[
+          BezierCurveBox[{
+            DynamicLocation["VertexID$1", Automatic, Center], {
+            0.24042613086921105`, 1.7595738691307892`}, {0.32011027392758673`,
+             1.6798897260724133`}, {0.4076254611223915, 
+            1.5923745388776085`}, {0.5029716924536255, 1.4970283075463744`}, {
+            0.6061489679212887, 1.3938510320787114`}, {0.717157287525381, 
+            1.282842712474619}, {0.7765193382916591, 1.2185423901034025`}, {
+            0.8288976183795513, 1.1513492952006954`}, {0.8742921277890583, 
+            1.0812634277664974`}, {0.9127028665201794, 1.0082847878008083`}, {
+            0.9441298345729148, 0.9324133753036284}, {0.9685730319472646, 
+            0.8536491902749577}, {0.9860324586432287, 0.771992232714796}, {
+            0.9965081146608072, 0.6874425026231434}, {1., 0.6}, {1., 
+            0.5135802469135802}, {1., 0.4320987654320988}, {
+            1.0000000000000002`, 0.35555555555555557`}, {1., 
+            0.2839506172839506}, {1., 0.2172839506172839}, 
+            DynamicLocation["VertexID$3", Automatic, Center]}]], 
+         ArrowBox[{
+           DynamicLocation["VertexID$2", Automatic, Center], 
+           DynamicLocation["VertexID$3", Automatic, Center]}]}, {
+         Hue[0.6, 1, 1, 1], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 2.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$1"], 
+           InsetBox[
+            FormBox["1", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$1", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$1"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{0., 1.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$2"], 
+           InsetBox[
+            FormBox["2", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$2", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$2"], 
+         TagBox[{
+           TagBox[
+            DiskBox[{1., 0.}, {0.05, 0.05}], "DynamicName", BoxID -> 
+            "VertexID$3"], 
+           InsetBox[
+            FormBox["3", TraditionalForm], 
+            Offset[{2, 2}, 
+             DynamicLocation["VertexID$3", Automatic, {Right, Top}]], 
+            ImageScaled[{0, 0}], BaseStyle -> "Graphics"]}, "DynamicName", 
+          BoxID -> "VertexLabelID$3"]}}], $CellContext`flag}, 
+      TagBox[
+       DynamicBox[GraphComputation`NetworkGraphicsBox[
+        3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+        CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+         SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+        
+        ImageSizeCache->{{54.68151755005643, 
+         145.9931723331607}, {-75.4983668966016, 95.89066460871297}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False,
+      UnsavedVariables:>{$CellContext`flag}]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{200, 200},
+    PlotLabel->FormBox[
+      StyleBox[
+       FrameBox["\"25\"", StripOnInput -> False], StripOnInput -> False], 
+      TraditionalForm]]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.74389023029148*^9, 3.743939371088889*^9, 3.7439487841941767`*^9, 
+   3.743948957201767*^9, 3.7439490207868834`*^9, 3.743949117236189*^9, {
+   3.743949227633008*^9, 3.743949242926216*^9}, {3.74394936686213*^9, 
+   3.743949413727523*^9}, {3.743949587442156*^9, 3.743949608789349*^9}},
+ CellLabel->
+  "Out[149]=",ExpressionUUID->"9df30d66-0fcc-4701-b6a7-b0677e9ca55e"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1861, 1013},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"12.0 para Linux x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 218, 4, 99, "Title",ExpressionUUID->"72aec525-4ce0-4a03-abc3-918611a4a29e"],
+Cell[801, 28, 321, 8, 111, "Subsection",ExpressionUUID->"258f5fad-de28-448b-8e30-8fbe1a00c528"],
+Cell[CellGroupData[{
+Cell[1147, 40, 201, 3, 59, "Chapter",ExpressionUUID->"3bb8b6f0-5003-4fc3-8c50-95584c865556"],
+Cell[1351, 45, 1018, 33, 124, "Input",ExpressionUUID->"b50d1c74-36ae-4c46-bec6-5cb8a5f470a5",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[2394, 82, 256, 5, 31, "Input",ExpressionUUID->"e001e126-3e72-4900-b42a-10807181604d"],
+Cell[2653, 89, 294, 6, 35, "Output",ExpressionUUID->"c3f63a46-e70a-489f-9a61-9556c10faed9"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2996, 101, 202, 3, 70, "Chapter",ExpressionUUID->"445972f1-2ffe-4c9a-a077-45ed38dd04ac"],
+Cell[3201, 106, 868, 23, 117, "Input",ExpressionUUID->"166e090b-224c-4e77-af77-8de99bb6d58e",
+ InitializationCell->True],
+Cell[4072, 131, 595, 20, 47, "Input",ExpressionUUID->"d7522e3c-6067-45fa-83e2-b63622d3ad49",
+ InitializationCell->True],
+Cell[4670, 153, 2462, 69, 256, "Input",ExpressionUUID->"23791d39-134f-492f-a13f-35afec927653",
+ InitializationCell->True],
+Cell[7135, 224, 876, 22, 140, "Input",ExpressionUUID->"d8b1bdb9-9d02-47b6-a225-fd4b60ae66bb",
+ InitializationCell->True],
+Cell[8014, 248, 1895, 40, 301, "Input",ExpressionUUID->"80e29bb2-c52c-40a7-b3b1-a2932061d21b",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[9934, 292, 212, 4, 31, "Input",ExpressionUUID->"5a2dbc6f-0707-4f41-8261-f91daef739d5"],
+Cell[10149, 298, 7920, 179, 219, "Output",ExpressionUUID->"21fbcf3b-e957-4d1a-b9d5-19f1a0b5bc63"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18106, 482, 212, 4, 31, "Input",ExpressionUUID->"03b61add-435d-485e-8244-64669c8b32db"],
+Cell[18321, 488, 85192, 1907, 949, "Output",ExpressionUUID->"9df30d66-0fcc-4701-b6a7-b0677e9ca55e"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
