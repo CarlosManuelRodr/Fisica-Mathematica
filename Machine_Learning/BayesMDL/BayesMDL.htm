@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created with the Wolfram Language : www.wolfram.com -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  Untitled
+ </title>
+ <link href="HTMLFiles/BayesMDL.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<p class="Title">
+ MDL en Redes Bayesianas
+</p>
+
+
+
+<p class="Subsection">
+ Autor: Carlos Manuel Rodr&iacute;guez Mart&iacute;nez<br />E-Mail: fis.carlosmanuel@gmail.com
+</p>
+
+
+
+<p class="Chapter">
+ Resumen
+</p>
+
+
+
+<p class="Text">
+ Se implementa un algoritmo capaz de buscar el mejor modelo bajo la m&eacute;trica MDL (Minimum Description Length), la cual mide qu&eacute; tan bien se comprime un conjunto de datos bajo un modelo. El algoritmo procede a generar todos los DAG y evaluar la puntuaci&oacute;n MDL dado un conjunto de datos. Se selecciona el grafo con menos puntuaci&oacute;n MDL como el mejor modelo para describir los datos.<br /><br />Referencia:<br />Levine, Nicholas D., &ldquo;Using Minimum Description Length for Discretization Classification of Data Modeled by Bayesian Networks&rdquo; (2011). Applied Mathematics Graduate Theses &amp; Dissertations. 21. <br />https://scholar.colorado.edu/appm_gradetds/21
+</p>
+
+
+
+<p class="Chapter">
+ Implementaci&oacute;n
+</p>
+
+
+
+<p class="Subtitle">
+ Generador DAGs
+</p>
+
+
+
+<p class="Text">
+ El algoritmo se divide en tres secciones. La primera secci&oacute;n corresponde al generador de DAGs, el cual selecciona los grafos que corresponden a un DAG por medio de los eigenvalores de su matriz de adyacencia.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_1.gif" alt="BayesMDL_1.gif" width="650" height="323" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_2.png" alt="BayesMDL_2.png" width="370" height="145" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_3.png" alt="BayesMDL_3.png" width="586" height="36" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_4.gif" alt="BayesMDL_4.gif" width="594" height="379" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_5.png" alt="BayesMDL_5.png" width="369" height="149" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ Ejemplo:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_6.png" alt="BayesMDL_6.png" width="254" height="36" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/BayesMDL_7.gif" alt="BayesMDL_7.gif" width="409" height="218" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_8.png" alt="BayesMDL_8.png" width="254" height="36" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/BayesMDL_9.gif" alt="BayesMDL_9.gif" width="1841" height="470" style="vertical-align:middle" />
+</p>
+
+<p class="Subtitle">
+ MDL Score
+</p>
+
+
+
+<p class="Text">
+ A continuaci&oacute;n se eval&uacute;an los DAG a partir de la m&eacute;trica MDL que toma en cuenta la contribuci&oacute;n a la longitud de la descripci&oacute;n de tres aspectos del modelo.
+</p>
+
+
+
+<p class="Text">
+ La contribuci&oacute;n de las variables:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_10.gif" alt="BayesMDL_10.gif" width="318" height="109" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ <span><span><img src="HTMLFiles/BayesMDL_11.png" alt="BayesMDL_11.png" width="38" height="21" style="vertical-align:middle" /></span></span> representa el n&uacute;mero de valores diferentes que puede tomar la variable X. La contribuci&oacute;n del DAG:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_12.gif" alt="BayesMDL_12.gif" width="291" height="118" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ |<span><span><img src="HTMLFiles/BayesMDL_13.png" alt="BayesMDL_13.png" width="14" height="21" style="vertical-align:middle" /></span></span>| la cantidad de padres de <span><span><img src="HTMLFiles/BayesMDL_14.png" alt="BayesMDL_14.png" width="13" height="21" style="vertical-align:middle" /></span></span>. La contribuci&oacute;n de los par&aacute;metros:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_15.gif" alt="BayesMDL_15.gif" width="420" height="143" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ ||<span><span><img src="HTMLFiles/BayesMDL_16.png" alt="BayesMDL_16.png" width="14" height="21" style="vertical-align:middle" /></span></span>|| representa el n&uacute;mero de configuraciones posibles de los padres de <span><span><img src="HTMLFiles/BayesMDL_17.png" alt="BayesMDL_17.png" width="13" height="21" style="vertical-align:middle" /></span></span>. En total la contribuci&oacute;n del modelo a la longitud de descripci&oacute;n es:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_18.gif" alt="BayesMDL_18.gif" width="1001" height="183" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Por &uacute;ltimo es necesario calcular la contribuci&oacute;n de los datos dado el modelo. El modelo est&aacute; impl&iacute;cito en esta c&aacute;lculo debido a que la probabilidad <span><span><img src="HTMLFiles/BayesMDL_19.png" alt="BayesMDL_19.png" width="32" height="21" style="vertical-align:middle" /></span></span> se calcula haciendo uso del DAG.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_20.gif" alt="BayesMDL_20.gif" width="363" height="144" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_21.gif" alt="BayesMDL_21.gif" width="959" height="610" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ Ejemplos
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_22.png" alt="BayesMDL_22.png" width="632" height="36" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_23.png" alt="BayesMDL_23.png" width="464" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/BayesMDL_24.png" alt="BayesMDL_24.png" width="306" height="37" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_25.png" alt="BayesMDL_25.png" width="405" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/BayesMDL_26.png" alt="BayesMDL_26.png" width="45" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_27.png" alt="BayesMDL_27.png" width="627" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/BayesMDL_28.png" alt="BayesMDL_28.png" width="235" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_29.gif" alt="BayesMDL_29.gif" width="1050" height="665" style="vertical-align:middle" />
+</p>
+
+<p class="Chapter">
+ Bayesian Network Score
+</p>
+
+
+
+<p class="Text">
+ Debido a la alta cantidad de operaciones necesarias para obtener los par&aacute;metros de las redes bayesianas a partir del DAG y posteriormente hacer la b&uacute;squeda del mejor DAG bajo la m&eacute;trica MDL, no fue posible reportar los resultados con n = 6 y ni siquiera fue posible realizar la prueba con 10000 ejemplos. En estos resultados se reporta hasta n = 4 con 500 ejemplos, e incluso con esta peque&ntilde;a selecci&oacute;n, la ejecuci&oacute;n del programa fue tardada.<br /><br />Los ejemplos a partir de un modelo de oro fueron generados con el software Tetrad.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_30.png" alt="BayesMDL_30.png" width="216" height="38" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_31.png" alt="BayesMDL_31.png" width="4" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Subsubsection">
+ n = 3
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_32.gif" alt="BayesMDL_32.gif" width="303" height="211" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_33.gif" alt="BayesMDL_33.gif" width="599" height="120" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_34.png" alt="BayesMDL_34.png" width="50" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/BayesMDL_35.png" alt="BayesMDL_35.png" width="1085" height="111" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_36.png" alt="BayesMDL_36.png" width="163" height="36" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/BayesMDL_37.png" alt="BayesMDL_37.png" width="1087" height="111" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_38.png" alt="BayesMDL_38.png" width="325" height="36" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/BayesMDL_39.png" alt="BayesMDL_39.png" width="878" height="18" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Los mejores DAG seleccionados son:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_40.png" alt="BayesMDL_40.png" width="605" height="36" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/BayesMDL_41.gif" alt="BayesMDL_41.gif" width="699" height="218" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ n = 4
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_42.gif" alt="BayesMDL_42.gif" width="334" height="301" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_43.gif" alt="BayesMDL_43.gif" width="599" height="120" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_44.png" alt="BayesMDL_44.png" width="334" height="36" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/BayesMDL_45.png" alt="BayesMDL_45.png" width="989" height="42" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Los mejores DAG seleccionados son:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/BayesMDL_46.png" alt="BayesMDL_46.png" width="605" height="36" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/BayesMDL_47.gif" alt="BayesMDL_47.gif" width="1162" height="271" style="vertical-align:middle" />
+</p>
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div>
+</body>
+
+</html>
