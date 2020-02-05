@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     98543,       2483]
-NotebookOptionsPosition[     95805,       2425]
-NotebookOutlinePosition[     96140,       2440]
-CellTagsIndexPosition[     96097,       2437]
+NotebookDataLength[    143682,       3518]
+NotebookOptionsPosition[    139782,       3440]
+NotebookOutlinePosition[    140126,       3455]
+CellTagsIndexPosition[    140083,       3452]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -168,8 +168,8 @@ Cell[BoxData[{
               RowBox[{"{", 
                RowBox[{
                 RowBox[{"Func", "[", "f_", "]"}], ",", 
-                RowBox[{"Term", "[", "x_", "]"}], ",", 
-                RowBox[{"Term", "[", "y_", "]"}]}], "}"}], "\[RuleDelayed]", 
+                RowBox[{"Term", "[", "y_", "]"}], ",", 
+                RowBox[{"Term", "[", "x_", "]"}]}], "}"}], "\[RuleDelayed]", 
               RowBox[{"Term", "[", 
                RowBox[{"f", "[", 
                 RowBox[{"x", ",", "y"}], "]"}], "]"}]}]}], "]"}], "&"}], ",", 
@@ -183,8 +183,8 @@ Cell[BoxData[{
    3.7897704941513033`*^9}, {3.7897708795841208`*^9, 3.789770946343882*^9}, {
    3.789771029412015*^9, 3.789771099820713*^9}, {3.789771152081147*^9, 
    3.789771156196146*^9}, {3.789832367419796*^9, 3.789832368074719*^9}, 
-   3.78983372169248*^9},ExpressionUUID->"963ff5fe-91eb-400b-a087-\
-185eb109cb50"],
+   3.78983372169248*^9, {3.7898446619576483`*^9, 3.7898446720003347`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"963ff5fe-91eb-400b-a087-185eb109cb50"],
 
 Cell[CellGroupData[{
 
@@ -691,7 +691,7 @@ Cell[BoxData[
          RowBox[{"i4", ",", "s2"}], "]"}]}], "]"}]}], "]"}]}], "]"}], 
   "]"}]], "Input",
  CellChangeTimes->{{3.789771108732354*^9, 3.789771134232795*^9}},
- CellLabel->"In[10]:=",ExpressionUUID->"8594666d-e484-4916-8263-3738c047fa81"],
+ CellLabel->"In[34]:=",ExpressionUUID->"8594666d-e484-4916-8263-3738c047fa81"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -874,8 +874,9 @@ cHl09bB4gpmPLg8LT5g8unkQ9wnilLd7FWP5eq0IXB4A7xnepw==
      RowBox[{"19", "\[Rule]", 
       RowBox[{"Term", "[", "s2", "]"}]}]}], "}"}]}], "}"}]], "Output",
  CellChangeTimes->{{3.78977110929084*^9, 3.7897711595198507`*^9}, {
-   3.789832297417046*^9, 3.789832306445634*^9}, 3.789832374133109*^9},
- CellLabel->"Out[10]=",ExpressionUUID->"df658173-058b-40db-9b7a-ce9f0e3e459e"]
+   3.789832297417046*^9, 3.789832306445634*^9}, 3.789832374133109*^9, 
+   3.789844680768559*^9},
+ CellLabel->"Out[34]=",ExpressionUUID->"bcaa798a-dc74-4693-9078-dcdb4f670f33"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1062,7 +1063,7 @@ cHl09bB4gpmPLg8LT5g8unkQ9wnilLd7FWP5eq0IXB4A7xnepw==
       RowBox[{"Term", "[", "s2", "]"}]}]}], "}"}]}], "\[IndentingNewLine]", 
   "]"}]], "Input",
  CellChangeTimes->{{3.789771175005612*^9, 3.789771177976063*^9}},
- CellLabel->"In[11]:=",ExpressionUUID->"42f91c52-c780-4947-bf40-33499ee66e42"],
+ CellLabel->"In[35]:=",ExpressionUUID->"42f91c52-c780-4947-bf40-33499ee66e42"],
 
 Cell[BoxData[
  RowBox[{"BitOr", "[", 
@@ -1084,8 +1085,9 @@ Cell[BoxData[
        RowBox[{"BitAnd", "[", 
         RowBox[{"i4", ",", "s2"}], "]"}]}], "]"}]}], "]"}]}], "]"}]], "Output",\
 
- CellChangeTimes->{3.789771178887587*^9, 3.7898323769514313`*^9},
- CellLabel->"Out[11]=",ExpressionUUID->"d3f8b393-cffc-403a-8a45-24b6226da782"]
+ CellChangeTimes->{3.789771178887587*^9, 3.7898323769514313`*^9, 
+  3.789844682135798*^9},
+ CellLabel->"Out[35]=",ExpressionUUID->"1c68e34f-6644-4e91-aae2-a31442d8650c"]
 }, Open  ]]
 }, Open  ]],
 
@@ -1096,11 +1098,11 @@ Cell["Operations on trees", "Section",
   3.789833084807206*^9}},ExpressionUUID->"1d9092f1-d526-4e0e-a33d-\
 d85e7e6e6e46"],
 
-Cell[BoxData[
+Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"Subtree", "[", 
-    RowBox[{"graph_", ",", "vertex_", ",", "labels_"}], "]"}], ":=", 
+    RowBox[{"graph_", ",", "labels_", ",", "vertex_"}], "]"}], ":=", 
    RowBox[{"Block", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -1141,50 +1143,237 @@ Cell[BoxData[
       "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{"{", 
        RowBox[{"subtree", ",", "sublabels"}], "}"}]}]}], 
-    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FormatLabels", "[", "labels_", "]"}], ":=", 
+   RowBox[{"ReplaceAll", "[", 
+    RowBox[{"labels", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Term", "[", "x_", "]"}], "\[RuleDelayed]", "x"}], ",", 
+       RowBox[{
+        RowBox[{"Func", "[", "x_", "]"}], "\[RuleDelayed]", "x"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DeleteSubtree", "[", 
+    RowBox[{"graph_", ",", "labels_", ",", "vertex_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "subtree", ",", "sublabels", ",", "subVertexes", ",", 
+       "conectionRemoved", ",", "withoutSubtree", ",", "newLabels"}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"subtree", ",", "sublabels"}], "}"}], " ", "=", " ", 
+       RowBox[{"Subtree", "[", 
+        RowBox[{"graph", ",", " ", "labels", ",", " ", "vertex"}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"subVertexes", " ", "=", " ", 
+       RowBox[{"VertexList", "[", "subtree", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"conectionRemoved", " ", "=", " ", 
+       RowBox[{"ReplaceAll", "[", 
+        RowBox[{
+         RowBox[{"EdgeList", "[", "graph", "]"}], ",", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"x_", "/;", 
+              RowBox[{"!", 
+               RowBox[{"MemberQ", "[", 
+                RowBox[{"subVertexes", ",", "x"}], "]"}]}]}], ")"}], 
+            "\[DirectedEdge]", 
+            RowBox[{"(", 
+             RowBox[{"y_", "/;", 
+              RowBox[{"MemberQ", "[", 
+               RowBox[{"subVertexes", ",", "y"}], "]"}]}], ")"}]}], ")"}], 
+          "\[RuleDelayed]", 
+          RowBox[{"x", "\[DirectedEdge]", "Empty"}]}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"withoutSubtree", " ", "=", " ", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", 
+           RowBox[{"Intersection", "[", 
+            RowBox[{
+             RowBox[{"VertexList", "[", "conectionRemoved", "]"}], ",", 
+             "subVertexes"}], "]"}], "]"}], "\[NotEqual]", " ", "0"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"VertexDelete", "[", 
+          RowBox[{"conectionRemoved", ",", "subVertexes"}], "]"}], ",", 
+         "\[IndentingNewLine]", "conectionRemoved"}], "\[IndentingNewLine]", 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"newLabels", " ", "=", " ", 
+       RowBox[{"Complement", "[", 
+        RowBox[{"labels", ",", "sublabels"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Graph", "[", 
+         RowBox[{"withoutSubtree", ",", 
+          RowBox[{"VertexLabels", "\[Rule]", 
+           RowBox[{"FormatLabels", "[", "newLabels", "]"}]}]}], "]"}], ",", 
+        "newLabels"}], "}"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"InsertSubtree", "[", 
+    RowBox[{
+    "graph_", ",", "labels_", ",", "subtree_", ",", "sublabels_", ",", 
+     "subtreeRoot_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "edges", ",", "missing", ",", "missingRules", ",", "newRules", ",", 
+       "insertionRules", ",", "formattedSubtree", ",", "formattedSublabels", 
+       ",", "formattedSubtreeRoot", ",", "newTree", ",", "newLabels"}], "}"}],
+      ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"!", 
+         RowBox[{"MemberQ", "[", 
+          RowBox[{
+           RowBox[{"VertexList", "[", "graph", "]"}], ",", "Empty"}], "]"}]}],
+         ",", 
+        RowBox[{"Return", "[", "$Failed", "]"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"edges", " ", "=", " ", 
+       RowBox[{"DeleteCases", "[", 
+        RowBox[{
+         RowBox[{"VertexList", "[", "graph", "]"}], ",", "Empty"}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"missing", " ", "=", " ", 
+       RowBox[{"Complement", "[", 
+        RowBox[{
+         RowBox[{"Range", "[", 
+          RowBox[{"Max", "[", "edges", "]"}], "]"}], ",", "edges"}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"missingRules", " ", "=", " ", 
+       RowBox[{"Thread", "[", 
+        RowBox[{
+         RowBox[{"Take", "[", 
+          RowBox[{
+           RowBox[{"VertexList", "[", "subtree", "]"}], ",", 
+           RowBox[{"UpTo", "[", 
+            RowBox[{"Length", "[", "missing", "]"}], "]"}]}], "]"}], 
+         "\[Rule]", "missing"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"newRules", " ", "=", " ", 
+       RowBox[{"Thread", "[", 
+        RowBox[{
+         RowBox[{"Drop", "[", 
+          RowBox[{
+           RowBox[{"VertexList", "[", "subtree", "]"}], ",", 
+           RowBox[{"Length", "[", "missing", "]"}]}], "]"}], "\[Rule]", " ", 
+         RowBox[{"Range", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Max", "[", "edges", "]"}], "+", "1"}], ",", 
+           RowBox[{
+            RowBox[{"Max", "[", "edges", "]"}], "+", 
+            RowBox[{"Length", "[", 
+             RowBox[{"VertexList", "[", "subtree", "]"}], "]"}], "-", 
+            RowBox[{"Length", "[", "missing", "]"}]}]}], "]"}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"insertionRules", " ", "=", " ", 
+       RowBox[{"Join", "[", 
+        RowBox[{"missingRules", ",", "newRules"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"formattedSubtree", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"EdgeList", "[", "subtree", "]"}], "/.", "insertionRules"}]}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"formattedSublabels", " ", "=", " ", 
+       RowBox[{"sublabels", "/.", "insertionRules"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"formattedSubtreeRoot", " ", "=", " ", 
+       RowBox[{"subtreeRoot", " ", "/.", "insertionRules"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"newTree", " ", "=", " ", 
+       RowBox[{"ReplaceAll", "[", 
+        RowBox[{
+         RowBox[{"Join", "[", 
+          RowBox[{
+           RowBox[{"EdgeList", "[", "graph", "]"}], ",", "formattedSubtree"}],
+           "]"}], ",", 
+         RowBox[{"Empty", "\[Rule]", "formattedSubtreeRoot"}]}], "]"}]}], ";",
+       "\[IndentingNewLine]", 
+      RowBox[{"newLabels", " ", "=", " ", 
+       RowBox[{"SortBy", "[", 
+        RowBox[{
+         RowBox[{"Join", "[", 
+          RowBox[{"labels", ",", "formattedSublabels"}], "]"}], ",", 
+         "First"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Graph", "[", 
+         RowBox[{"newTree", ",", 
+          RowBox[{"VertexLabels", "\[Rule]", 
+           RowBox[{"FormatLabels", "[", "newLabels", "]"}]}]}], "]"}], ",", 
+        "newLabels"}], "}"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}]}], "Input",
  InitializationCell->True,
  CellChangeTimes->{{3.789833090853594*^9, 3.789833192372734*^9}, {
-   3.789833531339673*^9, 3.789833563524232*^9}, 3.789833696011055*^9},
- CellLabel->"In[58]:=",ExpressionUUID->"737721a0-7bb9-42b3-bac6-bb7a6ee80b5a"],
+   3.789833531339673*^9, 3.789833563524232*^9}, 3.789833696011055*^9, {
+   3.78984744431467*^9, 3.789847704242251*^9}, {3.789847803295294*^9, 
+   3.789847814332649*^9}, {3.789847861685192*^9, 3.78984789389155*^9}, {
+   3.789848003773026*^9, 3.7898480389290047`*^9}, {3.789848493181694*^9, 
+   3.789848527370165*^9}, {3.7898486179053717`*^9, 3.7898486463038*^9}, {
+   3.789850376057413*^9, 3.7898504140537233`*^9}, {3.7898504454448557`*^9, 
+   3.789850631132496*^9}, {3.789851177151168*^9, 3.7898511799271803`*^9}, {
+   3.789851216292913*^9, 3.7898513409624767`*^9}, {3.7898615054602003`*^9, 
+   3.789861530322874*^9}, 3.789861692683601*^9, 3.789862050514936*^9},
+ CellLabel->"In[90]:=",ExpressionUUID->"737721a0-7bb9-42b3-bac6-bb7a6ee80b5a"],
 
 Cell[BoxData[{
  RowBox[{
   RowBox[{"f1", " ", "=", " ", 
-   RowBox[{"BitOr", "[", 
+   RowBox[{"LogicOr", "[", 
     RowBox[{
-     RowBox[{"BitAnd", "[", 
+     RowBox[{"LogicAnd", "[", 
       RowBox[{"s1", ",", 
-       RowBox[{"BitOr", "[", 
+       RowBox[{"LogicOr", "[", 
         RowBox[{
-         RowBox[{"BitAnd", "[", 
+         RowBox[{"LogicAnd", "[", 
           RowBox[{"i3", ",", "s2"}], "]"}], ",", 
-         RowBox[{"BitAnd", "[", 
+         RowBox[{"LogicAnd", "[", 
           RowBox[{"i4", ",", "s2"}], "]"}]}], "]"}]}], "]"}], ",", 
-     RowBox[{"BitAnd", "[", 
+     RowBox[{"LogicAnd", "[", 
       RowBox[{"s1", ",", 
-       RowBox[{"BitOr", "[", 
+       RowBox[{"LogicOr", "[", 
         RowBox[{
-         RowBox[{"BitAnd", "[", 
+         RowBox[{"LogicAnd", "[", 
           RowBox[{"i1", ",", "s2"}], "]"}], ",", 
-         RowBox[{"BitAnd", "[", 
+         RowBox[{"LogicAnd", "[", 
           RowBox[{"i2", ",", "s2"}], "]"}]}], "]"}]}], "]"}]}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"f2", " ", "=", " ", 
-   RowBox[{"BitOr", "[", 
+   RowBox[{"LogicOr", "[", 
     RowBox[{
-     RowBox[{"BitAnd", "[", 
+     RowBox[{"LogicAnd", "[", 
       RowBox[{"s1", ",", 
-       RowBox[{"BitOr", "[", 
+       RowBox[{"LogicOr", "[", 
         RowBox[{
-         RowBox[{"BitOr", "[", 
+         RowBox[{"LogicOr", "[", 
           RowBox[{"i3", ",", "s2"}], "]"}], ",", 
-         RowBox[{"BitAnd", "[", 
+         RowBox[{"LogicAnd", "[", 
           RowBox[{"i4", ",", "s2"}], "]"}]}], "]"}]}], "]"}], ",", 
-     RowBox[{"BitXor", "[", 
+     RowBox[{"LogicXor", "[", 
       RowBox[{"s1", ",", "s2"}], "]"}]}], "]"}]}], ";"}]}], "Input",
- CellChangeTimes->{{3.789833814333988*^9, 3.78983385124312*^9}},
- CellLabel->"In[61]:=",ExpressionUUID->"6e7e57d7-8894-4bf7-8667-13d6be69bf30"],
+ CellChangeTimes->{{3.789833814333988*^9, 3.78983385124312*^9}, {
+  3.789844577490657*^9, 3.7898445901440153`*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"6e7e57d7-8894-4bf7-8667-13d6be69bf30"],
 
 Cell[CellGroupData[{
 
@@ -1194,7 +1383,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"f1", ",", "f2"}], "}"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.7898338535334682`*^9, 3.789833872149872*^9}},
- CellLabel->"In[65]:=",ExpressionUUID->"34e99a48-709e-43ff-b3a8-e7158b1baf32"],
+ CellLabel->"In[14]:=",ExpressionUUID->"34e99a48-709e-43ff-b3a8-e7158b1baf32"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -1213,78 +1402,80 @@ OQ==
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
-            StyleBox["BitOr", "StandardForm", "Output",
+            StyleBox["LogicOr", "StandardForm", "Output",
              StripOnInput->False,
              LineColor->GrayLevel[0],
              FrontFaceColor->GrayLevel[0],
              BackFaceColor->GrayLevel[0],
              GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
+             FontSize->Scaled[0.025],
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
             StripOnInput->False], 1],
           TagBox[
-           RowBox[{"BitOr", "[", 
+           RowBox[{"LogicOr", "[", 
              RowBox[{
-               RowBox[{"BitAnd", "[", 
+               RowBox[{"LogicAnd", "[", 
                  RowBox[{"s1", ",", 
-                   RowBox[{"BitOr", "[", 
+                   RowBox[{"LogicOr", "[", 
                     RowBox[{
-                    RowBox[{"BitAnd", "[", 
-                    RowBox[{"i1", ",", "s2"}], "]"}], ",", 
-                    RowBox[{"BitAnd", "[", 
-                    RowBox[{"i2", ",", "s2"}], "]"}]}], "]"}]}], "]"}], ",", 
-               RowBox[{"BitAnd", "[", 
-                 RowBox[{"s1", ",", 
-                   RowBox[{"BitOr", "[", 
-                    RowBox[{
-                    RowBox[{"BitAnd", "[", 
+                    RowBox[{"LogicAnd", "[", 
                     RowBox[{"i3", ",", "s2"}], "]"}], ",", 
-                    RowBox[{"BitAnd", "[", 
-                    RowBox[{"i4", ",", "s2"}], "]"}]}], "]"}]}], "]"}]}], 
+                    RowBox[{"LogicAnd", "[", 
+                    RowBox[{"i4", ",", "s2"}], "]"}]}], "]"}]}], "]"}], ",", 
+               RowBox[{"LogicAnd", "[", 
+                 RowBox[{"s1", ",", 
+                   RowBox[{"LogicOr", "[", 
+                    RowBox[{
+                    RowBox[{"LogicAnd", "[", 
+                    RowBox[{"i1", ",", "s2"}], "]"}], ",", 
+                    RowBox[{"LogicAnd", "[", 
+                    RowBox[{"i2", ",", "s2"}], "]"}]}], "]"}]}], "]"}]}], 
              "]"}], HoldForm]],
          Annotation[#, 
           HoldForm[
-           BitOr[
-            BitAnd[$CellContext`s1, 
-             BitOr[
-              BitAnd[$CellContext`i1, $CellContext`s2], 
-              BitAnd[$CellContext`i2, $CellContext`s2]]], 
-            BitAnd[$CellContext`s1, 
-             BitOr[
-              BitAnd[$CellContext`i3, $CellContext`s2], 
-              BitAnd[$CellContext`i4, $CellContext`s2]]]]], "Tooltip"]& ], 
+           $CellContext`LogicOr[
+            $CellContext`LogicAnd[$CellContext`s1, 
+             $CellContext`LogicOr[
+              $CellContext`LogicAnd[$CellContext`i3, $CellContext`s2], 
+              $CellContext`LogicAnd[$CellContext`i4, $CellContext`s2]]], 
+            $CellContext`LogicAnd[$CellContext`s1, 
+             $CellContext`LogicOr[
+              $CellContext`LogicAnd[$CellContext`i1, $CellContext`s2], 
+              $CellContext`LogicAnd[$CellContext`i2, $CellContext`s2]]]]], 
+          "Tooltip"]& ], 
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
-            StyleBox["BitAnd", "StandardForm", "Output",
+            StyleBox["LogicAnd", "StandardForm", "Output",
              StripOnInput->False,
              LineColor->GrayLevel[0],
              FrontFaceColor->GrayLevel[0],
              BackFaceColor->GrayLevel[0],
              GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
+             FontSize->Scaled[0.025],
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
             StripOnInput->False], 2],
           TagBox[
-           RowBox[{"BitAnd", "[", 
+           RowBox[{"LogicAnd", "[", 
              RowBox[{"s1", ",", 
-               RowBox[{"BitOr", "[", 
+               RowBox[{"LogicOr", "[", 
                  RowBox[{
-                   RowBox[{"BitAnd", "[", 
-                    RowBox[{"i1", ",", "s2"}], "]"}], ",", 
-                   RowBox[{"BitAnd", "[", 
-                    RowBox[{"i2", ",", "s2"}], "]"}]}], "]"}]}], "]"}], 
+                   RowBox[{"LogicAnd", "[", 
+                    RowBox[{"i3", ",", "s2"}], "]"}], ",", 
+                   RowBox[{"LogicAnd", "[", 
+                    RowBox[{"i4", ",", "s2"}], "]"}]}], "]"}]}], "]"}], 
            HoldForm]],
          Annotation[#, 
           HoldForm[
-           BitAnd[$CellContext`s1, 
-            BitOr[
-             BitAnd[$CellContext`i1, $CellContext`s2], 
-             BitAnd[$CellContext`i2, $CellContext`s2]]]], "Tooltip"]& ], 
+           $CellContext`LogicAnd[$CellContext`s1, 
+            $CellContext`LogicOr[
+             $CellContext`LogicAnd[$CellContext`i3, $CellContext`s2], 
+             $CellContext`LogicAnd[$CellContext`i4, $CellContext`s2]]]], 
+          "Tooltip"]& ], 
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
@@ -1296,7 +1487,7 @@ OQ==
              FrontFaceColor->GrayLevel[0],
              BackFaceColor->GrayLevel[0],
              GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
+             FontSize->Scaled[0.025],
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
@@ -1307,49 +1498,246 @@ OQ==
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
-            StyleBox["BitOr", "StandardForm", "Output",
+            StyleBox["LogicOr", "StandardForm", "Output",
              StripOnInput->False,
              LineColor->GrayLevel[0],
              FrontFaceColor->GrayLevel[0],
              BackFaceColor->GrayLevel[0],
              GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
+             FontSize->Scaled[0.025],
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
             StripOnInput->False], 4],
           TagBox[
-           RowBox[{"BitOr", "[", 
+           RowBox[{"LogicOr", "[", 
              RowBox[{
-               RowBox[{"BitAnd", "[", 
-                 RowBox[{"i1", ",", "s2"}], "]"}], ",", 
-               RowBox[{"BitAnd", "[", 
-                 RowBox[{"i2", ",", "s2"}], "]"}]}], "]"}], HoldForm]],
+               RowBox[{"LogicAnd", "[", 
+                 RowBox[{"i3", ",", "s2"}], "]"}], ",", 
+               RowBox[{"LogicAnd", "[", 
+                 RowBox[{"i4", ",", "s2"}], "]"}]}], "]"}], HoldForm]],
          Annotation[#, 
           HoldForm[
-           BitOr[
-            BitAnd[$CellContext`i1, $CellContext`s2], 
-            BitAnd[$CellContext`i2, $CellContext`s2]]], "Tooltip"]& ], 
+           $CellContext`LogicOr[
+            $CellContext`LogicAnd[$CellContext`i3, $CellContext`s2], 
+            $CellContext`LogicAnd[$CellContext`i4, $CellContext`s2]]], 
+          "Tooltip"]& ], 
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
-            StyleBox["BitAnd", "StandardForm", "Output",
+            StyleBox["LogicAnd", "StandardForm", "Output",
              StripOnInput->False,
              LineColor->GrayLevel[0],
              FrontFaceColor->GrayLevel[0],
              BackFaceColor->GrayLevel[0],
              GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
+             FontSize->Scaled[0.025],
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
             StripOnInput->False], 5],
           TagBox[
-           RowBox[{"BitAnd", "[", 
+           RowBox[{"LogicAnd", "[", 
+             RowBox[{"i3", ",", "s2"}], "]"}], HoldForm]],
+         Annotation[#, 
+          HoldForm[
+           $CellContext`LogicAnd[$CellContext`i3, $CellContext`s2]], 
+          "Tooltip"]& ], 
+        TagBox[
+         TooltipBox[InsetBox[
+           FrameBox[
+            StyleBox[
+             TagBox["i3",
+              HoldForm], "StandardForm", "Output",
+             StripOnInput->False,
+             LineColor->GrayLevel[0],
+             FrontFaceColor->GrayLevel[0],
+             BackFaceColor->GrayLevel[0],
+             GraphicsColor->GrayLevel[0],
+             FontSize->Scaled[0.025],
+             FontColor->GrayLevel[0]],
+            Background->RGBColor[1., 1., 0.871],
+            FrameStyle->GrayLevel[0.5],
+            StripOnInput->False], 6],
+          TagBox["i3", HoldForm]],
+         Annotation[#, 
+          HoldForm[$CellContext`i3], "Tooltip"]& ], 
+        TagBox[
+         TooltipBox[InsetBox[
+           FrameBox[
+            StyleBox[
+             TagBox["s2",
+              HoldForm], "StandardForm", "Output",
+             StripOnInput->False,
+             LineColor->GrayLevel[0],
+             FrontFaceColor->GrayLevel[0],
+             BackFaceColor->GrayLevel[0],
+             GraphicsColor->GrayLevel[0],
+             FontSize->Scaled[0.025],
+             FontColor->GrayLevel[0]],
+            Background->RGBColor[1., 1., 0.871],
+            FrameStyle->GrayLevel[0.5],
+            StripOnInput->False], 7],
+          TagBox["s2", HoldForm]],
+         Annotation[#, 
+          HoldForm[$CellContext`s2], "Tooltip"]& ], 
+        TagBox[
+         TooltipBox[InsetBox[
+           FrameBox[
+            StyleBox["LogicAnd", "StandardForm", "Output",
+             StripOnInput->False,
+             LineColor->GrayLevel[0],
+             FrontFaceColor->GrayLevel[0],
+             BackFaceColor->GrayLevel[0],
+             GraphicsColor->GrayLevel[0],
+             FontSize->Scaled[0.025],
+             FontColor->GrayLevel[0]],
+            Background->RGBColor[1., 1., 0.871],
+            FrameStyle->GrayLevel[0.5],
+            StripOnInput->False], 8],
+          TagBox[
+           RowBox[{"LogicAnd", "[", 
+             RowBox[{"i4", ",", "s2"}], "]"}], HoldForm]],
+         Annotation[#, 
+          HoldForm[
+           $CellContext`LogicAnd[$CellContext`i4, $CellContext`s2]], 
+          "Tooltip"]& ], 
+        TagBox[
+         TooltipBox[InsetBox[
+           FrameBox[
+            StyleBox[
+             TagBox["i4",
+              HoldForm], "StandardForm", "Output",
+             StripOnInput->False,
+             LineColor->GrayLevel[0],
+             FrontFaceColor->GrayLevel[0],
+             BackFaceColor->GrayLevel[0],
+             GraphicsColor->GrayLevel[0],
+             FontSize->Scaled[0.025],
+             FontColor->GrayLevel[0]],
+            Background->RGBColor[1., 1., 0.871],
+            FrameStyle->GrayLevel[0.5],
+            StripOnInput->False], 9],
+          TagBox["i4", HoldForm]],
+         Annotation[#, 
+          HoldForm[$CellContext`i4], "Tooltip"]& ], 
+        TagBox[
+         TooltipBox[InsetBox[
+           FrameBox[
+            StyleBox[
+             TagBox["s2",
+              HoldForm], "StandardForm", "Output",
+             StripOnInput->False,
+             LineColor->GrayLevel[0],
+             FrontFaceColor->GrayLevel[0],
+             BackFaceColor->GrayLevel[0],
+             GraphicsColor->GrayLevel[0],
+             FontSize->Scaled[0.025],
+             FontColor->GrayLevel[0]],
+            Background->RGBColor[1., 1., 0.871],
+            FrameStyle->GrayLevel[0.5],
+            StripOnInput->False], 10],
+          TagBox["s2", HoldForm]],
+         Annotation[#, 
+          HoldForm[$CellContext`s2], "Tooltip"]& ], 
+        TagBox[
+         TooltipBox[InsetBox[
+           FrameBox[
+            StyleBox["LogicAnd", "StandardForm", "Output",
+             StripOnInput->False,
+             LineColor->GrayLevel[0],
+             FrontFaceColor->GrayLevel[0],
+             BackFaceColor->GrayLevel[0],
+             GraphicsColor->GrayLevel[0],
+             FontSize->Scaled[0.025],
+             FontColor->GrayLevel[0]],
+            Background->RGBColor[1., 1., 0.871],
+            FrameStyle->GrayLevel[0.5],
+            StripOnInput->False], 11],
+          TagBox[
+           RowBox[{"LogicAnd", "[", 
+             RowBox[{"s1", ",", 
+               RowBox[{"LogicOr", "[", 
+                 RowBox[{
+                   RowBox[{"LogicAnd", "[", 
+                    RowBox[{"i1", ",", "s2"}], "]"}], ",", 
+                   RowBox[{"LogicAnd", "[", 
+                    RowBox[{"i2", ",", "s2"}], "]"}]}], "]"}]}], "]"}], 
+           HoldForm]],
+         Annotation[#, 
+          HoldForm[
+           $CellContext`LogicAnd[$CellContext`s1, 
+            $CellContext`LogicOr[
+             $CellContext`LogicAnd[$CellContext`i1, $CellContext`s2], 
+             $CellContext`LogicAnd[$CellContext`i2, $CellContext`s2]]]], 
+          "Tooltip"]& ], 
+        TagBox[
+         TooltipBox[InsetBox[
+           FrameBox[
+            StyleBox[
+             TagBox["s1",
+              HoldForm], "StandardForm", "Output",
+             StripOnInput->False,
+             LineColor->GrayLevel[0],
+             FrontFaceColor->GrayLevel[0],
+             BackFaceColor->GrayLevel[0],
+             GraphicsColor->GrayLevel[0],
+             FontSize->Scaled[0.025],
+             FontColor->GrayLevel[0]],
+            Background->RGBColor[1., 1., 0.871],
+            FrameStyle->GrayLevel[0.5],
+            StripOnInput->False], 12],
+          TagBox["s1", HoldForm]],
+         Annotation[#, 
+          HoldForm[$CellContext`s1], "Tooltip"]& ], 
+        TagBox[
+         TooltipBox[InsetBox[
+           FrameBox[
+            StyleBox["LogicOr", "StandardForm", "Output",
+             StripOnInput->False,
+             LineColor->GrayLevel[0],
+             FrontFaceColor->GrayLevel[0],
+             BackFaceColor->GrayLevel[0],
+             GraphicsColor->GrayLevel[0],
+             FontSize->Scaled[0.025],
+             FontColor->GrayLevel[0]],
+            Background->RGBColor[1., 1., 0.871],
+            FrameStyle->GrayLevel[0.5],
+            StripOnInput->False], 13],
+          TagBox[
+           RowBox[{"LogicOr", "[", 
+             RowBox[{
+               RowBox[{"LogicAnd", "[", 
+                 RowBox[{"i1", ",", "s2"}], "]"}], ",", 
+               RowBox[{"LogicAnd", "[", 
+                 RowBox[{"i2", ",", "s2"}], "]"}]}], "]"}], HoldForm]],
+         Annotation[#, 
+          HoldForm[
+           $CellContext`LogicOr[
+            $CellContext`LogicAnd[$CellContext`i1, $CellContext`s2], 
+            $CellContext`LogicAnd[$CellContext`i2, $CellContext`s2]]], 
+          "Tooltip"]& ], 
+        TagBox[
+         TooltipBox[InsetBox[
+           FrameBox[
+            StyleBox["LogicAnd", "StandardForm", "Output",
+             StripOnInput->False,
+             LineColor->GrayLevel[0],
+             FrontFaceColor->GrayLevel[0],
+             BackFaceColor->GrayLevel[0],
+             GraphicsColor->GrayLevel[0],
+             FontSize->Scaled[0.025],
+             FontColor->GrayLevel[0]],
+            Background->RGBColor[1., 1., 0.871],
+            FrameStyle->GrayLevel[0.5],
+            StripOnInput->False], 14],
+          TagBox[
+           RowBox[{"LogicAnd", "[", 
              RowBox[{"i1", ",", "s2"}], "]"}], HoldForm]],
          Annotation[#, 
           HoldForm[
-           BitAnd[$CellContext`i1, $CellContext`s2]], "Tooltip"]& ], 
+           $CellContext`LogicAnd[$CellContext`i1, $CellContext`s2]], 
+          "Tooltip"]& ], 
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
@@ -1361,11 +1749,11 @@ OQ==
              FrontFaceColor->GrayLevel[0],
              BackFaceColor->GrayLevel[0],
              GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
+             FontSize->Scaled[0.025],
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 6],
+            StripOnInput->False], 15],
           TagBox["i1", HoldForm]],
          Annotation[#, 
           HoldForm[$CellContext`i1], "Tooltip"]& ], 
@@ -1380,34 +1768,35 @@ OQ==
              FrontFaceColor->GrayLevel[0],
              BackFaceColor->GrayLevel[0],
              GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
+             FontSize->Scaled[0.025],
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 7],
+            StripOnInput->False], 16],
           TagBox["s2", HoldForm]],
          Annotation[#, 
           HoldForm[$CellContext`s2], "Tooltip"]& ], 
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
-            StyleBox["BitAnd", "StandardForm", "Output",
+            StyleBox["LogicAnd", "StandardForm", "Output",
              StripOnInput->False,
              LineColor->GrayLevel[0],
              FrontFaceColor->GrayLevel[0],
              BackFaceColor->GrayLevel[0],
              GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
+             FontSize->Scaled[0.025],
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 8],
+            StripOnInput->False], 17],
           TagBox[
-           RowBox[{"BitAnd", "[", 
+           RowBox[{"LogicAnd", "[", 
              RowBox[{"i2", ",", "s2"}], "]"}], HoldForm]],
          Annotation[#, 
           HoldForm[
-           BitAnd[$CellContext`i2, $CellContext`s2]], "Tooltip"]& ], 
+           $CellContext`LogicAnd[$CellContext`i2, $CellContext`s2]], 
+          "Tooltip"]& ], 
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
@@ -1419,11 +1808,11 @@ OQ==
              FrontFaceColor->GrayLevel[0],
              BackFaceColor->GrayLevel[0],
              GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
+             FontSize->Scaled[0.025],
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 9],
+            StripOnInput->False], 18],
           TagBox["i2", HoldForm]],
          Annotation[#, 
           HoldForm[$CellContext`i2], "Tooltip"]& ], 
@@ -1438,198 +1827,7 @@ OQ==
              FrontFaceColor->GrayLevel[0],
              BackFaceColor->GrayLevel[0],
              GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
-             FontColor->GrayLevel[0]],
-            Background->RGBColor[1., 1., 0.871],
-            FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 10],
-          TagBox["s2", HoldForm]],
-         Annotation[#, 
-          HoldForm[$CellContext`s2], "Tooltip"]& ], 
-        TagBox[
-         TooltipBox[InsetBox[
-           FrameBox[
-            StyleBox["BitAnd", "StandardForm", "Output",
-             StripOnInput->False,
-             LineColor->GrayLevel[0],
-             FrontFaceColor->GrayLevel[0],
-             BackFaceColor->GrayLevel[0],
-             GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
-             FontColor->GrayLevel[0]],
-            Background->RGBColor[1., 1., 0.871],
-            FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 11],
-          TagBox[
-           RowBox[{"BitAnd", "[", 
-             RowBox[{"s1", ",", 
-               RowBox[{"BitOr", "[", 
-                 RowBox[{
-                   RowBox[{"BitAnd", "[", 
-                    RowBox[{"i3", ",", "s2"}], "]"}], ",", 
-                   RowBox[{"BitAnd", "[", 
-                    RowBox[{"i4", ",", "s2"}], "]"}]}], "]"}]}], "]"}], 
-           HoldForm]],
-         Annotation[#, 
-          HoldForm[
-           BitAnd[$CellContext`s1, 
-            BitOr[
-             BitAnd[$CellContext`i3, $CellContext`s2], 
-             BitAnd[$CellContext`i4, $CellContext`s2]]]], "Tooltip"]& ], 
-        TagBox[
-         TooltipBox[InsetBox[
-           FrameBox[
-            StyleBox[
-             TagBox["s1",
-              HoldForm], "StandardForm", "Output",
-             StripOnInput->False,
-             LineColor->GrayLevel[0],
-             FrontFaceColor->GrayLevel[0],
-             BackFaceColor->GrayLevel[0],
-             GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
-             FontColor->GrayLevel[0]],
-            Background->RGBColor[1., 1., 0.871],
-            FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 12],
-          TagBox["s1", HoldForm]],
-         Annotation[#, 
-          HoldForm[$CellContext`s1], "Tooltip"]& ], 
-        TagBox[
-         TooltipBox[InsetBox[
-           FrameBox[
-            StyleBox["BitOr", "StandardForm", "Output",
-             StripOnInput->False,
-             LineColor->GrayLevel[0],
-             FrontFaceColor->GrayLevel[0],
-             BackFaceColor->GrayLevel[0],
-             GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
-             FontColor->GrayLevel[0]],
-            Background->RGBColor[1., 1., 0.871],
-            FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 13],
-          TagBox[
-           RowBox[{"BitOr", "[", 
-             RowBox[{
-               RowBox[{"BitAnd", "[", 
-                 RowBox[{"i3", ",", "s2"}], "]"}], ",", 
-               RowBox[{"BitAnd", "[", 
-                 RowBox[{"i4", ",", "s2"}], "]"}]}], "]"}], HoldForm]],
-         Annotation[#, 
-          HoldForm[
-           BitOr[
-            BitAnd[$CellContext`i3, $CellContext`s2], 
-            BitAnd[$CellContext`i4, $CellContext`s2]]], "Tooltip"]& ], 
-        TagBox[
-         TooltipBox[InsetBox[
-           FrameBox[
-            StyleBox["BitAnd", "StandardForm", "Output",
-             StripOnInput->False,
-             LineColor->GrayLevel[0],
-             FrontFaceColor->GrayLevel[0],
-             BackFaceColor->GrayLevel[0],
-             GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
-             FontColor->GrayLevel[0]],
-            Background->RGBColor[1., 1., 0.871],
-            FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 14],
-          TagBox[
-           RowBox[{"BitAnd", "[", 
-             RowBox[{"i3", ",", "s2"}], "]"}], HoldForm]],
-         Annotation[#, 
-          HoldForm[
-           BitAnd[$CellContext`i3, $CellContext`s2]], "Tooltip"]& ], 
-        TagBox[
-         TooltipBox[InsetBox[
-           FrameBox[
-            StyleBox[
-             TagBox["i3",
-              HoldForm], "StandardForm", "Output",
-             StripOnInput->False,
-             LineColor->GrayLevel[0],
-             FrontFaceColor->GrayLevel[0],
-             BackFaceColor->GrayLevel[0],
-             GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
-             FontColor->GrayLevel[0]],
-            Background->RGBColor[1., 1., 0.871],
-            FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 15],
-          TagBox["i3", HoldForm]],
-         Annotation[#, 
-          HoldForm[$CellContext`i3], "Tooltip"]& ], 
-        TagBox[
-         TooltipBox[InsetBox[
-           FrameBox[
-            StyleBox[
-             TagBox["s2",
-              HoldForm], "StandardForm", "Output",
-             StripOnInput->False,
-             LineColor->GrayLevel[0],
-             FrontFaceColor->GrayLevel[0],
-             BackFaceColor->GrayLevel[0],
-             GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
-             FontColor->GrayLevel[0]],
-            Background->RGBColor[1., 1., 0.871],
-            FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 16],
-          TagBox["s2", HoldForm]],
-         Annotation[#, 
-          HoldForm[$CellContext`s2], "Tooltip"]& ], 
-        TagBox[
-         TooltipBox[InsetBox[
-           FrameBox[
-            StyleBox["BitAnd", "StandardForm", "Output",
-             StripOnInput->False,
-             LineColor->GrayLevel[0],
-             FrontFaceColor->GrayLevel[0],
-             BackFaceColor->GrayLevel[0],
-             GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
-             FontColor->GrayLevel[0]],
-            Background->RGBColor[1., 1., 0.871],
-            FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 17],
-          TagBox[
-           RowBox[{"BitAnd", "[", 
-             RowBox[{"i4", ",", "s2"}], "]"}], HoldForm]],
-         Annotation[#, 
-          HoldForm[
-           BitAnd[$CellContext`i4, $CellContext`s2]], "Tooltip"]& ], 
-        TagBox[
-         TooltipBox[InsetBox[
-           FrameBox[
-            StyleBox[
-             TagBox["i4",
-              HoldForm], "StandardForm", "Output",
-             StripOnInput->False,
-             LineColor->GrayLevel[0],
-             FrontFaceColor->GrayLevel[0],
-             BackFaceColor->GrayLevel[0],
-             GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
-             FontColor->GrayLevel[0]],
-            Background->RGBColor[1., 1., 0.871],
-            FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 18],
-          TagBox["i4", HoldForm]],
-         Annotation[#, 
-          HoldForm[$CellContext`i4], "Tooltip"]& ], 
-        TagBox[
-         TooltipBox[InsetBox[
-           FrameBox[
-            StyleBox[
-             TagBox["s2",
-              HoldForm], "StandardForm", "Output",
-             StripOnInput->False,
-             LineColor->GrayLevel[0],
-             FrontFaceColor->GrayLevel[0],
-             BackFaceColor->GrayLevel[0],
-             GraphicsColor->GrayLevel[0],
-             FontSize->Scaled[0.03333333333333333],
+             FontSize->Scaled[0.025],
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
@@ -1643,28 +1841,28 @@ cD6q/HN7BjSALr7Qb+X+vV1/4eph5sDkYfbC+IvA6nkdYOJauk8nlU/jcoDp
 49lh9q3RXgDOR5WHmc+OYR6M33Tzl9IJY2E0fwvC5e1exVi+XisC5wMA56Fm
 OQ==
        "]]& ],
-    AspectRatio->NCache[
-     Rational[1, 2] Rational[5, 3]^Rational[1, 2], 0.6454972243679028],
+    AspectRatio->NCache[Rational[1, 4] 5^Rational[1, 2], 0.5590169943749475],
     FormatType:>StandardForm,
     FrameTicks->Automatic,
     PlotRange->All,
     PlotRangePadding->Scaled[0.1]], ",", 
    GraphicsBox[
     TagBox[
-     GraphicsComplexBox[{{1.2247448713915892`, 3.2659863237109046`}, {
-      0.4082482904638631, 2.4494897427831783`}, {0., 1.6329931618554523`}, {
-      0.8164965809277261, 1.6329931618554523`}, {0., 0.8164965809277263}, {
-      0.8164965809277261, 0.8164965809277263}, {1.6329931618554523`, 
-      0.8164965809277263}, {1.2247448713915892`, 0.}, {2.041241452319315, 
-      0.}, {2.041241452319315, 2.4494897427831783`}, {1.6329931618554523`, 
-      1.6329931618554523`}, {2.4494897427831783`, 1.6329931618554523`}}, {
+     GraphicsComplexBox[{{1.6329931618554523`, 3.2659863237109046`}, {
+      0.8164965809277261, 2.4494897427831783`}, {0.4082482904638631, 
+      1.6329931618554523`}, {1.2247448713915892`, 1.6329931618554523`}, {
+      0.4082482904638631, 0.8164965809277263}, {0., 0.}, {0.8164965809277261, 
+      0.}, {2.041241452319315, 0.8164965809277263}, {1.6329931618554523`, 
+      0.}, {2.4494897427831783`, 0.}, {2.4494897427831783`, 
+      2.4494897427831783`}, {2.041241452319315, 1.6329931618554523`}, {
+      2.8577380332470415`, 1.6329931618554523`}}, {
        {RGBColor[0.55, 0.45, 0.45], 
-        LineBox[{{1, 2}, {1, 10}, {2, 3}, {2, 4}, {4, 5}, {4, 6}, {4, 7}, {7, 
-         8}, {7, 9}, {10, 11}, {10, 12}}]}, {
+        LineBox[{{1, 2}, {1, 11}, {2, 3}, {2, 4}, {4, 5}, {4, 8}, {5, 6}, {5, 
+         7}, {8, 9}, {8, 10}, {11, 12}, {11, 13}}]}, {
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
-            StyleBox["BitOr", "StandardForm", "Output",
+            StyleBox["LogicOr", "StandardForm", "Output",
              StripOnInput->False,
              LineColor->GrayLevel[0],
              FrontFaceColor->GrayLevel[0],
@@ -1676,27 +1874,31 @@ OQ==
             FrameStyle->GrayLevel[0.5],
             StripOnInput->False], 1],
           TagBox[
-           RowBox[{"BitOr", "[", 
+           RowBox[{"LogicOr", "[", 
              RowBox[{
-               RowBox[{"BitAnd", "[", 
+               RowBox[{"LogicAnd", "[", 
                  RowBox[{"s1", ",", 
-                   RowBox[{"BitOr", "[", 
-                    RowBox[{"i3", ",", "s2", ",", 
-                    RowBox[{"BitAnd", "[", 
+                   RowBox[{"LogicOr", "[", 
+                    RowBox[{
+                    RowBox[{"LogicOr", "[", 
+                    RowBox[{"i3", ",", "s2"}], "]"}], ",", 
+                    RowBox[{"LogicAnd", "[", 
                     RowBox[{"i4", ",", "s2"}], "]"}]}], "]"}]}], "]"}], ",", 
-               RowBox[{"BitXor", "[", 
+               RowBox[{"LogicXor", "[", 
                  RowBox[{"s1", ",", "s2"}], "]"}]}], "]"}], HoldForm]],
          Annotation[#, 
           HoldForm[
-           BitOr[
-            BitAnd[$CellContext`s1, 
-             BitOr[$CellContext`i3, $CellContext`s2, 
-              BitAnd[$CellContext`i4, $CellContext`s2]]], 
-            BitXor[$CellContext`s1, $CellContext`s2]]], "Tooltip"]& ], 
+           $CellContext`LogicOr[
+            $CellContext`LogicAnd[$CellContext`s1, 
+             $CellContext`LogicOr[
+              $CellContext`LogicOr[$CellContext`i3, $CellContext`s2], 
+              $CellContext`LogicAnd[$CellContext`i4, $CellContext`s2]]], 
+            $CellContext`LogicXor[$CellContext`s1, $CellContext`s2]]], 
+          "Tooltip"]& ], 
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
-            StyleBox["BitAnd", "StandardForm", "Output",
+            StyleBox["LogicAnd", "StandardForm", "Output",
              StripOnInput->False,
              LineColor->GrayLevel[0],
              FrontFaceColor->GrayLevel[0],
@@ -1708,18 +1910,22 @@ OQ==
             FrameStyle->GrayLevel[0.5],
             StripOnInput->False], 2],
           TagBox[
-           RowBox[{"BitAnd", "[", 
+           RowBox[{"LogicAnd", "[", 
              RowBox[{"s1", ",", 
-               RowBox[{"BitOr", "[", 
-                 RowBox[{"i3", ",", "s2", ",", 
-                   RowBox[{"BitAnd", "[", 
+               RowBox[{"LogicOr", "[", 
+                 RowBox[{
+                   RowBox[{"LogicOr", "[", 
+                    RowBox[{"i3", ",", "s2"}], "]"}], ",", 
+                   RowBox[{"LogicAnd", "[", 
                     RowBox[{"i4", ",", "s2"}], "]"}]}], "]"}]}], "]"}], 
            HoldForm]],
          Annotation[#, 
           HoldForm[
-           BitAnd[$CellContext`s1, 
-            BitOr[$CellContext`i3, $CellContext`s2, 
-             BitAnd[$CellContext`i4, $CellContext`s2]]]], "Tooltip"]& ], 
+           $CellContext`LogicAnd[$CellContext`s1, 
+            $CellContext`LogicOr[
+             $CellContext`LogicOr[$CellContext`i3, $CellContext`s2], 
+             $CellContext`LogicAnd[$CellContext`i4, $CellContext`s2]]]], 
+          "Tooltip"]& ], 
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
@@ -1742,7 +1948,7 @@ OQ==
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
-            StyleBox["BitOr", "StandardForm", "Output",
+            StyleBox["LogicOr", "StandardForm", "Output",
              StripOnInput->False,
              LineColor->GrayLevel[0],
              FrontFaceColor->GrayLevel[0],
@@ -1754,14 +1960,39 @@ OQ==
             FrameStyle->GrayLevel[0.5],
             StripOnInput->False], 4],
           TagBox[
-           RowBox[{"BitOr", "[", 
-             RowBox[{"i3", ",", "s2", ",", 
-               RowBox[{"BitAnd", "[", 
+           RowBox[{"LogicOr", "[", 
+             RowBox[{
+               RowBox[{"LogicOr", "[", 
+                 RowBox[{"i3", ",", "s2"}], "]"}], ",", 
+               RowBox[{"LogicAnd", "[", 
                  RowBox[{"i4", ",", "s2"}], "]"}]}], "]"}], HoldForm]],
          Annotation[#, 
           HoldForm[
-           BitOr[$CellContext`i3, $CellContext`s2, 
-            BitAnd[$CellContext`i4, $CellContext`s2]]], "Tooltip"]& ], 
+           $CellContext`LogicOr[
+            $CellContext`LogicOr[$CellContext`i3, $CellContext`s2], 
+            $CellContext`LogicAnd[$CellContext`i4, $CellContext`s2]]], 
+          "Tooltip"]& ], 
+        TagBox[
+         TooltipBox[InsetBox[
+           FrameBox[
+            StyleBox["LogicOr", "StandardForm", "Output",
+             StripOnInput->False,
+             LineColor->GrayLevel[0],
+             FrontFaceColor->GrayLevel[0],
+             BackFaceColor->GrayLevel[0],
+             GraphicsColor->GrayLevel[0],
+             FontSize->Scaled[0.05],
+             FontColor->GrayLevel[0]],
+            Background->RGBColor[1., 1., 0.871],
+            FrameStyle->GrayLevel[0.5],
+            StripOnInput->False], 5],
+          TagBox[
+           RowBox[{"LogicOr", "[", 
+             RowBox[{"i3", ",", "s2"}], "]"}], HoldForm]],
+         Annotation[#, 
+          HoldForm[
+           $CellContext`LogicOr[$CellContext`i3, $CellContext`s2]], 
+          "Tooltip"]& ], 
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
@@ -1777,7 +2008,7 @@ OQ==
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 5],
+            StripOnInput->False], 6],
           TagBox["i3", HoldForm]],
          Annotation[#, 
           HoldForm[$CellContext`i3], "Tooltip"]& ], 
@@ -1796,14 +2027,14 @@ OQ==
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 6],
+            StripOnInput->False], 7],
           TagBox["s2", HoldForm]],
          Annotation[#, 
           HoldForm[$CellContext`s2], "Tooltip"]& ], 
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
-            StyleBox["BitAnd", "StandardForm", "Output",
+            StyleBox["LogicAnd", "StandardForm", "Output",
              StripOnInput->False,
              LineColor->GrayLevel[0],
              FrontFaceColor->GrayLevel[0],
@@ -1813,13 +2044,14 @@ OQ==
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 7],
+            StripOnInput->False], 8],
           TagBox[
-           RowBox[{"BitAnd", "[", 
+           RowBox[{"LogicAnd", "[", 
              RowBox[{"i4", ",", "s2"}], "]"}], HoldForm]],
          Annotation[#, 
           HoldForm[
-           BitAnd[$CellContext`i4, $CellContext`s2]], "Tooltip"]& ], 
+           $CellContext`LogicAnd[$CellContext`i4, $CellContext`s2]], 
+          "Tooltip"]& ], 
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
@@ -1835,7 +2067,7 @@ OQ==
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 8],
+            StripOnInput->False], 9],
           TagBox["i4", HoldForm]],
          Annotation[#, 
           HoldForm[$CellContext`i4], "Tooltip"]& ], 
@@ -1854,14 +2086,14 @@ OQ==
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 9],
+            StripOnInput->False], 10],
           TagBox["s2", HoldForm]],
          Annotation[#, 
           HoldForm[$CellContext`s2], "Tooltip"]& ], 
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
-            StyleBox["BitXor", "StandardForm", "Output",
+            StyleBox["LogicXor", "StandardForm", "Output",
              StripOnInput->False,
              LineColor->GrayLevel[0],
              FrontFaceColor->GrayLevel[0],
@@ -1871,13 +2103,14 @@ OQ==
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 10],
+            StripOnInput->False], 11],
           TagBox[
-           RowBox[{"BitXor", "[", 
+           RowBox[{"LogicXor", "[", 
              RowBox[{"s1", ",", "s2"}], "]"}], HoldForm]],
          Annotation[#, 
           HoldForm[
-           BitXor[$CellContext`s1, $CellContext`s2]], "Tooltip"]& ], 
+           $CellContext`LogicXor[$CellContext`s1, $CellContext`s2]], 
+          "Tooltip"]& ], 
         TagBox[
          TooltipBox[InsetBox[
            FrameBox[
@@ -1893,7 +2126,7 @@ OQ==
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 11],
+            StripOnInput->False], 12],
           TagBox["s1", HoldForm]],
          Annotation[#, 
           HoldForm[$CellContext`s1], "Tooltip"]& ], 
@@ -1912,25 +2145,28 @@ OQ==
              FontColor->GrayLevel[0]],
             Background->RGBColor[1., 1., 0.871],
             FrameStyle->GrayLevel[0.5],
-            StripOnInput->False], 12],
+            StripOnInput->False], 13],
           TagBox["s2", HoldForm]],
          Annotation[#, 
           HoldForm[$CellContext`s2], "Tooltip"]& ]}}],
      Annotation[#, 
-      VertexCoordinateRules -> {{1.2247448713915892`, 3.2659863237109046`}, {
-       0.4082482904638631, 2.4494897427831783`}, {0., 1.6329931618554523`}, {
-       0.8164965809277261, 1.6329931618554523`}, {0., 0.8164965809277263}, {
-       0.8164965809277261, 0.8164965809277263}, {1.6329931618554523`, 
-       0.8164965809277263}, {1.2247448713915892`, 0.}, {2.041241452319315, 
-       0.}, {2.041241452319315, 2.4494897427831783`}, {1.6329931618554523`, 
-       1.6329931618554523`}, {2.4494897427831783`, 1.6329931618554523`}}]& ],
-    AspectRatio->NCache[Rational[5, 6]^Rational[1, 2], 0.9128709291752769],
+      VertexCoordinateRules -> {{1.6329931618554523`, 3.2659863237109046`}, {
+       0.8164965809277261, 2.4494897427831783`}, {0.4082482904638631, 
+       1.6329931618554523`}, {1.2247448713915892`, 1.6329931618554523`}, {
+       0.4082482904638631, 0.8164965809277263}, {0., 0.}, {0.8164965809277261,
+        0.}, {2.041241452319315, 0.8164965809277263}, {1.6329931618554523`, 
+       0.}, {2.4494897427831783`, 0.}, {2.4494897427831783`, 
+       2.4494897427831783`}, {2.041241452319315, 1.6329931618554523`}, {
+       2.8577380332470415`, 1.6329931618554523`}}]& ],
+    AspectRatio->NCache[
+     Rational[1, 2] Rational[5, 2]^Rational[1, 2], 0.7905694150420949],
     FormatType:>StandardForm,
     FrameTicks->Automatic,
     PlotRange->All,
     PlotRangePadding->Scaled[0.1]]}], "}"}]], "Output",
- CellChangeTimes->{{3.789833857654173*^9, 3.7898338724070063`*^9}},
- CellLabel->"Out[65]=",ExpressionUUID->"873b4a2c-ee67-4655-a357-27612e69e8ac"]
+ CellChangeTimes->{{3.789833857654173*^9, 3.7898338724070063`*^9}, 
+   3.7898443801889677`*^9, 3.7898445919482527`*^9, 3.78986032238166*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"5bbe80a1-7aca-44ba-8fe7-26fb4d263a77"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1941,7 +2177,7 @@ Cell[BoxData[
    RowBox[{"g1", ",", "l1"}], "}"}], " ", "=", " ", 
   RowBox[{"FunctionToGraph", "[", "f1", "]"}]}]], "Input",
  CellChangeTimes->{{3.7898338855895653`*^9, 3.7898338955533733`*^9}},
- CellLabel->"In[66]:=",ExpressionUUID->"8070ee99-b339-4768-ba22-64547d1ea467"],
+ CellLabel->"In[15]:=",ExpressionUUID->"8070ee99-b339-4768-ba22-64547d1ea467"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -1954,12 +2190,15 @@ Cell[BoxData[
          9}, {7, 10}, {7, 11}, {3, 12}, {3, 13}, {13, 14}, {13, 15}, {14, 
          16}, {14, 17}, {15, 18}, {15, 19}}, Null}, {
         VertexLabels -> {
-          6 -> $CellContext`i1, 18 -> $CellContext`i4, 3 -> $CellContext`s1, 
-           11 -> BitAnd, 5 -> BitAnd, 8 -> BitAnd, 7 -> $CellContext`s2, 14 -> 
-           BitAnd, 10 -> $CellContext`s2, 9 -> $CellContext`i2, 4 -> BitOr, 
-           17 -> BitAnd, 16 -> $CellContext`s2, 12 -> $CellContext`s1, 13 -> 
-           BitOr, 2 -> BitAnd, 15 -> $CellContext`i3, 1 -> BitOr, 
-           19 -> $CellContext`s2}}]]}, 
+          6 -> $CellContext`i3, 18 -> $CellContext`i2, 3 -> $CellContext`s1, 
+           11 -> $CellContext`LogicAnd, 5 -> $CellContext`LogicAnd, 
+           8 -> $CellContext`LogicAnd, 7 -> $CellContext`s2, 
+           14 -> $CellContext`LogicAnd, 10 -> $CellContext`s2, 
+           9 -> $CellContext`i4, 4 -> $CellContext`LogicOr, 
+           17 -> $CellContext`LogicAnd, 16 -> $CellContext`s2, 
+           12 -> $CellContext`s1, 13 -> $CellContext`LogicOr, 
+           2 -> $CellContext`LogicAnd, 15 -> $CellContext`i1, 
+           1 -> $CellContext`LogicOr, 19 -> $CellContext`s2}}]]}, 
       TagBox[GraphicsGroupBox[{
          {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[Medium], 
           ArrowBox[CompressedData["
@@ -1973,19 +2212,19 @@ cHl09bB4gpmPLg8LT5g8unkQ9wnilLd7FWP5eq0IXB4A7xnepw==
           0.7]}], {
            DiskBox[{2.215646837627989, 2.9541957835039856}, 
             0.044010774750169956], 
-           InsetBox["BitOr", 
+           InsetBox["LogicOr", 
             Offset[{2, 2}, {2.259657612378159, 2.9982065582541555}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
            DiskBox[{0.7385489458759964, 2.215646837627989}, 
             0.044010774750169956], 
-           InsetBox["BitAnd", 
+           InsetBox["LogicAnd", 
             Offset[{2, 2}, {0.7825597206261663, 2.259657612378159}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
            DiskBox[{3.6927447293799824, 2.215646837627989}, 
             0.044010774750169956], 
-           InsetBox["BitAnd", 
+           InsetBox["LogicAnd", 
             Offset[{2, 2}, {3.7367555041301523, 2.259657612378159}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
@@ -1997,23 +2236,23 @@ cHl09bB4gpmPLg8LT5g8unkQ9wnilLd7FWP5eq0IXB4A7xnepw==
             BaseStyle->"Graphics"]}, {
            DiskBox[{1.1078234188139946, 1.4770978917519928}, 
             0.044010774750169956], 
-           InsetBox["BitOr", 
+           InsetBox["LogicOr", 
             Offset[{2, 2}, {1.1518341935641645, 1.5211086665021627}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
            DiskBox[{0.3692744729379982, 0.7385489458759964}, 
             0.044010774750169956], 
-           InsetBox["BitAnd", 
+           InsetBox["LogicAnd", 
             Offset[{2, 2}, {0.41328524768816816, 0.7825597206261663}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
            DiskBox[{1.846372364689991, 0.7385489458759964}, 
             0.044010774750169956], 
-           InsetBox["BitAnd", 
+           InsetBox["LogicAnd", 
             Offset[{2, 2}, {1.890383139440161, 0.7825597206261663}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {DiskBox[{0., 0.}, 0.044010774750169956],
-            InsetBox["i1", 
+            InsetBox["i3", 
             Offset[{2, 2}, {0.044010774750169956, 0.044010774750169956}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
@@ -2023,7 +2262,7 @@ cHl09bB4gpmPLg8LT5g8unkQ9wnilLd7FWP5eq0IXB4A7xnepw==
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
            DiskBox[{1.4770978917519928, 0.}, 0.044010774750169956], 
-           InsetBox["i2", 
+           InsetBox["i4", 
             Offset[{2, 2}, {1.5211086665021627, 0.044010774750169956}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
@@ -2040,24 +2279,24 @@ cHl09bB4gpmPLg8LT5g8unkQ9wnilLd7FWP5eq0IXB4A7xnepw==
             BaseStyle->"Graphics"]}, {
            DiskBox[{4.06201920231798, 1.4770978917519928}, 
             0.044010774750169956], 
-           InsetBox["BitOr", 
+           InsetBox["LogicOr", 
             Offset[{2, 2}, {4.10602997706815, 1.5211086665021627}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
            DiskBox[{3.3234702564419836, 0.7385489458759964}, 
             0.044010774750169956], 
-           InsetBox["BitAnd", 
+           InsetBox["LogicAnd", 
             Offset[{2, 2}, {3.3674810311921535, 0.7825597206261663}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
            DiskBox[{4.800568148193976, 0.7385489458759964}, 
             0.044010774750169956], 
-           InsetBox["BitAnd", 
+           InsetBox["LogicAnd", 
             Offset[{2, 2}, {4.844578922944146, 0.7825597206261663}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
            DiskBox[{2.9541957835039856, 0.}, 0.044010774750169956], 
-           InsetBox["i3", 
+           InsetBox["i1", 
             Offset[{2, 2}, {2.9982065582541555, 0.044010774750169956}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
@@ -2067,7 +2306,7 @@ cHl09bB4gpmPLg8LT5g8unkQ9wnilLd7FWP5eq0IXB4A7xnepw==
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
            DiskBox[{4.431293675255978, 0.}, 0.044010774750169956], 
-           InsetBox["i4", 
+           InsetBox["i2", 
             Offset[{2, 2}, {4.475304450006148, 0.044010774750169956}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
@@ -2086,45 +2325,47 @@ cHl09bB4gpmPLg8LT5g8unkQ9wnilLd7FWP5eq0IXB4A7xnepw==
    RowBox[{"{", 
     RowBox[{
      RowBox[{"1", "\[Rule]", 
-      RowBox[{"Func", "[", "BitOr", "]"}]}], ",", 
+      RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
      RowBox[{"2", "\[Rule]", 
-      RowBox[{"Func", "[", "BitAnd", "]"}]}], ",", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
      RowBox[{"3", "\[Rule]", 
       RowBox[{"Term", "[", "s1", "]"}]}], ",", 
      RowBox[{"4", "\[Rule]", 
-      RowBox[{"Func", "[", "BitOr", "]"}]}], ",", 
+      RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
      RowBox[{"5", "\[Rule]", 
-      RowBox[{"Func", "[", "BitAnd", "]"}]}], ",", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
      RowBox[{"6", "\[Rule]", 
-      RowBox[{"Term", "[", "i1", "]"}]}], ",", 
+      RowBox[{"Term", "[", "i3", "]"}]}], ",", 
      RowBox[{"7", "\[Rule]", 
       RowBox[{"Term", "[", "s2", "]"}]}], ",", 
      RowBox[{"8", "\[Rule]", 
-      RowBox[{"Func", "[", "BitAnd", "]"}]}], ",", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
      RowBox[{"9", "\[Rule]", 
-      RowBox[{"Term", "[", "i2", "]"}]}], ",", 
+      RowBox[{"Term", "[", "i4", "]"}]}], ",", 
      RowBox[{"10", "\[Rule]", 
       RowBox[{"Term", "[", "s2", "]"}]}], ",", 
      RowBox[{"11", "\[Rule]", 
-      RowBox[{"Func", "[", "BitAnd", "]"}]}], ",", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
      RowBox[{"12", "\[Rule]", 
       RowBox[{"Term", "[", "s1", "]"}]}], ",", 
      RowBox[{"13", "\[Rule]", 
-      RowBox[{"Func", "[", "BitOr", "]"}]}], ",", 
+      RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
      RowBox[{"14", "\[Rule]", 
-      RowBox[{"Func", "[", "BitAnd", "]"}]}], ",", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
      RowBox[{"15", "\[Rule]", 
-      RowBox[{"Term", "[", "i3", "]"}]}], ",", 
+      RowBox[{"Term", "[", "i1", "]"}]}], ",", 
      RowBox[{"16", "\[Rule]", 
       RowBox[{"Term", "[", "s2", "]"}]}], ",", 
      RowBox[{"17", "\[Rule]", 
-      RowBox[{"Func", "[", "BitAnd", "]"}]}], ",", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
      RowBox[{"18", "\[Rule]", 
-      RowBox[{"Term", "[", "i4", "]"}]}], ",", 
+      RowBox[{"Term", "[", "i2", "]"}]}], ",", 
      RowBox[{"19", "\[Rule]", 
       RowBox[{"Term", "[", "s2", "]"}]}]}], "}"}]}], "}"}]], "Output",
- CellChangeTimes->{3.789833895813108*^9},
- CellLabel->"Out[66]=",ExpressionUUID->"6fc64725-4da5-4da6-9b89-75c7583a16db"]
+ CellChangeTimes->{3.789833895813108*^9, 3.789844143989779*^9, 
+  3.7898443844676867`*^9, 3.789844605234085*^9, 3.7898446885453243`*^9, 
+  3.789860324283267*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"a3b3a2d3-02b0-4560-9923-3fce808825ff"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2135,7 +2376,7 @@ Cell[BoxData[
    RowBox[{"g2", ",", "l2"}], "}"}], " ", "=", " ", 
   RowBox[{"FunctionToGraph", "[", "f2", "]"}]}]], "Input",
  CellChangeTimes->{{3.789833902571569*^9, 3.7898339053018093`*^9}},
- CellLabel->"In[67]:=",ExpressionUUID->"981cb858-abc5-4ad9-b2cc-6de236f3569e"],
+ CellLabel->"In[16]:=",ExpressionUUID->"981cb858-abc5-4ad9-b2cc-6de236f3569e"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -2143,88 +2384,96 @@ Cell[BoxData[
    GraphicsBox[
     NamespaceBox["NetworkGraphics",
      DynamicModuleBox[{Typeset`graph = HoldComplete[
-       Graph[{1, 2, 10, 3, 4, 5, 6, 7, 8, 9, 11, 
-        12}, {{{1, 2}, {1, 3}, {2, 4}, {2, 5}, {5, 6}, {5, 7}, {5, 8}, {8, 
-         9}, {8, 10}, {3, 11}, {3, 12}}, Null}, {
+       Graph[{1, 2, 11, 3, 4, 5, 8, 6, 7, 9, 10, 12, 
+        13}, {{{1, 2}, {1, 3}, {2, 4}, {2, 5}, {5, 6}, {5, 7}, {6, 8}, {6, 
+         9}, {7, 10}, {7, 11}, {3, 12}, {3, 13}}, Null}, {
         VertexLabels -> {
-          6 -> $CellContext`s2, 3 -> $CellContext`s1, 11 -> $CellContext`s1, 
-           5 -> $CellContext`i3, 8 -> $CellContext`i4, 7 -> BitAnd, 10 -> 
-           BitXor, 9 -> $CellContext`s2, 4 -> BitOr, 12 -> $CellContext`s2, 2 -> 
-           BitAnd, 1 -> BitOr}}]]}, 
+          6 -> $CellContext`i3, 3 -> $CellContext`s1, 
+           11 -> $CellContext`LogicXor, 5 -> $CellContext`LogicOr, 
+           8 -> $CellContext`LogicAnd, 7 -> $CellContext`s2, 
+           10 -> $CellContext`s2, 9 -> $CellContext`i4, 
+           4 -> $CellContext`LogicOr, 12 -> $CellContext`s1, 
+           13 -> $CellContext`s2, 2 -> $CellContext`LogicAnd, 
+           1 -> $CellContext`LogicOr}}]]}, 
       TagBox[GraphicsGroupBox[{
          {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[Medium], 
           ArrowBox[CompressedData["
-1:eJxTTMoPSmVmYGDgBmImKDbJ/zu5qOOWPYT+ZZ8u/O9d6LPPUJrZAV0elf8K
-Qz2Mj8u8htS6Oe5TGRxwmceABtDl0dWhm4dq/yt7dHlUPqa878FaxxRzdrg8
-Oh/mD5j96PIQmgsuDwAqJp+h
-           "], 0.032467879227521645`]}, 
+1:eJxTTMoPSmVmYGDgAWImKFZzORBjsuiGvSqY/mGvBqVljCe4Lq9kcsAuf8Ne
+BUy/wFAPoT/hNG+htcbFt72sDrjMY0AD2O1DqEM3Tz/0Q/HBU//g6tHlV/lE
+vKjaxu0Ak0dXD3MvzHx0eZg/YPLo5kH0c+CUh5jHB5cHAJLCkY0=
+           "], 
+           0.03603340387054356]}, 
          {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
           0.7]}], {
-           DiskBox[{0.414578098794425, 1.6583123951777}, 
-            0.032467879227521645], 
-           InsetBox["BitOr", 
-            Offset[{2, 2}, {0.4470459780219466, 1.6907802744052216}], 
+           DiskBox[{0.3849001794597505, 1.5396007178390019}, 
+            0.03603340387054356], 
+           InsetBox["LogicOr", 
+            Offset[{2, 2}, {0.42093358333029407, 1.5756341217095455}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
-           DiskBox[{1.243734296383275, 2.48746859276655}, 
-            0.032467879227521645], 
-           InsetBox["BitAnd", 
-            Offset[{2, 2}, {1.2762021756107966, 2.5199364719940713}], 
+           DiskBox[{1.539600717839002, 2.309401076758503}, 
+            0.03603340387054356], 
+           InsetBox["LogicAnd", 
+            Offset[{2, 2}, {1.5756341217095458, 2.3454344806290464}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
-           DiskBox[{0.414578098794425, 0.82915619758885}, 
-            0.032467879227521645], 
-           InsetBox["BitXor", 
-            Offset[{2, 2}, {0.4470459780219466, 0.8616240768163717}], 
+           DiskBox[{0.3849001794597505, 0.7698003589195008}, 
+            0.03603340387054356], 
+           InsetBox["LogicXor", 
+            Offset[{2, 2}, {0.42093358333029407, 0.8058337627900444}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
-           DiskBox[{1.243734296383275, 1.6583123951777}, 
-            0.032467879227521645], 
+           DiskBox[{1.1547005383792515, 1.5396007178390019}, 
+            0.03603340387054356], 
            InsetBox["s1", 
-            Offset[{2, 2}, {1.2762021756107966, 1.6907802744052216}], 
+            Offset[{2, 2}, {1.1907339422497951, 1.5756341217095455}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
-           DiskBox[{2.0728904939721247, 1.6583123951777}, 
-            0.032467879227521645], 
-           InsetBox["BitOr", 
-            Offset[{2, 2}, {2.105358373199646, 1.6907802744052216}], 
+           DiskBox[{2.6943012562182536, 1.5396007178390019}, 
+            0.03603340387054356], 
+           InsetBox["LogicOr", 
+            Offset[{2, 2}, {2.730334660088797, 1.5756341217095455}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
-           DiskBox[{1.243734296383275, 0.82915619758885}, 
-            0.032467879227521645], 
+           DiskBox[{1.9245008972987525, 0.7698003589195008}, 
+            0.03603340387054356], 
+           InsetBox["LogicOr", 
+            Offset[{2, 2}, {1.9605343011692962, 0.8058337627900444}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{3.4641016151377544, 0.7698003589195008}, 
+            0.03603340387054356], 
+           InsetBox["LogicAnd", 
+            Offset[{2, 2}, {3.500135019008298, 0.8058337627900444}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{1.539600717839002, 0.}, 0.03603340387054356], 
            InsetBox["i3", 
-            Offset[{2, 2}, {1.2762021756107966, 0.8616240768163717}], 
+            Offset[{2, 2}, {1.5756341217095458, 0.03603340387054356}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
-           DiskBox[{2.0728904939721247, 0.82915619758885}, 
-            0.032467879227521645], 
+           DiskBox[{2.309401076758503, 0.}, 0.03603340387054356], 
            InsetBox["s2", 
-            Offset[{2, 2}, {2.105358373199646, 0.8616240768163717}], 
+            Offset[{2, 2}, {2.3454344806290464, 0.03603340387054356}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
-           DiskBox[{2.9020466915609746, 0.82915619758885}, 
-            0.032467879227521645], 
-           InsetBox["BitAnd", 
-            Offset[{2, 2}, {2.934514570788496, 0.8616240768163717}], 
-            ImageScaled[{0, 0}],
-            BaseStyle->"Graphics"]}, {
-           DiskBox[{2.48746859276655, 0.}, 0.032467879227521645], 
+           DiskBox[{3.079201435678004, 0.}, 0.03603340387054356], 
            InsetBox["i4", 
-            Offset[{2, 2}, {2.5199364719940713, 0.032467879227521645}], 
+            Offset[{2, 2}, {3.1152348395485476, 0.03603340387054356}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
-           DiskBox[{3.3166247903554, 0.}, 0.032467879227521645], 
+           DiskBox[{3.849001794597505, 0.}, 0.03603340387054356], 
            InsetBox["s2", 
-            Offset[{2, 2}, {3.3490926695829213, 0.032467879227521645}], 
+            Offset[{2, 2}, {3.8850351984680485, 0.03603340387054356}], 
             ImageScaled[{0, 0}],
-            BaseStyle->"Graphics"]}, {DiskBox[{0., 0.}, 0.032467879227521645],
-            InsetBox["s1", 
-            Offset[{2, 2}, {0.032467879227521645, 0.032467879227521645}], 
+            BaseStyle->"Graphics"]}, {DiskBox[{0., 0.}, 0.03603340387054356], 
+           InsetBox["s1", 
+            Offset[{2, 2}, {0.03603340387054356, 0.03603340387054356}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
-           DiskBox[{0.82915619758885, 0.}, 0.032467879227521645], 
+           DiskBox[{0.769800358919501, 0.}, 0.03603340387054356], 
            InsetBox["s2", 
-            Offset[{2, 2}, {0.8616240768163717, 0.032467879227521645}], 
+            Offset[{2, 2}, {0.8058337627900446, 0.03603340387054356}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}}}],
        MouseAppearanceTag["NetworkGraphics"]],
@@ -2233,45 +2482,53 @@ Oh/mD5j96PIQmgsuDwAqJp+h
      "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
     
     FormatType->TraditionalForm,
-    FrameTicks->None], ",", 
+    FrameTicks->None,
+    ImageSize->{338., Automatic}], ",", 
    RowBox[{"{", 
     RowBox[{
      RowBox[{"1", "\[Rule]", 
-      RowBox[{"Func", "[", "BitOr", "]"}]}], ",", 
+      RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
      RowBox[{"2", "\[Rule]", 
-      RowBox[{"Func", "[", "BitAnd", "]"}]}], ",", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
      RowBox[{"3", "\[Rule]", 
       RowBox[{"Term", "[", "s1", "]"}]}], ",", 
      RowBox[{"4", "\[Rule]", 
-      RowBox[{"Func", "[", "BitOr", "]"}]}], ",", 
+      RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
      RowBox[{"5", "\[Rule]", 
-      RowBox[{"Term", "[", "i3", "]"}]}], ",", 
+      RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
      RowBox[{"6", "\[Rule]", 
-      RowBox[{"Term", "[", "s2", "]"}]}], ",", 
+      RowBox[{"Term", "[", "i3", "]"}]}], ",", 
      RowBox[{"7", "\[Rule]", 
-      RowBox[{"Func", "[", "BitAnd", "]"}]}], ",", 
-     RowBox[{"8", "\[Rule]", 
-      RowBox[{"Term", "[", "i4", "]"}]}], ",", 
-     RowBox[{"9", "\[Rule]", 
       RowBox[{"Term", "[", "s2", "]"}]}], ",", 
+     RowBox[{"8", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+     RowBox[{"9", "\[Rule]", 
+      RowBox[{"Term", "[", "i4", "]"}]}], ",", 
      RowBox[{"10", "\[Rule]", 
-      RowBox[{"Func", "[", "BitXor", "]"}]}], ",", 
+      RowBox[{"Term", "[", "s2", "]"}]}], ",", 
      RowBox[{"11", "\[Rule]", 
-      RowBox[{"Term", "[", "s1", "]"}]}], ",", 
+      RowBox[{"Func", "[", "LogicXor", "]"}]}], ",", 
      RowBox[{"12", "\[Rule]", 
+      RowBox[{"Term", "[", "s1", "]"}]}], ",", 
+     RowBox[{"13", "\[Rule]", 
       RowBox[{"Term", "[", "s2", "]"}]}]}], "}"}]}], "}"}]], "Output",
- CellChangeTimes->{3.7898339057961597`*^9},
- CellLabel->"Out[67]=",ExpressionUUID->"1f1835b2-c7d6-42bb-8860-62c8d97b1071"]
+ CellChangeTimes->{3.7898339057961597`*^9, 3.7898441456092987`*^9, 
+  3.789844386078784*^9, 3.789844610815926*^9, 3.789844690234367*^9, 
+  3.789860325578141*^9},
+ CellLabel->"Out[16]=",ExpressionUUID->"7d5b9aee-616f-4b5f-a54d-5e3bfce484d7"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Subtree", "[", 
-  RowBox[{"g1", ",", "4", ",", "l1"}], "]"}]], "Input",
- CellChangeTimes->{{3.789833565790704*^9, 3.789833585654983*^9}, 
-   3.789833699480789*^9, {3.7898339149379587`*^9, 3.789833923031033*^9}},
- CellLabel->"In[68]:=",ExpressionUUID->"7fd2b7f4-be72-4439-b42b-9d9bbcaaeb11"],
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"sg1", ",", "sl1"}], "}"}], " ", "=", " ", 
+  RowBox[{"Subtree", "[", 
+   RowBox[{"g1", ",", "l1", ",", "13"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.789849504309081*^9, 3.7898495235891123`*^9}, {
+  3.789849566360572*^9, 3.7898495664286423`*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"903acc1c-f480-4527-ab25-befcf40d4b40"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -2279,12 +2536,13 @@ Cell[BoxData[
    GraphicsBox[
     NamespaceBox["NetworkGraphics",
      DynamicModuleBox[{Typeset`graph = HoldComplete[
-       Graph[{4, 5, 8, 6, 7, 9, 
-        10}, {{{1, 2}, {1, 3}, {2, 4}, {2, 5}, {3, 6}, {3, 7}}, Null}, {
+       Graph[{13, 14, 17, 15, 16, 18, 
+        19}, {{{1, 2}, {1, 3}, {2, 4}, {2, 5}, {3, 6}, {3, 7}}, Null}, {
         VertexLabels -> {
-          6 -> $CellContext`i1, 5 -> BitAnd, 8 -> BitAnd, 
-           7 -> $CellContext`s2, 10 -> $CellContext`s2, 4 -> BitOr, 
-           9 -> $CellContext`i2}}]]}, 
+          18 -> $CellContext`i2, 14 -> $CellContext`LogicAnd, 
+           17 -> $CellContext`LogicAnd, 16 -> $CellContext`s2, 
+           13 -> $CellContext`LogicOr, 15 -> $CellContext`i1, 
+           19 -> $CellContext`s2}}]]}, 
       TagBox[GraphicsGroupBox[{
          {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[Medium], 
           ArrowBox[{{{1.2247448713915892`, 1.6329931618554523`}, {
@@ -2300,19 +2558,19 @@ Cell[BoxData[
           0.7]}], {
            DiskBox[{1.2247448713915892, 1.6329931618554523}, 
             0.02615707791054188], 
-           InsetBox["BitOr", 
+           InsetBox["LogicOr", 
             Offset[{2, 2}, {1.250901949302131, 1.659150239765994}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
            DiskBox[{0.4082482904638631, 0.8164965809277261}, 
             0.02615707791054188], 
-           InsetBox["BitAnd", 
+           InsetBox["LogicAnd", 
             Offset[{2, 2}, {0.43440536837440497, 0.842653658838268}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
            DiskBox[{2.041241452319315, 0.8164965809277261}, 
             0.02615707791054188], 
-           InsetBox["BitAnd", 
+           InsetBox["LogicAnd", 
             Offset[{2, 2}, {2.067398530229857, 0.842653658838268}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {DiskBox[{0., 0.}, 0.02615707791054188], 
@@ -2344,32 +2602,38 @@ Cell[BoxData[
     FrameTicks->None], ",", 
    RowBox[{"{", 
     RowBox[{
-     RowBox[{"4", "\[Rule]", 
-      RowBox[{"Func", "[", "BitOr", "]"}]}], ",", 
-     RowBox[{"5", "\[Rule]", 
-      RowBox[{"Func", "[", "BitAnd", "]"}]}], ",", 
-     RowBox[{"6", "\[Rule]", 
+     RowBox[{"13", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
+     RowBox[{"14", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+     RowBox[{"15", "\[Rule]", 
       RowBox[{"Term", "[", "i1", "]"}]}], ",", 
-     RowBox[{"7", "\[Rule]", 
+     RowBox[{"16", "\[Rule]", 
       RowBox[{"Term", "[", "s2", "]"}]}], ",", 
-     RowBox[{"8", "\[Rule]", 
-      RowBox[{"Func", "[", "BitAnd", "]"}]}], ",", 
-     RowBox[{"9", "\[Rule]", 
+     RowBox[{"17", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+     RowBox[{"18", "\[Rule]", 
       RowBox[{"Term", "[", "i2", "]"}]}], ",", 
-     RowBox[{"10", "\[Rule]", 
+     RowBox[{"19", "\[Rule]", 
       RowBox[{"Term", "[", "s2", "]"}]}]}], "}"}]}], "}"}]], "Output",
- CellChangeTimes->{{3.789833578132567*^9, 3.7898335863615303`*^9}, 
-   3.78983369974642*^9, 3.7898339236543303`*^9},
- CellLabel->"Out[68]=",ExpressionUUID->"4a380875-8893-46c6-a867-194169cab3a5"]
+ CellChangeTimes->{3.78984952423307*^9, 3.789849566835986*^9, 
+  3.7898603293160458`*^9},
+ CellLabel->"Out[17]=",ExpressionUUID->"bfb599ea-6b43-4696-a3cd-ca5b54158ba8"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Subtree", "[", 
-  RowBox[{"g2", ",", "7", ",", "l2"}], "]"}]], "Input",
- CellChangeTimes->{{3.789833964173519*^9, 3.7898339665226*^9}},
- CellLabel->"In[72]:=",ExpressionUUID->"bfd997a7-084c-446f-8275-38a56927a52a"],
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"sg2", ",", "sl2"}], "}"}], " ", "=", " ", 
+  RowBox[{"Subtree", "[", 
+   RowBox[{"g2", ",", "l2", ",", "5"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.789833964173519*^9, 3.7898339665226*^9}, {
+  3.789844191725219*^9, 3.7898441963633413`*^9}, {3.789844731234435*^9, 
+  3.789844736640873*^9}, {3.789847005462521*^9, 3.789847006617487*^9}, {
+  3.789847492001062*^9, 3.789847494005638*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"bfd997a7-084c-446f-8275-38a56927a52a"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -2377,9 +2641,10 @@ Cell[BoxData[
    GraphicsBox[
     NamespaceBox["NetworkGraphics",
      DynamicModuleBox[{Typeset`graph = HoldComplete[
-       Graph[{7, 8, 9}, {{{1, 2}, {1, 3}}, Null}, {
+       Graph[{5, 6, 7}, {{{1, 2}, {1, 3}}, Null}, {
         VertexLabels -> {
-          8 -> $CellContext`i4, 7 -> BitAnd, 9 -> $CellContext`s2}}]]}, 
+          6 -> $CellContext`i3, 5 -> $CellContext`LogicOr, 
+           7 -> $CellContext`s2}}]]}, 
       TagBox[GraphicsGroupBox[{
          {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[Medium], 
           ArrowBox[{{{0.4472135954999579, 0.8944271909999159}, {0., 0.}}, {{
@@ -2389,11 +2654,11 @@ Cell[BoxData[
           0.7]}], {
            DiskBox[{0.4472135954999579, 0.8944271909999159}, 
             0.011386058141428929], 
-           InsetBox["BitAnd", 
+           InsetBox["LogicOr", 
             Offset[{2, 2}, {0.4585996536413869, 0.9058132491413448}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {DiskBox[{0., 0.}, 0.011386058141428929],
-            InsetBox["i4", 
+            InsetBox["i3", 
             Offset[{2, 2}, {0.011386058141428929, 0.011386058141428929}], 
             ImageScaled[{0, 0}],
             BaseStyle->"Graphics"]}, {
@@ -2411,22 +2676,772 @@ Cell[BoxData[
     FrameTicks->None], ",", 
    RowBox[{"{", 
     RowBox[{
+     RowBox[{"5", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
+     RowBox[{"6", "\[Rule]", 
+      RowBox[{"Term", "[", "i3", "]"}]}], ",", 
      RowBox[{"7", "\[Rule]", 
-      RowBox[{"Func", "[", "BitAnd", "]"}]}], ",", 
-     RowBox[{"8", "\[Rule]", 
-      RowBox[{"Term", "[", "i4", "]"}]}], ",", 
-     RowBox[{"9", "\[Rule]", 
       RowBox[{"Term", "[", "s2", "]"}]}]}], "}"}]}], "}"}]], "Output",
- CellChangeTimes->{3.7898339669078207`*^9},
- CellLabel->"Out[72]=",ExpressionUUID->"f971a9f8-f990-4537-ba86-3e386a741a83"]
+ CellChangeTimes->{
+  3.7898339669078207`*^9, 3.789844148455677*^9, 3.7898441965933723`*^9, {
+   3.789844720066481*^9, 3.789844736860375*^9}, 3.789847007122096*^9, 
+   3.7898474943641863`*^9, 3.789860331114505*^9},
+ CellLabel->"Out[18]=",ExpressionUUID->"d080a1ce-f3ec-44c2-b55e-3635641ffb64"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"dst", ",", "dl"}], "}"}], " ", "=", " ", 
+  RowBox[{"DeleteSubtree", "[", 
+   RowBox[{"g2", ",", "l2", ",", "5"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.789848809276923*^9, 3.789848809412558*^9}, {
+  3.789860346161981*^9, 3.789860347829995*^9}},
+ CellLabel->"In[20]:=",ExpressionUUID->"46f5de92-03ee-4795-b283-ecbb7a8c1411"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{
+        1, 2, 11, 3, 4, Empty, 8, 9, 10, 12, 13}, {{{1, 2}, {1, 3}, {2, 4}, {
+         2, 5}, {5, 6}, {5, 7}, {7, 8}, {7, 9}, {3, 10}, {3, 11}}, Null}, {
+        GraphLayout -> {"Dimension" -> 2}, 
+         VertexLabels -> {
+          3 -> $CellContext`s1, 11 -> $CellContext`LogicXor, 
+           8 -> $CellContext`LogicAnd, 10 -> $CellContext`s2, 
+           9 -> $CellContext`i4, 4 -> $CellContext`LogicOr, 
+           12 -> $CellContext`s1, 13 -> $CellContext`s2, 
+           2 -> $CellContext`LogicAnd, 1 -> $CellContext`LogicOr}}]]}, 
+      TagBox[GraphicsGroupBox[{
+         {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[Medium], 
+          ArrowBox[CompressedData["
+1:eJxTTMoPSmVmYGDgAmImKD74IYm/t+u2/SEw/dt+oknX6ZfLv0BpFgd0eVT+
+awz1MD4u8yqvzdWcYcbogMs8BjSALn8QTR12837D1aPLw9yB6n4EH6YeZj66
+/MpJZbnWkhxweQC2fZP2
+           "], 0.030327808797422043`]}, 
+         {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
+          0.7]}], {
+           DiskBox[{0.4303314829119352, 1.721325931647741}, 
+            0.030327808797422043], 
+           InsetBox["LogicOr", 
+            Offset[{2, 2}, {0.4606592917093572, 1.751653740445163}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{1.2909944487358056, 2.581988897471611}, 
+            0.030327808797422043], 
+           InsetBox["LogicAnd", 
+            Offset[{2, 2}, {1.3213222575332277, 2.6123167062690333}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{0.4303314829119352, 0.8606629658238705}, 
+            0.030327808797422043], 
+           InsetBox["LogicXor", 
+            Offset[{2, 2}, {0.4606592917093572, 0.8909907746212925}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{1.2909944487358056, 1.721325931647741}, 
+            0.030327808797422043], 
+           InsetBox["s1", 
+            Offset[{2, 2}, {1.3213222575332277, 1.751653740445163}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{2.151657414559676, 1.721325931647741}, 
+            0.030327808797422043], 
+           InsetBox["LogicOr", 
+            Offset[{2, 2}, {2.181985223357098, 1.751653740445163}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, 
+          DiskBox[{1.7213259316477407, 0.8606629658238705}, 
+           0.030327808797422043], {
+           DiskBox[{2.581988897471611, 0.8606629658238705}, 
+            0.030327808797422043], 
+           InsetBox["LogicAnd", 
+            Offset[{2, 2}, {2.6123167062690333, 0.8909907746212925}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{2.151657414559676, 0.}, 0.030327808797422043], 
+           InsetBox["i4", 
+            Offset[{2, 2}, {2.181985223357098, 0.030327808797422043}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{3.0123203803835463, 0.}, 0.030327808797422043], 
+           InsetBox["s2", 
+            Offset[{2, 2}, {3.0426481891809685, 0.030327808797422043}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {DiskBox[{0., 0.}, 0.030327808797422043],
+            InsetBox["s1", 
+            Offset[{2, 2}, {0.030327808797422043, 0.030327808797422043}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{0.8606629658238704, 0.}, 0.030327808797422043], 
+           InsetBox["s2", 
+            Offset[{2, 2}, {0.8909907746212924, 0.030327808797422043}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"1", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
+     RowBox[{"2", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+     RowBox[{"3", "\[Rule]", 
+      RowBox[{"Term", "[", "s1", "]"}]}], ",", 
+     RowBox[{"4", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
+     RowBox[{"8", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+     RowBox[{"9", "\[Rule]", 
+      RowBox[{"Term", "[", "i4", "]"}]}], ",", 
+     RowBox[{"10", "\[Rule]", 
+      RowBox[{"Term", "[", "s2", "]"}]}], ",", 
+     RowBox[{"11", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicXor", "]"}]}], ",", 
+     RowBox[{"12", "\[Rule]", 
+      RowBox[{"Term", "[", "s1", "]"}]}], ",", 
+     RowBox[{"13", "\[Rule]", 
+      RowBox[{"Term", "[", "s2", "]"}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.789848809987823*^9, {3.789860333378333*^9, 3.789860348261281*^9}},
+ CellLabel->"Out[20]=",ExpressionUUID->"15cd82f8-d2fa-4c7a-bd40-2341edc2c4c3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"InsertSubtree", "[", 
+  RowBox[{"dst", ",", "dl", ",", "sg1", ",", "sl1", ",", "13"}], 
+  "]"}]], "Input",
+ CellLabel->"In[23]:=",ExpressionUUID->"efad0e07-6066-4406-b25d-2e0441fdc050"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 11, 3, 4, 5, 8, 9, 10, 12, 13, 6, 7, 14, 15, 16, 
+        17}, {{{1, 2}, {1, 3}, {2, 4}, {2, 5}, {5, 6}, {5, 7}, {7, 8}, {7, 
+         9}, {3, 10}, {3, 11}, {6, 12}, {6, 13}, {12, 14}, {12, 15}, {13, 
+         16}, {13, 17}}, Null}, {
+        VertexLabels -> {
+          6 -> $CellContext`LogicAnd, 3 -> $CellContext`s1, 
+           11 -> $CellContext`LogicXor, 5 -> $CellContext`LogicOr, 
+           8 -> $CellContext`LogicAnd, 7 -> $CellContext`LogicAnd, 
+           14 -> $CellContext`i1, 10 -> $CellContext`s2, 9 -> $CellContext`i4,
+            4 -> $CellContext`LogicOr, 17 -> $CellContext`s2, 
+           16 -> $CellContext`i2, 12 -> $CellContext`s1, 
+           13 -> $CellContext`s2, 2 -> $CellContext`LogicAnd, 
+           15 -> $CellContext`s2, 1 -> $CellContext`LogicOr}}]]}, 
+      TagBox[GraphicsGroupBox[{
+         {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[Medium], 
+          ArrowBox[CompressedData["
+1:eJxTTMoPSmVmYGAQAGImKO48pNm3h+W6/fPA+Vm9zowOzNMvvpgf+tseIs7u
+gC4P40Po7/bo6iHqPuI0b1McTzhHKYcDLvMYoKADzH9ujy7fCRWHyaObh2ru
+dwz52uxK5+Zl/HB5dPUwGmY+dnl2B5g8unk6xls2vj7Kg1MeYp6gA6r/0O37
+CA8HdHmI+X/Q5BHusehK+aOiwuKAS/7Wr3fyIU854fIARPbYgg==
+           "], 
+           0.03898737650457308]}, 
+         {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
+          0.7]}], {
+           DiskBox[{0.35966409571759833, 2.15798457430559}, 
+            0.03898737650457308], 
+           InsetBox["LogicOr", 
+            Offset[{2, 2}, {0.3986514722221714, 2.196971950810163}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{1.7084044546585921, 2.8773127657407866}, 
+            0.03898737650457308], 
+           InsetBox["LogicAnd", 
+            Offset[{2, 2}, {1.7473918311631653, 2.9163001422453596}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{0.35966409571759833, 1.4386563828703933}, 
+            0.03898737650457308], 
+           InsetBox["LogicXor", 
+            Offset[{2, 2}, {0.3986514722221714, 1.4776437593749665}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{1.078992287152795, 2.15798457430559}, 
+            0.03898737650457308], 
+           InsetBox["s1", 
+            Offset[{2, 2}, {1.1179796636573682, 2.196971950810163}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{3.057144813599586, 2.15798457430559}, 
+            0.03898737650457308], 
+           InsetBox["LogicOr", 
+            Offset[{2, 2}, {3.096132190104159, 2.196971950810163}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{2.15798457430559, 1.4386563828703933}, 
+            0.03898737650457308], 
+           InsetBox["LogicOr", 
+            Offset[{2, 2}, {2.196971950810163, 1.4776437593749665}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{3.956305052893582, 1.4386563828703933}, 
+            0.03898737650457308], 
+           InsetBox["LogicAnd", 
+            Offset[{2, 2}, {3.995292429398155, 1.4776437593749665}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{3.5966409571759836, 0.7193281914351966}, 
+            0.03898737650457308], 
+           InsetBox["i4", 
+            Offset[{2, 2}, {3.6356283336805566, 0.7583155679397696}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{4.31596914861118, 0.7193281914351966}, 
+            0.03898737650457308], 
+           InsetBox["s2", 
+            Offset[{2, 2}, {4.354956525115753, 0.7583155679397696}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{0., 0.7193281914351966}, 0.03898737650457308], 
+           InsetBox["s1", 
+            Offset[{2, 2}, {0.03898737650457308, 0.7583155679397696}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{0.7193281914351967, 0.7193281914351966}, 
+            0.03898737650457308], 
+           InsetBox["s2", 
+            Offset[{2, 2}, {0.7583155679397697, 0.7583155679397696}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{1.4386563828703933, 0.7193281914351966}, 
+            0.03898737650457308], 
+           InsetBox["LogicAnd", 
+            Offset[{2, 2}, {1.4776437593749665, 0.7583155679397696}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{2.8773127657407866, 0.7193281914351966}, 
+            0.03898737650457308], 
+           InsetBox["LogicAnd", 
+            Offset[{2, 2}, {2.9163001422453596, 0.7583155679397696}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{1.078992287152795, 0.}, 0.03898737650457308], 
+           InsetBox["i1", 
+            Offset[{2, 2}, {1.1179796636573682, 0.03898737650457308}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{1.7983204785879918, 0.}, 0.03898737650457308], 
+           InsetBox["s2", 
+            Offset[{2, 2}, {1.837307855092565, 0.03898737650457308}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{2.5176486700231884, 0.}, 0.03898737650457308], 
+           InsetBox["i2", 
+            Offset[{2, 2}, {2.5566360465277613, 0.03898737650457308}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{3.236976861458385, 0.}, 0.03898737650457308], 
+           InsetBox["s2", 
+            Offset[{2, 2}, {3.275964237962958, 0.03898737650457308}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None,
+    ImageSize->{468., Automatic}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"1", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
+     RowBox[{"2", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+     RowBox[{"3", "\[Rule]", 
+      RowBox[{"Term", "[", "s1", "]"}]}], ",", 
+     RowBox[{"4", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
+     RowBox[{"5", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
+     RowBox[{"6", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+     RowBox[{"7", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+     RowBox[{"8", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+     RowBox[{"9", "\[Rule]", 
+      RowBox[{"Term", "[", "i4", "]"}]}], ",", 
+     RowBox[{"10", "\[Rule]", 
+      RowBox[{"Term", "[", "s2", "]"}]}], ",", 
+     RowBox[{"11", "\[Rule]", 
+      RowBox[{"Func", "[", "LogicXor", "]"}]}], ",", 
+     RowBox[{"12", "\[Rule]", 
+      RowBox[{"Term", "[", "s1", "]"}]}], ",", 
+     RowBox[{"13", "\[Rule]", 
+      RowBox[{"Term", "[", "s2", "]"}]}], ",", 
+     RowBox[{"14", "\[Rule]", 
+      RowBox[{"Term", "[", "i1", "]"}]}], ",", 
+     RowBox[{"15", "\[Rule]", 
+      RowBox[{"Term", "[", "s2", "]"}]}], ",", 
+     RowBox[{"16", "\[Rule]", 
+      RowBox[{"Term", "[", "i2", "]"}]}], ",", 
+     RowBox[{"17", "\[Rule]", 
+      RowBox[{"Term", "[", "s2", "]"}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.789860399447975*^9},
+ CellLabel->"Out[23]=",ExpressionUUID->"6fd65a18-b4c3-4b41-9185-46241b7d9c15"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Apply", "[", 
+  RowBox[{"GraphToFunction", ",", 
+   RowBox[{"InsertSubtree", "[", 
+    RowBox[{"dst", ",", "dl", ",", "sg1", ",", "sl1", ",", "13"}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7898603582082987`*^9, 3.789860376429076*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"8b268683-eb53-429b-a1fa-4082fb7e3f3e"],
+
+Cell[BoxData[
+ RowBox[{"LogicOr", "[", 
+  RowBox[{
+   RowBox[{"LogicAnd", "[", 
+    RowBox[{"s1", ",", 
+     RowBox[{"LogicOr", "[", 
+      RowBox[{
+       RowBox[{"LogicOr", "[", 
+        RowBox[{
+         RowBox[{"LogicAnd", "[", 
+          RowBox[{"i1", ",", "s2"}], "]"}], ",", 
+         RowBox[{"LogicAnd", "[", 
+          RowBox[{"i2", ",", "s2"}], "]"}]}], "]"}], ",", 
+       RowBox[{"LogicAnd", "[", 
+        RowBox[{"i4", ",", "s2"}], "]"}]}], "]"}]}], "]"}], ",", 
+   RowBox[{"LogicXor", "[", 
+    RowBox[{"s1", ",", "s2"}], "]"}]}], "]"}]], "Output",
+ CellChangeTimes->{
+  3.789851432217463*^9, {3.789860350706922*^9, 3.789860376708866*^9}},
+ CellLabel->"Out[22]=",ExpressionUUID->"625f294c-48bb-4ce0-90a9-0c0084110e2f"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Crossover", "Section",
+ CellChangeTimes->{{3.789860466571557*^9, 
+  3.78986046774722*^9}},ExpressionUUID->"bce05cfd-da83-48c2-a2d2-\
+b35f17f0ea7a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Crossover", "[", 
+    RowBox[{"graph1_", ",", "labels1_", ",", "graph2_", ",", "labels2_"}], 
+    "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "vertex1", ",", "vertex2", ",", "cropped1", ",", "cropped2", ",", 
+       "sub1", ",", "sub2", ",", "child1", ",", "child2"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"vertex1", " ", "=", " ", 
+       RowBox[{"RandomChoice", "[", 
+        RowBox[{"VertexList", "[", "graph1", "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"vertex2", " ", "=", " ", 
+       RowBox[{"RandomChoice", "[", 
+        RowBox[{"VertexList", "[", "graph2", "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"cropped1", " ", "=", " ", 
+       RowBox[{"DeleteSubtree", "[", 
+        RowBox[{"graph1", ",", "labels1", ",", "vertex1"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"cropped2", " ", "=", " ", 
+       RowBox[{"DeleteSubtree", "[", 
+        RowBox[{"graph2", ",", "labels2", ",", "vertex2"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"sub1", " ", "=", " ", 
+       RowBox[{"Subtree", "[", 
+        RowBox[{"graph1", ",", "labels1", ",", "vertex1"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"sub2", " ", "=", " ", 
+       RowBox[{"Subtree", "[", 
+        RowBox[{"graph2", ",", "labels2", ",", "vertex2"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"child1", " ", "=", " ", 
+       RowBox[{"InsertSubtree", "[", 
+        RowBox[{
+         RowBox[{"First", "[", "cropped1", "]"}], ",", 
+         RowBox[{"Last", "[", "cropped1", "]"}], ",", 
+         RowBox[{"First", "[", "sub2", "]"}], ",", 
+         RowBox[{"Last", "[", "sub2", "]"}], ",", "vertex2"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"child2", " ", "=", " ", 
+       RowBox[{"InsertSubtree", "[", 
+        RowBox[{
+         RowBox[{"First", "[", "cropped2", "]"}], ",", 
+         RowBox[{"Last", "[", "cropped2", "]"}], ",", 
+         RowBox[{"First", "[", "sub1", "]"}], ",", 
+         RowBox[{"Last", "[", "sub1", "]"}], ",", "vertex1"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"child1", ",", "child2"}], "}"}]}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.789860717166556*^9, 3.789860738962035*^9}, {
+  3.7898621224821157`*^9, 3.789862250940057*^9}},
+ CellLabel->"In[95]:=",ExpressionUUID->"95cb1e40-edf0-4952-9f74-675e1b822e4b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Crossover", "[", 
+  RowBox[{"g1", ",", "l1", ",", "g2", ",", "l2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.789862255567018*^9, 3.7898622673319817`*^9}},
+ CellLabel->
+  "In[100]:=",ExpressionUUID->"beb1cf85-03f4-43da-9cae-d4f204b97609"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     GraphicsBox[
+      NamespaceBox["NetworkGraphics",
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+         Graph[{1, 2, 11, 3, 4, 5, 8, 6, 7, 9, 10, 12, 13, 14, 17, 15, 16, 18,
+           19}, {{{1, 2}, {1, 3}, {2, 4}, {2, 5}, {5, 6}, {5, 7}, {6, 8}, {6, 
+           9}, {7, 10}, {7, 11}, {3, 12}, {3, 13}, {13, 14}, {13, 15}, {14, 
+           16}, {14, 17}, {15, 18}, {15, 19}}, Null}, {
+          VertexLabels -> {
+            6 -> $CellContext`i3, 18 -> $CellContext`i2, 3 -> $CellContext`s1,
+              11 -> $CellContext`LogicAnd, 5 -> $CellContext`LogicAnd, 
+             8 -> $CellContext`LogicAnd, 7 -> $CellContext`s2, 
+             14 -> $CellContext`LogicAnd, 10 -> $CellContext`s2, 
+             9 -> $CellContext`i4, 4 -> $CellContext`LogicOr, 
+             17 -> $CellContext`LogicAnd, 16 -> $CellContext`s1, 
+             12 -> $CellContext`s1, 13 -> $CellContext`LogicOr, 
+             2 -> $CellContext`LogicAnd, 15 -> $CellContext`i1, 
+             1 -> $CellContext`LogicOr, 19 -> $CellContext`s2}}]]}, 
+        TagBox[GraphicsGroupBox[{
+           {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[Medium], 
+            ArrowBox[CompressedData["
+1:eJxTTMoPSmVmYGAQAmImKD5+YgbP0p2MDlu4FdMMF7FD6ef2MHF0+UV+K/fv
+7eJFE0eoh/Cv20Po7/bYzfsIl0c3T0v36aTyaVwOuOR5dph9a7QXgMujm4dq
+/3MM+YVg8/7C5dHVM6ABdHl0ddjN+45THuYPmDy6f1D9/9weXb7p5i+lE8bC
+cHl09bB4gpmPLg8LT5g8unkQ9wnilLd7FWP5eq0IXB4A7xnepw==
+             "], 
+             0.044010774750169956`]}, 
+           {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
+            0.7]}], {
+             DiskBox[{2.215646837627989, 2.9541957835039856}, 
+              0.044010774750169956], 
+             InsetBox["LogicOr", 
+              Offset[{2, 2}, {2.259657612378159, 2.9982065582541555}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{0.7385489458759964, 2.215646837627989}, 
+              0.044010774750169956], 
+             InsetBox["LogicAnd", 
+              Offset[{2, 2}, {0.7825597206261663, 2.259657612378159}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{3.6927447293799824, 2.215646837627989}, 
+              0.044010774750169956], 
+             InsetBox["LogicAnd", 
+              Offset[{2, 2}, {3.7367555041301523, 2.259657612378159}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{0.3692744729379982, 1.4770978917519928}, 
+              0.044010774750169956], 
+             InsetBox["s1", 
+              Offset[{2, 2}, {0.41328524768816816, 1.5211086665021627}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{1.1078234188139946, 1.4770978917519928}, 
+              0.044010774750169956], 
+             InsetBox["LogicOr", 
+              Offset[{2, 2}, {1.1518341935641645, 1.5211086665021627}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{0.3692744729379982, 0.7385489458759964}, 
+              0.044010774750169956], 
+             InsetBox["LogicAnd", 
+              Offset[{2, 2}, {0.41328524768816816, 0.7825597206261663}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{1.846372364689991, 0.7385489458759964}, 
+              0.044010774750169956], 
+             InsetBox["LogicAnd", 
+              Offset[{2, 2}, {1.890383139440161, 0.7825597206261663}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{0., 0.}, 0.044010774750169956], 
+             InsetBox["i3", 
+              Offset[{2, 2}, {0.044010774750169956, 0.044010774750169956}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{0.7385489458759964, 0.}, 0.044010774750169956], 
+             InsetBox["s2", 
+              Offset[{2, 2}, {0.7825597206261663, 0.044010774750169956}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{1.4770978917519928, 0.}, 0.044010774750169956], 
+             InsetBox["i4", 
+              Offset[{2, 2}, {1.5211086665021627, 0.044010774750169956}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{2.215646837627989, 0.}, 0.044010774750169956], 
+             InsetBox["s2", 
+              Offset[{2, 2}, {2.259657612378159, 0.044010774750169956}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{3.3234702564419836, 1.4770978917519928}, 
+              0.044010774750169956], 
+             InsetBox["s1", 
+              Offset[{2, 2}, {3.3674810311921535, 1.5211086665021627}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{4.06201920231798, 1.4770978917519928}, 
+              0.044010774750169956], 
+             InsetBox["LogicOr", 
+              Offset[{2, 2}, {4.10602997706815, 1.5211086665021627}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{3.3234702564419836, 0.7385489458759964}, 
+              0.044010774750169956], 
+             InsetBox["LogicAnd", 
+              Offset[{2, 2}, {3.3674810311921535, 0.7825597206261663}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{4.800568148193976, 0.7385489458759964}, 
+              0.044010774750169956], 
+             InsetBox["LogicAnd", 
+              Offset[{2, 2}, {4.844578922944146, 0.7825597206261663}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{2.9541957835039856, 0.}, 0.044010774750169956], 
+             InsetBox["i1", 
+              Offset[{2, 2}, {2.9982065582541555, 0.044010774750169956}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{3.6927447293799824, 0.}, 0.044010774750169956], 
+             InsetBox["s1", 
+              Offset[{2, 2}, {3.7367555041301523, 0.044010774750169956}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{4.431293675255978, 0.}, 0.044010774750169956], 
+             InsetBox["i2", 
+              Offset[{2, 2}, {4.475304450006148, 0.044010774750169956}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{5.169842621131975, 0.}, 0.044010774750169956], 
+             InsetBox["s2", 
+              Offset[{2, 2}, {5.213853395882145, 0.044010774750169956}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}}}],
+         MouseAppearanceTag["NetworkGraphics"]],
+        AllowKernelInitialization->False]],
+      DefaultBaseStyle->{
+       "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+        Hue[0.8, 1., 0.6]},
+      FormatType->TraditionalForm,
+      FrameTicks->None], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "\[Rule]", 
+        RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
+       RowBox[{"2", "\[Rule]", 
+        RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+       RowBox[{"3", "\[Rule]", 
+        RowBox[{"Term", "[", "s1", "]"}]}], ",", 
+       RowBox[{"4", "\[Rule]", 
+        RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
+       RowBox[{"5", "\[Rule]", 
+        RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+       RowBox[{"6", "\[Rule]", 
+        RowBox[{"Term", "[", "i3", "]"}]}], ",", 
+       RowBox[{"7", "\[Rule]", 
+        RowBox[{"Term", "[", "s2", "]"}]}], ",", 
+       RowBox[{"8", "\[Rule]", 
+        RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+       RowBox[{"9", "\[Rule]", 
+        RowBox[{"Term", "[", "i4", "]"}]}], ",", 
+       RowBox[{"10", "\[Rule]", 
+        RowBox[{"Term", "[", "s2", "]"}]}], ",", 
+       RowBox[{"11", "\[Rule]", 
+        RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+       RowBox[{"12", "\[Rule]", 
+        RowBox[{"Term", "[", "s1", "]"}]}], ",", 
+       RowBox[{"13", "\[Rule]", 
+        RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
+       RowBox[{"14", "\[Rule]", 
+        RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+       RowBox[{"15", "\[Rule]", 
+        RowBox[{"Term", "[", "i1", "]"}]}], ",", 
+       RowBox[{"16", "\[Rule]", 
+        RowBox[{"Term", "[", "s1", "]"}]}], ",", 
+       RowBox[{"17", "\[Rule]", 
+        RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+       RowBox[{"18", "\[Rule]", 
+        RowBox[{"Term", "[", "i2", "]"}]}], ",", 
+       RowBox[{"19", "\[Rule]", 
+        RowBox[{"Term", "[", "s2", "]"}]}]}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     GraphicsBox[
+      NamespaceBox["NetworkGraphics",
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+         Graph[{1, 2, 11, 3, 4, 5, 8, 6, 7, 9, 10, 12, 
+          13}, {{{1, 2}, {1, 3}, {2, 4}, {2, 5}, {5, 6}, {5, 7}, {6, 8}, {6, 
+           9}, {7, 10}, {7, 11}, {3, 12}, {3, 13}}, Null}, {
+          VertexLabels -> {
+            6 -> $CellContext`i3, 3 -> $CellContext`s2, 
+             11 -> $CellContext`LogicXor, 5 -> $CellContext`LogicOr, 
+             8 -> $CellContext`LogicAnd, 7 -> $CellContext`s2, 
+             10 -> $CellContext`s2, 9 -> $CellContext`i4, 
+             4 -> $CellContext`LogicOr, 12 -> $CellContext`s1, 
+             13 -> $CellContext`s2, 2 -> $CellContext`LogicAnd, 
+             1 -> $CellContext`LogicOr}}]]}, 
+        TagBox[GraphicsGroupBox[{
+           {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[Medium], 
+            ArrowBox[CompressedData["
+1:eJxTTMoPSmVmYGDgAWImKFZzORBjsuiGvSqY/mGvBqVljCe4Lq9kcsAuf8Ne
+BUy/wFAPoT/hNG+htcbFt72sDrjMY0AD2O1DqEM3Tz/0Q/HBU//g6tHlV/lE
+vKjaxu0Ak0dXD3MvzHx0eZg/YPLo5kH0c+CUh5jHB5cHAJLCkY0=
+             "], 
+             0.03603340387054356]}, 
+           {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
+            0.7]}], {
+             DiskBox[{0.3849001794597505, 1.5396007178390019}, 
+              0.03603340387054356], 
+             InsetBox["LogicOr", 
+              Offset[{2, 2}, {0.42093358333029407, 1.5756341217095455}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{1.539600717839002, 2.309401076758503}, 
+              0.03603340387054356], 
+             InsetBox["LogicAnd", 
+              Offset[{2, 2}, {1.5756341217095458, 2.3454344806290464}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{0.3849001794597505, 0.7698003589195008}, 
+              0.03603340387054356], 
+             InsetBox["LogicXor", 
+              Offset[{2, 2}, {0.42093358333029407, 0.8058337627900444}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{1.1547005383792515, 1.5396007178390019}, 
+              0.03603340387054356], 
+             InsetBox["s2", 
+              Offset[{2, 2}, {1.1907339422497951, 1.5756341217095455}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{2.6943012562182536, 1.5396007178390019}, 
+              0.03603340387054356], 
+             InsetBox["LogicOr", 
+              Offset[{2, 2}, {2.730334660088797, 1.5756341217095455}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{1.9245008972987525, 0.7698003589195008}, 
+              0.03603340387054356], 
+             InsetBox["LogicOr", 
+              Offset[{2, 2}, {1.9605343011692962, 0.8058337627900444}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{3.4641016151377544, 0.7698003589195008}, 
+              0.03603340387054356], 
+             InsetBox["LogicAnd", 
+              Offset[{2, 2}, {3.500135019008298, 0.8058337627900444}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{1.539600717839002, 0.}, 0.03603340387054356], 
+             InsetBox["i3", 
+              Offset[{2, 2}, {1.5756341217095458, 0.03603340387054356}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{2.309401076758503, 0.}, 0.03603340387054356], 
+             InsetBox["s2", 
+              Offset[{2, 2}, {2.3454344806290464, 0.03603340387054356}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{3.079201435678004, 0.}, 0.03603340387054356], 
+             InsetBox["i4", 
+              Offset[{2, 2}, {3.1152348395485476, 0.03603340387054356}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{3.849001794597505, 0.}, 0.03603340387054356], 
+             InsetBox["s2", 
+              Offset[{2, 2}, {3.8850351984680485, 0.03603340387054356}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{0., 0.}, 0.03603340387054356], 
+             InsetBox["s1", 
+              Offset[{2, 2}, {0.03603340387054356, 0.03603340387054356}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}, {
+             DiskBox[{0.769800358919501, 0.}, 0.03603340387054356], 
+             InsetBox["s2", 
+              Offset[{2, 2}, {0.8058337627900446, 0.03603340387054356}], 
+              ImageScaled[{0, 0}],
+              BaseStyle->"Graphics"]}}}],
+         MouseAppearanceTag["NetworkGraphics"]],
+        AllowKernelInitialization->False]],
+      DefaultBaseStyle->{
+       "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> 
+        Hue[0.8, 1., 0.6]},
+      FormatType->TraditionalForm,
+      FrameTicks->None], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "\[Rule]", 
+        RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
+       RowBox[{"2", "\[Rule]", 
+        RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+       RowBox[{"3", "\[Rule]", 
+        RowBox[{"Term", "[", "s2", "]"}]}], ",", 
+       RowBox[{"4", "\[Rule]", 
+        RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
+       RowBox[{"5", "\[Rule]", 
+        RowBox[{"Func", "[", "LogicOr", "]"}]}], ",", 
+       RowBox[{"6", "\[Rule]", 
+        RowBox[{"Term", "[", "i3", "]"}]}], ",", 
+       RowBox[{"7", "\[Rule]", 
+        RowBox[{"Term", "[", "s2", "]"}]}], ",", 
+       RowBox[{"8", "\[Rule]", 
+        RowBox[{"Func", "[", "LogicAnd", "]"}]}], ",", 
+       RowBox[{"9", "\[Rule]", 
+        RowBox[{"Term", "[", "i4", "]"}]}], ",", 
+       RowBox[{"10", "\[Rule]", 
+        RowBox[{"Term", "[", "s2", "]"}]}], ",", 
+       RowBox[{"11", "\[Rule]", 
+        RowBox[{"Func", "[", "LogicXor", "]"}]}], ",", 
+       RowBox[{"12", "\[Rule]", 
+        RowBox[{"Term", "[", "s1", "]"}]}], ",", 
+       RowBox[{"13", "\[Rule]", 
+        RowBox[{"Term", "[", "s2", "]"}]}]}], "}"}]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.7898622677124767`*^9, 3.789862282048794*^9}},
+ CellLabel->
+  "Out[100]=",ExpressionUUID->"8dae046c-d2eb-4da2-99f5-952348d56a56"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1863, 1013},
-WindowMargins->{{0, Automatic}, {0, Automatic}},
-FrontEndVersion->"12.0 para Linux x86 (64-bit) (April 8, 2019)",
-StyleDefinitions->"Default.nb"
+WindowSize->{1862, 1016},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
+FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"ReverseColor Nice.nb"
 ]
 (* End of Notebook Content *)
 
@@ -2443,45 +3458,65 @@ Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 99, "Title",ExpressionUUID->"01897dea-094f-4ee7-acb5-4e296e236012"],
 Cell[CellGroupData[{
 Cell[767, 29, 172, 3, 68, "Section",ExpressionUUID->"74f2f036-b23f-457e-bbae-a597043d4d17"],
-Cell[942, 34, 6029, 152, 417, "Input",ExpressionUUID->"963ff5fe-91eb-400b-a087-185eb109cb50",
+Cell[942, 34, 6100, 152, 417, "Input",ExpressionUUID->"963ff5fe-91eb-400b-a087-185eb109cb50",
  InitializationCell->True],
 Cell[CellGroupData[{
-Cell[6996, 190, 734, 21, 31, "Input",ExpressionUUID->"d50314e0-a9b9-4f15-a9da-7c9937fe1fc4"],
-Cell[7733, 213, 16489, 453, 250, "Output",ExpressionUUID->"6c6cb9a0-eeee-4bfd-a15d-3b6a47591854"]
+Cell[7067, 190, 734, 21, 31, "Input",ExpressionUUID->"d50314e0-a9b9-4f15-a9da-7c9937fe1fc4"],
+Cell[7804, 213, 16489, 453, 265, "Output",ExpressionUUID->"6c6cb9a0-eeee-4bfd-a15d-3b6a47591854"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24259, 671, 808, 22, 31, "Input",ExpressionUUID->"8594666d-e484-4916-8263-3738c047fa81"],
-Cell[25070, 695, 8301, 182, 166, "Output",ExpressionUUID->"df658173-058b-40db-9b7a-ce9f0e3e459e"]
+Cell[24330, 671, 808, 22, 31, "Input",ExpressionUUID->"8594666d-e484-4916-8263-3738c047fa81"],
+Cell[25141, 695, 8327, 183, 166, "Output",ExpressionUUID->"bcaa798a-dc74-4693-9078-dcdb4f670f33"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[33408, 882, 8318, 182, 178, "Input",ExpressionUUID->"42f91c52-c780-4947-bf40-33499ee66e42"],
-Cell[41729, 1066, 749, 21, 35, "Output",ExpressionUUID->"d3f8b393-cffc-403a-8a45-24b6226da782"]
+Cell[33505, 883, 8318, 182, 178, "Input",ExpressionUUID->"42f91c52-c780-4947-bf40-33499ee66e42"],
+Cell[41826, 1067, 774, 22, 35, "Output",ExpressionUUID->"1c68e34f-6644-4e91-aae2-a31442d8650c"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[42527, 1093, 166, 3, 68, "Section",ExpressionUUID->"1d9092f1-d526-4e0e-a33d-d85e7e6e6e46"],
-Cell[42696, 1098, 2033, 49, 209, "Input",ExpressionUUID->"737721a0-7bb9-42b3-bac6-bb7a6ee80b5a",
+Cell[42649, 1095, 166, 3, 68, "Section",ExpressionUUID->"1d9092f1-d526-4e0e-a33d-d85e7e6e6e46"],
+Cell[42818, 1100, 9726, 235, 955, "Input",ExpressionUUID->"737721a0-7bb9-42b3-bac6-bb7a6ee80b5a",
  InitializationCell->True],
-Cell[44732, 1149, 1314, 37, 55, "Input",ExpressionUUID->"6e7e57d7-8894-4bf7-8667-13d6be69bf30"],
+Cell[52547, 1337, 1395, 38, 55, "Input",ExpressionUUID->"6e7e57d7-8894-4bf7-8667-13d6be69bf30"],
 Cell[CellGroupData[{
-Cell[46071, 1190, 284, 6, 31, "Input",ExpressionUUID->"34e99a48-709e-43ff-b3a8-e7158b1baf32"],
-Cell[46358, 1198, 28334, 734, 183, "Output",ExpressionUUID->"873b4a2c-ee67-4655-a357-27612e69e8ac"]
+Cell[53967, 1379, 284, 6, 31, "Input",ExpressionUUID->"34e99a48-709e-43ff-b3a8-e7158b1baf32"],
+Cell[54254, 1387, 30194, 781, 162, "Output",ExpressionUUID->"5bbe80a1-7aca-44ba-8fe7-26fb4d263a77"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[74729, 1937, 300, 6, 31, "Input",ExpressionUUID->"8070ee99-b339-4768-ba22-64547d1ea467"],
-Cell[75032, 1945, 8204, 181, 166, "Output",ExpressionUUID->"6fc64725-4da5-4da6-9b89-75c7583a16db"]
+Cell[84485, 2173, 300, 6, 31, "Input",ExpressionUUID->"8070ee99-b339-4768-ba22-64547d1ea467"],
+Cell[84788, 2181, 8531, 186, 156, "Output",ExpressionUUID->"a3b3a2d3-02b0-4560-9923-3fce808825ff"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[83273, 2131, 298, 6, 31, "Input",ExpressionUUID->"981cb858-abc5-4ad9-b2cc-6de236f3569e"],
-Cell[83574, 2139, 5483, 124, 158, "Output",ExpressionUUID->"1f1835b2-c7d6-42bb-8860-62c8d97b1071"]
+Cell[93356, 2372, 298, 6, 31, "Input",ExpressionUUID->"981cb858-abc5-4ad9-b2cc-6de236f3569e"],
+Cell[93657, 2380, 6155, 137, 275, "Output",ExpressionUUID->"7d5b9aee-616f-4b5f-a54d-5e3bfce484d7"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[89094, 2268, 314, 5, 31, "Input",ExpressionUUID->"7fd2b7f4-be72-4439-b42b-9d9bbcaaeb11"],
-Cell[89411, 2275, 4004, 87, 147, "Output",ExpressionUUID->"4a380875-8893-46c6-a867-194169cab3a5"]
+Cell[99849, 2522, 379, 8, 31, "Input",ExpressionUUID->"903acc1c-f480-4527-ab25-befcf40d4b40"],
+Cell[100231, 2532, 4064, 88, 139, "Output",ExpressionUUID->"bfb599ea-6b43-4696-a3cd-ca5b54158ba8"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[93452, 2367, 238, 4, 31, "Input",ExpressionUUID->"bfd997a7-084c-446f-8275-38a56927a52a"],
-Cell[93693, 2373, 2072, 47, 200, "Output",ExpressionUUID->"f971a9f8-f990-4537-ba86-3e386a741a83"]
+Cell[104332, 2625, 518, 10, 31, "Input",ExpressionUUID->"bfd997a7-084c-446f-8275-38a56927a52a"],
+Cell[104853, 2637, 2271, 51, 200, "Output",ExpressionUUID->"d080a1ce-f3ec-44c2-b55e-3635641ffb64"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[107161, 2693, 379, 8, 31, "Input",ExpressionUUID->"46f5de92-03ee-4795-b283-ecbb7a8c1411"],
+Cell[107543, 2703, 5055, 113, 163, "Output",ExpressionUUID->"15cd82f8-d2fa-4c7a-bd40-2341edc2c4c3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[112635, 2821, 209, 4, 31, "Input",ExpressionUUID->"efad0e07-6066-4406-b25d-2e0441fdc050"],
+Cell[112847, 2827, 7726, 172, 387, "Output",ExpressionUUID->"6fd65a18-b4c3-4b41-9185-46241b7d9c15"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[120610, 3004, 349, 7, 31, "Input",ExpressionUUID->"8b268683-eb53-429b-a1fa-4082fb7e3f3e"],
+Cell[120962, 3013, 732, 19, 35, "Output",ExpressionUUID->"625f294c-48bb-4ce0-90a9-0c0084110e2f"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[121743, 3038, 153, 3, 68, "Section",ExpressionUUID->"bce05cfd-da83-48c2-a2d2-b35f17f0ea7a"],
+Cell[121899, 3043, 2568, 59, 285, "Input",ExpressionUUID->"95cb1e40-edf0-4952-9f74-675e1b822e4b"],
+Cell[CellGroupData[{
+Cell[124492, 3106, 260, 5, 31, "Input",ExpressionUUID->"beb1cf85-03f4-43da-9cae-d4f204b97609"],
+Cell[124755, 3113, 14987, 322, 341, "Output",ExpressionUUID->"8dae046c-d2eb-4da2-99f5-952348d56a56"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
