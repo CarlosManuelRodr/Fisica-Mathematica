@@ -10,25 +10,330 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      1112,         41]
-NotebookOptionsPosition[       824,         28]
-NotebookOutlinePosition[      1162,         43]
-CellTagsIndexPosition[      1119,         40]
+NotebookDataLength[     14496,        368]
+NotebookOptionsPosition[     12980,        333]
+NotebookOutlinePosition[     13314,        348]
+CellTagsIndexPosition[     13271,        345]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"NonTermName", "[", "nonterm_", "]"}], ":=", 
+   RowBox[{"ReplaceAll", "[", 
+    RowBox[{"nonterm", ",", 
+     RowBox[{
+      RowBox[{"NonTerm", "[", "x_", "]"}], "\[RuleDelayed]", "x"}]}], "]"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"NonTermWithProd", "[", 
+     RowBox[{"nonterm_", ",", "prodIndex_"}], "]"}], ":=", 
+    RowBox[{"NonTerm", "[", 
+     RowBox[{
+      RowBox[{"NonTermName", "[", "nonterm", "]"}], ",", "prodIndex"}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ApplyGrammarProduction", "[", 
+    RowBox[{"root_", ",", "index_", ",", "prodRuleIndex_", ",", "grammar_"}], 
+    "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "rootNonTerm", ",", "newLeafs", ",", "edgeList", ",", "vertexLabels"}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"rootNonTerm", " ", "=", " ", 
+       RowBox[{"NonTermWithProd", "[", 
+        RowBox[{"root", ",", "prodRuleIndex"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"newLeafs", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"grammar", "[", 
+         RowBox[{"[", "prodRuleIndex", "]"}], "]"}], "[", "\"\<To\>\"", 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"edgeList", " ", "=", " ", 
+       RowBox[{"Thread", "[", 
+        RowBox[{"index", "\[Rule]", 
+         RowBox[{"Range", "[", 
+          RowBox[{
+           RowBox[{"index", "+", "1"}], ",", 
+           RowBox[{"index", "+", 
+            RowBox[{"Length", "[", "newLeafs", "]"}]}]}], "]"}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"vertexLabels", " ", "=", " ", 
+       RowBox[{"Prepend", "[", 
+        RowBox[{
+         RowBox[{"Thread", "[", 
+          RowBox[{
+           RowBox[{"Range", "[", 
+            RowBox[{
+             RowBox[{"index", "+", "1"}], ",", 
+             RowBox[{"index", "+", 
+              RowBox[{"Length", "[", "newLeafs", "]"}]}]}], "]"}], "\[Rule]", 
+           "newLeafs"}], "]"}], ",", 
+         RowBox[{"index", "\[Rule]", "rootNonTerm"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Graph", "[", 
+         RowBox[{"edgeList", ",", 
+          RowBox[{"VertexLabels", "\[Rule]", "vertexLabels"}]}], "]"}], ",", 
+        "vertexLabels"}], "}"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.790516671704258*^9, 3.7905166959074173`*^9}, {
+  3.7905170301460533`*^9, 3.790517072132193*^9}, {3.790521324549214*^9, 
+  3.790521324896885*^9}, {3.790521424474646*^9, 3.7905214588378677`*^9}},
+ CellLabel->"In[54]:=",ExpressionUUID->"6758c363-e3f3-48bb-8aad-f655fa23eca8"],
+
 Cell[BoxData[
- RowBox[{"PopulationToFunction", "[", 
-  RowBox[{"optimization", "[", 
-   RowBox[{"[", "50", "]"}], "]"}], "]"}]], "Input",
- CellChangeTimes->{3.790018448760818*^9},
- CellLabel->
-  "In[186]:=",ExpressionUUID->"1647cbd6-17a3-4099-85cf-2754ce677416"]
+ RowBox[{
+  RowBox[{"root", " ", "=", " ", 
+   RowBox[{"NonTerm", "[", "\"\<cond\>\"", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.790516631506055*^9, 3.790516633459243*^9}},
+ CellLabel->"In[40]:=",ExpressionUUID->"128b83b7-fc31-40e2-8eb5-ea9da3760afe"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"compatibleProductions", " ", "=", " ", 
+  RowBox[{"Select", "[", 
+   RowBox[{"grammar", ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "[", "\"\<From\>\"", "]"}], "==", 
+      RowBox[{"NonTermName", "[", "root", "]"}]}], "&"}]}], "]"}]}]], "Input",\
+
+ CellChangeTimes->{{3.7905166221370487`*^9, 3.790516623668692*^9}, {
+  3.790516705922042*^9, 3.79051674455835*^9}},
+ CellLabel->"In[42]:=",ExpressionUUID->"e43522df-f4a6-492c-b318-93b51d4ef32c"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"From\"\>", "\[Rule]", "\<\"cond\"\>"}], ",", 
+     RowBox[{"\<\"To\"\>", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Term", "[", "\<\"logicOp\"\>", "]"}], ",", 
+        RowBox[{"NonTerm", "[", "\<\"cond\"\>", "]"}], ",", 
+        RowBox[{"NonTerm", "[", "\<\"cond\"\>", "]"}]}], "}"}]}], ",", 
+     RowBox[{"\<\"Value\"\>", "\[Rule]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Term", "[", "\<\"logicOp\"\>", "]"}], "[", "\<\"Value\"\>", 
+        "]"}], "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"NonTerm", "[", "\<\"cond\"\>", "]"}], "[", "\<\"Value\"\>", 
+         "]"}], ",", 
+        RowBox[{
+         RowBox[{"NonTerm", "[", "\<\"cond\"\>", "]"}], "[", "\<\"Value\"\>", 
+         "]"}]}], "]"}]}]}], "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"From\"\>", "\[Rule]", "\<\"cond\"\>"}], ",", 
+     RowBox[{"\<\"To\"\>", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Term", "[", "\<\"not\"\>", "]"}], ",", 
+        RowBox[{"NonTerm", "[", "\<\"cond\"\>", "]"}]}], "}"}]}], ",", 
+     RowBox[{"\<\"Value\"\>", "\[Rule]", 
+      RowBox[{"!", 
+       RowBox[{
+        RowBox[{"NonTerm", "[", "\<\"cond\"\>", "]"}], "[", "\<\"Value\"\>", 
+        "]"}]}]}]}], "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"From\"\>", "\[Rule]", "\<\"cond\"\>"}], ",", 
+     RowBox[{"\<\"To\"\>", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Term", "[", "\<\"numOp\"\>", "]"}], ",", 
+        RowBox[{"NonTerm", "[", "\<\"numQuant\"\>", "]"}], ",", 
+        RowBox[{"NonTerm", "[", "\<\"numQuant\"\>", "]"}]}], "}"}]}], ",", 
+     RowBox[{"\<\"Value\"\>", "\[Rule]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Term", "[", "\<\"numOp\"\>", "]"}], "[", "\<\"Value\"\>", 
+        "]"}], "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"NonTerm", "[", "\<\"numQuant\"\>", "]"}], 
+         "[", "\<\"Value\"\>", "]"}], ",", 
+        RowBox[{
+         RowBox[{"NonTerm", "[", "\<\"numQuant\"\>", "]"}], 
+         "[", "\<\"Value\"\>", "]"}]}], "]"}]}]}], "\[RightAssociation]"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.790516623776369*^9, {3.7905167302452393`*^9, 3.7905167447354527`*^9}, {
+   3.790519893403018*^9, 3.7905199106689672`*^9}, 3.790521344317973*^9},
+ CellLabel->"Out[42]=",ExpressionUUID->"b36e128c-09ea-4d36-9cfe-538e74a7cdcb"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"selectedProdRule", " ", "=", " ", 
+  RowBox[{"RandomChoice", "[", "compatibleProductions", "]"}]}]], "Input",
+ CellChangeTimes->{{3.7905167515846777`*^9, 3.790516775754798*^9}, {
+  3.7905169100365458`*^9, 3.790516915767899*^9}, {3.790516965237673*^9, 
+  3.7905169659941683`*^9}},
+ CellLabel->"In[44]:=",ExpressionUUID->"0d3f5230-707b-4240-b191-e68151a3b0ce"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"From\"\>", "\[Rule]", "\<\"cond\"\>"}], ",", 
+   RowBox[{"\<\"To\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Term", "[", "\<\"numOp\"\>", "]"}], ",", 
+      RowBox[{"NonTerm", "[", "\<\"numQuant\"\>", "]"}], ",", 
+      RowBox[{"NonTerm", "[", "\<\"numQuant\"\>", "]"}]}], "}"}]}], ",", 
+   RowBox[{"\<\"Value\"\>", "\[Rule]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Term", "[", "\<\"numOp\"\>", "]"}], "[", "\<\"Value\"\>", 
+      "]"}], "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"NonTerm", "[", "\<\"numQuant\"\>", "]"}], 
+       "[", "\<\"Value\"\>", "]"}], ",", 
+      RowBox[{
+       RowBox[{"NonTerm", "[", "\<\"numQuant\"\>", "]"}], 
+       "[", "\<\"Value\"\>", "]"}]}], "]"}]}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{{3.790516754277026*^9, 3.79051677608713*^9}, {
+   3.790516916076228*^9, 3.790516926163258*^9}, 3.7905169672609262`*^9, {
+   3.790519893477983*^9, 3.790519912441718*^9}, {3.790521345691658*^9, 
+   3.790521350017478*^9}},
+ CellLabel->"Out[44]=",ExpressionUUID->"2d8d56bb-9034-4bb0-8b6a-0d232e894e67"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"prodRuleIndex", " ", "=", " ", 
+  RowBox[{"First", "@", 
+   RowBox[{"FirstPosition", "[", 
+    RowBox[{"grammar", ",", "selectedProdRule"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.790516958137641*^9, 3.790516992228567*^9}},
+ CellLabel->"In[45]:=",ExpressionUUID->"8c7ef3ba-bcca-4364-a0fe-79bdd250da66"],
+
+Cell[BoxData["3"], "Output",
+ CellChangeTimes->{{3.790516959026486*^9, 3.790516992407336*^9}, 
+   3.790519915507165*^9, 3.790521352427635*^9},
+ CellLabel->"Out[45]=",ExpressionUUID->"27177af1-b6c1-40a1-9a7b-d71c975ab315"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"rootNonTerm", " ", "=", " ", 
+  RowBox[{"NonTermWithProd", "[", 
+   RowBox[{"root", ",", "prodRuleIndex"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.790516934212668*^9, 3.790516934605198*^9}, {
+  3.790517083938821*^9, 3.790517086184482*^9}, {3.7905171434720793`*^9, 
+  3.790517144001533*^9}, {3.7905210774346523`*^9, 3.79052107930586*^9}},
+ CellLabel->"In[62]:=",ExpressionUUID->"86ef96e6-a6ad-4957-94f5-994040c15695"],
+
+Cell[BoxData[
+ RowBox[{"NonTerm", "[", 
+  RowBox[{"\<\"cond\"\>", ",", "3"}], "]"}]], "Output",
+ CellChangeTimes->{3.7905169356970873`*^9, 3.790517086317603*^9, 
+  3.790519916227015*^9, 3.7905210795088882`*^9},
+ CellLabel->"Out[62]=",ExpressionUUID->"8bbc405f-c01d-4e56-a25d-0c25f73bd789"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ApplyGrammarProduction", "[", 
+  RowBox[{
+   RowBox[{"NonTerm", "[", "\"\<cond\>\"", "]"}], ",", "1", ",", "3", ",", 
+   "grammar"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7905204904177113`*^9, 3.790520502272768*^9}, {
+  3.790521471308692*^9, 3.790521472046829*^9}},
+ CellLabel->"In[58]:=",ExpressionUUID->"47418a2a-64cc-4b9b-bcd3-4c553f3870dd"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   GraphicsBox[
+    NamespaceBox["NetworkGraphics",
+     DynamicModuleBox[{Typeset`graph = HoldComplete[
+       Graph[{1, 2, 3, 4}, {{{1, 2}, {1, 3}, {1, 4}}, Null}, {
+        VertexLabels -> {
+          3 -> $CellContext`NonTerm["numQuant"], 
+           4 -> $CellContext`NonTerm["numQuant"], 
+           2 -> $CellContext`Term["numOp"], 
+           1 -> $CellContext`NonTerm["cond", 3]}}]]}, 
+      TagBox[GraphicsGroupBox[{
+         {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[Medium], 
+          ArrowBox[{{{0.7745966692414834, 0.7745966692414834}, {0., 0.}}, {{
+           0.7745966692414834, 0.7745966692414834}, {0.7745966692414834, 
+           0.}}, {{0.7745966692414834, 0.7745966692414834}, {
+           1.5491933384829668`, 0.}}}, 0.018845521490452433`]}, 
+         {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
+          0.7]}], {
+           DiskBox[{0.7745966692414834, 0.7745966692414834}, 
+            0.018845521490452433], InsetBox[
+            RowBox[{"NonTerm", "(", 
+             RowBox[{"\<\"cond\"\>", ",", "3"}], ")"}], 
+            Offset[{2, 2}, {0.7934421907319358, 0.7934421907319358}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {DiskBox[{0., 0.}, 0.018845521490452433],
+            InsetBox[
+            RowBox[{"Term", "(", "\<\"numOp\"\>", ")"}], 
+            Offset[{2, 2}, {0.018845521490452433, 0.018845521490452433}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{0.7745966692414834, 0.}, 0.018845521490452433], InsetBox[
+            RowBox[{"NonTerm", "(", "\<\"numQuant\"\>", ")"}], 
+            Offset[{2, 2}, {0.7934421907319358, 0.018845521490452433}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}, {
+           DiskBox[{1.5491933384829668, 0.}, 0.018845521490452433], InsetBox[
+            RowBox[{"NonTerm", "(", "\<\"numQuant\"\>", ")"}], 
+            Offset[{2, 2}, {1.5680388599734192, 0.018845521490452433}], 
+            ImageScaled[{0, 0}],
+            BaseStyle->"Graphics"]}}}],
+       MouseAppearanceTag["NetworkGraphics"]],
+      AllowKernelInitialization->False]],
+    DefaultBaseStyle->{
+     "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+    
+    FormatType->TraditionalForm,
+    FrameTicks->None], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"1", "\[Rule]", 
+      RowBox[{"NonTerm", "[", 
+       RowBox[{"\<\"cond\"\>", ",", "3"}], "]"}]}], ",", 
+     RowBox[{"2", "\[Rule]", 
+      RowBox[{"Term", "[", "\<\"numOp\"\>", "]"}]}], ",", 
+     RowBox[{"3", "\[Rule]", 
+      RowBox[{"NonTerm", "[", "\<\"numQuant\"\>", "]"}]}], ",", 
+     RowBox[{"4", "\[Rule]", 
+      RowBox[{"NonTerm", "[", "\<\"numQuant\"\>", "]"}]}]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.79052050723944*^9, {3.7905214649673853`*^9, 3.79052147243405*^9}},
+ CellLabel->"Out[58]=",ExpressionUUID->"bd77e4f1-cabe-424f-b38b-fdfc35c447f0"]
+}, Open  ]]
 },
-WindowSize->{1600, 863},
-WindowMargins->{{Automatic, -1600}, {Automatic, 37}},
-FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
+WindowSize->{932, 1013},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
+FrontEndVersion->"12.0 para Linux x86 (64-bit) (April 8, 2019)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -42,7 +347,29 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 262, 6, 31, "Input",ExpressionUUID->"1647cbd6-17a3-4099-85cf-2754ce677416"]
+Cell[558, 20, 2801, 72, 301, "Input",ExpressionUUID->"6758c363-e3f3-48bb-8aad-f655fa23eca8",
+ InitializationCell->True],
+Cell[3362, 94, 271, 5, 31, "Input",ExpressionUUID->"128b83b7-fc31-40e2-8eb5-ea9da3760afe"],
+Cell[CellGroupData[{
+Cell[3658, 103, 474, 11, 31, "Input",ExpressionUUID->"e43522df-f4a6-492c-b318-93b51d4ef32c"],
+Cell[4135, 116, 2523, 62, 128, "Output",ExpressionUUID->"b36e128c-09ea-4d36-9cfe-538e74a7cdcb"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6695, 183, 382, 6, 31, "Input",ExpressionUUID->"0d3f5230-707b-4240-b191-e68151a3b0ce"],
+Cell[7080, 191, 1151, 27, 59, "Output",ExpressionUUID->"2d8d56bb-9034-4bb0-8b6a-0d232e894e67"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8268, 223, 330, 6, 31, "Input",ExpressionUUID->"8c7ef3ba-bcca-4364-a0fe-79bdd250da66"],
+Cell[8601, 231, 221, 3, 35, "Output",ExpressionUUID->"27177af1-b6c1-40a1-9a7b-d71c975ab315"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8859, 239, 442, 7, 31, "Input",ExpressionUUID->"86ef96e6-a6ad-4957-94f5-994040c15695"],
+Cell[9304, 248, 289, 5, 35, "Output",ExpressionUUID->"8bbc405f-c01d-4e56-a25d-0c25f73bd789"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9630, 258, 370, 7, 31, "Input",ExpressionUUID->"47418a2a-64cc-4b9b-bcd3-4c553f3870dd"],
+Cell[10003, 267, 2961, 63, 100, "Output",ExpressionUUID->"bd77e4f1-cabe-424f-b38b-fdfc35c447f0"]
+}, Open  ]]
 }
 ]
 *)
